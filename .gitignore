@@ -1,0 +1,22 @@
+# data, runs, weights
+data/
+runs/
+*.pt
+*.pth
+*.onnx
+*.engine
+*.torchscript
+weights/
+
+# python / env
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# credentials
+kaggle.json
+.env
+
+# generated sanity images (regenerate with scripts/sanity_check.py)
+figures/sanity/
