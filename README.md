@@ -44,7 +44,7 @@ All commands run from the repo root. Scripts that read downloaded data are run w
 python3 -m venv .venv && source .venv/bin/activate
 pip install --upgrade pip
 pip install torch==2.14.1 torchvision --index-url https://download.pytorch.org/whl/cu130
-pip install -r requirements.txt gdown
+pip install -r requirements.txt
 python -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0))"
 # -> True NVIDIA GeForce RTX 3080
 ```
