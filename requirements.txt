@@ -1,0 +1,19 @@
+# Install PyTorch with CUDA first (driver here supports CUDA <= 13.0):
+#   pip install torch==2.14.1 torchvision --index-url https://download.pytorch.org/whl/cu130
+# then:
+#   pip install -r requirements.txt
+torch==2.14.1
+torchvision
+ultralytics
+numpy
+scipy
+matplotlib
+opencv-python
+pyyaml
+tqdm
+pandas
+onnx
+onnxslim
+onnxruntime-gpu
+huggingface_hub
+kaggle
