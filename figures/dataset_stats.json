@@ -1,0 +1,390 @@
+{
+ "coco/train": {
+  "images": 5324,
+  "background_images": 0,
+  "boxes": {
+   "airplane": 4543,
+   "bird": 6215
+  },
+  "median_w_px": 89.02976000000001,
+  "median_h_px": 63.14492,
+  "median_sqrt_area_px": 75.82350957743225,
+  "frac_lt16": 0.16062465142219742,
+  "frac_lt32": 0.28732106339468305,
+  "median_sqrt_area_at_640": 77.49186848212679,
+  "median_sqrt_area_at_1280": 154.98373696425358,
+  "top_resolutions": [
+   [
+    "640x480",
+    931
+   ],
+   [
+    "640x427",
+    891
+   ],
+   [
+    "640x426",
+    286
+   ]
+  ]
+ },
+ "coco/val": {
+  "images": 604,
+  "background_images": 0,
+  "boxes": {
+   "airplane": 505,
+   "bird": 673
+  },
+  "median_w_px": 104.94496000000001,
+  "median_h_px": 64.104998,
+  "median_sqrt_area_px": 83.98287055024159,
+  "frac_lt16": 0.133276740237691,
+  "frac_lt32": 0.26825127334465193,
+  "median_sqrt_area_at_640": 86.0707883482504,
+  "median_sqrt_area_at_1280": 172.1415766965008,
+  "top_resolutions": [
+   [
+    "640x480",
+    111
+   ],
+   [
+    "640x427",
+    106
+   ],
+   [
+    "640x426",
+    35
+   ]
+  ]
+ },
+ "coco/test": {
+  "images": 209,
+  "background_images": 0,
+  "boxes": {
+   "bird": 233,
+   "airplane": 143
+  },
+  "median_w_px": 89.8048,
+  "median_h_px": 68.27506,
+  "median_sqrt_area_px": 81.3696259430273,
+  "frac_lt16": 0.16489361702127658,
+  "frac_lt32": 0.2845744680851064,
+  "median_sqrt_area_at_640": 81.3696259430273,
+  "median_sqrt_area_at_1280": 162.7392518860546,
+  "top_resolutions": [
+   [
+    "640x427",
+    47
+   ],
+   [
+    "640x480",
+    33
+   ],
+   [
+    "640x426",
+    12
+   ]
+  ]
+ },
+ "coco/all": {
+  "images": 6137,
+  "background_images": 0,
+  "boxes": {
+   "airplane": 5191,
+   "bird": 7121
+  },
+  "median_w_px": 90.01012,
+  "median_h_px": 63.345102,
+  "median_sqrt_area_px": 76.6827171061332,
+  "frac_lt16": 0.1581384015594542,
+  "frac_lt32": 0.2854126055880442,
+  "median_sqrt_area_at_640": 78.40007929145979,
+  "median_sqrt_area_at_1280": 156.80015858291958,
+  "top_resolutions": [
+   [
+    "640x480",
+    1075
+   ],
+   [
+    "640x427",
+    1044
+   ],
+   [
+    "640x426",
+    333
+   ]
+  ]
+ },
+ "detfly/test": {
+  "images": 1000,
+  "background_images": 0,
+  "boxes": {
+   "drone": 1000
+  },
+  "median_w_px": 137.99808,
+  "median_h_px": 109.00008,
+  "median_sqrt_area_px": 122.04815836801471,
+  "frac_lt16": 0.0,
+  "frac_lt32": 0.003,
+  "median_sqrt_area_at_640": 20.341359728002452,
+  "median_sqrt_area_at_1280": 40.682719456004904,
+  "top_resolutions": [
+   [
+    "3840x2160",
+    1000
+   ]
+  ]
+ },
+ "detfly/all": {
+  "images": 1000,
+  "background_images": 0,
+  "boxes": {
+   "drone": 1000
+  },
+  "median_w_px": 137.99808,
+  "median_h_px": 109.00008,
+  "median_sqrt_area_px": 122.04815836801471,
+  "frac_lt16": 0.0,
+  "frac_lt32": 0.003,
+  "median_sqrt_area_at_640": 20.341359728002452,
+  "median_sqrt_area_at_1280": 40.682719456004904,
+  "top_resolutions": [
+   [
+    "3840x2160",
+    1000
+   ]
+  ]
+ },
+ "dut_anti_uav/train": {
+  "images": 5200,
+  "background_images": 3,
+  "boxes": {
+   "drone": 5243
+  },
+  "median_w_px": 43.00032,
+  "median_h_px": 22.999679999999998,
+  "median_sqrt_area_px": 31.128832287408407,
+  "frac_lt16": 0.06637421323669655,
+  "frac_lt32": 0.5193591455273698,
+  "median_sqrt_area_at_640": 10.428185845064327,
+  "median_sqrt_area_at_1280": 20.856371690128654,
+  "top_resolutions": [
+   [
+    "1920x1080",
+    4393
+   ],
+   [
+    "1280x720",
+    631
+   ],
+   [
+    "640x360",
+    7
+   ]
+  ]
+ },
+ "dut_anti_uav/val": {
+  "images": 2600,
+  "background_images": 0,
+  "boxes": {
+   "drone": 2620
+  },
+  "median_w_px": 42.0,
+  "median_h_px": 22.999679999999998,
+  "median_sqrt_area_px": 30.756947830888553,
+  "frac_lt16": 0.0683206106870229,
+  "frac_lt32": 0.5347328244274809,
+  "median_sqrt_area_at_640": 10.298367137499756,
+  "median_sqrt_area_at_1280": 20.596734274999513,
+  "top_resolutions": [
+   [
+    "1920x1080",
+    2196
+   ],
+   [
+    "1280x720",
+    315
+   ],
+   [
+    "480x360",
+    4
+   ]
+  ]
+ },
+ "dut_anti_uav/test": {
+  "images": 2200,
+  "background_images": 0,
+  "boxes": {
+   "drone": 2245
+  },
+  "median_w_px": 55.00032,
+  "median_h_px": 30.00024,
+  "median_sqrt_area_px": 40.914756262258244,
+  "frac_lt16": 0.03697104677060133,
+  "frac_lt32": 0.377728285077951,
+  "median_sqrt_area_at_640": 14.491285657249325,
+  "median_sqrt_area_at_1280": 28.98257131449865,
+  "top_resolutions": [
+   [
+    "1920x1080",
+    1348
+   ],
+   [
+    "1280x720",
+    836
+   ],
+   [
+    "960x720",
+    8
+   ]
+  ]
+ },
+ "dut_anti_uav/all": {
+  "images": 10000,
+  "background_images": 3,
+  "boxes": {
+   "drone": 10108
+  },
+  "median_w_px": 44.00064,
+  "median_h_px": 23.99976,
+  "median_sqrt_area_px": 32.311077976446406,
+  "frac_lt16": 0.06034823901859913,
+  "frac_lt32": 0.49188761377127027,
+  "median_sqrt_area_at_640": 10.842153128747077,
+  "median_sqrt_area_at_1280": 21.684306257494153,
+  "top_resolutions": [
+   [
+    "1920x1080",
+    7937
+   ],
+   [
+    "1280x720",
+    1782
+   ],
+   [
+    "640x360",
+    16
+   ]
+  ]
+ },
+ "openimages/train": {
+  "images": 8065,
+  "background_images": 0,
+  "boxes": {
+   "bird": 7744,
+   "airplane": 5280,
+   "helicopter": 2748
+  },
+  "median_w_px": 252.1552985,
+  "median_h_px": 174.40032,
+  "median_sqrt_area_px": 208.86107993569513,
+  "frac_lt16": 0.022761856454476287,
+  "frac_lt32": 0.08210753233578494,
+  "median_sqrt_area_at_640": 130.53817495980945,
+  "median_sqrt_area_at_1280": 261.0763499196189,
+  "top_resolutions": [
+   [
+    "1024x683",
+    1578
+   ],
+   [
+    "1024x768",
+    1554
+   ],
+   [
+    "1024x682",
+    374
+   ]
+  ]
+ },
+ "openimages/val": {
+  "images": 1112,
+  "background_images": 0,
+  "boxes": {
+   "airplane": 611,
+   "bird": 824,
+   "helicopter": 134
+  },
+  "median_w_px": 584.282112,
+  "median_h_px": 335.45545,
+  "median_sqrt_area_px": 474.95181033048,
+  "frac_lt16": 0.0006373486297004461,
+  "frac_lt32": 0.009560229445506692,
+  "median_sqrt_area_at_640": 296.84488145655,
+  "median_sqrt_area_at_1280": 593.6897629131,
+  "top_resolutions": [
+   [
+    "1024x683",
+    222
+   ],
+   [
+    "1024x768",
+    217
+   ],
+   [
+    "1024x682",
+    43
+   ]
+  ]
+ },
+ "openimages/test": {
+  "images": 1325,
+  "background_images": 0,
+  "boxes": {
+   "bird": 783,
+   "airplane": 592,
+   "helicopter": 391
+  },
+  "median_w_px": 681.828672,
+  "median_h_px": 369.63763200000005,
+  "median_sqrt_area_px": 509.16828240090933,
+  "frac_lt16": 0.011325028312570781,
+  "frac_lt32": 0.021517553793884484,
+  "median_sqrt_area_at_640": 318.36742701333617,
+  "median_sqrt_area_at_1280": 636.7348540266723,
+  "top_resolutions": [
+   [
+    "1024x683",
+    287
+   ],
+   [
+    "1024x768",
+    255
+   ],
+   [
+    "1024x681",
+    50
+   ]
+  ]
+ },
+ "openimages/all": {
+  "images": 10502,
+  "background_images": 0,
+  "boxes": {
+   "bird": 9351,
+   "airplane": 6483,
+   "helicopter": 3273
+  },
+  "median_w_px": 310.804423,
+  "median_h_px": 211.2,
+  "median_sqrt_area_px": 266.40581113661915,
+  "frac_lt16": 0.01988799916261056,
+  "frac_lt32": 0.07055006018736588,
+  "median_sqrt_area_at_640": 166.46030983690977,
+  "median_sqrt_area_at_1280": 332.92061967381954,
+  "top_resolutions": [
+   [
+    "1024x683",
+    2087
+   ],
+   [
+    "1024x768",
+    2026
+   ],
+   [
+    "1024x682",
+    458
+   ]
+  ]
+ }
+}
