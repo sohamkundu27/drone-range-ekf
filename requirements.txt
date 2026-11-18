@@ -17,3 +17,4 @@ onnxslim
 onnxruntime-gpu
 huggingface_hub
 kaggle
+gdown
