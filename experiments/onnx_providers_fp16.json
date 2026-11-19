@@ -1,0 +1,27 @@
+{
+ "onnx": "runs/detect/drone4_bal/weights/best_fp16.onnx",
+ "note": "session_run_ms = raw ONNX Runtime inference on a 1x3x1280x1280 input, including the host-to-device copy; no pre/post-processing.",
+ "onnxruntime_alone": {
+  "available": [
+   "TensorrtExecutionProvider",
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "active": [
+   "CPUExecutionProvider"
+  ],
+  "session_run_ms": 114.70340335120757
+ },
+ "torch_imported_first": {
+  "available": [
+   "TensorrtExecutionProvider",
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "active": [
+   "CUDAExecutionProvider",
+   "CPUExecutionProvider"
+  ],
+  "session_run_ms": 6.961576268076897
+ }
+}
