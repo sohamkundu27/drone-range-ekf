@@ -104,10 +104,14 @@ def test_nees_consistent_when_model_matches():
     """Truth generated from the filter's own model (CV + white acceleration with the same q,
     size from the prior, Gauss-Markov pose drift + white jitter, Gaussian box noise).
     The time-averaged position ANEES over the second half should be near 3 (its dof).
-    MEASURED (200 runs, see STUDY.md): ~5 at 80 m, ~10 at 150 m, i.e. the iterated EKF is
-    mildly OVERCONFIDENT because of linearisation error, worse at long range. This test only
-    checks "roughly consistent" (within a factor 2) so it catches real regressions such as the
-    plain EKF (ANEES ~25 here) or a wrong Jacobian, without hiding the known residual."""
+    MEASURED (200 runs, experiment E): 4.8 at 80 m, 10.0 at 150 m, i.e. the iterated EKF is
+    mildly OVERCONFIDENT because of linearisation error, worse at long range.
+    THIS TEST IS LENIENT. With these 60 runs the value is 4.71, while a consistent filter would
+    give 2.41-3.65 (95% band for 60 runs), so a strict test would FAIL. It only checks
+    "roughly consistent" (1.5 < ANEES < 6.0, a factor 2 around 3), so it catches gross
+    regressions such as the plain EKF (89.9 on these runs, n_iter=1) or a wrong Jacobian,
+    without hiding the known residual. Runs whose state became NaN would be skipped by nanmean
+    (none do in these 60 runs)."""
     q = 0.1
     n_runs = 60
     rng = np.random.default_rng(123)

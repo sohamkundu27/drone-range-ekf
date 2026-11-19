@@ -26,8 +26,9 @@ import numpy as np
 
 @dataclass
 class Intrinsics:
-    """Camera intrinsics. Default: 1920x1080 sensor (same as the DUT Anti-UAV frames,
-    so detector pixel errors measured on DUT carry over), fx = 2500 px (~42 deg horizontal FOV)."""
+    """Camera intrinsics. Default: 1920x1080 sensor (the most common DUT Anti-UAV frame size;
+    detector/measure_noise.py rescales all DUT pixel errors to a 1920-wide frame so they carry
+    over), fx = 2500 px (~42 deg horizontal FOV)."""
     fx: float = 2500.0
     fy: float = 2500.0
     cx: float = 960.0
