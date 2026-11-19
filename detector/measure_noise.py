@@ -3,9 +3,12 @@
 For every test image: predict (conf >= --conf), keep `drone` predictions, and match them to
 ground-truth drones greedily (highest confidence first, IoU >= 0.3; a low IoU threshold so
 that small, slightly-off boxes still count as true positives). For each matched pair:
-    centre error   du = u_pred - u_gt,  dv = v_pred - v_gt                 [px, 1920x1080 frame]
+    centre error   du = u_pred - u_gt,  dv = v_pred - v_gt                 [px, 1920-wide frame]
     width error    log(w_pred / w_gt)                                      [log ratio]
-Results are binned by the TRUE box width w_gt. Per bin we report a robust sigma
+DUT test images have mixed sizes (1920x1080, 1280x720, a few smaller). The simulator camera is
+1920x1080, so pixel quantities (centre error, box width) are rescaled by 1920 / image_width.
+The log-ratio width error does not depend on the scale.
+Results are binned by the TRUE box width w_gt (1920-wide pixels). Per bin we report a robust sigma
 (1.4826 x median absolute deviation, which ignores a few gross outliers), the plain std, the
 bias, the fraction of errors beyond 3 robust sigmas (tail weight), and the recall
 (matched GT / all GT in the bin, at this confidence threshold).
@@ -24,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TEST = ROOT / "data" / "yolo" / "dut_anti_uav" / "images" / "test"
 EDGES = [0, 8, 12, 16, 24, 32, 48, 64, 96, 160, 10_000]     # bins of true box width [px]
 MIN_MATCHED = 20                                             # bins with fewer pairs are not used
+SIM_WIDTH = 1920                                             # simulator image width [px]
 
 
 def robust_sigma(x):
@@ -57,15 +61,17 @@ def main():
         imgs = imgs[: args.max_images]
 
     gt_w, matched = [], []          # all GT widths; (w_gt, du, dv, dlogw) per match
-    for r in model.predict([str(p) for p in imgs], imgsz=args.imgsz, conf=args.conf, device=args.device,
-                           stream=True, verbose=False, batch=8):
+    for img in imgs:
+        # one image per call (a list of paths makes Ultralytics warm up with batch = len(list): OOM)
+        r = model.predict(str(img), imgsz=args.imgsz, conf=args.conf, device=args.device, verbose=False)[0]
         h, w = r.orig_shape
+        scale = SIM_WIDTH / w                                # native px -> 1920-wide px
         gts = []
         for line in Path(r.path.replace("/images/", "/labels/")).with_suffix(".txt").read_text().splitlines():
             c, cx, cy, bw, bh = map(float, line.split())
             if int(c) == 0:
                 gts.append(np.array([(cx - bw / 2) * w, (cy - bh / 2) * h, (cx + bw / 2) * w, (cy + bh / 2) * h]))
-        gt_w += [g[2] - g[0] for g in gts]
+        gt_w += [scale * (g[2] - g[0]) for g in gts]
         keep = r.boxes.cls.cpu().numpy() == 0
         preds = r.boxes.xyxy.cpu().numpy()[keep]
         order = np.argsort(-r.boxes.conf.cpu().numpy()[keep])
@@ -80,7 +86,9 @@ def main():
             used.add(best)
             g = gts[best]
             wg, wp = g[2] - g[0], p[2] - p[0]
-            matched.append((wg, (p[0] + p[2] - g[0] - g[2]) / 2, (p[1] + p[3] - g[1] - g[3]) / 2, np.log(wp / wg)))
+            du = (p[0] + p[2] - g[0] - g[2]) / 2
+            dv = (p[1] + p[3] - g[1] - g[3]) / 2
+            matched.append((scale * wg, scale * du, scale * dv, np.log(wp / wg)))
 
     gt_w, M = np.array(gt_w), np.array(matched)
     bins = []
@@ -103,7 +111,8 @@ def main():
         bins.append(row)
     usable = [b for b in bins if "sigma_center_px" in b]
     out = {"weights": args.weights, "imgsz": args.imgsz, "conf": args.conf, "match_iou": args.iou,
-           "test_set": "DUT Anti-UAV test (2,200 images, 1920x1080), never used for training",
+           "test_set": "DUT Anti-UAV test (2,200 images, mixed sizes; pixels rescaled to a 1920-wide frame), "
+                       "never used for training",
            "n_gt": int(len(gt_w)), "n_matched": int(len(M)),
            "note": "sigma_* = 1.4826*MAD (robust); std_* include outliers. sim/noise.py uses the robust "
                    "sigmas and recall of bins with >= %d matches." % MIN_MATCHED,

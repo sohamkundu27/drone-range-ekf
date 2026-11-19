@@ -1,0 +1,62 @@
+{
+ "pytorch_fp32": {
+  "weights": "runs/detect/drone4_bal/weights/best.pt",
+  "imgsz": 1280,
+  "half": false,
+  "n_images": 200,
+  "mean_ms": 7.040196871384978,
+  "p50_ms": 7.339240051805973,
+  "p95_ms": 7.407912705093622,
+  "fps": 142.04148240009027,
+  "preprocess_ms": 1.2662806082516909,
+  "inference_ms": 5.1923171151429415,
+  "postprocess_ms": 0.39596987422555685,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ },
+ "pytorch_fp16": {
+  "weights": "runs/detect/drone4_bal/weights/best.pt",
+  "imgsz": 1280,
+  "half": true,
+  "n_images": 200,
+  "mean_ms": 5.35936682485044,
+  "p50_ms": 5.621282383799553,
+  "p95_ms": 5.690016271546483,
+  "fps": 186.58920590454383,
+  "preprocess_ms": 1.2493555480614305,
+  "inference_ms": 3.5147707536816597,
+  "postprocess_ms": 0.4104738309979439,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ },
+ "onnx_fp32": {
+  "weights": "runs/detect/drone4_bal/weights/best_fp32.onnx",
+  "imgsz": 1280,
+  "half": false,
+  "n_images": 200,
+  "mean_ms": 11.116155833005905,
+  "p50_ms": 11.4418831653893,
+  "p95_ms": 11.544483806937933,
+  "fps": 89.95915629671335,
+  "preprocess_ms": 1.546779740601778,
+  "inference_ms": 8.95945199765265,
+  "postprocess_ms": 0.43535181786864996,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ },
+ "onnx_fp16": {
+  "weights": "runs/detect/drone4_bal/weights/best_fp16.onnx",
+  "imgsz": 1280,
+  "half": true,
+  "n_images": 200,
+  "mean_ms": 8.04290792439133,
+  "p50_ms": 8.362369146198034,
+  "p95_ms": 8.443067967891693,
+  "fps": 124.33314037667265,
+  "preprocess_ms": 1.510627786628902,
+  "inference_ms": 5.917951348237693,
+  "postprocess_ms": 0.44929776806384325,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ }
+}
