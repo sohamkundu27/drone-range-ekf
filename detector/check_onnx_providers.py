@@ -11,7 +11,8 @@ torch is imported. So:
 detector/latency.py (through Ultralytics) imports torch first, so its ONNX numbers are GPU numbers.
 
 Each case runs in a fresh subprocess so the two do not affect each other.
-Writes experiments/onnx_providers.json.
+Writes the JSON given by --out (default experiments/onnx_providers.json; the committed results
+are experiments/onnx_providers_fp32.json and _fp16.json).
 """
 import argparse
 import json
