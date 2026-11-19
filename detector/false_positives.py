@@ -59,8 +59,9 @@ def main():
         imgs = sorted((YOLO_DIR / ds / "images" / "test").glob("*.jpg"))
         if args.max_images:
             imgs = imgs[: args.max_images]
-        for r in model.predict([str(p) for p in imgs], imgsz=args.imgsz, conf=min(thresholds),
-                               device=args.device, stream=True, verbose=False, batch=8):
+        for img in imgs:
+            # one image per call (a list of paths makes Ultralytics warm up with batch = len(list): OOM)
+            r = model.predict(str(img), imgsz=args.imgsz, conf=min(thresholds), device=args.device, verbose=False)[0]
             h, w = r.orig_shape
             gt = read_gt(Path(r.path.replace("/images/", "/labels/")).with_suffix(".txt"), w, h)
             gt_classes = {NAMES[g[0]] for g in gt}

@@ -1,0 +1,26 @@
+{
+ "tag": "dut_test",
+ "weights": "runs/detect/drone4_bal/weights/best.pt",
+ "data": "data/yolo/dut_anti_uav.yaml",
+ "split": "test",
+ "imgsz": 1280,
+ "mAP50": 0.9791816086744017,
+ "mAP50-95": 0.7490165422829068,
+ "P": 0.9871257892355033,
+ "R": 0.9670378619153674,
+ "per_class": {
+  "drone": {
+   "P": 0.9871257892355033,
+   "R": 0.9670378619153674,
+   "mAP50": 0.9791816086744017,
+   "mAP50-95": 0.7490165422829068,
+   "n_instances": 2245
+  }
+ },
+ "speed_ms_per_image": {
+  "preprocess": 0.5105543221262367,
+  "inference": 4.863843078386377,
+  "loss": 0.0003665888851339167,
+  "postprocess": 0.26202275756407867
+ }
+}
