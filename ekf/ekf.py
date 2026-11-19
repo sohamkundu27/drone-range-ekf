@@ -210,7 +210,7 @@ class DroneEKF:
             S_inn = H @ P @ H.T + R                     # innovation covariance
             Kg = P @ H.T @ np.linalg.inv(S_inn)         # Kalman gain
             if it == 0:
-                y0, S0 = y, S_inn
+                y_first, S_first = y, S_inn
             x_i = x_prior + Kg @ y
             x_i[IS] = max(x_i[IS], self.min_size)       # S must stay > 0 because h uses log S
         self.x = x_i
@@ -218,7 +218,7 @@ class DroneEKF:
         # but stays symmetric and positive definite despite rounding.
         I_KH = np.eye(NX) - Kg @ H
         self.P = I_KH @ P @ I_KH.T + Kg @ R @ Kg.T
-        return y0, S0, float(y0 @ np.linalg.solve(S0, y0))
+        return y_first, S_first, float(y_first @ np.linalg.solve(S_first, y_first))
 
     # --- outputs
     def range_estimate(self, t_meas):
