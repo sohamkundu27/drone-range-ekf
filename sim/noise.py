@@ -11,8 +11,8 @@ All three depend on the true box width w (small boxes are noisier and missed mor
 Where the numbers come from:
   If experiments/detector_noise.json exists (written by detector/measure_noise.py from
   matched true positives on the held-out DUT test set), sigma_uv, sigma_logw and the
-  detection rate are interpolated from its box-width bins. Otherwise these documented
-  DEFAULTS are used:
+  detection rate are interpolated from its box-width bins (outside the measured widths the
+  default curve's shape is used to extrapolate). Otherwise these documented DEFAULTS are used:
       sigma_uv(w)   = sqrt(0.5^2 + (0.05 w)^2)   px   (0.5 px floor + 5% of the box size)
       sigma_logw(w) = sqrt(0.08^2 + (1.0 / w)^2)      (8% + a 1 px edge error relative to w)
       p_detect(w)   = 0.95 / (1 + exp(-(w - 6) / 1.5)) (50% of the max at 6 px wide)
@@ -65,24 +65,44 @@ class DetectorNoise:
             }
             self.source = str(Path(json_path).name)
 
-    def _interp(self, key, w):
-        # np.interp holds the end values constant outside the measured range
-        return float(np.interp(np.log(max(w, 1e-3)), self.table["logw"], self.table[key]))
+    def _interp(self, key, w, default_fn):
+        """Interpolate a measured curve in log(width). Outside the measured widths we scale the
+        default curve so it joins the measured end point (e.g. detection rate keeps falling for
+        boxes smaller than any the test set had, instead of staying flat)."""
+        logw = np.log(max(w, 1e-3))
+        lo, hi = self.table["logw"][0], self.table["logw"][-1]
+        if logw < lo or logw > hi:
+            edge = lo if logw < lo else hi
+            edge_val = float(np.interp(edge, self.table["logw"], self.table[key]))
+            return edge_val * default_fn(w) / default_fn(float(np.exp(edge)))
+        return float(np.interp(logw, self.table["logw"], self.table[key]))
+
+    @staticmethod
+    def default_sigma_uv(w):
+        return float(np.sqrt(0.5**2 + (0.05 * w) ** 2))
+
+    @staticmethod
+    def default_sigma_logw(w):
+        return float(np.sqrt(0.08**2 + (1.0 / max(w, 1e-3)) ** 2))
+
+    @staticmethod
+    def default_p_detect(w):
+        return float(0.95 / (1.0 + np.exp(-(w - 6.0) / 1.5)))
 
     def sigma_uv(self, w):
         if self.table is not None:
-            return self._interp("sigma_uv", w)
-        return float(np.sqrt(0.5**2 + (0.05 * w) ** 2))
+            return self._interp("sigma_uv", w, self.default_sigma_uv)
+        return self.default_sigma_uv(w)
 
     def sigma_logw(self, w):
         if self.table is not None:
-            return self._interp("sigma_logw", w)
-        return float(np.sqrt(0.08**2 + (1.0 / max(w, 1e-3)) ** 2))
+            return self._interp("sigma_logw", w, self.default_sigma_logw)
+        return self.default_sigma_logw(w)
 
     def p_detect(self, w):
         if self.table is not None:
-            return self._interp("p_detect", w)
-        return float(0.95 / (1.0 + np.exp(-(w - 6.0) / 1.5)))
+            return min(1.0, self._interp("p_detect", w, self.default_p_detect))
+        return self.default_p_detect(w)
 
     def measure(self, u, v, w, rng, allow_miss=True):
         """Noisy detection (u, v, w) of a true box, or None if missed."""
