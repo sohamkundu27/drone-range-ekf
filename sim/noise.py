@@ -29,7 +29,7 @@ Camera pose noise (simulated GPS/INS; the EKF receives truth + this noise):
   jitter makes the camera appear to teleport, and the filter then explains "the camera moved
   but the bearing did not change" as "the drone is very far away", biasing range HIGH
   (+22% mean range error with an earlier 7-state filter during development; that version is
-  not kept, see STUDY.md section 8.1). That case is kept as a stress test, white_pose_noise():
+  not kept, see STUDY.md section 8, item 1). That case is kept as a stress test, white_pose_noise():
   PoseNoise(tau_pos=0, tau_att=0, sigma_pos_white=0, sigma_att_white=0).
   Position:  t_meas = t_true + e_t
   Attitude:  R_meas = R_true @ Rot(e_theta)

@@ -110,7 +110,7 @@ STUDY.md §7.
 
 **Why the drift matters:** a slowly drifting error is nearly the same in consecutive frames.
 The filter must not treat it as independent noise, or it will average it away. That is why
-the drift is part of the EKF state (STUDY.md §4, §8.1).
+the drift is part of the EKF state (STUDY.md §4, §8 item 1).
 
 ---------------------------------------------------------------------------------------------
 

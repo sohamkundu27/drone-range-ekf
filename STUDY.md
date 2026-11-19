@@ -513,7 +513,7 @@ should not trust the EKF's σ when the camera is not manoeuvring. A simple guard
 5. **Why is S a state and not a fixed parameter?** Its error is constant across frames.
    Treating it as white noise makes the filter average it away and become overconfident (section 4).
 6. **Why are the GPS/INS errors states?** Same reason: they drift slowly. When they were simulated
-   as white noise, range was biased +22% (section 8.1).
+   as white noise, range was biased +22% (section 8, item 1).
 7. **Is the camera pose really known?** No: it is measured with simulated GPS/INS error. The
    filter estimates the drift but cannot remove it entirely. A constant offset cancels in range
    but shifts the absolute (world) position.
