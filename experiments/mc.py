@@ -3,7 +3,7 @@
 One run:
   1. draw the drone's true size S_true (from the variant's truth distribution),
   2. for every frame: true box from the pinhole model -> noisy detection (or a miss),
-     true camera pose -> noisy GPS/IMU pose,
+     true camera pose -> noisy GPS/INS pose,
   3. EKF: initialise on the first detection, then predict + update every frame,
   4. record estimates, covariances and errors (NaN before initialisation).
 
@@ -15,7 +15,6 @@ Variants (what the filter assumes vs. what the truth is):
   wrong_tight  : prior S ~ N(0.35, 0.03^2), but the true drone is 0.60 m (worst case)
 """
 from dataclasses import dataclass
-from multiprocessing import Pool
 
 import numpy as np
 
@@ -23,7 +22,6 @@ from ekf.ekf import IP, NX, DroneEKF
 from ekf.nees import nees
 from sim.camera import Intrinsics, is_visible, project_box
 from sim.noise import DetectorNoise, PoseNoise, noisy_pose
-from sim.trajectories import make_scenario
 
 
 @dataclass
@@ -78,12 +76,10 @@ def run_one(scn, variant, seed, pose_noise=None, det_noise=None, K=None, q=Q_FIL
     ekf = DroneEKF(K, q=q, size_prior=variant.prior, pose_noise=filter_pose_noise,
                    use_width=variant.use_width, n_iter=n_iter, sigma_v0=sigma_v0)
 
-    nan3 = np.full((n, 3), np.nan)
     out = {"t": t, "S_true": S_true, "x": np.full((n, NX), np.nan), "P_diag": np.full((n, NX), np.nan),
            "r_true": np.full(n, np.nan), "r_est": np.full(n, np.nan), "r_sigma": np.full(n, np.nan),
            "nees_pos": np.full(n, np.nan), "nees_state": np.full(n, np.nan), "nees_range": np.full(n, np.nan),
-           "nis": np.full(n, np.nan), "detected": np.zeros(n, bool), "w_true": np.full(n, np.nan),
-           "pos_err": nan3.copy()}
+           "nis": np.full(n, np.nan), "detected": np.zeros(n, bool), "w_true": np.full(n, np.nan)}
     for k in range(n):
         # --- ground truth for this frame
         p, R_true, t_true = scn["drone_p"][k], scn["cam_R"][k], scn["cam_p"][k]
@@ -115,27 +111,9 @@ def run_one(scn, variant, seed, pose_noise=None, det_noise=None, K=None, q=Q_FIL
         # --- record
         out["x"][k] = ekf.x
         out["P_diag"][k] = np.diag(ekf.P)
-        out["pos_err"][k] = x_true[IP] - ekf.x[IP]
         out["nees_pos"][k] = nees(x_true[IP] - ekf.x[IP], ekf.P[IP, IP])
         out["nees_state"][k] = nees(x_true - ekf.x, ekf.P)
         r, sr = ekf.range_estimate(t_w)
         out["r_est"][k], out["r_sigma"][k] = r, sr
         out["nees_range"][k] = ((out["r_true"][k] - r) / sr) ** 2
     return out
-
-
-def _worker(args):
-    drone, camera, vname, seed, kw = args
-    scn = make_scenario(drone, camera)
-    return run_one(scn, VARIANTS[vname], seed, **kw)
-
-
-def run_many(drone, camera, vname, n_runs=200, seed0=0, processes=8, **kw):
-    """n_runs independent runs; returns a dict of stacked arrays (n_runs, n_steps, ...)."""
-    jobs = [(drone, camera, vname, seed0 + i, kw) for i in range(n_runs)]
-    with Pool(processes) as pool:
-        runs = pool.map(_worker, jobs)
-    keys = [k for k in runs[0] if k != "t"]
-    res = {k: np.array([r[k] for r in runs]) for k in keys}
-    res["t"] = runs[0]["t"]
-    return res
