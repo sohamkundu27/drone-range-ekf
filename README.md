@@ -147,7 +147,8 @@ Weaving camera with the 0.35 ± 0.15 prior: ~6% RMS out to 80 m, 13% at 80-120 m
 data/                (git-ignored) raw downloads and YOLO-format datasets (see DATA.md)
 scripts/             data download/conversion, stats, sanity plots, rebalance_train.py
 detector/            train.py, eval.py, false_positives.py, measure_noise.py, export_onnx.py,
-                     latency.py, summarize.py, run_eval_all.sh, presentation_examples.py
+                     latency.py, summarize.py, run_eval_all.sh, presentation_examples.py,
+                     confusion_matrix_conf.py
 sim/                 camera.py (pinhole), trajectories.py (drone/camera paths), noise.py (detector + GPS/INS noise)
 ekf/                 ekf.py (13-state iterated EKF), nees.py (NEES / NIS / chi-square bounds)
 experiments/         mc.py (one Monte Carlo run), run_experiments.py, make_figures.py,
