@@ -54,11 +54,14 @@ def draw_true_size(variant, rng):
 
 
 def run_one(scn, variant, seed, pose_noise=None, det_noise=None, K=None, q=Q_FILTER,
-            S_true=None, filter_pose_noise=None, n_iter=N_ITER):
+            S_true=None, filter_pose_noise=None, n_iter=N_ITER, sigma_v0=5.0,
+            width_sigma_scale=1.0):
     """Simulate one Monte Carlo run on scenario `scn`. Returns a dict of time series.
     pose_noise        : the TRUE GPS/INS error model (sim/noise.py PoseNoise)
     filter_pose_noise : what the FILTER assumes (default: the true model)
-    n_iter            : 1 = EKF, >1 = iterated EKF update"""
+    n_iter            : 1 = EKF, >1 = iterated EKF update
+    sigma_v0          : initial drone velocity std per axis the filter assumes [m/s]
+    width_sigma_scale : the filter assumes width noise this many times the true sigma (R inflation)"""
     rng = np.random.default_rng(seed)
     K = K or Intrinsics()
     pose_noise = pose_noise or PoseNoise()
@@ -73,7 +76,7 @@ def run_one(scn, variant, seed, pose_noise=None, det_noise=None, K=None, q=Q_FIL
     dt = t[1] - t[0]
     b_t, b_th, e_t, e_th = pose_noise.sample_errors(n, dt, rng)   # drift part, total error
     ekf = DroneEKF(K, q=q, size_prior=variant.prior, pose_noise=filter_pose_noise,
-                   use_width=variant.use_width, n_iter=n_iter)
+                   use_width=variant.use_width, n_iter=n_iter, sigma_v0=sigma_v0)
 
     nan3 = np.full((n, 3), np.nan)
     out = {"t": t, "S_true": S_true, "x": np.full((n, NX), np.nan), "P_diag": np.full((n, NX), np.nan),
@@ -96,6 +99,7 @@ def run_one(scn, variant, seed, pose_noise=None, det_noise=None, K=None, q=Q_FIL
         if det is not None:
             out["detected"][k] = True
             su, sl = det_noise.sigma_uv(det[2]), det_noise.sigma_logw(det[2])  # from MEASURED width
+            sl = sl * width_sigma_scale
             R_det = np.diag([su**2, su**2, sl**2])
 
         # --- filter
