@@ -1,7 +1,10 @@
 """Train the 4-class detector (drone, bird, airplane, helicopter) with Ultralytics YOLO.
 
-Full run (NOT started during setup):
-    python detector/train.py --data data/yolo/drone4.yaml --model yolo26s.pt --imgsz 1280 --epochs 100 --batch 8
+Full run (rebalanced data from scripts/rebalance_train.py, 7-hour time box, early stopping):
+    python detector/train.py --data data/yolo/drone4_bal.yaml --model yolo26s.pt --imgsz 1280 \
+        --epochs 150 --batch 8 --workers 12 --time 7 --patience 30 --name drone4_bal
+Resume after a crash or reboot (continues from runs/detect/<name>/weights/last.pt):
+    python detector/train.py --resume --name drone4_bal
 
 1-epoch smoke test on a tiny random subset, to check the pipeline end to end on the GPU:
     python detector/train.py --smoke
@@ -49,16 +52,25 @@ def main():
     ap.add_argument("--batch", type=int, default=8, help="8 at 1280 px fits a 12 GB RTX 3080 for the s model")
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--name", default="drone4")
+    ap.add_argument("--time", type=float, default=None,
+                    help="wall-clock budget in hours; Ultralytics then fits the epoch count/LR schedule to it")
+    ap.add_argument("--patience", type=int, default=30, help="early stopping: epochs without val improvement")
+    ap.add_argument("--resume", action="store_true", help="resume runs/detect/<name>/weights/last.pt")
     ap.add_argument("--smoke", action="store_true", help="1 epoch on a tiny subset")
     args = ap.parse_args()
 
     from ultralytics import YOLO
 
+    if args.resume:
+        # All settings (data, epochs, time, batch, ...) are restored from the checkpoint.
+        YOLO(str(ROOT / "runs" / "detect" / args.name / "weights" / "last.pt")).train(resume=True)
+        return
     if args.smoke:
         args.data, args.epochs, args.name = str(make_smoke_subset()), 1, "smoke"
     model = YOLO(args.model)
     model.train(
         data=args.data, imgsz=args.imgsz, epochs=args.epochs, batch=args.batch, workers=args.workers,
+        time=args.time, patience=args.patience,
         device=0, project=str(ROOT / "runs" / "detect"), name=args.name, exist_ok=args.smoke,
         seed=0, deterministic=False, plots=not args.smoke,
     )

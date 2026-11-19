@@ -1,0 +1,38 @@
+{
+ "drone_images": 5200,
+ "per_class": {
+  "bird": {
+   "available": 5679,
+   "kept": 2000,
+   "median_rel_size_all": 0.27930561917190283,
+   "median_rel_size_kept": 0.09896519323484429,
+   "median_smooth_all": 0.3174565709969788,
+   "median_smooth_kept": 0.5078094667257196,
+   "from_coco": 1253,
+   "from_openimages": 747
+  },
+  "airplane": {
+   "available": 5635,
+   "kept": 1800,
+   "median_rel_size_all": 0.47339661147076245,
+   "median_rel_size_kept": 0.19938748686531363,
+   "median_smooth_all": 0.6361982113929388,
+   "median_smooth_kept": 0.8523648223655016,
+   "from_coco": 906,
+   "from_openimages": 894
+  },
+  "helicopter": {
+   "available": 2075,
+   "kept": 1200,
+   "median_rel_size_all": 0.5348362922023902,
+   "median_rel_size_kept": 0.38123339183419647,
+   "median_smooth_all": 0.551529468289558,
+   "median_smooth_kept": 0.6977309108433114,
+   "from_coco": 0,
+   "from_openimages": 1200
+  }
+ },
+ "negative_images": 5000,
+ "total_images": 10200,
+ "drone_fraction": 0.5098039215686274
+}
