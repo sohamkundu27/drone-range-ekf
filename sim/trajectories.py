@@ -6,8 +6,9 @@ returns time-aligned arrays (see `make_scenario`).
 
 Drone paths
   approach_recede   : straight line from 200 m away to a 10 m closest approach at
-                      t = T_CA, then flies away (range sweeps ~200 m -> 10 m -> ~60 m).
-  constant_velocity : crossing target ~120 m away, flying east at 6 m/s.
+                      t = T_CA, then flies away (range sweeps ~200 m -> 10 m -> ~86 m).
+  constant_velocity : crossing target starting ~136 m from the camera, flying east at 6 m/s
+                      (range then spans ~64-253 m depending on the camera path).
   gentle_turn       : same start and speed, but turning at 3 deg/s (radius ~115 m).
 
 Camera paths (defined relative to the initial line of sight, LOS, from camera to drone)
