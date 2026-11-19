@@ -41,8 +41,10 @@ GPS/INS -> camera pose (R, t) ------------+                                     
   fraction of low-gradient pixels outside the boxes), because the confusers that matter for an
   anti-drone camera are small birds against the sky, not close-up photos of parrots.
   Median box size of kept birds dropped from 28% to 10% of the image.
-* **Image size 1280:** the median DUT drone is ~32 px in a 1920×1080 frame. At the default 640
-  input it would shrink to ~11 px, too small to detect reliably. At 1280 it is ~21 px.
+* **Image size 1280:** the median DUT drone box is ~32 px across (median √(w·h) in original
+  pixels over all DUT images, `figures/dataset_stats.md`; DUT frames are mostly 1920×1080, some
+  1280×720). At the default 640 input it would shrink to ~11 px, too small to detect reliably.
+  At 1280 it is ~22 px.
 * **Training:** 7-hour time budget, batch 8, early stopping (patience 30 epochs on validation
   fitness). A first attempt with patience 15 was stopped by hand after 4 epochs: validation
   mAP *dropped* after epoch 1 (the COCO-pretrained head is briefly good at birds/airplanes
@@ -63,6 +65,17 @@ GPS/INS -> camera pose (R, t) ------------+                                     
   * Latency (**desktop RTX 3080**, batch 1, end-to-end): PyTorch FP16 5.4 ms (187 FPS),
     PyTorch FP32 7.0 ms, ONNX Runtime (CUDA) FP16 8.0 ms, FP32 11.1 ms. ONNX Runtime was
     *slower* than PyTorch here; TensorRT was not benchmarked.
+    **Was ONNX really on the GPU?** Yes, but only by luck of import order
+    (`detector/check_onnx_providers.py`, results in `experiments/onnx_providers_*.json`).
+    onnxruntime-gpu needs the CUDA 13 cuBLAS/cuDNN libraries, which in this venv come from the
+    PyTorch pip wheels and are only loaded once torch is imported. With onnxruntime imported
+    alone, the CUDA provider fails to load (`libcublasLt.so.13` not found) and the session
+    silently runs on CPU (~110 ms). With torch imported first (as Ultralytics and `latency.py`
+    do), the session's active providers are `['CUDAExecutionProvider', 'CPUExecutionProvider']`
+    and raw inference takes 10.8 ms (FP32) / 7.0 ms (FP16). The "No registered plugin EP device"
+    warning is about ONNX Runtime's newer plugin-provider interface and does not mean CPU
+    fallback. Even raw ONNX FP16 (7.0 ms) is slower than PyTorch FP16 inference alone (3.5 ms),
+    so ONNX Runtime really is slower here; why was not investigated.
 * **Measured box noise (`detector/measure_noise.py`):** on the held-out DUT test set, we match
   predictions to ground truth and measure, as a function of box width, the centre error (px),
   the width error as log(w_pred / w_true), and the detection rate. These numbers drive the
@@ -70,7 +83,8 @@ GPS/INS -> camera pose (R, t) ------------+                                     
   DUT images have mixed resolutions, so pixels are rescaled to the simulator's 1920-wide frame.
   Measured: centre σ ≈ 0.9 px for 16-32 px boxes, rising to ~2.9 px for > 160 px boxes; width
   σ ≈ 9% at 16-24 px, ~5% at 32-96 px, ~3% for large boxes; recall 0.96-0.99. Real errors have
-  heavier tails than a Gaussian (4-14% of errors beyond 3 robust σ). **Gap:** DUT has almost no
+  heavier tails than a Gaussian (0.4-14% of centre errors and 4-13% of width errors are beyond
+  3 robust σ, vs 0.3% for a Gaussian). **Gap:** DUT has almost no
   test drones below 16 px, but a 0.35 m drone at 200 m is only 4.4 px wide. Below 16 px the
   simulator uses its default curves, scaled to match the measured 16-24 px bin.
 
@@ -123,7 +137,8 @@ accuracy. This is why the pose noise must be modelled carefully (section 5).
 image datasets do not have. The simulation gives exact truth, so every error is measurable.
 
 **Drone paths:** `approach_recede` (straight line from 200 m to a 10 m closest approach at
-t = 28 s, then away to ~86 m), `constant_velocity` (crossing, ~130 m), `gentle_turn`
+t = 28 s, then away to ~86 m), `constant_velocity` (crossing, starts 136 m away; range then spans 64-253 m depending on the
+camera path), `gentle_turn`
 (3°/s turn). **Camera paths:** `straight` (4 m/s along the line of sight), `lateral` (4 m/s
 sideways), `weaving` (2 m/s forward plus a ±15 m, 12 s side-to-side sine). The camera
 gimbal points at the drone with a slow ±2° wobble. 10 Hz, 40 s per run.
@@ -132,7 +147,15 @@ A detail worth knowing: for `approach_recede`, the drone's velocity is chosen so
 passes 10 m from the camera. Because both camera and drone then move at constant velocity, the
 **relative** trajectory (drone minus camera) is *identical* for the straight and lateral
 cameras. Only relative motion is visible in the image, so those two cases produce the same
-measurements, and the filter does the same on both (section 7).
+measurements (checked: identical to 1e-13 px for the same seed). The filter's results still
+differ a little (RMS 42.5% vs 44.9%), and the reason is in the filter, not the data: its
+initial velocity prior (zero mean, σ = 5 m/s per axis) is in the **world** frame, and the
+drone's world velocity differs (3.1 m/s for the straight camera, 8.3 m/s for the lateral one,
+because world velocity = relative velocity + camera velocity). The same prior is therefore more
+wrong in the lateral case. With an essentially flat velocity prior the median run-by-run
+difference drops from ~9% to ~2%; the remaining ~2% was not fully explained (likely small
+numerical differences amplified along the unobservable direction, section 8.4). Neither camera
+makes range observable (section 7).
 
 **Detector noise per frame (`DetectorNoise`):** centre u, v get Gaussian noise σ_uv(w);
 width gets *multiplicative* noise, w_meas = w·exp(n), n ~ N(0, σ_logw(w)²); the detection is
@@ -170,6 +193,36 @@ keeps track of the correlation between S and range: if the drone is bigger, it i
 
 **The same argument applies to the GPS/INS drift.** It is nearly the same in consecutive frames,
 so it is also a state (`b_t`, `b_th`), not white noise. We found this the hard way (section 8).
+
+### 4.1 Where the size prior comes from (public specs)
+
+The prior N(0.35 m, 0.15²) was chosen by judgment before this table existed; the table is a
+check, not a fit. Figures are quoted from the manufacturers' own spec pages (checked
+2026-11-19). "Largest" is the largest horizontal dimension given, which is the closest
+public number to the width w = fx·S/Z sees; note that pages differ in whether propellers are
+included, and the apparent width in the image also depends on the viewing angle.
+
+| model | type | figure as printed by the manufacturer | largest [m] | source |
+|---|---|---|---|---|
+| DJI Avata 2 | FPV (cinewhoop) | 185×212×64 mm (L×W×H) | 0.21 | https://www.dji.com/avata-2/specs |
+| Parrot ANAFI (2018) | consumer | size unfolded 175×240×65 mm | 0.24 | https://www.parrot.com/en/drones/anafi/technical-specifications |
+| DJI Mavic 2 Pro/Zoom | consumer | unfolded 322×242×84 mm; diagonal 354 mm | 0.32 | https://www.dji.com/mavic-2/info |
+| DJI Air 3 | consumer | unfolded (without propellers) 258.8×326×105.8 mm | 0.33 | https://www.dji.com/air-3/specs |
+| DJI Mavic 3 Classic | consumer | unfolded (without propellers) 347.5×283×107.7 mm | 0.35 | https://www.dji.com/mavic-3-classic/specs |
+| DJI Mini 4 Pro | consumer (< 250 g) | unfolded (with propellers) 298×373×101 mm | 0.37 | https://www.dji.com/mini-4-pro/specs |
+| DJI Inspire 3 | professional cinema | diagonal distance 695 mm (landing gear raised) | 0.70 (diagonal) | https://www.dji.com/inspire-3/specs |
+| DJI Matrice 350 RTK | enterprise | unfolded (without propellers) 810×670×430 mm | 0.81 | https://enterprise.dji.com/matrice-350-rtk/specs |
+
+* The six consumer/FPV drones: mean 0.30 m, standard deviation 0.06 m, all within
+  -0.9σ to +0.2σ of the prior. The prior is centred slightly high and is wider than this
+  cluster, which leaves room for larger hobby drones and viewing-angle effects.
+* The two professional drones are +2.3σ and +3.1σ: the prior treats them as very unlikely.
+  The `wrong_prior` experiment (true 0.60 m) is roughly this situation.
+* **Not verified and therefore not listed:** DJI Phantom 4 (the spec page did not render),
+  Skydio 2+ (support page refused automated access; its datasheet PDF had no readable
+  dimensions), and a typical 5-inch FPV racer (retailer page refused access). A 5-inch racer is
+  commonly described as ~220-230 mm motor to motor, but I could not confirm that from a primary
+  page, so it is not in the table.
 
 ---------------------------------------------------------------------------------------------
 
@@ -247,6 +300,12 @@ white part of the pose noise, mapped to pixels through the b_t and b_th columns 
 **S is kept ≥ 0.05 m** after each update because h uses log S. This only triggers in badly wrong
 cases.
 
+**Known bug: nothing keeps Z > 0.** Early in a run, when the range is very uncertain, a
+Gauss-Newton step can move the drone estimate *behind* the camera (Z < 0). Then log Z is NaN,
+and the NaN stays in the state for the rest of the run. This happened in 321 of the 9,600 Monte
+Carlo runs (section 8.6). A fix would be a step-size limit (halve the step until Z > 0) or an
+inverse-depth parameterisation; it is not implemented.
+
 ### 5.6 Initialisation (first detection)
 
 Direction from the pixel, depth from the width and the size prior: Z0 = fx · 0.35 / w.
@@ -305,8 +364,28 @@ It is the most intuitive consistency number to present.
    Z / (closing speed), not Z itself, unless the closing speed is known.
 4. **What breaks the ambiguity is camera *acceleration*** (weaving), because a constant-velocity
    drone cannot mimic a curved relative path. This is the classic bearings-only result: "the
-   observer must manoeuvre". Lateral motion alone is not enough against a moving target. It is
-   only enough against a stationary target or one with known velocity.
+   observer must manoeuvre".
+
+**Does sideways motion help? (The original proposal said it does.)** It depends on what is
+known about the drone's motion:
+
+* **Stationary drone, or drone with known velocity:** yes. Moving sideways by a baseline b
+  changes the bearing by about b/Z radians, so Z ≈ b / Δθ. This is ordinary triangulation, and
+  this is the sense in which sideways motion helps.
+* **Drone with unknown constant velocity (our case):** no, not if the camera's sideways motion
+  is itself at constant velocity. The relative position is r(t) = r0 + (v - v_c)·t. For any
+  λ > 0, the drone that starts at λ·r0 and flies at v' = v_c + λ(v - v_c), with size λ·S, gives
+  exactly the same pixels and box widths at every time step, and v' is again a constant
+  velocity, so the filter has no way to tell them apart. The camera's velocity is absorbed into
+  the unknown drone velocity.
+* **What is needed:** a change in the camera's velocity (acceleration) that the drone's motion
+  model cannot reproduce. If the camera path is c(t) with c'' ≠ 0, the "scaled" drone would have
+  to fly λ·r0 + λ·v·t + (1 - λ)·c(t), which is curved, so it is not a constant-velocity drone
+  and the ambiguity is broken. Weaving and turning give this; sideways motion at constant speed
+  does not.
+* **Caveats:** with process noise (q > 0) the filter allows the drone to manoeuvre a little, so
+  weak camera accelerations are partly absorbed too; and if the drone itself is assumed to
+  accelerate (a higher-order motion model), the camera needs a correspondingly richer manoeuvre.
 
 So with straight or lateral constant-velocity camera motion, the range accuracy can never be
 better than the size prior (±43%). The **test** `test_range_not_observable_with_constant_velocity_camera`
@@ -317,21 +396,26 @@ same perfect data converge to <1% and the filter learns S (`test_converges_on_no
 
 ## 8. What went wrong while building this (and what we did)
 
-These are reported, not hidden. Each one is reproducible.
+These are reported, not hidden. Everything here is reproducible from the repo **except the
+items marked DEVELOPMENT OBSERVATION**: those were measured with code that was changed or not
+kept (earlier filter versions or one-off scratch runs), so the repo cannot regenerate those
+specific numbers.
 
 1. **White GPS noise biased range high.** The first simulator added independent 1.5 m GPS noise
    every frame. The reported camera position then "jumps" 1.5 m between frames while the true
    bearing does not change. The only explanation the filter can find for "camera moved, bearing
-   did not change" is "the drone is very far away", so range was biased **high** (+22% mean
-   error, matched-model test, measured during development with the earlier 7-state filter;
-   that version is not kept). Real GPS/INS errors drift slowly, so we changed the simulator to
+   did not change" is "the drone is very far away", so range was biased **high**
+   (**DEVELOPMENT OBSERVATION, not reproducible from the repo:** +22% mean error in a
+   matched-model test with the earlier 7-state filter, which is not kept). Real GPS/INS errors drift slowly, so we changed the simulator to
    drift + small jitter and put the drift in the state. The white-noise case is kept as stress
    test D (`D_whitepose_*`): with the final filter and a straight-on camera it is badly
    inconsistent (range ANEES ~500, bias -67%: here the filter shrinks S instead). With a weaving
    camera it is usable (16% RMS, 78% coverage).
-2. **The plain EKF was overconfident.** With realistic noise, plain-EKF position ANEES was ~25
-   (ideal 3) in the development matched-model test. The iterated EKF (3 iterations) brought it
-   to ~5. In the committed experiment C (`C_plainEKF_*`, same scenarios as the main grid) the plain
+2. **The plain EKF was overconfident.** (**DEVELOPMENT OBSERVATION, not reproducible from the
+   repo:** in a matched-model test during development, plain-EKF position ANEES was ~25 and the
+   iterated EKF brought it to ~5, ideal 3. The test that exists now,
+   `test_nees_consistent_when_model_matches`, gives 89.9 for the plain EKF and 4.71 for the
+   iterated EKF.) Reproducible: in the committed experiment C (`C_plainEKF_*`, same scenarios as the main grid) the plain
    EKF has range RMS 145% (straight), 146% (lateral) and 61% (weaving), 2σ coverage 14-25%, and
    91-97% of runs end outside 3σ. The iterated EKF on the same data: 42%, 45% and 12.5%.
 3. **Residual over-confidence remains, worst at long range.** With the truth drawn from the
@@ -342,15 +426,17 @@ These are reported, not hidden. Each one is reproducible.
    inconsistent (position ANEES 15, 10 and 31), which is item 4.
 4. **Spurious information in unobservable geometry (the biggest issue).** In the straight and
    lateral cases, the filter's reported range σ shrinks to ~7% while the actual RMS error stays
-   ~42-45% (68th percentile 32%), and only 33-36% of time steps are within 2σ. Diagnosis (with perfect data the σ stays
-   correctly at the prior level, and adding noise sources one at a time):
-   the **box-width noise** causes it. Each noisy width update changes the estimated ratio
+   ~42-45% (68th percentile 32%), and only 33-36% of time steps are within 2σ. Diagnosis
+   (**DEVELOPMENT OBSERVATION**: scratch runs adding noise sources one at a time, not kept as a
+   script; the perfect-data part is reproducible through
+   `test_range_not_observable_with_constant_velocity_camera`): the **box-width noise** causes it. Each noisy width update changes the estimated ratio
    S/range, which rotates the unobservable "scale" direction slightly. The covariance is still
    large along the *old* direction, and the next linearisation partially "observes" it. This is
    the same mechanism as the known EKF-SLAM inconsistency (Huang, Mourikis & Roumeliotis). It
    is not fixed in this project. Known remedies: a scale-free / inverse-depth parameterisation,
    an observability-constrained EKF, or first-estimate Jacobians.
-   * Tried, **did not help**: an uninformative velocity prior (σ_v0 = 30 m/s). Same result.
+   * Tried, **did not help** (DEVELOPMENT OBSERVATION; `run_one(..., sigma_v0=30)` can rerun
+     it, but no experiment config does): an uninformative velocity prior (σ_v0 = 30 m/s).
    * Tried, **made it worse**: a bank of EKFs over size hypotheses (`experiments/try_size_bank.py`).
      The weights lock onto wrong sizes (median error 95% straight-on).
    * Tried, **partial mitigation**: telling the filter the width noise is 2× larger
@@ -362,6 +448,19 @@ These are reported, not hidden. Each one is reproducible.
    that the linearisation collapses the covariance at the wrong range. More precise sensors
    giving worse consistency is a classic sign that the parameterisation, not the sensors, is
    the problem.
+6. **Some runs end in NaN, and the metrics hide them.** In 321 of 9,600 runs (26 of 48
+   configurations, all with the 0.35 ± 0.15 prior; none with bearing-only, tight or wrong
+   priors), an iterated-update step put the drone behind the camera (Z < 0), log Z became NaN,
+   and the state stayed NaN (checked for all 21 such runs in the two main straight/weaving
+   configurations; the median time of the first NaN is under 6 s in every configuration except
+   the white-pose straight stress test, 27 s). `run_experiments.py` averages
+   with `nanmean`, so those time steps are simply left out, and its "final outside 3σ" column
+   counts a NaN run as *not* diverged. `experiments/check_nan_runs.py` quantifies this
+   (`experiments/nan_runs.md`). Main grid: straight 7/200 runs, lateral 4/200, weaving 14/200;
+   weaving's "final outside 3σ" goes from 4.5% to 11.5% if NaN runs count as diverged. The
+   worst case is the white-pose stress test (straight): 147/200 runs, 20.5% → 94%. The
+   published numbers were left as computed; they should be read as "over the runs that did not
+   crash". Not fixed (see section 5.5).
 
 **Practical takeaway:** in the observable case (weaving camera), the filter gives ~6% RMS range
 error out to 80 m (13% at 80-120 m, 31% at 120-160 m, 67% at 160-200 m, where the drone is
@@ -400,9 +499,11 @@ should not trust the EKF's σ when the camera is not manoeuvring. A simple guard
 1. **Why not just use w = fx·S/Z and skip the filter?** One box gives range only through the size
    prior (±43%), it is noisy frame to frame, and it gives no velocity. The filter fuses many
    frames, adds parallax from camera motion, estimates velocity, and reports uncertainty.
-2. **Where do 0.35 ± 0.15 m come from?** Public specs of common drones: small consumer
-   quadcopters are ~0.2-0.35 m wide, larger ones ~0.5-0.6 m. A Gaussian is a rough model and
-   allows negative sizes in its far tail; true sizes are clipped at 0.10 m in the simulation.
+2. **Where do 0.35 ± 0.15 m come from?** A judgment from public specs, not a fit. Section 4.1
+   lists the manufacturer figures I could verify: consumer and FPV drones span 0.21-0.37 m
+   (mean 0.30), and professional drones are 0.7-0.8 m, which is 2.3-3.1σ above the prior mean,
+   so the prior covers them only in its tail. A Gaussian is a rough model and allows negative
+   sizes in its far tail; true sizes are clipped at 0.10 m in the simulation.
 3. **What if the drone is a different type (e.g. a 0.6 m drone)?** That is the `wrong_prior`
    experiment. Range is then underestimated by ~42% at first. With weaving it mostly recovers
    (S is learned from parallax: final S 0.58 for a true 0.60; range bias -8%, but coverage only
