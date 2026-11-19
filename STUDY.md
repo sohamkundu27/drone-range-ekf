@@ -47,10 +47,32 @@ GPS/INS -> camera pose (R, t) ------------+                                     
   fitness). A first attempt with patience 15 was stopped by hand after 4 epochs: validation
   mAP *dropped* after epoch 1 (the COCO-pretrained head is briefly good at birds/airplanes
   before re-training starts), so patience 15 risked stopping at epoch 16 on a bad model.
+  The final run stopped early at epoch 106 (best epoch 76) after 6.0 hours.
+* **Results** (full tables in `experiments/detector_results.md`):
+  * DUT Anti-UAV test (in-domain, 2,245 drones): P 0.987, R 0.967, mAP50 0.979, mAP50-95 0.749.
+  * Other classes (COCO + Open Images test): bird mAP50 0.664 (R 0.59, the weakest class),
+    airplane 0.856, helicopter 0.944.
+  * False "drone" boxes on 1,534 held-out bird/airplane/helicopter images: 5 at conf ≥ 0.25,
+    1 at conf ≥ 0.5. Caveat: these are ordinary photos, mostly not tiny birds against sky.
+  * Det-Fly **preliminary** (1,000 images, one sequence, never trained on): P 0.842 but
+    **R 0.285, mAP50 0.304**. This is a large domain gap. Looking at missed frames: Det-Fly
+    often films the drone from above against farmland, roads and sports fields, or against a
+    dark hillside at dusk, while DUT drones are mostly against sky. Size is not the cause (the
+    missed drones are not smaller than the detected ones). The fix would be training data with
+    ground backgrounds (e.g. the rest of Det-Fly, with a proper train/test split by sequence).
+  * Latency (**desktop RTX 3080**, batch 1, end-to-end): PyTorch FP16 5.4 ms (187 FPS),
+    PyTorch FP32 7.0 ms, ONNX Runtime (CUDA) FP16 8.0 ms, FP32 11.1 ms. ONNX Runtime was
+    *slower* than PyTorch here; TensorRT was not benchmarked.
 * **Measured box noise (`detector/measure_noise.py`):** on the held-out DUT test set, we match
   predictions to ground truth and measure, as a function of box width, the centre error (px),
   the width error as log(w_pred / w_true), and the detection rate. These numbers drive the
   simulator, so the simulated detector is as noisy as the real one, at least on DUT-like data.
+  DUT images have mixed resolutions, so pixels are rescaled to the simulator's 1920-wide frame.
+  Measured: centre σ ≈ 0.9 px for 16-32 px boxes, rising to ~2.9 px for > 160 px boxes; width
+  σ ≈ 9% at 16-24 px, ~5% at 32-96 px, ~3% for large boxes; recall 0.96-0.99. Real errors have
+  heavier tails than a Gaussian (4-14% of errors beyond 3 robust σ). **Gap:** DUT has almost no
+  test drones below 16 px, but a 0.35 m drone at 200 m is only 4.4 px wide. Below 16 px the
+  simulator uses its default curves, scaled to match the measured 16-24 px bin.
 
 ---------------------------------------------------------------------------------------------
 
@@ -301,18 +323,26 @@ These are reported, not hidden. Each one is reproducible.
    every frame. The reported camera position then "jumps" 1.5 m between frames while the true
    bearing does not change. The only explanation the filter can find for "camera moved, bearing
    did not change" is "the drone is very far away", so range was biased **high** (+22% mean
-   error, matched-model test). Real GPS/INS errors drift slowly, so we changed the simulator to
+   error, matched-model test, measured during development with the earlier 7-state filter;
+   that version is not kept). Real GPS/INS errors drift slowly, so we changed the simulator to
    drift + small jitter and put the drift in the state. The white-noise case is kept as stress
-   test D (`D_whitepose_*`).
+   test D (`D_whitepose_*`): with the final filter and a straight-on camera it is badly
+   inconsistent (range ANEES ~500, bias -67%: here the filter shrinks S instead). With a weaving
+   camera it is usable (16% RMS, 78% coverage).
 2. **The plain EKF was overconfident.** With realistic noise, plain-EKF position ANEES was ~25
-   (ideal 3) in the matched-model test. The iterated EKF (3 iterations) brought it to ~5. See
-   experiment C (`C_plainEKF_*`): RMS range errors over 100% and 90-97% of runs ending outside 3σ.
+   (ideal 3) in the development matched-model test. The iterated EKF (3 iterations) brought it
+   to ~5. In the committed experiment C (`C_plainEKF_*`, same scenarios as the main grid) the plain
+   EKF has range RMS 145% (straight), 146% (lateral) and 61% (weaving), 2σ coverage 14-25%, and
+   91-97% of runs end outside 3σ. The iterated EKF on the same data: 42%, 45% and 12.5%.
 3. **Residual over-confidence remains, worst at long range.** With the truth drawn from the
-   filter's own model, the iterated EKF's position ANEES is ~4.6 at 40 m, ~5.5 at 80 m and
-   ~10 at 150 m (ideal 3). Linearisation error grows with range uncertainty.
+   filter's own model (experiment E, weaving camera), the iterated EKF's position ANEES is 3.9
+   at 40 m, 4.8 at 80 m and 10.0 at 150 m (ideal 3; consistent band [2.67, 3.35]); range ANEES
+   is 1.8, 2.6 and 7.2 (ideal 1), and range 2σ coverage is 87%, 81% and 60%. Linearisation
+   error grows with range uncertainty. With a lateral camera, even model-truth runs are
+   inconsistent (position ANEES 15, 10 and 31), which is item 4.
 4. **Spurious information in unobservable geometry (the biggest issue).** In the straight and
-   lateral cases, the filter's reported range σ shrinks to ~6-7% while the actual error stays
-   ~30-45%, and only ~35% of time steps are within 2σ. Diagnosis (with perfect data the σ stays
+   lateral cases, the filter's reported range σ shrinks to ~7% while the actual RMS error stays
+   ~42-45% (68th percentile 32%), and only 33-36% of time steps are within 2σ. Diagnosis (with perfect data the σ stays
    correctly at the prior level, and adding noise sources one at a time):
    the **box-width noise** causes it. Each noisy width update changes the estimated ratio
    S/range, which rotates the unobservable "scale" direction slightly. The covariance is still
@@ -324,16 +354,19 @@ These are reported, not hidden. Each one is reproducible.
    * Tried, **made it worse**: a bank of EKFs over size hypotheses (`experiments/try_size_bank.py`).
      The weights lock onto wrong sizes (median error 95% straight-on).
    * Tried, **partial mitigation**: telling the filter the width noise is 2× larger
-     (experiment F). Weaving coverage improves to ~93% with no loss of accuracy; straight-on only
-     goes from ~33% to ~45%.
+     (experiment F). Weaving coverage improves from 78% to 92% with no loss of accuracy (RMS
+     12.5% → 11.5%); straight-on only goes from 33% to 44%, and the RMS error gets worse
+     (42% → 52%).
 5. **Near-perfect sensors break the Cartesian EKF.** With 1 cm / 0.01° pose noise
    (`D_precise_pose_*`), the measurements are so precise relative to the 40% range uncertainty
    that the linearisation collapses the covariance at the wrong range. More precise sensors
    giving worse consistency is a classic sign that the parameterisation, not the sensors, is
    the problem.
 
-**Practical takeaway:** in the observable case (weaving camera), the filter gives ~4-8% range
-error with roughly honest uncertainty. In the unobservable case, the *error* is what physics
+**Practical takeaway:** in the observable case (weaving camera), the filter gives ~6% RMS range
+error out to 80 m (13% at 80-120 m, 31% at 120-160 m, 67% at 160-200 m, where the drone is
+4-5 px wide), with 78% 2σ coverage: somewhat overconfident, and honest (95%) only with the
+tight prior. In the unobservable case, the *error* is what physics
 allows (the size prior, ±43%), but the filter's *reported* σ is too small. A deployed system
 should not trust the EKF's σ when the camera is not manoeuvring. A simple guard: report
 "range limited by size prior" whenever the accumulated parallax angle is small.
@@ -371,8 +404,9 @@ should not trust the EKF's σ when the camera is not manoeuvring. A simple guard
    quadcopters are ~0.2-0.35 m wide, larger ones ~0.5-0.6 m. A Gaussian is a rough model and
    allows negative sizes in its far tail; true sizes are clipped at 0.10 m in the simulation.
 3. **What if the drone is a different type (e.g. a 0.6 m drone)?** That is the `wrong_prior`
-   experiment. Range is then underestimated by ~42% at first. With weaving it recovers (S is
-   learned from parallax); straight-on it stays ~30% wrong and the filter is overconfident.
+   experiment. Range is then underestimated by ~42% at first. With weaving it mostly recovers
+   (S is learned from parallax: final S 0.58 for a true 0.60; range bias -8%, but coverage only
+   40%). Straight-on it stays ~27% too short, and the filter claims ±6% (coverage 3%).
 4. **Why log(width) instead of width?** Width noise is a percentage. In log space it is additive and
    Gaussian, which matches the Kalman assumptions, and the Jacobian is simple (1/S, -1/Z).
 5. **Why is S a state and not a fixed parameter?** Its error is constant across frames.
@@ -382,8 +416,9 @@ should not trust the EKF's σ when the camera is not manoeuvring. A simple guard
 7. **Is the camera pose really known?** No: it is measured with simulated GPS/INS error. The
    filter estimates the drift but cannot remove it entirely. A constant offset cancels in range
    but shifts the absolute (world) position.
-8. **Why an iterated EKF instead of a plain EKF?** The plain EKF was badly overconfident (ANEES ~25
-   vs 3), because the first linearisation happens at a range that can be 40% wrong.
+8. **Why an iterated EKF instead of a plain EKF?** The plain EKF was badly overconfident (range
+   ANEES 87-131 vs 1, RMS error 61-146%, experiment C), because the first linearisation happens
+   at a range that can be 40% wrong. Iterating the update re-linearises at the corrected range.
 9. **Why not a UKF or a particle filter?** Both are reasonable. A UKF handles curvature better
    but does not fix unobservability. A particle filter can represent the banana-shaped
    range/size uncertainty but costs ~1000× more. The project brief asked for a hand-written
@@ -410,15 +445,21 @@ should not trust the EKF's σ when the camera is not manoeuvring. A simple guard
     estimate forward) and the uncertainty grows. The detection rate vs box size comes from the
     real detector.
 18. **What about false positives (birds)?** The detector has explicit bird/airplane/helicopter
-    classes; the false-drone rate on those images is in `experiments/detector_results.md`. The
-    filter itself does not do gating or data association yet (single target, no clutter).
+    classes. On 1,534 held-out bird/airplane/helicopter images it produced 5 false drones at
+    conf ≥ 0.25 and 1 at conf ≥ 0.5, but those are mostly ordinary photos, not distant birds
+    against sky, so the real rate is likely higher. The filter itself does not do gating or
+    data association yet (single target, no clutter).
 19. **Is the detector noise in the simulation realistic?** Its σ vs box size is measured on real DUT
     test images (robust σ). But it is Gaussian, while the real errors have heavier tails (tail
-    fractions are reported), and DUT is one camera/domain.
-20. **How good is the detector on new data?** See the Det-Fly result. It is **preliminary**: only
-    1,000 of 13,271 images (one sequence) were available. 4K frames are downscaled to 1280.
-21. **How fast is it?** See the latency table. Those are **desktop RTX 3080** numbers, not
-    embedded. Jetson-class hardware would be several times slower; TensorRT and FP16 help.
+    fractions are reported), and DUT is one camera/domain. DUT has almost no test drones under
+    16 px, so the long-range end (4-16 px) still uses the default curves, scaled to match.
+20. **How good is the detector on new data?** Poor. On Det-Fly (**preliminary**: only 1,000 of
+    13,271 images, one sequence) recall is 0.285 and mAP50 0.304, vs 0.967 / 0.979 on DUT. The
+    misses are drones seen against ground clutter or dark hillsides; DUT is mostly sky. 4K
+    frames are downscaled to 1280, but the drones are still ~46 px wide, so size is not the cause.
+21. **How fast is it?** 5.4 ms end-to-end with PyTorch FP16 (187 FPS), 7.0 ms FP32; ONNX
+    Runtime CUDA 8.0 ms FP16 / 11.1 ms FP32. Those are **desktop RTX 3080** numbers, not
+    embedded. Jetson-class hardware would be several times slower; TensorRT was not measured.
 22. **Why YOLO26s and not a bigger model?** It fits in 12 GB at 1280 px with batch 8 and trains in
     the 7 h budget. Small objects are limited more by input resolution than by model size.
 23. **Does the box width really equal fx·S/Z?** Only approximately: the box depends on the
