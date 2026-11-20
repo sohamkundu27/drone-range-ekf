@@ -1,0 +1,14 @@
+{
+  "source_hashes": {
+    "model_size_benchmark/sources/s_args.yaml": "5f76fe77a8cc9375dc2d96ad4f5b2893cb632c9d7e584197b0757d5c2c7a6e94",
+    "model_size_benchmark/sources/train.py": "f087ff2e6995f2900a1083bdf47c233a408c126c52ef575c6f92706d94df5dc9",
+    "model_size_benchmark/sources/latency.py": "a6381f9091b09265e6dfe810f12c638f4bb0394deb68cb6ba3e0018ff180a1ee",
+    "model_size_benchmark/sources/eval.py": "f263a16a0019d2d39744985965e23412dc18c7286569a0c60f90ed21c9b237f0",
+    "model_size_benchmark/sources/false_positives.py": "f850387b1475b84c5956359bd5f8b01f9e0cdf7668e2857299e5543a9847ef7d",
+    "model_size_benchmark/sources/export_onnx.py": "776da857b0f073cd978f0d5bf0fd485b4cd8905e3fad1266b24da9f0069549f8",
+    "data/yolo/drone4_bal.yaml": "f60835bccf8f8ec26863024e158a43e7bb4e1a2df3e6b7f6e62c20b13cd37696",
+    "data/yolo/drone4_bal_train.txt": "61545c5a16c9d677ae97e7e71b229675c224d1ecccb45bcdc010242ca58a4407",
+    "runs/detect/drone4_bal/weights/best.pt": "cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900"
+  },
+  "existing_s_checkpoint": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/weights/best.pt"
+}

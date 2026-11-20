@@ -1,0 +1,10 @@
+{
+  "pid": 3042073,
+  "command": [
+    "/home/soham/github/drone-range-ekf/.venv/bin/python",
+    "-u",
+    "/home/soham/github/drone-range-ekf/model_size_benchmark/runner.py",
+    "run"
+  ],
+  "detached": true
+}

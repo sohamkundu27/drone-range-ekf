@@ -1,0 +1,14 @@
+{
+  "run": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal",
+  "weights": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/weights/best.pt",
+  "batch": 8,
+  "nbs": 64,
+  "epochs_completed": 106,
+  "best_epoch": 76,
+  "csv_elapsed_seconds": 21676.4,
+  "worker_train_seconds": "NOT MEASURED",
+  "early_stopping": true,
+  "reused": true,
+  "deviation": "none; existing s checkpoint reused",
+  "source": "runs/detect/drone4_bal/results.csv and runs/logs/train_drone4_bal.log:687\u2013690"
+}

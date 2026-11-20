@@ -1,0 +1,6 @@
+{
+  "batch": 4,
+  "nbs": 64,
+  "deviation": "m batch 8 OOM; fresh retry at batch 4, nbs=64; currently training",
+  "reused": false
+}
