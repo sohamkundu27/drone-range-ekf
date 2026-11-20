@@ -1,0 +1,495 @@
+{
+  "provenance": {
+    "kind": "Read-only audit extraction; NOT a historical training log or a new model evaluation.",
+    "checkpoint_method": "torch.load(path, map_location=\"cpu\", weights_only=False); extract saved scalar fields and model attributes only.",
+    "cache_method": "numpy.load(path, allow_pickle=True).item(); group labels by dataset in im_file; count labels[].cls. No cache is regenerated.",
+    "manifest_method": "Read each nonempty drone4_bal_train.txt line; map /images/ to /labels/ and .jpg to .txt; count nonempty label rows.",
+    "hash_method": "SHA-256 of current file bytes; no historical checksum is implied.",
+    "class_order": [
+      "drone",
+      "bird",
+      "airplane",
+      "helicopter"
+    ]
+  },
+  "checkpoints": {
+    "yolo26s.pt": {
+      "sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+      "size_bytes": 20422725,
+      "version": "8.3.222",
+      "epoch": -1,
+      "optimizer_is_none": true,
+      "train_args": {
+        "model": "yolo26s-objv1-150.pt",
+        "data": "/home/lq/codes/ultralytics/ultralytics/cfg/datasets/coco.yaml",
+        "epochs": 70,
+        "time": null,
+        "patience": 100,
+        "batch": 128,
+        "imgsz": 640,
+        "optimizer": "MuSGD",
+        "lr0": 0.00038,
+        "lrf": 0.88219,
+        "momentum": 0.94751,
+        "warmup_bias_lr": 0.05684,
+        "nms": false,
+        "pretrained": true
+      },
+      "model_yaml": {
+        "yaml_file": "yolo26s.yaml",
+        "nc": 80,
+        "scale": "s",
+        "reg_max": 1,
+        "end2end": true,
+        "channels": 3
+      },
+      "head": {
+        "class": "Detect",
+        "stride": [
+          8.0,
+          16.0,
+          32.0
+        ],
+        "one2one_cv2_present": true,
+        "end2end": false
+      },
+      "names": {
+        "count": 80,
+        "4": "airplane",
+        "14": "bird"
+      },
+      "train_metrics": {
+        "metrics/precision(B)": 0.69674,
+        "metrics/recall(B)": 0.5811,
+        "metrics/mAP50(B)": 0.64598,
+        "metrics/mAP50-95(B)": 0.47769,
+        "metrics/mAP_small(B)": 0.28974,
+        "metrics/mAP_medium(B)": 0.52532,
+        "metrics/mAP_large(B)": 0.64496,
+        "val/box_loss": 1.50982,
+        "val/cls_loss": 1.55169,
+        "val/dfl_loss": 0.00545,
+        "fitness": 0.49452
+      }
+    },
+    "runs/detect/drone4_bal/weights/best.pt": {
+      "sha256": "cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900",
+      "size_bytes": 20417477,
+      "version": "8.4.215",
+      "epoch": -1,
+      "optimizer_is_none": true,
+      "train_args": {
+        "model": "yolo26s.pt",
+        "data": "data/yolo/drone4_bal.yaml",
+        "epochs": 124,
+        "time": 7.0,
+        "patience": 30,
+        "batch": 8,
+        "imgsz": 1280,
+        "optimizer": "MuSGD",
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "momentum": 0.937,
+        "warmup_bias_lr": 0.0,
+        "nms": null,
+        "pretrained": true
+      },
+      "model_yaml": {
+        "yaml_file": "yolo26s.yaml",
+        "nc": 4,
+        "scale": "s",
+        "reg_max": 1,
+        "end2end": true,
+        "channels": 3
+      },
+      "head": {
+        "class": "Detect",
+        "stride": [
+          8.0,
+          16.0,
+          32.0
+        ],
+        "one2one_cv2_present": true,
+        "end2end": false
+      },
+      "names": {
+        "0": "drone",
+        "1": "bird",
+        "2": "airplane",
+        "3": "helicopter"
+      },
+      "train_metrics": {
+        "metrics/precision(B)": 0.90775,
+        "metrics/recall(B)": 0.79662,
+        "metrics/mAP50(B)": 0.8609,
+        "metrics/mAP50-95(B)": 0.64647,
+        "val/box_loss": 1.12797,
+        "val/cls_loss": 0.7025,
+        "val/l1_loss": 0.01152,
+        "fitness": 0.64647
+      }
+    },
+    "runs/detect/drone4_bal/weights/last.pt": {
+      "sha256": "c9503817e903441a0fdc25021e52d1abcd9daafb8bacf10b5eeb581e5a5741e6",
+      "size_bytes": 20417477,
+      "version": "8.4.215",
+      "epoch": -1,
+      "optimizer_is_none": true,
+      "train_args": {
+        "model": "yolo26s.pt",
+        "data": "data/yolo/drone4_bal.yaml",
+        "epochs": 124,
+        "time": 7.0,
+        "patience": 30,
+        "batch": 8,
+        "imgsz": 1280,
+        "optimizer": "MuSGD",
+        "lr0": 0.01,
+        "lrf": 0.01,
+        "momentum": 0.937,
+        "warmup_bias_lr": 0.0,
+        "nms": null,
+        "pretrained": true
+      },
+      "model_yaml": {
+        "yaml_file": "yolo26s.yaml",
+        "nc": 4,
+        "scale": "s",
+        "reg_max": 1,
+        "end2end": true,
+        "channels": 3
+      },
+      "head": {
+        "class": "Detect",
+        "stride": [
+          8.0,
+          16.0,
+          32.0
+        ],
+        "one2one_cv2_present": true,
+        "end2end": false
+      },
+      "names": {
+        "0": "drone",
+        "1": "bird",
+        "2": "airplane",
+        "3": "helicopter"
+      },
+      "train_metrics": {
+        "metrics/precision(B)": 0.91513,
+        "metrics/recall(B)": 0.78893,
+        "metrics/mAP50(B)": 0.86047,
+        "metrics/mAP50-95(B)": 0.6442,
+        "val/box_loss": 1.1195,
+        "val/cls_loss": 0.715,
+        "val/l1_loss": 0.01127,
+        "fitness": 0.6442
+      }
+    }
+  },
+  "loader_caches": {
+    "data/yolo/coco/labels/train.cache": {
+      "sha256": "34ce3b37b8e5d08ea2183f475594cf934794f12b1e9c7041d45d024ccf2b209b",
+      "all": {
+        "images": 10200,
+        "background_images": 3,
+        "instances": 18125,
+        "instances_by_class": {
+          "drone": 5243,
+          "bird": 6896,
+          "airplane": 4275,
+          "helicopter": 1711
+        }
+      },
+      "by_dataset": {
+        "coco": {
+          "images": 2159,
+          "background_images": 0,
+          "instances": 5617,
+          "instances_by_class": {
+            "drone": 0,
+            "bird": 3592,
+            "airplane": 2025,
+            "helicopter": 0
+          }
+        },
+        "dut_anti_uav": {
+          "images": 5200,
+          "background_images": 3,
+          "instances": 5243,
+          "instances_by_class": {
+            "drone": 5243,
+            "bird": 0,
+            "airplane": 0,
+            "helicopter": 0
+          }
+        },
+        "openimages": {
+          "images": 2841,
+          "background_images": 0,
+          "instances": 7265,
+          "instances_by_class": {
+            "drone": 0,
+            "bird": 3304,
+            "airplane": 2250,
+            "helicopter": 1711
+          }
+        }
+      }
+    },
+    "data/yolo/coco/labels/val.cache": {
+      "sha256": "45afec318986b881a8e6dfc015d831a59031d1c367df70e5adf9bfdc1a82f8f0",
+      "all": {
+        "images": 4316,
+        "background_images": 0,
+        "instances": 5364,
+        "instances_by_class": {
+          "drone": 2620,
+          "bird": 1494,
+          "airplane": 1116,
+          "helicopter": 134
+        }
+      },
+      "by_dataset": {
+        "coco": {
+          "images": 604,
+          "background_images": 0,
+          "instances": 1178,
+          "instances_by_class": {
+            "drone": 0,
+            "bird": 673,
+            "airplane": 505,
+            "helicopter": 0
+          }
+        },
+        "dut_anti_uav": {
+          "images": 2600,
+          "background_images": 0,
+          "instances": 2620,
+          "instances_by_class": {
+            "drone": 2620,
+            "bird": 0,
+            "airplane": 0,
+            "helicopter": 0
+          }
+        },
+        "openimages": {
+          "images": 1112,
+          "background_images": 0,
+          "instances": 1566,
+          "instances_by_class": {
+            "drone": 0,
+            "bird": 821,
+            "airplane": 611,
+            "helicopter": 134
+          }
+        }
+      }
+    },
+    "data/yolo/coco/labels/test.cache": {
+      "sha256": "2c42cae2ab4854efefc3f6155afd4e71b3815fc6701e0b986aa8f7b3c1f749cb",
+      "all": {
+        "images": 3734,
+        "background_images": 0,
+        "instances": 4382,
+        "instances_by_class": {
+          "drone": 2245,
+          "bird": 1011,
+          "airplane": 735,
+          "helicopter": 391
+        }
+      },
+      "by_dataset": {
+        "coco": {
+          "images": 209,
+          "background_images": 0,
+          "instances": 376,
+          "instances_by_class": {
+            "drone": 0,
+            "bird": 233,
+            "airplane": 143,
+            "helicopter": 0
+          }
+        },
+        "dut_anti_uav": {
+          "images": 2200,
+          "background_images": 0,
+          "instances": 2245,
+          "instances_by_class": {
+            "drone": 2245,
+            "bird": 0,
+            "airplane": 0,
+            "helicopter": 0
+          }
+        },
+        "openimages": {
+          "images": 1325,
+          "background_images": 0,
+          "instances": 1761,
+          "instances_by_class": {
+            "drone": 0,
+            "bird": 778,
+            "airplane": 592,
+            "helicopter": 391
+          }
+        }
+      }
+    },
+    "data/yolo/detfly/labels/test.cache": {
+      "sha256": "97c80797db4426621ee657cf26f11c84466cc3caf4ebe26aa6be06fc25f917f1",
+      "all": {
+        "images": 1000,
+        "background_images": 0,
+        "instances": 1000,
+        "instances_by_class": {
+          "drone": 1000,
+          "bird": 0,
+          "airplane": 0,
+          "helicopter": 0
+        }
+      },
+      "by_dataset": {
+        "detfly": {
+          "images": 1000,
+          "background_images": 0,
+          "instances": 1000,
+          "instances_by_class": {
+            "drone": 1000,
+            "bird": 0,
+            "airplane": 0,
+            "helicopter": 0
+          }
+        }
+      }
+    }
+  },
+  "training_manifest": {
+    "path": "data/yolo/drone4_bal_train.txt",
+    "sha256": "61545c5a16c9d677ae97e7e71b229675c224d1ecccb45bcdc010242ca58a4407",
+    "lines": 10200,
+    "unique_paths": 10200,
+    "same_paths_as_train_cache": true,
+    "by_dataset": {
+      "dut_anti_uav": {
+        "images": 5200,
+        "background_images": 3,
+        "instances": 5243,
+        "instances_by_class": {
+          "drone": 5243,
+          "bird": 0,
+          "airplane": 0,
+          "helicopter": 0
+        }
+      },
+      "coco": {
+        "images": 2159,
+        "background_images": 0,
+        "instances": 5617,
+        "instances_by_class": {
+          "drone": 0,
+          "bird": 3592,
+          "airplane": 2025,
+          "helicopter": 0
+        }
+      },
+      "openimages": {
+        "images": 2841,
+        "background_images": 0,
+        "instances": 7266,
+        "instances_by_class": {
+          "drone": 0,
+          "bird": 3305,
+          "airplane": 2250,
+          "helicopter": 1711
+        }
+      },
+      "detfly": {
+        "images": 0,
+        "background_images": 0,
+        "instances": 0,
+        "instances_by_class": {
+          "drone": 0,
+          "bird": 0,
+          "airplane": 0,
+          "helicopter": 0
+        }
+      }
+    }
+  },
+  "detfly_local_images": {
+    "source_glob": "data/yolo/detfly/images/test/*.jpg",
+    "count": 1000,
+    "sequence_prefix_counts": {
+      "010": 1000
+    },
+    "first": "data/yolo/detfly/images/test/010_0100001.jpg",
+    "last": "data/yolo/detfly/images/test/010_0101017.jpg",
+    "train_images": 0,
+    "val_images": 0
+  },
+  "presentation_plot_copies": [
+    {
+      "presentation_path": "presentation_assets/PR_curve.png",
+      "run_path": "runs/detect/drone4_bal/BoxPR_curve.png",
+      "identical_bytes": true,
+      "sha256": "b9cb1279ccbf150f4bcbfd2be23451ff5e2fd130c52acc5ab1d143dd11993e95"
+    },
+    {
+      "presentation_path": "presentation_assets/confusion_matrix.png",
+      "run_path": "runs/detect/drone4_bal/confusion_matrix.png",
+      "identical_bytes": true,
+      "sha256": "98ea2bb6a93f43c901e61a42899696d0de684830329b7f147766c731d22bec96"
+    },
+    {
+      "presentation_path": "presentation_assets/results.png",
+      "run_path": "runs/detect/drone4_bal/results.png",
+      "identical_bytes": true,
+      "sha256": "e6efa777da0d0ff4233da17c8d8a049d1e224fbf50f4f095bf8a57e7c8f1efa7"
+    }
+  ],
+  "local_source_check": {
+    "ultralytics_version_source": ".venv/lib/python3.12/site-packages/ultralytics/__init__.py:3",
+    "augmentation_keys_compared": [
+      "hsv_h",
+      "hsv_s",
+      "hsv_v",
+      "degrees",
+      "translate",
+      "scale",
+      "shear",
+      "perspective",
+      "flipud",
+      "fliplr",
+      "bgr",
+      "mosaic",
+      "mixup",
+      "cutmix",
+      "copy_paste",
+      "copy_paste_mode",
+      "auto_augment",
+      "erasing",
+      "rect",
+      "close_mosaic",
+      "multi_scale",
+      "augment"
+    ],
+    "all_equal_to_saved_run_args": true,
+    "albumentations_package_paths": [],
+    "sha256": {
+      ".venv/lib/python3.12/site-packages/ultralytics/__init__.py": "3e1a9da5425f61c9f83b95cbb44572e73ab376f13063b5592b8d2009a034d4ca",
+      ".venv/lib/python3.12/site-packages/ultralytics/cfg/default.yaml": "b5ba0fd566d5c256f37d2de0a700e6fceac125e44bc44c21e81a584426c9853d",
+      ".venv/lib/python3.12/site-packages/ultralytics/cfg/models/26/yolo26.yaml": "b1d1fa0c69eced64f9939536038bd8d697c32e72200b34187a767de431af7ef0",
+      ".venv/lib/python3.12/site-packages/ultralytics/engine/trainer.py": "00ce7e5538900e70048e966fbaf8c28777e7edf588d07e0089302153a7174a4e",
+      ".venv/lib/python3.12/site-packages/ultralytics/engine/validator.py": "5884f2510645671a19b716ae3b63642143eaf7f165c6c85669e86f1ba3d337c3",
+      ".venv/lib/python3.12/site-packages/ultralytics/utils/loss.py": "7a3be83c56725e02bc23f8bcb486daf287f964e827644ab9c232f62c3e412724",
+      ".venv/lib/python3.12/site-packages/ultralytics/utils/metrics.py": "85460c3a0f5a35d60adfef72750d878075f9d0bc93ccefc2cb6eb9e725fa7df9",
+      ".venv/lib/python3.12/site-packages/ultralytics/data/augment.py": "414e49b76e5babfa118b88de60558e939fc436945cdf7a7ec4c09b0320a7036e"
+    }
+  },
+  "train_log_scan": {
+    "path": "runs/logs/train_drone4_bal.log",
+    "line_number_convention": "LF/newline-delimited; carriage-return progress updates do not increment line numbers.",
+    "closing_dataloader_mosaic_messages": 0,
+    "cuda_allocation_oom_warning_messages": 106
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "source": "experiments/eval_detfly_partial.json (historical; will be reevaluated)",
+  "overall": {
+    "P": 0.8419966857080231,
+    "R": 0.285,
+    "mAP50": 0.3036273349803137,
+    "mAP50-95": 0.11916425568779325
+  },
+  "per_class": {
+    "drone": {
+      "P": 0.8419966857080231,
+      "R": 0.285,
+      "mAP50": 0.3036273349803137,
+      "mAP50-95": 0.11916425568779325,
+      "n_instances": 1000
+    }
+  }
+}

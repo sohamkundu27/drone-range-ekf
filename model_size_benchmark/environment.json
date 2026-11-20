@@ -1,0 +1,13 @@
+{
+  "python": "3.12.3",
+  "torch": "2.14.1+cu130",
+  "cuda_build": "13.0",
+  "packages": {
+    "ultralytics": "8.4.215",
+    "onnxruntime-gpu": "1.32.0",
+    "onnx": "1.23.2",
+    "numpy": "2.5.4",
+    "ultralytics-thop": "2.2.5"
+  },
+  "gpu_query": "name, uuid, driver_version, memory.total [MiB], memory.used [MiB], utilization.gpu [%]\nNVIDIA GeForce RTX 3080, GPU-eb97c7d4-6687-7807-1761-24e211a20fd3, 580.173.02, 12288 MiB, 1 MiB, 0 %\n"
+}
