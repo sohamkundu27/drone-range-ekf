@@ -2,7 +2,7 @@
 
 Updated: Sat 2026-11-21 09:57 CST. Deadline: Sun 2026-11-22 22:00 CST.
 
-**Stage: assets_s (slide assets v2 from new s + sim with its noise)**
+**Stage: train_n**
 
 * Training s: epoch 106 done, 7.01 h elapsed, 4.0 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.641 (epoch 92), ETA (time cap, earlier if early stopping) Sat 09:57 CST
 
