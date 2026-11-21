@@ -1,8 +1,8 @@
 # STATUS — Det-Fly retrain queue
 
-Updated: Sat 2026-11-21 02:37 CST. Deadline: Sun 2026-11-22 22:00 CST.
+Updated: Sat 2026-11-21 02:44 CST. Deadline: Sun 2026-11-22 22:00 CST.
 
-**Stage: old_eval (old n/s/m on full Det-Fly + DUT)** — old_n: false drones
+**Stage: old_eval (old n/s/m on full Det-Fly + DUT)** — old_m: false drones
 
 
 ## Finished stages
