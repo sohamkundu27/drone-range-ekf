@@ -1,0 +1,60 @@
+{
+ "index": "matrix[predicted][true]",
+ "names": [
+  "drone",
+  "bird",
+  "airplane",
+  "helicopter",
+  "background"
+ ],
+ "matrix": [
+  [
+   2485,
+   0,
+   0,
+   0,
+   53
+  ],
+  [
+   0,
+   1031,
+   4,
+   0,
+   286
+  ],
+  [
+   0,
+   1,
+   919,
+   5,
+   158
+  ],
+  [
+   1,
+   0,
+   28,
+   112,
+   9
+  ],
+  [
+   134,
+   462,
+   165,
+   17,
+   0
+  ]
+ ],
+ "weights": "model_size_benchmark/train/m_batch4/weights/best.pt",
+ "data": "drone4_bal.yaml",
+ "split": "val",
+ "conf": 0.25,
+ "nms_iou": 0.5,
+ "match_iou": 0.5,
+ "true_instances_per_class": {
+  "drone": 2620,
+  "bird": 1494,
+  "airplane": 1116,
+  "helicopter": 134
+ },
+ "note": "Separate validation call for the confusion matrix only. Do not quote mAP from it."
+}

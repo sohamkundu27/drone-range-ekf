@@ -1,0 +1,6 @@
+{
+  "checkpoint_parameters": 21779056,
+  "fused_parameters": 20352536,
+  "gflops_1280": 275.3445888,
+  "method": "Ultralytics get_flops (2*THOP MACs), fused FP32 NMS-head model, square 1x3x1280x1280; checkpoint count includes retained training branches"
+}

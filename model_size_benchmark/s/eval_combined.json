@@ -1,5 +1,11 @@
 {
-  "source": "experiments/eval_all4_test.json (historical; will be reevaluated)",
+  "weights": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/weights/best.pt",
+  "data": "drone4_bal",
+  "split": "test",
+  "imgsz": 1280,
+  "batch": 8,
+  "conf": 0.001,
+  "iou": 0.7,
   "overall": {
     "P": 0.9164482452925774,
     "R": 0.8069256377405474,
@@ -12,28 +18,28 @@
       "R": 0.9670378619153674,
       "mAP50": 0.9789896309185641,
       "mAP50-95": 0.7490318674055307,
-      "n_instances": 2245
+      "instances": 2245
     },
     "bird": {
       "P": 0.8161463951143227,
       "R": 0.5905044510385756,
       "mAP50": 0.6640616385426668,
       "mAP50-95": 0.4494160797710359,
-      "n_instances": 1011
+      "instances": 1011
     },
     "airplane": {
       "P": 0.913844070341422,
       "R": 0.7673469387755102,
       "mAP50": 0.8562153569694111,
       "mAP50-95": 0.6836437293224467,
-      "n_instances": 735
+      "instances": 735
     },
     "helicopter": {
       "P": 0.9492698386881012,
       "R": 0.9028132992327366,
       "mAP50": 0.9439859151086919,
       "mAP50-95": 0.7588024901663604,
-      "n_instances": 391
+      "instances": 391
     }
   }
 }

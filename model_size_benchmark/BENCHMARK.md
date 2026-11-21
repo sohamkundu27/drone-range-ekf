@@ -33,39 +33,79 @@ Launch: `nohup .venv/bin/python -u model_size_benchmark/runner.py run > model_si
 Full per-class and overall metrics, all latencies and timing fields: results.csv. NOT MEASURED means unavailable; absent classes in single-class test sets are also NOT MEASURED.
 | Size | Status | Epochs | Best epoch | Train seconds (CSV) | Early stop | DUT AP50–95 | DUT recall | Det-Fly recall | PT FP16 mean ms | Deviation |
 |---|---|---|---|---|---|---|---|---|---|---|
-| n | pending | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| s | reused checkpoint; fresh speed/evaluation pending | 106 | 76 | 21676.4 | True | 0.7490165422829068 | 0.9670378619153674 | 0.285 | NOT MEASURED | none; existing s checkpoint reused |
-| m | train | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | m batch 8 OOM; fresh retry at batch 4, nbs=64; currently training |
+| n | complete | 174 | 144 | 20619.6 | False | 0.7317421427348211 | 0.9623200684934009 | 0.2725671632115101 | 4.499312411062419 | none |
+| s | complete | 106 | 76 | 21676.4 | True | 0.7490165422829068 | 0.9670378619153674 | 0.285 | 5.337705845013261 | none; existing s checkpoint reused |
+| m | complete | 57 | 56 | 25241.2 | False | 0.7555688791276456 | 0.9705416759930563 | 0.314 | 8.7681251950562 | m batch 8 OOM; fresh retry at batch 4, nbs=64 |
 
 ### Backend latency and model complexity
 | Size | Backend | Mean ms | p95 ms | Timed images | Checkpoint parameters | Fused parameters | GFLOPs at 1280 |
 |---|---|---|---|---|---|---|---|
-| n | pytorch_fp32 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| n | pytorch_fp16 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| n | onnx_fp32 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| n | onnx_fp16 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| s | pytorch_fp32 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| s | pytorch_fp16 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| s | onnx_fp32 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| s | onnx_fp16 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| m | pytorch_fp32 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| m | pytorch_fp16 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| m | onnx_fp32 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
-| m | onnx_fp16 | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED | NOT MEASURED |
+| n | pytorch_fp32 | 4.668648545630276 | 5.07103456184268 | 200 | 2535344 | 2390464 | 22.9872128 |
+| n | pytorch_fp16 | 4.499312411062419 | 4.876226605847478 | 200 | 2535344 | 2390464 | 22.9872128 |
+| n | onnx_fp32 | 6.490783481858671 | 6.893785111606121 | 200 | 2535344 | 2390464 | 22.9872128 |
+| n | onnx_fp16 | 5.3991014417260885 | 6.04536784812808 | 200 | 2535344 | 2390464 | 22.9872128 |
+| s | pytorch_fp32 | 7.033395394682884 | 7.768256589770317 | 200 | 9950960 | 9466728 | 86.028288 |
+| s | pytorch_fp16 | 5.337705845013261 | 5.954185826703906 | 200 | 9950960 | 9466728 | 86.028288 |
+| s | onnx_fp32 | 11.09811784233898 | 11.493110191076994 | 200 | 9950960 | 9466728 | 86.028288 |
+| s | onnx_fp16 | 8.002369832247496 | 8.397756144404411 | 200 | 9950960 | 9466728 | 86.028288 |
+| m | pytorch_fp32 | 13.562640775926411 | 13.93322367221117 | 200 | 21779056 | 20352536 | 275.3445888 |
+| m | pytorch_fp16 | 8.7681251950562 | 9.117262298241258 | 200 | 21779056 | 20352536 | 275.3445888 |
+| m | onnx_fp32 | 22.04219736624509 | 22.47879500500858 | 200 | 21779056 | 20352536 | 275.3445888 |
+| m | onnx_fp16 | 14.221938918344676 | 14.651026856154203 | 200 | 21779056 | 20352536 | 275.3445888 |
 
 Training-stage total seconds in results.csv includes downloads/setup/final validation and failed attempts; csv_elapsed_seconds is the library training-loop duration. Existing s only has its historical loop duration.
 
 ### Executed worker commands
 ```bash
 /home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage train --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage train --batch 4
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage eval_dut --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage eval_combined --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage eval_detfly --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage false_positives --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage complexity --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage export_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage export_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage latency_pytorch_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage latency_pytorch_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage latency_onnx_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size m --stage latency_onnx_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage train --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage eval_dut --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage eval_combined --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage eval_detfly --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage false_positives --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage complexity --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage export_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage export_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage latency_pytorch_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage latency_pytorch_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage latency_onnx_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size n --stage latency_onnx_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage eval_dut --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage eval_combined --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage eval_detfly --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage false_positives --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage complexity --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage export_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage export_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage latency_pytorch_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage latency_pytorch_fp16 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage latency_onnx_fp32 --batch 8
+/home/soham/github/drone-range-ekf/.venv/bin/python -u /home/soham/github/drone-range-ekf/model_size_benchmark/runner.py worker --size s --stage latency_onnx_fp16 --batch 8
 ```
 
 ## Honest interpretation
 Single seed (0); no repeated-seed uncertainty estimate. Small differences may be run-to-run variation and must not be called real improvements. Dominance below uses strictly slower PyTorch FP16 mean latency AND lower DUT drone mAP50–95; other deployment backends can rank differently.
-Comparison pending: where s sits, dominance across all three sizes, and the value of added size are NOT MEASURED until all three comparable measurements are available.
+YOLO26n: observed dominators = none.
+YOLO26s: observed dominators = none.
+YOLO26m: observed dominators = none.
+n minus s: DUT AP50–95 delta -0.017274; PT FP16 latency delta -0.8384 ms.
+m minus s: DUT AP50–95 delta +0.006552; PT FP16 latency delta +3.4304 ms.
+These are observed differences only. Whether an accuracy gain is meaningful for deployment requires a specified minimum benefit and repeated-seed measurements; this benchmark cannot establish statistical significance. Any m batch-4 deviation also limits attribution solely to model size.
 
 ## Failures / pending actions
 {
-  "status": "running",
+  "status": "complete",
   "failures": []
 }

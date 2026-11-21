@@ -1,6 +1,14 @@
 {
+  "run": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4",
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4/weights/best.pt",
   "batch": 4,
   "nbs": 64,
-  "deviation": "m batch 8 OOM; fresh retry at batch 4, nbs=64; currently training",
-  "reused": false
+  "epochs_completed": 57,
+  "best_epoch": 56,
+  "best_validation_map5095": 0.644,
+  "csv_elapsed_seconds": 25241.2,
+  "worker_train_seconds": 25283.43762282841,
+  "reused": false,
+  "deviation": "m batch 8 OOM; fresh retry at batch 4, nbs=64",
+  "early_stopping": false
 }

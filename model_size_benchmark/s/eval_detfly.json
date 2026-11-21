@@ -1,5 +1,11 @@
 {
-  "source": "experiments/eval_detfly_partial.json (historical; will be reevaluated)",
+  "weights": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/weights/best.pt",
+  "data": "detfly",
+  "split": "test",
+  "imgsz": 1280,
+  "batch": 8,
+  "conf": 0.001,
+  "iou": 0.7,
   "overall": {
     "P": 0.8419966857080231,
     "R": 0.285,
@@ -12,7 +18,7 @@
       "R": 0.285,
       "mAP50": 0.3036273349803137,
       "mAP50-95": 0.11916425568779325,
-      "n_instances": 1000
+      "instances": 1000
     }
   }
 }
