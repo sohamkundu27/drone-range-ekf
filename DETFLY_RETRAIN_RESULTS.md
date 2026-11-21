@@ -29,8 +29,8 @@
 | old s | 010 test block | 1590 | 0.854 [0.780, 0.924] | 0.667 [0.524, 0.796] | 0.749 [0.643, 0.842] | 0.673 [0.527, 0.806] | 0.278 [0.212, 0.352] |
 | **new s** | 020 (all frames) | | pending | pending | pending | pending | pending |
 | **new s** | 010 test block | | pending | pending | pending | pending | pending |
-| old m | 020 (all frames) | | pending | pending | pending | pending | pending |
-| old m | 010 test block | | pending | pending | pending | pending | pending |
+| old m | 020 (all frames) | 6912 | 0.798 [0.722, 0.857] | 0.485 [0.409, 0.557] | 0.603 [0.528, 0.673] | 0.541 [0.450, 0.625] | 0.312 [0.257, 0.370] |
+| old m | 010 test block | 1590 | 0.913 [0.875, 0.952] | 0.657 [0.520, 0.784] | 0.764 [0.658, 0.850] | 0.689 [0.550, 0.813] | 0.290 [0.222, 0.366] |
 | **new m** | 020 (all frames) | | pending | pending | pending | pending | pending |
 | **new m** | 010 test block | | pending | pending | pending | pending | pending |
 
@@ -52,7 +52,11 @@ P/R are Ultralytics' values at the max-F1 confidence (as in all earlier eval_*.j
 | old s | airplane | 0.914 | 0.767 | 0.856 | 0.684 |
 | old s | helicopter | 0.949 | 0.903 | 0.944 | 0.759 |
 | new s | all | pending | | | |
-| old m | all | pending | | | |
+| old m | **overall** | 0.917 | 0.815 | 0.860 | 0.652 |
+| old m | drone | 0.989 | 0.971 | 0.981 | 0.756 |
+| old m | bird | 0.827 | 0.605 | 0.671 | 0.448 |
+| old m | airplane | 0.916 | 0.786 | 0.854 | 0.675 |
+| old m | helicopter | 0.937 | 0.898 | 0.933 | 0.731 |
 | new m | all | pending | | | |
 
 DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
@@ -63,7 +67,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | new n | pending | | | |
 | old s | 0.987 | 0.967 | 0.979 | 0.749 |
 | new s | pending | | | |
-| old m | pending | | | |
+| old m | 0.991 | 0.971 | 0.982 | 0.756 |
 | new m | pending | | | |
 
 ## (b) False drones (bird/airplane/helicopter-only test images with ≥ 1 drone detection at conf 0.25)
@@ -74,7 +78,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | new n | pending | | |
 | old s | 5 | 1534 | 5 |
 | new s | pending | | |
-| old m | pending | | |
+| old m | 3 | 1534 | 3 |
 | new m | pending | | |
 
 ## (d) Training facts
