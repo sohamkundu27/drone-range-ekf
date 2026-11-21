@@ -1,10 +1,11 @@
 # STATUS — Det-Fly retrain queue
 
-Updated: Sat 2026-11-21 09:57 CST. Deadline: Sun 2026-11-22 22:00 CST.
+Updated: Sat 2026-11-21 11:57 CST. Deadline: Sun 2026-11-22 22:00 CST.
 
 **Stage: train_n**
 
-* Training s: epoch 106 done, 7.01 h elapsed, 4.0 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.641 (epoch 92), ETA (time cap, earlier if early stopping) Sat 09:57 CST
+* Training s: epoch 106 done, 7.01 h elapsed, 4.0 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.641 (epoch 92), ETA (time cap, earlier if early stopping) Sat 11:57 CST
+* Training n: epoch 51 done, 1.97 h elapsed, 2.3 min/epoch, time cap 7.0 h, latest val mAP50 0.828, best val mAP50-95 0.580 (epoch 50), ETA (time cap, earlier if early stopping) Sat 16:59 CST
 
 ## Finished stages
 
@@ -40,3 +41,9 @@ Updated: Sat 2026-11-21 09:57 CST. Deadline: Sun 2026-11-22 22:00 CST.
   Ultralytics fits the epoch count to the 7 h budget, so the larger new training set gets fewer epochs in the
   same time. New runs select best.pt / early-stop on a val set that includes 377 Det-Fly frames; old runs did not.
 * Latency is not re-measured (identical architecture); old numbers reused.
+* **Sim with the new noise**: the measured detector noise barely changed (σ within ~±10 %), so the sim numbers
+  move only slightly; NaN runs 321 → 315 of 9,600. One weaving + size-prior run has an exploding (finite) NEES,
+  which lifts that config's ANEES from 3.9 to 22.5; without that single run it is 3.6 → 3.8
+  (`experiments/new_results/COMPARISON.md`). Don't quote 22.5 without that sentence.
+* **New s false drones went up 5 → 8 images** (of 1,534) at conf 0.25; within the stated "not clearly worse"
+  tolerance (≤ +5), but it is an increase.
