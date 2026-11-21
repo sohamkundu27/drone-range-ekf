@@ -1,0 +1,104 @@
+{
+ "notes": [
+  "frame index = 0-based position in the id-sorted sequence (frame ids have gaps); ranges are [start, end).",
+  "010 cut at 60 % / 75 % of its frames; 200-frame buffers taken from the end of the train and val blocks and dropped, so the 010 test block is exactly the last 25 % of 010.",
+  "train block subsampled with stride 2, val block with stride 2; test blocks keep every frame.",
+  "020 is entirely test: never trained on, never in validation / early stopping.",
+  "020 is the same site as 010 (same hill, buildings, sports courts, dusk light); treat it as a later part of the same recording, not an independent cross-site test.",
+  "frame 020/0207614 has an XML but no JPEG in the source release (skipped); 020_0201689 has an XML with no UAV object (kept as a background test frame).",
+  "the 1,000-frame preliminary slice (010_0100001..010_0101017) lies inside the 010 train block; 500 of its frames are in the new training set, so new models must not be scored on it."
+ ],
+ "sequence_frames": {
+  "010": 6358,
+  "020": 6912
+ },
+ "stride": {
+  "train": 2,
+  "val": 2
+ },
+ "buffer_frames": 200,
+ "frame_index_ranges_010": {
+  "010_train_block": {
+   "start": 0,
+   "end": 3615,
+   "first_id": "010_0100001",
+   "last_id": "010_0103737"
+  },
+  "010_buffer_1": {
+   "start": 3615,
+   "end": 3815,
+   "first_id": "010_0103738",
+   "last_id": "010_0103940"
+  },
+  "010_val_block": {
+   "start": 3815,
+   "end": 4568,
+   "first_id": "010_0103941",
+   "last_id": "010_0105122"
+  },
+  "010_buffer_2": {
+   "start": 4568,
+   "end": 4768,
+   "first_id": "010_0105123",
+   "last_id": "010_0105329"
+  },
+  "010_test_block": {
+   "start": 4768,
+   "end": 6358,
+   "first_id": "010_0105330",
+   "last_id": "010_0106937"
+  }
+ },
+ "frame_index_ranges_020": {
+  "020_test": {
+   "start": 0,
+   "end": 6912,
+   "first_id": "020_0200002",
+   "last_id": "020_0209243"
+  }
+ },
+ "sets": {
+  "detfly_train": {
+   "first": "010_0100001",
+   "last": "010_0103737",
+   "frames": 1808,
+   "boxes": 1808
+  },
+  "detfly_val": {
+   "first": "010_0103941",
+   "last": "010_0105122",
+   "frames": 377,
+   "boxes": 377
+  },
+  "detfly_test010": {
+   "first": "010_0105330",
+   "last": "010_0106937",
+   "frames": 1590,
+   "boxes": 1590
+  },
+  "detfly_test020": {
+   "first": "020_0200002",
+   "last": "020_0209243",
+   "frames": 6912,
+   "boxes": 6911
+  },
+  "detfly_prelim_slice": {
+   "first": "010_0100001",
+   "last": "010_0101017",
+   "frames": 1000,
+   "boxes": 1000
+  }
+ },
+ "new_training_set": {
+  "old_rebalanced_images": 10200,
+  "detfly_train_images": 1808,
+  "total": 12008
+ },
+ "files": {
+  "train": "data/yolo/new_detfly_train.txt",
+  "val": "data/yolo/new_detfly_val.txt",
+  "test010": "data/yolo/new_detfly_test010.txt",
+  "test020": "data/yolo/new_detfly_test020.txt",
+  "train_all": "data/yolo/new_train_drone4_detfly.txt"
+ }
+}

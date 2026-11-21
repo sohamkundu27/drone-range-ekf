@@ -1,0 +1,91 @@
+# Det-Fly retrain — OLD vs NEW YOLO26 n / s / m
+
+> **Read first (choices made without asking, per instructions):**
+> * **020 is the same site as 010** (same hill, buildings, sports courts and dusk light in sampled frames; both 3840×2160). It is treated as a *later part of the same recording*, not an independent cross-site test. Det-Fly as a whole is still a different dataset/camera from the DUT training data.
+> * 13,270 Det-Fly frames: 010 = 6,358, 020 = 6,912. Frame 020/0207614 is missing from the source release (its XML exists, the JPEG does not); 020_0201689 has no UAV box (kept as a background frame), so 020 has 6,911 drone boxes.
+> * Split (`detfly_split.json`): 010 cut at 60 %/75 % of its frames, 200-frame buffers dropped from the end of the train and val blocks, train and val subsampled with stride 2 → 1,808 train / 377 val frames; 010 test = last 25 % (1,590 frames, all kept); 020 = 6,912 test frames, never trained or validated on.
+> * Protocol: Ultralytics val, imgsz 1280, batch 8, conf 0.001, NMS IoU 0.7 (as detector/eval.py), drone class only. P/R/F1 at confidence ≥ 0.25 with IoU ≥ 0.5 matching (recomputed from the validator's own matches). 95 % CI = block bootstrap, 100-frame time-ordered chunks, 1,000 resamples, percentile.
+> * NEW = same recipe as the old run (saved `args.yaml` of the old s run, as used by the old n/m benchmark), with 1,808 Det-Fly train frames added to training and 377 Det-Fly val frames added to validation (early stopping / best.pt selection therefore also sees Det-Fly val; the old runs did not).
+> * Decision rule (stated, not acted on): *new is clearly better if Det-Fly 020 recall is up beyond the CI AND DUT mAP50 and false-drone count are not clearly worse.* Applied here as: new 020 recall@0.25 above the old CI upper bound and new CI lower bound above the old point; DUT-test drone mAP50 drop < 0.01; false-drone images increase ≤ 5 (of 1,534).
+
+## Plain-language summary
+
+* **s**: new model not finished yet.
+* **n**: new model not finished yet.
+* **m**: new model not finished yet.
+* No new model finished yet; old-model numbers are in DETFLY_FULL_RESULTS.md.
+
+## (c) Det-Fly drone, conf 0.25 (020 = later part of the same site; 010 test = held-out block)
+
+| model | Det-Fly set | frames | P @0.25 [95% CI] | R @0.25 [95% CI] | F1 @0.25 [95% CI] | mAP50 [95% CI] | mAP50-95 [95% CI] |
+|---|---|---|---|---|---|---|---|
+| old n | 020 (all frames) | | pending | pending | pending | pending | pending |
+| old n | 010 test block | | pending | pending | pending | pending | pending |
+| **new n** | 020 (all frames) | | pending | pending | pending | pending | pending |
+| **new n** | 010 test block | | pending | pending | pending | pending | pending |
+| old s | 020 (all frames) | | pending | pending | pending | pending | pending |
+| old s | 010 test block | | pending | pending | pending | pending | pending |
+| **new s** | 020 (all frames) | | pending | pending | pending | pending | pending |
+| **new s** | 010 test block | | pending | pending | pending | pending | pending |
+| old m | 020 (all frames) | | pending | pending | pending | pending | pending |
+| old m | 010 test block | | pending | pending | pending | pending | pending |
+| **new m** | 020 (all frames) | | pending | pending | pending | pending | pending |
+| **new m** | 010 test block | | pending | pending | pending | pending | pending |
+
+## (a) DUT test — all 4 classes (all4_test: DUT + COCO + Open Images test; eval.py protocol)
+
+P/R are Ultralytics' values at the max-F1 confidence (as in all earlier eval_*.json).
+
+| model | class | P | R | mAP50 | mAP50-95 |
+|---|---|---|---|---|---|
+| old n | all | pending | | | |
+| new n | all | pending | | | |
+| old s | all | pending | | | |
+| new s | all | pending | | | |
+| old m | all | pending | | | |
+| new m | all | pending | | | |
+
+DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
+
+| model | P | R | mAP50 | mAP50-95 |
+|---|---|---|---|---|
+| old n | pending | | | |
+| new n | pending | | | |
+| old s | pending | | | |
+| new s | pending | | | |
+| old m | pending | | | |
+| new m | pending | | | |
+
+## (b) False drones (bird/airplane/helicopter-only test images with ≥ 1 drone detection at conf 0.25)
+
+| model | images with a false drone | of | false drones total |
+|---|---|---|---|
+| old n | pending | | |
+| new n | pending | | |
+| old s | pending | | |
+| new s | pending | | |
+| old m | pending | | |
+| new m | pending | | |
+
+## (d) Training facts
+
+| model | epochs run | best epoch | wall-clock h | batch | time cap h | stop | train images (DUT drone / negatives / Det-Fly) |
+|---|---|---|---|---|---|---|---|
+| old n | 174 | 144 | 5.73 | 8 | 7.0 | early stopping (patience) | 5,200 / 5,000 / 0 |
+| new n | pending | | | | | | |
+| old s | 106 | 76 | 6.02 | 8 | 7.0 | early stopping (patience) | 5,200 / 5,000 / 0 |
+| new s | pending | | | | | | |
+| old m | 57 | 56 | 7.01 | 4 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 0 |
+| new m | pending | | | | | | |
+
+Recipe differences, honestly: old n, s and new n, s: batch 8; old m and new m: batch 4 (old m ran out of memory at batch 8; nbs = 64 keeps the effective batch at 64 via gradient accumulation). All runs: epochs 150, time cap 7 h unless marked SHORTENED, patience 30, imgsz 1280, seed 0, optimizer auto, default augmentation, COCO-pretrained start. With `time` set, Ultralytics re-fits the epoch count and LR schedule to the wall-clock budget, so a larger training set means fewer epochs in the same time. Old m hit the 7 h time cap (it did not early-stop).
+
+## Weights (never committed)
+
+| model | path | SHA-256 |
+|---|---|---|
+| old n | `model_size_benchmark/train/n_batch8/weights/best.pt` | `1888527f1b8f5fd55c977d56fe99a68dd00f86b23571ebd828782a6d7164e8a9` |
+| old s | `runs/drone4_bal_backup.aVl2ZP/best.pt` | `cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900` |
+| old m | `model_size_benchmark/train/m_batch4/weights/best.pt` | `f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53` |
+
+All numbers: `detfly_retrain/summary.json`, per-run JSONs in `detfly_retrain/eval/` and `detfly_retrain/train_<size>.json`. Produced by `scripts/run_retrain_queue.py`.
