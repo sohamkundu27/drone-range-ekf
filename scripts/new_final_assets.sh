@@ -40,6 +40,8 @@ step noise "$PY" detector/measure_noise.py --weights "$NEW" --out $V2/detector_n
 step sim bash scripts/new_sim_shadow.sh $V2/detector_noise.json newnoise experiments/new_results
 step sim_copy bash -c "cp experiments/new_results/results_sim.md experiments/new_results/nan_runs.md experiments/new_results/*.png $V2/"
 
+step sim_compare "$PY" scripts/new_sim_compare.py
+
 # tables
 step stats "$PY" scripts/new_dataset_stats.py
 step numbers "$PY" scripts/new_slide_assets.py

@@ -172,6 +172,10 @@ def sim_numbers():
     for rng in ("40m", "80m", "150m"):
         r(f"E_model_truth_weaving_{rng}", "anees_range", f"Model-truth weaving {rng}: ANEES range (slide 22)", f=lambda x: f"{x:.2f}")
         r(f"E_model_truth_weaving_{rng}", "anees_pos", f"Model-truth weaving {rng}: ANEES pos", f=lambda x: f"{x:.2f}")
+    rows.append(("Sim: detector noise changed?", "—", "barely (σ within ~±10 %, recall ±0.01)",
+                 "`experiments/new_results/COMPARISON.md` (scripts/new_sim_compare.py)"))
+    rows.append(("Sim caveat: weaving + size prior ANEES jump", "3.92", "22.53, driven by ONE run (mean NEES ~3,478); without it 3.61 → 3.76",
+                 "`experiments/new_results/COMPARISON.md`"))
     tot = lambda d: sum(v["nan_runs"] for v in d.values()) if d else "n/a"  # noqa: E731
     rows.append(("NaN runs (of 9,600) (slide 23)", str(tot(onan)), str(tot(nnan)),
                  "`experiments/nan_runs.json` → `experiments/new_results/nan_runs.json`"))
