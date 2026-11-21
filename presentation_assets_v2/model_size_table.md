@@ -4,9 +4,9 @@ Latency and parameter counts are the old benchmark's (`model_size_benchmark/resu
 
 | model | params (fused) | PyTorch FP16 ms | DUT drone mAP50 | all4 mAP50 | Det-Fly 020 R@0.25 [CI] | Det-Fly 020 mAP50 | Det-Fly 010-test R@0.25 [CI] | false-drone images /1,534 |
 |---|---|---|---|---|---|---|---|---|
-| old n | 2.39 M | 4.5 | n/a | n/a | n/a | n/a | n/a | n/a |
+| old n | 2.39 M | 4.5 | 0.976 | 0.860 | 0.460 [0.392, 0.521] | 0.498 | 0.650 [0.514, 0.782] | 9 |
 | new n | 2.39 M | 4.5 | n/a | n/a | n/a | n/a | n/a | n/a |
-| old s | 9.47 M | 5.3 | n/a | 0.861 | 0.444 [0.375, 0.506] | 0.497 | 0.667 [0.524, 0.796] | n/a |
-| new s | 9.47 M | 5.3 | n/a | n/a | n/a | n/a | n/a | n/a |
-| old m | 20.35 M | 8.8 | n/a | n/a | n/a | n/a | n/a | n/a |
+| old s | 9.47 M | 5.3 | 0.979 | 0.861 | 0.444 [0.375, 0.506] | 0.497 | 0.667 [0.524, 0.796] | 5 |
+| new s | 9.47 M | 5.3 | 0.980 | 0.861 | 0.711 [0.649, 0.768] | 0.752 | 0.762 [0.633, 0.889] | 8 |
+| old m | 20.35 M | 8.8 | 0.982 | 0.860 | 0.485 [0.409, 0.557] | 0.541 | 0.657 [0.520, 0.784] | 3 |
 | new m | 20.35 M | 8.8 | n/a | n/a | n/a | n/a | n/a | n/a |
