@@ -13,7 +13,7 @@
 ## Plain-language summary
 
 * **s**: Det-Fly 020 recall@0.25 0.444 → 0.711; DUT drone mAP50 0.979 → 0.980; false-drone images 5 → 8 of 1,534. Decision rule MET.
-* **n**: new model not finished yet.
+* **n**: Det-Fly 020 recall@0.25 0.460 → 0.684; DUT drone mAP50 0.976 → 0.976; false-drone images 9 → 7 of 1,534. Decision rule MET.
 * **m**: new model not finished yet.
 
 ## (c) Det-Fly drone, conf 0.25 (020 = later part of the same site; 010 test = held-out block)
@@ -22,8 +22,8 @@
 |---|---|---|---|---|---|---|---|
 | old n | 020 (all frames) | 6912 | 0.688 [0.606, 0.762] | 0.460 [0.392, 0.521] | 0.551 [0.486, 0.612] | 0.498 [0.416, 0.575] | 0.255 [0.211, 0.303] |
 | old n | 010 test block | 1590 | 0.797 [0.708, 0.871] | 0.650 [0.514, 0.782] | 0.716 [0.601, 0.820] | 0.666 [0.519, 0.803] | 0.273 [0.208, 0.344] |
-| **new n** | 020 (all frames) | | pending | pending | pending | pending | pending |
-| **new n** | 010 test block | | pending | pending | pending | pending | pending |
+| **new n** | 020 (all frames) | 6912 | 0.896 [0.849, 0.934] | 0.684 [0.612, 0.746] | 0.776 [0.719, 0.823] | 0.730 [0.662, 0.790] | 0.342 [0.308, 0.376] |
+| **new n** | 010 test block | 1590 | 0.810 [0.697, 0.919] | 0.767 [0.642, 0.890] | 0.788 [0.673, 0.899] | 0.697 [0.553, 0.855] | 0.323 [0.192, 0.504] |
 | old s | 020 (all frames) | 6912 | 0.741 [0.682, 0.798] | 0.444 [0.375, 0.506] | 0.555 [0.489, 0.613] | 0.497 [0.417, 0.572] | 0.271 [0.224, 0.322] |
 | old s | 010 test block | 1590 | 0.854 [0.780, 0.924] | 0.667 [0.524, 0.796] | 0.749 [0.643, 0.842] | 0.673 [0.527, 0.806] | 0.278 [0.212, 0.352] |
 | **new s** | 020 (all frames) | 6912 | 0.924 [0.905, 0.942] | 0.711 [0.649, 0.768] | 0.804 [0.759, 0.844] | 0.752 [0.692, 0.804] | 0.358 [0.327, 0.389] |
@@ -44,7 +44,11 @@ P/R are Ultralytics' values at the max-F1 confidence (as in all earlier eval_*.j
 | old n | bird | 0.832 | 0.591 | 0.670 | 0.450 |
 | old n | airplane | 0.892 | 0.774 | 0.850 | 0.667 |
 | old n | helicopter | 0.944 | 0.905 | 0.945 | 0.734 |
-| new n | all | pending | | | |
+| new n | **overall** | 0.911 | 0.810 | 0.856 | 0.645 |
+| new n | drone | 0.981 | 0.960 | 0.976 | 0.727 |
+| new n | bird | 0.821 | 0.587 | 0.661 | 0.443 |
+| new n | airplane | 0.907 | 0.785 | 0.853 | 0.667 |
+| new n | helicopter | 0.937 | 0.908 | 0.936 | 0.741 |
 | old s | **overall** | 0.916 | 0.807 | 0.861 | 0.660 |
 | old s | drone | 0.987 | 0.967 | 0.979 | 0.749 |
 | old s | bird | 0.816 | 0.591 | 0.664 | 0.449 |
@@ -67,7 +71,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | model | P | R | mAP50 | mAP50-95 |
 |---|---|---|---|---|
 | old n | 0.978 | 0.962 | 0.976 | 0.732 |
-| new n | pending | | | |
+| new n | 0.983 | 0.962 | 0.976 | 0.727 |
 | old s | 0.987 | 0.967 | 0.979 | 0.749 |
 | new s | 0.985 | 0.973 | 0.980 | 0.743 |
 | old m | 0.991 | 0.971 | 0.982 | 0.756 |
@@ -78,7 +82,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | model | images with a false drone | of | false drones total |
 |---|---|---|---|
 | old n | 9 | 1534 | 10 |
-| new n | pending | | |
+| new n | 7 | 1534 | 9 |
 | old s | 5 | 1534 | 5 |
 | new s | 8 | 1534 | 9 |
 | old m | 3 | 1534 | 3 |
@@ -89,7 +93,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | model | epochs run | best epoch | wall-clock h | batch | time cap h | stop | train images (DUT drone / negatives / Det-Fly) |
 |---|---|---|---|---|---|---|---|
 | old n | 174 | 144 | 5.73 | 8 | 7.0 | early stopping (patience) | 5,200 / 5,000 / 0 |
-| new n | pending | | | | | | |
+| **new n** | 182 | 158 | 7.00 | 8 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 1,808 |
 | old s | 106 | 76 | 6.02 | 8 | 7.0 | early stopping (patience) | 5,200 / 5,000 / 0 |
 | **new s** | 106 | 92 | 7.01 | 8 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 1,808 |
 | old m | 57 | 56 | 7.01 | 4 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 0 |
@@ -102,6 +106,7 @@ Recipe differences, honestly: old n, s and new n, s: batch 8; old m and new m: b
 | model | path | SHA-256 |
 |---|---|---|
 | old n | `model_size_benchmark/train/n_batch8/weights/best.pt` | `1888527f1b8f5fd55c977d56fe99a68dd00f86b23571ebd828782a6d7164e8a9` |
+| new n | `runs/n_detfly_new/weights/best.pt` | `70594b6f3961b5edfb26b3135bfbc0732e9f97f3e9e9129d92ccd50738db28d4` |
 | old s | `runs/drone4_bal_backup.aVl2ZP/best.pt` | `cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900` |
 | new s | `runs/s_detfly_new/weights/best.pt` | `e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10` |
 | old m | `model_size_benchmark/train/m_batch4/weights/best.pt` | `f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53` |

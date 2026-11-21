@@ -3,9 +3,46 @@
   "old_n": "1888527f1b8f5fd55c977d56fe99a68dd00f86b23571ebd828782a6d7164e8a9",
   "old_s": "cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900",
   "old_m": "f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53",
-  "new_s": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10"
+  "new_s": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10",
+  "new_n": "70594b6f3961b5edfb26b3135bfbc0732e9f97f3e9e9129d92ccd50738db28d4"
  },
  "train_new": {
+  "n": {
+   "epochs_completed": 182,
+   "best_epoch": 158,
+   "best_epoch_source": "max fitness (0.1 mAP50 + 0.9 mAP50-95) in results.csv",
+   "best_val_mAP50": 0.84971,
+   "best_val_mAP50-95": 0.62084,
+   "csv_elapsed_hours": 7.002777777777778,
+   "log_hours": 7.003,
+   "stop_reason": "time cap / epoch limit",
+   "requested": {
+    "epochs": 150,
+    "time": 7.0,
+    "patience": 30,
+    "batch": 8,
+    "imgsz": 1280,
+    "seed": 0,
+    "nbs": 64,
+    "model": "/home/soham/github/drone-range-ekf/model_size_benchmark/pretrained/yolo26n.pt",
+    "data": "/home/soham/github/drone-range-ekf/data/yolo/new_drone4_detfly.yaml"
+   },
+   "batch_reductions": [],
+   "sec_per_epoch_first5": [
+    147.516,
+    140.343,
+    139.409,
+    138.94700000000006,
+    138.78499999999997
+   ],
+   "size": "n",
+   "run": "runs/n_detfly_new",
+   "pretrained": "model_size_benchmark/pretrained/yolo26n.pt",
+   "pretrained_sha256": "9b09cc8bf347f0fc8a5f7657480587f25db09b34bf33b0652110fb03a8ad4fef",
+   "best_pt_sha256": "70594b6f3961b5edfb26b3135bfbc0732e9f97f3e9e9129d92ccd50738db28d4",
+   "time_cap_hours": 7.0,
+   "shortened": false
+  },
   "s": {
    "epochs_completed": 106,
    "best_epoch": 92,
@@ -45,7 +82,26 @@
  },
  "skipped": [],
  "decision": {
-  "n": null,
+  "n": {
+   "recall020_old": 0.45999131818839534,
+   "recall020_old_ci": [
+    0.39202992273303905,
+    0.521103165633993
+   ],
+   "recall020_new": 0.6841267544494285,
+   "recall020_new_ci": [
+    0.6122649016203704,
+    0.7458630580357143
+   ],
+   "recall_up_beyond_ci": true,
+   "dut_mAP50_old": 0.9759078638382447,
+   "dut_mAP50_new": 0.976221224351511,
+   "dut_mAP50_change": 0.0003133605132663586,
+   "false_drone_imgs_old": 9,
+   "false_drone_imgs_new": 7,
+   "false_drone_change": -2,
+   "rule_met": true
+  },
   "s": {
    "recall020_old": 0.44378526985964406,
    "recall020_old_ci": [
@@ -73,6 +129,96 @@
   "false_drone_increase_le": 5
  },
  "eval_points": {
+  "new_n_all4_test": {
+   "P": 0.9113786913056103,
+   "R": 0.8098552402639143,
+   "mAP50": 0.8563821756874106,
+   "mAP50-95": 0.6445425117908784
+  },
+  "new_n_dut_test": {
+   "P": 0.9829244829051922,
+   "R": 0.9621380846325167,
+   "mAP50": 0.976221224351511,
+   "mAP50-95": 0.727418680472189
+  },
+  "new_n_false_positives": {
+   "all_any_0.25": {
+    "images": 1534,
+    "images_with_fp": 7,
+    "false_drones": 9,
+    "on_labelled_object": 5,
+    "frac_images_with_fp": 0.0045632333767926985,
+    "false_drones_per_image": 0.005867014341590613
+   }
+  },
+  "new_n_test010": {
+   "point": {
+    "P@0.25": 0.8100929614873837,
+    "R@0.25": 0.7672955974842768,
+    "F1@0.25": 0.7881136950904394,
+    "mAP50": 0.6967082991467243,
+    "mAP50-95": 0.32328639597421455,
+    "tp@0.25": 1220,
+    "pred@0.25": 1506,
+    "gt": 1590
+   },
+   "ci95": {
+    "P@0.25": [
+     0.6966767522788865,
+     0.9185474868391708
+    ],
+    "R@0.25": [
+     0.6418344143081761,
+     0.8899064564923175
+    ],
+    "F1@0.25": [
+     0.6730091685330347,
+     0.8991228807560259
+    ],
+    "mAP50": [
+     0.5528522027499538,
+     0.8549522777527142
+    ],
+    "mAP50-95": [
+     0.19174053612916794,
+     0.5036255902092427
+    ]
+   }
+  },
+  "new_n_test020": {
+   "point": {
+    "P@0.25": 0.8964732650739476,
+    "R@0.25": 0.6841267544494285,
+    "F1@0.25": 0.7760361099712761,
+    "mAP50": 0.7301105493536566,
+    "mAP50-95": 0.34219299225985034,
+    "tp@0.25": 4728,
+    "pred@0.25": 5274,
+    "gt": 6911
+   },
+   "ci95": {
+    "P@0.25": [
+     0.8486899819952056,
+     0.9335906534453499
+    ],
+    "R@0.25": [
+     0.6122649016203704,
+     0.7458630580357143
+    ],
+    "F1@0.25": [
+     0.7187570285476946,
+     0.8234956362036432
+    ],
+    "mAP50": [
+     0.6618772605705758,
+     0.789800285032682
+    ],
+    "mAP50-95": [
+     0.3081730137805075,
+     0.3760154115878527
+    ]
+   }
+  },
   "new_s_all4_test": {
    "P": 0.9149469013914633,
    "R": 0.8255731730303288,
