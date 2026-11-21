@@ -65,6 +65,11 @@ HEADER_NOTES = [
     "> * 13,270 Det-Fly frames: 010 = 6,358, 020 = 6,912. Frame 020/0207614 is missing from the source release "
     "(its XML exists, the JPEG does not); 020_0201689 has no UAV box (kept as a background frame), so 020 has "
     "6,911 drone boxes.",
+    "> * **020 drones are much smaller** than the Det-Fly training frames: median √(w·h) after letterboxing to 1280 "
+    "is 16.6 px on 020 vs 34.6 px on the 010 train frames and 28.7 px on the 010 test block "
+    "(`presentation_assets_v2/dataset_stats.md`), so 020 is also a harder, smaller-object test.",
+    "> * The XML `<folder>` field marks Det-Fly's own authors' split (most 010 frames 'train', later ones 'test'); "
+    "it is not used here — the split is the time-block split in `detfly_split.json`.",
     "> * Split (`detfly_split.json`): 010 cut at 60 %/75 % of its frames, 200-frame buffers dropped from the end "
     "of the train and val blocks, train and val subsampled with stride 2 → 1,808 train / 377 val frames; "
     "010 test = last 25 % (1,590 frames, all kept); 020 = 6,912 test frames, never trained or validated on.",

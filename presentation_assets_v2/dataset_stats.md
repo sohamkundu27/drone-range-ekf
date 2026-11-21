@@ -1,0 +1,43 @@
+# Dataset statistics (Det-Fly retrain)
+
+> Reading of the request: the old file had no literal "images · boxes" table, so Table 1 gives the training/validation/test composition in that form, and Table 2 keeps the old detailed per-split table (identical columns and code) with the new Det-Fly rows added.
+
+## Table 1 — images · boxes (all classes); drone boxes in brackets
+
+| set | DUT Anti-UAV | COCO | Open Images | Det-Fly | Det-Fly prelim (old) | **total** | drone share of images |
+|---|---|---|---|---|---|---|---|
+| OLD train | 5,200 · 5,243 [5,243] | 2,159 · 5,617 [0] | 2,841 · 7,266 [0] | — | — | **10,200 · 18,126 [5,243]** | 51.0% |
+| NEW train | 5,200 · 5,243 [5,243] | 2,159 · 5,617 [0] | 2,841 · 7,266 [0] | 1,808 · 1,808 [1,808] | — | **12,008 · 19,934 [7,051]** | 58.3% |
+| OLD val | 2,600 · 2,620 [2,620] | 604 · 1,178 [0] | 1,112 · 1,569 [0] | — | — | **4,316 · 5,367 [2,620]** | 60.2% |
+| NEW val | 2,600 · 2,620 [2,620] | 604 · 1,178 [0] | 1,112 · 1,569 [0] | 377 · 377 [377] | — | **4,693 · 5,744 [2,997]** | 63.4% |
+| test: DUT+COCO+OI (all4) | 2,200 · 2,245 [2,245] | 209 · 376 [0] | 1,325 · 1,766 [0] | — | — | **3,734 · 4,387 [2,245]** | 58.9% |
+| test: Det-Fly 010 block | — | — | — | 1,590 · 1,590 [1,590] | — | **1,590 · 1,590 [1,590]** | 100.0% |
+| test: Det-Fly 020 | — | — | — | 6,912 · 6,911 [6,911] | — | **6,912 · 6,911 [6,911]** | 100.0% |
+| test: Det-Fly preliminary (old) | — | — | — | — | 1,000 · 1,000 [1,000] | **1,000 · 1,000 [1,000]** | 100.0% |
+
+Train lists: OLD = `data/yolo/drone4_bal_train.txt` (5,200 DUT drone images + 5,000 hard negatives); NEW = that list + 1,808 Det-Fly 010 frames (`detfly_split.json`). DUT train images: 5,200 with 5,243 drone boxes (3 are background-only).
+
+## Table 2 — per-split detail (box sizes in ORIGINAL pixels; @640/@1280 = after letterboxing)
+
+| dataset | split | images | bg imgs | drone | bird | airplane | helicopter | med w px | med h px | med sqrt(wh) px | <16px | <32px | med @640 | med @1280 | typical res |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| coco | all | 6137 | 0 | 0 | 7121 | 5191 | 0 | 90.0 | 63.3 | 76.7 | 16% | 29% | 78.4 | 156.8 | 640x480 |
+| coco | test | 209 | 0 | 0 | 233 | 143 | 0 | 89.8 | 68.3 | 81.4 | 16% | 28% | 81.4 | 162.7 | 640x427 |
+| coco | train | 5324 | 0 | 0 | 6215 | 4543 | 0 | 89.0 | 63.1 | 75.8 | 16% | 29% | 77.5 | 155.0 | 640x480 |
+| coco | val | 604 | 0 | 0 | 673 | 505 | 0 | 104.9 | 64.1 | 84.0 | 13% | 27% | 86.1 | 172.1 | 640x480 |
+| detfly | all | 1000 | 0 | 1000 | 0 | 0 | 0 | 138.0 | 109.0 | 122.0 | 0% | 0% | 20.3 | 40.7 | 3840x2160 |
+| detfly | test | 1000 | 0 | 1000 | 0 | 0 | 0 | 138.0 | 109.0 | 122.0 | 0% | 0% | 20.3 | 40.7 | 3840x2160 |
+| detfly_full | test010 | 1590 | 0 | 1590 | 0 | 0 | 0 | 109.0 | 69.0 | 86.0 | 1% | 4% | 14.3 | 28.7 | 3840x2160 |
+| detfly_full | test020 | 6912 | 1 | 6911 | 0 | 0 | 0 | 74.0 | 33.0 | 49.8 | 1% | 19% | 8.3 | 16.6 | 3840x2160 |
+| detfly_full | train | 1808 | 0 | 1808 | 0 | 0 | 0 | 139.0 | 69.0 | 103.8 | 0% | 1% | 17.3 | 34.6 | 3840x2160 |
+| detfly_full | val | 377 | 0 | 377 | 0 | 0 | 0 | 166.0 | 88.0 | 108.4 | 0% | 9% | 18.1 | 36.1 | 3840x2160 |
+| dut_anti_uav | all | 10000 | 3 | 10108 | 0 | 0 | 0 | 44.0 | 24.0 | 32.3 | 6% | 49% | 10.8 | 21.7 | 1920x1080 |
+| dut_anti_uav | test | 2200 | 0 | 2245 | 0 | 0 | 0 | 55.0 | 30.0 | 40.9 | 4% | 38% | 14.5 | 29.0 | 1920x1080 |
+| dut_anti_uav | train | 5200 | 3 | 5243 | 0 | 0 | 0 | 43.0 | 23.0 | 31.1 | 7% | 52% | 10.4 | 20.9 | 1920x1080 |
+| dut_anti_uav | val | 2600 | 0 | 2620 | 0 | 0 | 0 | 42.0 | 23.0 | 30.8 | 7% | 53% | 10.3 | 20.6 | 1920x1080 |
+| openimages | all | 10502 | 0 | 0 | 9351 | 6483 | 3273 | 310.8 | 211.2 | 266.4 | 2% | 7% | 166.5 | 332.9 | 1024x683 |
+| openimages | test | 1325 | 0 | 0 | 783 | 592 | 391 | 681.8 | 369.6 | 509.2 | 1% | 2% | 318.4 | 636.7 | 1024x683 |
+| openimages | train | 8065 | 0 | 0 | 7744 | 5280 | 2748 | 252.2 | 174.4 | 208.9 | 2% | 8% | 130.5 | 261.1 | 1024x683 |
+| openimages | val | 1112 | 0 | 0 | 824 | 611 | 134 | 584.3 | 335.5 | 475.0 | 0% | 1% | 296.8 | 593.7 | 1024x683 |
+
+Rows other than `detfly_full/*` are copied from `figures/dataset_stats.json` (unchanged data). `detfly` = the old 1,000-frame preliminary slice; `detfly_full` = the full release split by `scripts/build_detfly_split.py`.

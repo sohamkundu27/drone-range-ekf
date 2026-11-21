@@ -3,6 +3,8 @@
 > **Read first (choices made without asking, per instructions):**
 > * **020 is the same site as 010** (same hill, buildings, sports courts and dusk light in sampled frames; both 3840×2160). It is treated as a *later part of the same recording*, not an independent cross-site test. Det-Fly as a whole is still a different dataset/camera from the DUT training data.
 > * 13,270 Det-Fly frames: 010 = 6,358, 020 = 6,912. Frame 020/0207614 is missing from the source release (its XML exists, the JPEG does not); 020_0201689 has no UAV box (kept as a background frame), so 020 has 6,911 drone boxes.
+> * **020 drones are much smaller** than the Det-Fly training frames: median √(w·h) after letterboxing to 1280 is 16.6 px on 020 vs 34.6 px on the 010 train frames and 28.7 px on the 010 test block (`presentation_assets_v2/dataset_stats.md`), so 020 is also a harder, smaller-object test.
+> * The XML `<folder>` field marks Det-Fly's own authors' split (most 010 frames 'train', later ones 'test'); it is not used here — the split is the time-block split in `detfly_split.json`.
 > * Split (`detfly_split.json`): 010 cut at 60 %/75 % of its frames, 200-frame buffers dropped from the end of the train and val blocks, train and val subsampled with stride 2 → 1,808 train / 377 val frames; 010 test = last 25 % (1,590 frames, all kept); 020 = 6,912 test frames, never trained or validated on.
 > * Protocol: Ultralytics val, imgsz 1280, batch 8, conf 0.001, NMS IoU 0.7 (as detector/eval.py), drone class only. P/R/F1 at confidence ≥ 0.25 with IoU ≥ 0.5 matching (recomputed from the validator's own matches). 95 % CI = block bootstrap, 100-frame time-ordered chunks, 1,000 resamples, percentile.
 > * NEW = same recipe as the old run (saved `args.yaml` of the old s run, as used by the old n/m benchmark), with 1,808 Det-Fly train frames added to training and 377 Det-Fly val frames added to validation (early stopping / best.pt selection therefore also sees Det-Fly val; the old runs did not).
@@ -23,8 +25,8 @@
 | old n | 010 test block | | pending | pending | pending | pending | pending |
 | **new n** | 020 (all frames) | | pending | pending | pending | pending | pending |
 | **new n** | 010 test block | | pending | pending | pending | pending | pending |
-| old s | 020 (all frames) | | pending | pending | pending | pending | pending |
-| old s | 010 test block | | pending | pending | pending | pending | pending |
+| old s | 020 (all frames) | 6912 | 0.741 [0.682, 0.798] | 0.444 [0.375, 0.506] | 0.555 [0.489, 0.613] | 0.497 [0.417, 0.572] | 0.271 [0.224, 0.322] |
+| old s | 010 test block | 1590 | 0.854 [0.780, 0.924] | 0.667 [0.524, 0.796] | 0.749 [0.643, 0.842] | 0.673 [0.527, 0.806] | 0.278 [0.212, 0.352] |
 | **new s** | 020 (all frames) | | pending | pending | pending | pending | pending |
 | **new s** | 010 test block | | pending | pending | pending | pending | pending |
 | old m | 020 (all frames) | | pending | pending | pending | pending | pending |
@@ -40,7 +42,11 @@ P/R are Ultralytics' values at the max-F1 confidence (as in all earlier eval_*.j
 |---|---|---|---|---|---|
 | old n | all | pending | | | |
 | new n | all | pending | | | |
-| old s | all | pending | | | |
+| old s | **overall** | 0.916 | 0.807 | 0.861 | 0.660 |
+| old s | drone | 0.987 | 0.967 | 0.979 | 0.749 |
+| old s | bird | 0.816 | 0.591 | 0.664 | 0.449 |
+| old s | airplane | 0.914 | 0.767 | 0.856 | 0.684 |
+| old s | helicopter | 0.949 | 0.903 | 0.944 | 0.759 |
 | new s | all | pending | | | |
 | old m | all | pending | | | |
 | new m | all | pending | | | |
@@ -51,7 +57,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 |---|---|---|---|---|
 | old n | pending | | | |
 | new n | pending | | | |
-| old s | pending | | | |
+| old s | 0.987 | 0.967 | 0.979 | 0.749 |
 | new s | pending | | | |
 | old m | pending | | | |
 | new m | pending | | | |
@@ -62,7 +68,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 |---|---|---|---|
 | old n | pending | | |
 | new n | pending | | |
-| old s | pending | | |
+| old s | 5 | 1534 | 5 |
 | new s | pending | | |
 | old m | pending | | |
 | new m | pending | | |

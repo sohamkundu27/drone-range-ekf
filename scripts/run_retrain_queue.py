@@ -33,7 +33,7 @@ OLD_W = {"s": "runs/drone4_bal_backup.aVl2ZP/best.pt",
          "m": "model_size_benchmark/train/m_batch4/weights/best.pt"}
 BATCH = {"s": 8, "n": 8, "m": 4}
 ORDER = ["s", "n", "m"]
-OLD_CAP_H, EVAL_H, FINAL_H, SAFETY_H = 7.0, 0.75, 3.0, 1.5
+OLD_CAP_H, EVAL_H, FINAL_H, SAFETY_H = 7.0, 0.75, 3.0, 2.0  # SAFETY also covers the mid-queue assets_s stage
 STATE = {"stage": "starting", "detail": ""}
 
 
@@ -307,6 +307,19 @@ def stage_eval_new(size):
     push(f"Det-Fly retrain: new {size} trained and evaluated (DETFLY_RETRAIN_RESULTS.md)")
 
 
+def stage_assets_s():
+    """Slide assets for the new s right after it is evaluated (refreshed again in stage_final)."""
+    if done("assets_s") or done("skipped_s") or not done("eval_new_s"):
+        return
+    STATE.update(stage="assets_s (slide assets v2 from new s + sim with its noise)", detail="")
+    write_status()
+    rc = run(["bash", str(ROOT / "scripts" / "new_final_assets.sh")], "assets_s")
+    if rc != 0:
+        note(f"slide-asset script (after new s) exited with {rc} (see logs/assets_s.log); partial assets pushed")
+    mark("assets_s")
+    push("Det-Fly retrain: slide assets v2 + sim rerun from new s (presentation_assets_v2/NUMBERS.md)")
+
+
 def stage_final():
     if done("final"):
         return
@@ -334,6 +347,8 @@ def main():
         for s in ORDER:
             stage_train(s)
             stage_eval_new(s)
+            if s == "s":
+                stage_assets_s()
         stage_final()
         STATE.update(stage="DONE")
         push("STATUS: DONE")
