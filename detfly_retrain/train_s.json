@@ -1,0 +1,35 @@
+{
+ "epochs_completed": 106,
+ "best_epoch": 92,
+ "best_epoch_source": "max fitness (0.1 mAP50 + 0.9 mAP50-95) in results.csv",
+ "best_val_mAP50": 0.85286,
+ "best_val_mAP50-95": 0.64094,
+ "csv_elapsed_hours": 7.006472222222222,
+ "log_hours": 7.007,
+ "stop_reason": "time cap / epoch limit",
+ "requested": {
+  "epochs": 150,
+  "time": 7.0,
+  "patience": 30,
+  "batch": 8,
+  "imgsz": 1280,
+  "seed": 0,
+  "nbs": 64,
+  "model": "/home/soham/github/drone-range-ekf/yolo26s.pt",
+  "data": "/home/soham/github/drone-range-ekf/data/yolo/new_drone4_detfly.yaml"
+ },
+ "batch_reductions": [],
+ "sec_per_epoch_first5": [
+  249.359,
+  244.48,
+  238.98399999999998,
+  238.58900000000006,
+  238.36799999999994
+ ],
+ "size": "s",
+ "run": "runs/s_detfly_new",
+ "pretrained": "yolo26s.pt",
+ "pretrained_sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+ "best_pt_sha256": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10",
+ "time_cap_hours": 7.0
+}

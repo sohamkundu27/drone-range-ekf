@@ -1,0 +1,168 @@
+{
+ "weights": "/home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt",
+ "imgsz": 1280,
+ "groups": {
+  "coco/bird": {
+   "0.25": {
+    "images": 112,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   },
+   "0.5": {
+    "images": 112,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   }
+  },
+  "all/bird": {
+   "0.25": {
+    "images": 612,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   },
+   "0.5": {
+    "images": 612,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   }
+  },
+  "all/any": {
+   "0.25": {
+    "images": 1534,
+    "images_with_fp": 8,
+    "false_drones": 9,
+    "on_labelled_object": 6,
+    "frac_images_with_fp": 0.005215123859191656,
+    "false_drones_per_image": 0.005867014341590613
+   },
+   "0.5": {
+    "images": 1534,
+    "images_with_fp": 1,
+    "false_drones": 1,
+    "on_labelled_object": 1,
+    "frac_images_with_fp": 0.000651890482398957,
+    "false_drones_per_image": 0.000651890482398957
+   }
+  },
+  "coco/airplane": {
+   "0.25": {
+    "images": 97,
+    "images_with_fp": 1,
+    "false_drones": 1,
+    "on_labelled_object": 1,
+    "frac_images_with_fp": 0.010309278350515464,
+    "false_drones_per_image": 0.010309278350515464
+   },
+   "0.5": {
+    "images": 97,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   }
+  },
+  "all/airplane": {
+   "0.25": {
+    "images": 597,
+    "images_with_fp": 5,
+    "false_drones": 5,
+    "on_labelled_object": 2,
+    "frac_images_with_fp": 0.008375209380234505,
+    "false_drones_per_image": 0.008375209380234505
+   },
+   "0.5": {
+    "images": 597,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   }
+  },
+  "openimages/bird": {
+   "0.25": {
+    "images": 500,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   },
+   "0.5": {
+    "images": 500,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   }
+  },
+  "openimages/airplane": {
+   "0.25": {
+    "images": 500,
+    "images_with_fp": 4,
+    "false_drones": 4,
+    "on_labelled_object": 1,
+    "frac_images_with_fp": 0.008,
+    "false_drones_per_image": 0.008
+   },
+   "0.5": {
+    "images": 500,
+    "images_with_fp": 0,
+    "false_drones": 0,
+    "on_labelled_object": 0,
+    "frac_images_with_fp": 0.0,
+    "false_drones_per_image": 0.0
+   }
+  },
+  "openimages/helicopter": {
+   "0.25": {
+    "images": 358,
+    "images_with_fp": 4,
+    "false_drones": 5,
+    "on_labelled_object": 5,
+    "frac_images_with_fp": 0.0111731843575419,
+    "false_drones_per_image": 0.013966480446927373
+   },
+   "0.5": {
+    "images": 358,
+    "images_with_fp": 1,
+    "false_drones": 1,
+    "on_labelled_object": 1,
+    "frac_images_with_fp": 0.002793296089385475,
+    "false_drones_per_image": 0.002793296089385475
+   }
+  },
+  "all/helicopter": {
+   "0.25": {
+    "images": 358,
+    "images_with_fp": 4,
+    "false_drones": 5,
+    "on_labelled_object": 5,
+    "frac_images_with_fp": 0.0111731843575419,
+    "false_drones_per_image": 0.013966480446927373
+   },
+   "0.5": {
+    "images": 358,
+    "images_with_fp": 1,
+    "false_drones": 1,
+    "on_labelled_object": 1,
+    "frac_images_with_fp": 0.002793296089385475,
+    "false_drones_per_image": 0.002793296089385475
+   }
+  }
+ }
+}
