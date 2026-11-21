@@ -1,0 +1,26 @@
+{
+ "tag": "old_s_dut_test",
+ "weights": "/home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt",
+ "data": "data/yolo/dut_anti_uav.yaml",
+ "split": "test",
+ "imgsz": 1280,
+ "mAP50": 0.9791816086744017,
+ "mAP50-95": 0.7490165422829068,
+ "P": 0.9871257892355033,
+ "R": 0.9670378619153674,
+ "per_class": {
+  "drone": {
+   "P": 0.9871257892355033,
+   "R": 0.9670378619153674,
+   "mAP50": 0.9791816086744017,
+   "mAP50-95": 0.7490165422829068,
+   "n_instances": 2245
+  }
+ },
+ "speed_ms_per_image": {
+  "preprocess": 0.5045056448910724,
+  "inference": 4.847853371704167,
+  "loss": 0.00035547905347564006,
+  "postprocess": 0.2588502791794864
+ }
+}

@@ -1,0 +1,89 @@
+{
+ "old_n": {
+  "dut_drone_mAP50": "n/a",
+  "all4_mAP50": "n/a",
+  "detfly020_R@0.25": "n/a",
+  "detfly020_R_ci95": "n/a",
+  "detfly020_mAP50": "n/a",
+  "detfly010_R@0.25": "n/a",
+  "detfly010_mAP50": "n/a",
+  "false_drone_images": "n/a",
+  "params": "2390464",
+  "gflops_1280": "22.9872128",
+  "pytorch_fp16_ms": "4.499312411062419",
+  "latency_note": "old measurement reused (same architecture)"
+ },
+ "new_n": {
+  "dut_drone_mAP50": "n/a",
+  "all4_mAP50": "n/a",
+  "detfly020_R@0.25": "n/a",
+  "detfly020_R_ci95": "n/a",
+  "detfly020_mAP50": "n/a",
+  "detfly010_R@0.25": "n/a",
+  "detfly010_mAP50": "n/a",
+  "false_drone_images": "n/a",
+  "params": "2390464",
+  "gflops_1280": "22.9872128",
+  "pytorch_fp16_ms": "4.499312411062419",
+  "latency_note": "old measurement reused (same architecture)"
+ },
+ "old_s": {
+  "dut_drone_mAP50": "n/a",
+  "all4_mAP50": 0.8608131353848335,
+  "detfly020_R@0.25": 0.44378526985964406,
+  "detfly020_R_ci95": [
+   0.3749844253884491,
+   0.5058680696735572
+  ],
+  "detfly020_mAP50": 0.4970544049389195,
+  "detfly010_R@0.25": 0.6666666666666666,
+  "detfly010_mAP50": 0.672527941092228,
+  "false_drone_images": "n/a",
+  "params": "9466728",
+  "gflops_1280": "86.028288",
+  "pytorch_fp16_ms": "5.337705845013261",
+  "latency_note": "old measurement reused (same architecture)"
+ },
+ "new_s": {
+  "dut_drone_mAP50": "n/a",
+  "all4_mAP50": "n/a",
+  "detfly020_R@0.25": "n/a",
+  "detfly020_R_ci95": "n/a",
+  "detfly020_mAP50": "n/a",
+  "detfly010_R@0.25": "n/a",
+  "detfly010_mAP50": "n/a",
+  "false_drone_images": "n/a",
+  "params": "9466728",
+  "gflops_1280": "86.028288",
+  "pytorch_fp16_ms": "5.337705845013261",
+  "latency_note": "old measurement reused (same architecture)"
+ },
+ "old_m": {
+  "dut_drone_mAP50": "n/a",
+  "all4_mAP50": "n/a",
+  "detfly020_R@0.25": "n/a",
+  "detfly020_R_ci95": "n/a",
+  "detfly020_mAP50": "n/a",
+  "detfly010_R@0.25": "n/a",
+  "detfly010_mAP50": "n/a",
+  "false_drone_images": "n/a",
+  "params": "20352536",
+  "gflops_1280": "275.3445888",
+  "pytorch_fp16_ms": "8.7681251950562",
+  "latency_note": "old measurement reused (same architecture)"
+ },
+ "new_m": {
+  "dut_drone_mAP50": "n/a",
+  "all4_mAP50": "n/a",
+  "detfly020_R@0.25": "n/a",
+  "detfly020_R_ci95": "n/a",
+  "detfly020_mAP50": "n/a",
+  "detfly010_R@0.25": "n/a",
+  "detfly010_mAP50": "n/a",
+  "false_drone_images": "n/a",
+  "params": "20352536",
+  "gflops_1280": "275.3445888",
+  "pytorch_fp16_ms": "8.7681251950562",
+  "latency_note": "old measurement reused (same architecture)"
+ }
+}
