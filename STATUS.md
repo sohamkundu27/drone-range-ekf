@@ -1,11 +1,11 @@
 # STATUS — Det-Fly retrain queue
 
-Updated: Sat 2026-11-21 11:57 CST. Deadline: Sun 2026-11-22 22:00 CST.
+Updated: Sat 2026-11-21 13:57 CST. Deadline: Sun 2026-11-22 22:00 CST.
 
 **Stage: train_n**
 
-* Training s: epoch 106 done, 7.01 h elapsed, 4.0 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.641 (epoch 92), ETA (time cap, earlier if early stopping) Sat 11:57 CST
-* Training n: epoch 51 done, 1.97 h elapsed, 2.3 min/epoch, time cap 7.0 h, latest val mAP50 0.828, best val mAP50-95 0.580 (epoch 50), ETA (time cap, earlier if early stopping) Sat 16:59 CST
+* Training s: epoch 106 done, 7.01 h elapsed, 4.0 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.641 (epoch 92), ETA (time cap, earlier if early stopping) Sat 13:57 CST
+* Training n: epoch 103 done, 3.97 h elapsed, 2.3 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.614 (epoch 102), ETA (time cap, earlier if early stopping) Sat 16:59 CST
 
 ## Finished stages
 
