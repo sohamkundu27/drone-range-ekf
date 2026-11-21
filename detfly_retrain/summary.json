@@ -2,13 +2,70 @@
  "sha": {
   "old_n": "1888527f1b8f5fd55c977d56fe99a68dd00f86b23571ebd828782a6d7164e8a9",
   "old_s": "cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900",
-  "old_m": "f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53"
+  "old_m": "f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53",
+  "new_s": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10"
  },
- "train_new": {},
+ "train_new": {
+  "s": {
+   "epochs_completed": 106,
+   "best_epoch": 92,
+   "best_epoch_source": "max fitness (0.1 mAP50 + 0.9 mAP50-95) in results.csv",
+   "best_val_mAP50": 0.85286,
+   "best_val_mAP50-95": 0.64094,
+   "csv_elapsed_hours": 7.006472222222222,
+   "log_hours": 7.007,
+   "stop_reason": "time cap / epoch limit",
+   "requested": {
+    "epochs": 150,
+    "time": 7.0,
+    "patience": 30,
+    "batch": 8,
+    "imgsz": 1280,
+    "seed": 0,
+    "nbs": 64,
+    "model": "/home/soham/github/drone-range-ekf/yolo26s.pt",
+    "data": "/home/soham/github/drone-range-ekf/data/yolo/new_drone4_detfly.yaml"
+   },
+   "batch_reductions": [],
+   "sec_per_epoch_first5": [
+    249.359,
+    244.48,
+    238.98399999999998,
+    238.58900000000006,
+    238.36799999999994
+   ],
+   "size": "s",
+   "run": "runs/s_detfly_new",
+   "pretrained": "yolo26s.pt",
+   "pretrained_sha256": "646f8bc3fe0a656803d95c294f7852321748cb29d13466a1af8862e2db384a1b",
+   "best_pt_sha256": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10",
+   "time_cap_hours": 7.0,
+   "shortened": false
+  }
+ },
  "skipped": [],
  "decision": {
   "n": null,
-  "s": null,
+  "s": {
+   "recall020_old": 0.44378526985964406,
+   "recall020_old_ci": [
+    0.3749844253884491,
+    0.5058680696735572
+   ],
+   "recall020_new": 0.71118506728404,
+   "recall020_new_ci": [
+    0.6492159169940734,
+    0.7684759872775574
+   ],
+   "recall_up_beyond_ci": true,
+   "dut_mAP50_old": 0.9791816086744017,
+   "dut_mAP50_new": 0.9803024280213741,
+   "dut_mAP50_change": 0.0011208193469723904,
+   "false_drone_imgs_old": 5,
+   "false_drone_imgs_new": 8,
+   "false_drone_change": 3,
+   "rule_met": true
+  },
   "m": null
  },
  "decision_tolerances": {
@@ -16,6 +73,96 @@
   "false_drone_increase_le": 5
  },
  "eval_points": {
+  "new_s_all4_test": {
+   "P": 0.9149469013914633,
+   "R": 0.8255731730303288,
+   "mAP50": 0.8611441089538925,
+   "mAP50-95": 0.661595373403619
+  },
+  "new_s_dut_test": {
+   "P": 0.9848513435856745,
+   "R": 0.9732739420935412,
+   "mAP50": 0.9803024280213741,
+   "mAP50-95": 0.7428321839703744
+  },
+  "new_s_false_positives": {
+   "all_any_0.25": {
+    "images": 1534,
+    "images_with_fp": 8,
+    "false_drones": 9,
+    "on_labelled_object": 6,
+    "frac_images_with_fp": 0.005215123859191656,
+    "false_drones_per_image": 0.005867014341590613
+   }
+  },
+  "new_s_test010": {
+   "point": {
+    "P@0.25": 0.7904699738903395,
+    "R@0.25": 0.7616352201257862,
+    "F1@0.25": 0.7757847533632287,
+    "mAP50": 0.6774141100897,
+    "mAP50-95": 0.34262108051137086,
+    "tp@0.25": 1211,
+    "pred@0.25": 1532,
+    "gt": 1590
+   },
+   "ci95": {
+    "P@0.25": [
+     0.6734610813642927,
+     0.905371939579539
+    ],
+    "R@0.25": [
+     0.633317610062893,
+     0.8893858479299364
+    ],
+    "F1@0.25": [
+     0.6556846843631439,
+     0.8914245936183023
+    ],
+    "mAP50": [
+     0.5099861747037479,
+     0.8422200679497113
+    ],
+    "mAP50-95": [
+     0.19923188356899288,
+     0.5188701382406679
+    ]
+   }
+  },
+  "new_s_test020": {
+   "point": {
+    "P@0.25": 0.924045873284452,
+    "R@0.25": 0.71118506728404,
+    "F1@0.25": 0.803761242845462,
+    "mAP50": 0.7523103830546841,
+    "mAP50-95": 0.3576369452769596,
+    "tp@0.25": 4915,
+    "pred@0.25": 5319,
+    "gt": 6911
+   },
+   "ci95": {
+    "P@0.25": [
+     0.904817783285364,
+     0.9422558970682655
+    ],
+    "R@0.25": [
+     0.6492159169940734,
+     0.7684759872775574
+    ],
+    "F1@0.25": [
+     0.7592053064028585,
+     0.844019511888338
+    ],
+    "mAP50": [
+     0.6924361511949078,
+     0.8040133093263505
+    ],
+    "mAP50-95": [
+     0.3270363648631136,
+     0.38916276579557324
+    ]
+   }
+  },
   "old_m_all4_test": {
    "P": 0.9172384033420848,
    "R": 0.8148974475486097,

@@ -1,0 +1,26 @@
+{
+ "tag": "new_s_dut_test",
+ "weights": "/home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt",
+ "data": "data/yolo/dut_anti_uav.yaml",
+ "split": "test",
+ "imgsz": 1280,
+ "mAP50": 0.9803024280213741,
+ "mAP50-95": 0.7428321839703744,
+ "P": 0.9848513435856745,
+ "R": 0.9732739420935412,
+ "per_class": {
+  "drone": {
+   "P": 0.9848513435856745,
+   "R": 0.9732739420935412,
+   "mAP50": 0.9803024280213741,
+   "mAP50-95": 0.7428321839703744,
+   "n_instances": 2245
+  }
+ },
+ "speed_ms_per_image": {
+  "preprocess": 0.5377354422076182,
+  "inference": 4.857632334090092,
+  "loss": 0.0003611804409460588,
+  "postprocess": 0.25745329658754845
+ }
+}
