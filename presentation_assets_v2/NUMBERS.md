@@ -65,6 +65,8 @@ Read this first. NEW = YOLO26s retrained with 1,808 Det-Fly 010 frames added (sa
 | Model-truth weaving 80m: ANEES pos | 4.83 | 4.80 | `experiments/results_sim.json` → `experiments/new_results/results_sim.json` [E_model_truth_weaving_80m] |
 | Model-truth weaving 150m: ANEES range (slide 22) | 7.24 | 9.71 | `experiments/results_sim.json` → `experiments/new_results/results_sim.json` [E_model_truth_weaving_150m] |
 | Model-truth weaving 150m: ANEES pos | 10.01 | 11.05 | `experiments/results_sim.json` → `experiments/new_results/results_sim.json` [E_model_truth_weaving_150m] |
+| Sim: detector noise changed? | — | barely (σ within ~±10 %, recall ±0.01) | `experiments/new_results/COMPARISON.md` (scripts/new_sim_compare.py) |
+| Sim caveat: weaving + size prior ANEES jump | 3.92 | 22.53, driven by ONE run (mean NEES ~3,478); without it 3.61 → 3.76 | `experiments/new_results/COMPARISON.md` |
 | NaN runs (of 9,600) (slide 23) | 321 | 315 | `experiments/nan_runs.json` → `experiments/new_results/nan_runs.json` |
 | Confusion @0.25 (old val split): false drones on background / missed drones | 90 / 139 | 75 / 148 | `presentation_assets/confusion_matrix_conf025.json` → `presentation_assets_v2/…` (detector/confusion_matrix_conf.py) |
 
