@@ -1,0 +1,24 @@
+{
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt",
+  "data": "detfly",
+  "split": "test",
+  "imgsz": 1280,
+  "batch": 8,
+  "conf": 0.001,
+  "iou": 0.7,
+  "overall": {
+    "P": 0.7375303217718925,
+    "R": 0.2725671632115101,
+    "mAP50": 0.3050847901848175,
+    "mAP50-95": 0.11332321525616976
+  },
+  "per_class": {
+    "drone": {
+      "P": 0.7375303217718925,
+      "R": 0.2725671632115101,
+      "mAP50": 0.3050847901848175,
+      "mAP50-95": 0.11332321525616976,
+      "instances": 1000
+    }
+  }
+}

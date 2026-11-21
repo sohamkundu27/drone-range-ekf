@@ -1,0 +1,62 @@
+{
+ "pytorch_fp32": {
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt",
+  "imgsz": 1280,
+  "half": false,
+  "n_images": 200,
+  "mean_ms": 4.668648545630276,
+  "p50_ms": 4.945823457092047,
+  "p95_ms": 5.07103456184268,
+  "fps": 214.19474827163245,
+  "preprocess_ms": 1.2397642666473985,
+  "inference_ms": 2.8876529447734356,
+  "postprocess_ms": 0.3791965916752815,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ },
+ "pytorch_fp16": {
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt",
+  "imgsz": 1280,
+  "half": true,
+  "n_images": 200,
+  "mean_ms": 4.499312411062419,
+  "p50_ms": 4.787033889442682,
+  "p95_ms": 4.876226605847478,
+  "fps": 222.25618242052028,
+  "preprocess_ms": 1.2330446392297745,
+  "inference_ms": 2.7086474001407623,
+  "postprocess_ms": 0.3949614567682147,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ },
+ "onnx_fp32": {
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/n/artifacts/fp32/best.onnx",
+  "imgsz": 1280,
+  "half": false,
+  "n_images": 200,
+  "mean_ms": 6.490783481858671,
+  "p50_ms": 6.825326941907406,
+  "p95_ms": 6.893785111606121,
+  "fps": 154.06460603638016,
+  "preprocess_ms": 1.5296027576550841,
+  "inference_ms": 4.388228924944997,
+  "postprocess_ms": 0.4150534188374877,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ },
+ "onnx_fp16": {
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/n/artifacts/fp16/best.onnx",
+  "imgsz": 1280,
+  "half": true,
+  "n_images": 200,
+  "mean_ms": 5.3991014417260885,
+  "p50_ms": 5.695577245205641,
+  "p95_ms": 6.04536784812808,
+  "fps": 185.21600506922513,
+  "preprocess_ms": 1.5015582041814923,
+  "inference_ms": 3.3030287828296423,
+  "postprocess_ms": 0.43430292047560215,
+  "gpu": "NVIDIA GeForce RTX 3080",
+  "note": "desktop GPU, batch 1, end-to-end predict() call incl. pre/post-processing"
+ }
+}

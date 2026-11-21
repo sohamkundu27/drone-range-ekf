@@ -1,0 +1,14 @@
+{
+  "run": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8",
+  "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt",
+  "batch": 8,
+  "nbs": 64,
+  "epochs_completed": 174,
+  "best_epoch": 144,
+  "best_validation_map5095": 0.63159,
+  "csv_elapsed_seconds": 20619.6,
+  "worker_train_seconds": 20636.759132836014,
+  "reused": false,
+  "deviation": "none",
+  "early_stopping": false
+}

@@ -1,5 +1,5 @@
 {
- "weights": "runs/detect/drone4_bal/weights/best.pt",
+ "weights": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/weights/best.pt",
  "imgsz": 1280,
  "groups": {
   "coco/bird": {

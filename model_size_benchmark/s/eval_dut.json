@@ -1,5 +1,11 @@
 {
-  "source": "experiments/eval_dut_test.json (historical; will be reevaluated)",
+  "weights": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/weights/best.pt",
+  "data": "dut_anti_uav",
+  "split": "test",
+  "imgsz": 1280,
+  "batch": 8,
+  "conf": 0.001,
+  "iou": 0.7,
   "overall": {
     "P": 0.9871257892355033,
     "R": 0.9670378619153674,
@@ -12,7 +18,7 @@
       "R": 0.9670378619153674,
       "mAP50": 0.9791816086744017,
       "mAP50-95": 0.7490165422829068,
-      "n_instances": 2245
+      "instances": 2245
     }
   }
 }
