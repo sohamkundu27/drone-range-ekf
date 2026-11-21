@@ -4,8 +4,13 @@ Input : data/raw/detfly/extracted/{JPEGImages,Annotations}/<seq>/<id>.{jpg,xml}
         (same layout as the official OneDrive folders; <seq> is 010 / 020)
 Output: data/yolo/detfly/{images,labels}/test
 Det-Fly is never placed in train/val: it is the cross-dataset generalisation test.
+Optional args (defaults reproduce the original preliminary conversion exactly):
+    python scripts/convert_detfly.py --src data/raw/detfly/full_release --dataset detfly_full --split all
+converts the full release with the same per-box logic; the train/val/test split of that
+output is defined later by scripts/build_detfly_split.py (frame-index blocks).
 The real image size is read from the JPEG header; the XML <size> is only cross-checked.
 """
+import argparse
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -19,6 +24,13 @@ SRC = RAW / "detfly" / "extracted"
 
 
 def main():
+    global SRC
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--src", default=str(SRC), help="folder with JPEGImages/ and Annotations/")
+    ap.add_argument("--dataset", default="detfly", help="output data/yolo/<dataset>")
+    ap.add_argument("--split", default="test", help="output split folder name")
+    args = ap.parse_args()
+    SRC = Path(args.src).resolve()
     n_img = n_box = n_noann = n_size_mismatch = 0
     for img_path in sorted((SRC / "JPEGImages").glob("*/*.jpg")):
         xml_path = SRC / "Annotations" / img_path.parent.name / f"{img_path.stem}.xml"
@@ -39,12 +51,12 @@ def main():
             if b:
                 rows.append((CLS["drone"], *b))
         stem = f"{img_path.parent.name}_{img_path.stem}"
-        img_dst, lbl_dst = out_paths("detfly", "test", stem)
+        img_dst, lbl_dst = out_paths(args.dataset, args.split, stem)
         link_or_copy(img_path, img_dst)
         write_label(lbl_dst, rows)
         n_img += 1
         n_box += len(rows)
-    print(f"Det-Fly: {n_img} test images, {n_box} drone boxes; "
+    print(f"Det-Fly ({SRC}): {n_img} {args.split} images, {n_box} drone boxes; "
           f"{n_noann} images without XML skipped; {n_size_mismatch} XML size mismatches")
 
 

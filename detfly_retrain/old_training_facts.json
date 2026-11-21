@@ -1,0 +1,89 @@
+{
+ "s": {
+  "epochs_completed": 106,
+  "best_epoch": 76,
+  "best_epoch_source": "log EarlyStopping line",
+  "best_val_mAP50": 0.8609,
+  "best_val_mAP50-95": 0.64647,
+  "csv_elapsed_hours": 6.021222222222223,
+  "log_hours": 6.021,
+  "stop_reason": "early stopping (patience)",
+  "requested": {
+   "epochs": 150,
+   "time": 7.0,
+   "patience": 30,
+   "batch": 8,
+   "imgsz": 1280,
+   "seed": 0,
+   "nbs": 64,
+   "model": "yolo26s.pt",
+   "data": "data/yolo/drone4_bal.yaml"
+  },
+  "batch_reductions": [],
+  "sec_per_epoch_first5": [
+   217.401,
+   209.858,
+   208.327,
+   204.976,
+   205.45799999999997
+  ]
+ },
+ "n": {
+  "epochs_completed": 174,
+  "best_epoch": 144,
+  "best_epoch_source": "log EarlyStopping line",
+  "best_val_mAP50": 0.85582,
+  "best_val_mAP50-95": 0.63159,
+  "csv_elapsed_hours": 5.727666666666666,
+  "log_hours": 5.728,
+  "stop_reason": "early stopping (patience)",
+  "requested": {
+   "epochs": 150,
+   "time": 7.0,
+   "patience": 30,
+   "batch": 8,
+   "imgsz": 1280,
+   "seed": 0,
+   "nbs": 64,
+   "model": "/home/soham/github/drone-range-ekf/model_size_benchmark/pretrained/yolo26n.pt",
+   "data": "data/yolo/drone4_bal.yaml"
+  },
+  "batch_reductions": [],
+  "sec_per_epoch_first5": [
+   126.203,
+   119.73599999999999,
+   118.84299999999999,
+   118.39800000000002,
+   118.66199999999998
+  ]
+ },
+ "m": {
+  "epochs_completed": 57,
+  "best_epoch": 56,
+  "best_epoch_source": "max fitness (0.1 mAP50 + 0.9 mAP50-95) in results.csv",
+  "best_val_mAP50": 0.85966,
+  "best_val_mAP50-95": 0.644,
+  "csv_elapsed_hours": 7.011444444444445,
+  "log_hours": 7.012,
+  "stop_reason": "time cap / epoch limit",
+  "requested": {
+   "epochs": 150,
+   "time": 7.0,
+   "patience": 30,
+   "batch": 4,
+   "imgsz": 1280,
+   "seed": 0,
+   "nbs": 64,
+   "model": "/home/soham/github/drone-range-ekf/model_size_benchmark/pretrained/yolo26m.pt",
+   "data": "data/yolo/drone4_bal.yaml"
+  },
+  "batch_reductions": [],
+  "sec_per_epoch_first5": [
+   456.368,
+   447.10600000000005,
+   445.0559999999999,
+   444.3900000000001,
+   444.5999999999999
+  ]
+ }
+}

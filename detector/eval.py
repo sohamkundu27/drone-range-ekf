@@ -24,12 +24,14 @@ def main():
     ap.add_argument("--batch", type=int, default=8)
     ap.add_argument("--conf", type=float, default=0.001)
     ap.add_argument("--device", default="0")
+    ap.add_argument("--out", default=None, help="output JSON (default experiments/eval_<tag>.json)")
+    ap.add_argument("--project", default=str(ROOT / "runs" / "val"), help="Ultralytics plots folder")
     args = ap.parse_args()
 
     from ultralytics import YOLO
 
     m = YOLO(args.weights).val(data=args.data, split=args.split, imgsz=args.imgsz, batch=args.batch,
-                               conf=args.conf, device=args.device, project=str(ROOT / "runs" / "val"),
+                               conf=args.conf, device=args.device, project=args.project,
                                name=args.tag, exist_ok=True, plots=True)
     names = m.names
     per_class = {}
@@ -42,7 +44,8 @@ def main():
            "P": float(m.box.mp), "R": float(m.box.mr), "per_class": per_class,
            "speed_ms_per_image": {k: float(v) for k, v in m.speed.items()}}
     print(json.dumps(res, indent=1))
-    out = ROOT / "experiments" / f"eval_{args.tag}.json"
+    out = Path(args.out) if args.out else ROOT / "experiments" / f"eval_{args.tag}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(res, indent=1))
     print("wrote", out)
 
