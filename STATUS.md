@@ -2,7 +2,7 @@
 
 Updated: Sat 2026-11-21 17:04 CST. Deadline: Sun 2026-11-22 22:00 CST.
 
-**Stage: eval_new_n** — new_n: false drones
+**Stage: train_m**
 
 * Training s: epoch 106 done, 7.01 h elapsed, 4.0 min/epoch, time cap 7.0 h, latest val mAP50 0.850, best val mAP50-95 0.641 (epoch 92), ETA (time cap, earlier if early stopping) Sat 17:04 CST
 * Training n: epoch 182 done, 7.00 h elapsed, 2.3 min/epoch, time cap 7.0 h, latest val mAP50 0.846, best val mAP50-95 0.621 (epoch 158), ETA (time cap, earlier if early stopping) Sat 17:04 CST
