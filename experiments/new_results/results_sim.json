@@ -1,0 +1,2862 @@
+{
+ "meta": {
+  "n_runs": 200,
+  "detector_noise_source": "detector_noise.json",
+  "anees_range_bounds_95": [
+   0.8136399125092315,
+   1.2052894775315546
+  ],
+  "anees_pos_bounds_95": [
+   2.6700927523296634,
+   3.348845761082056
+  ],
+  "note": "Simulation only. Range accuracy has not been validated on real flight data."
+ },
+ "results": {
+  "A_approach_straight_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.3387276636036967,
+   "median_abs_rel_err_after10s": 0.8939194623043104,
+   "mean_rel_err_after10s": 1.047872470685555,
+   "median_reported_rel_sigma_after10s": 0.09280854905614745,
+   "coverage_2sigma": 0.21577582689498137,
+   "anees_range": 26.687249226933073,
+   "anees_pos": 27.36882100325997,
+   "mean_nis": 2.0740130800138825,
+   "nis_dof": 2,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 1.03981869982319,
+   "frac_final_outside_3sigma": 0.995,
+   "frac_final_err_over_50pct": 0.995,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.43921700470597214,
+   "S_final_rms_err": 0.14725547600655858,
+   "S_final_reported_sigma": 0.07393085463237078,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.9374430701575552,
+     "median_reported_rel_sigma": 0.08535780302700605,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 1.3398178458983636,
+     "median_reported_rel_sigma": 0.08506069625383181,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 1.4049365694417117,
+     "median_reported_rel_sigma": 0.08125612954957995,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 1.465746209033952,
+     "median_reported_rel_sigma": 0.11208228892481115,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 1.3443873313284358,
+     "median_reported_rel_sigma": 0.1421862203208949,
+     "n": 11145
+    },
+    "160-200m": {
+     "rms_rel_err": 1.3822623682936828,
+     "median_reported_rel_sigma": 0.1585342622947144,
+     "n": 7232
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "bearing_only"
+   }
+  },
+  "A_approach_straight_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.42738166153786344,
+   "median_abs_rel_err_after10s": 0.2309386957360914,
+   "mean_rel_err_after10s": 0.018385449567155564,
+   "median_reported_rel_sigma_after10s": 0.067007831933034,
+   "coverage_2sigma": 0.33449130837556534,
+   "anees_range": 23.71472342270177,
+   "anees_pos": 19.271257211825763,
+   "mean_nis": 2.847463177756665,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.40487808816041165,
+   "frac_final_outside_3sigma": 0.58,
+   "frac_final_err_over_50pct": 0.15,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3808150204252443,
+   "S_final_rms_err": 0.10355826888096711,
+   "S_final_reported_sigma": 0.019771351697806423,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.3740927033577066,
+     "median_reported_rel_sigma": 0.06230654803679007,
+     "n": 9457
+    },
+    "20-40m": {
+     "rms_rel_err": 0.39483565190358405,
+     "median_reported_rel_sigma": 0.06237932265832786,
+     "n": 11580
+    },
+    "40-80m": {
+     "rms_rel_err": 0.4286113717367668,
+     "median_reported_rel_sigma": 0.06401068314088354,
+     "n": 22002
+    },
+    "80-120m": {
+     "rms_rel_err": 0.4521831001655891,
+     "median_reported_rel_sigma": 0.08276615726237609,
+     "n": 12545
+    },
+    "120-160m": {
+     "rms_rel_err": 0.5081657678660504,
+     "median_reported_rel_sigma": 0.11944862661372704,
+     "n": 10763
+    },
+    "160-200m": {
+     "rms_rel_err": 0.7388106128402505,
+     "median_reported_rel_sigma": 0.15747776034246783,
+     "n": 7057
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8104696593548205,
+    1.2091457732293271
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "size_prior"
+   }
+  },
+  "A_approach_straight_tight_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.11330474283995068,
+   "median_abs_rel_err_after10s": 0.07828548641280851,
+   "mean_rel_err_after10s": -0.015929316844322992,
+   "median_reported_rel_sigma_after10s": 0.05980389609802869,
+   "coverage_2sigma": 0.7088861766211269,
+   "anees_range": 3.562003597442045,
+   "anees_pos": 5.293141802723463,
+   "mean_nis": 2.859513160328783,
+   "nis_dof": 3,
+   "detection_rate": 0.7914463840399002,
+   "final_rms_rel_err": 0.11960935331788254,
+   "frac_final_outside_3sigma": 0.205,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.3538936094806104,
+   "S_final_mean": 0.3755654140596236,
+   "S_final_rms_err": 0.04113790295580945,
+   "S_final_reported_sigma": 0.01755060368275884,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.10055966631789409,
+     "median_reported_rel_sigma": 0.05654787437600936,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.10292508422768919,
+     "median_reported_rel_sigma": 0.0570917265817105,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.11189441961576022,
+     "median_reported_rel_sigma": 0.058052231833243775,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.1267308363566579,
+     "median_reported_rel_sigma": 0.07389119966133348,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.1470164113849241,
+     "median_reported_rel_sigma": 0.09419013409013172,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.14995708529921445,
+     "median_reported_rel_sigma": 0.10957003947220181,
+     "n": 7397
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "tight_prior"
+   }
+  },
+  "A_approach_straight_wrong_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.2890004426027204,
+   "median_abs_rel_err_after10s": 0.27676651792462326,
+   "mean_rel_err_after10s": -0.2733873849594026,
+   "median_reported_rel_sigma_after10s": 0.05907592673768708,
+   "coverage_2sigma": 0.0294750656167979,
+   "anees_range": 48.78389382306602,
+   "anees_pos": 34.84968153051172,
+   "mean_nis": 2.881421892901574,
+   "nis_dof": 3,
+   "detection_rate": 0.9385785536159601,
+   "final_rms_rel_err": 0.2254517177360332,
+   "frac_final_outside_3sigma": 0.74,
+   "frac_final_err_over_50pct": 0.005,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.47920779569951166,
+   "S_final_rms_err": 0.1312500768330694,
+   "S_final_reported_sigma": 0.02253569112660995,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.2715256035820553,
+     "median_reported_rel_sigma": 0.057044469813389745,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.2717415587372372,
+     "median_reported_rel_sigma": 0.05655066210045433,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.27741176911243737,
+     "median_reported_rel_sigma": 0.05722909161218913,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.3210178865124292,
+     "median_reported_rel_sigma": 0.0701890838376519,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.36389142935914137,
+     "median_reported_rel_sigma": 0.0850779631379244,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.38973913307863495,
+     "median_reported_rel_sigma": 0.11077909300646441,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "wrong_prior"
+   }
+  },
+  "A_approach_straight_wrong_tight": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.3508622714853271,
+   "median_abs_rel_err_after10s": 0.34777882866225673,
+   "mean_rel_err_after10s": -0.3482746946260903,
+   "median_reported_rel_sigma_after10s": 0.053320165310360025,
+   "coverage_2sigma": 0.0,
+   "anees_range": 96.15348907779656,
+   "anees_pos": 62.424061301594946,
+   "mean_nis": 2.8832122430846803,
+   "nis_dof": 3,
+   "detection_rate": 0.9385785536159601,
+   "final_rms_rel_err": 0.3043000908287541,
+   "frac_final_outside_3sigma": 1.0,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.42208076625397567,
+   "S_final_rms_err": 0.17877920050027948,
+   "S_final_reported_sigma": 0.01837796683136925,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.3386567274132517,
+     "median_reported_rel_sigma": 0.05178055757756298,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.33868099315267536,
+     "median_reported_rel_sigma": 0.05130841813387816,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.3431034985060735,
+     "median_reported_rel_sigma": 0.05231002387378538,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.37375986350036944,
+     "median_reported_rel_sigma": 0.06104726066090267,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.40279572999536023,
+     "median_reported_rel_sigma": 0.06889790119344877,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.4146486065276045,
+     "median_reported_rel_sigma": 0.08211726912775563,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "wrong_tight"
+   }
+  },
+  "A_approach_lateral_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.6018676684389803,
+   "median_abs_rel_err_after10s": 1.0119374166754826,
+   "mean_rel_err_after10s": 1.2122003404766606,
+   "median_reported_rel_sigma_after10s": 0.09165303030911516,
+   "coverage_2sigma": 0.17818550350764048,
+   "anees_range": 29.756240287407405,
+   "anees_pos": 29.86444924338723,
+   "mean_nis": 2.092971324580112,
+   "nis_dof": 2,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 1.131199121461663,
+   "frac_final_outside_3sigma": 1.0,
+   "frac_final_err_over_50pct": 0.995,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.4543164987814815,
+   "S_final_rms_err": 0.15509862231113092,
+   "S_final_reported_sigma": 0.07415823268553076,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 1.0287171381092999,
+     "median_reported_rel_sigma": 0.08423122228804789,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 1.45142352444345,
+     "median_reported_rel_sigma": 0.08486918132287322,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 1.5868332763524124,
+     "median_reported_rel_sigma": 0.08050625660949327,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 1.9067843311768222,
+     "median_reported_rel_sigma": 0.1090080385264042,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 2.451769211607852,
+     "median_reported_rel_sigma": 0.13577866156732188,
+     "n": 11145
+    },
+    "160-200m": {
+     "rms_rel_err": 2.467598207501518,
+     "median_reported_rel_sigma": 0.15155328115119207,
+     "n": 7232
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "bearing_only"
+   }
+  },
+  "A_approach_lateral_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.446104687708574,
+   "median_abs_rel_err_after10s": 0.23173149928939016,
+   "mean_rel_err_after10s": 0.03865859403197589,
+   "median_reported_rel_sigma_after10s": 0.0674207231711155,
+   "coverage_2sigma": 0.3576566903771306,
+   "anees_range": 23.374026175638434,
+   "anees_pos": 19.02674690337097,
+   "mean_nis": 2.8552171033399882,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.41568883112183885,
+   "frac_final_outside_3sigma": 0.585,
+   "frac_final_err_over_50pct": 0.16,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3806858890517851,
+   "S_final_rms_err": 0.10544703759558487,
+   "S_final_reported_sigma": 0.019883003129188653,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.3782249393628055,
+     "median_reported_rel_sigma": 0.06280014146766885,
+     "n": 9604
+    },
+    "20-40m": {
+     "rms_rel_err": 0.40548605578602537,
+     "median_reported_rel_sigma": 0.06272690377749993,
+     "n": 11760
+    },
+    "40-80m": {
+     "rms_rel_err": 0.44784237364561047,
+     "median_reported_rel_sigma": 0.06422905905473128,
+     "n": 22344
+    },
+    "80-120m": {
+     "rms_rel_err": 0.4777952883012996,
+     "median_reported_rel_sigma": 0.08333964919193812,
+     "n": 12740
+    },
+    "120-160m": {
+     "rms_rel_err": 0.5431729726031032,
+     "median_reported_rel_sigma": 0.11868116768317412,
+     "n": 10931
+    },
+    "160-200m": {
+     "rms_rel_err": 0.7625592152958363,
+     "median_reported_rel_sigma": 0.1553330660219399,
+     "n": 7131
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8118483374933433,
+    1.2074670809429984
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "size_prior"
+   }
+  },
+  "A_approach_lateral_tight_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.11342737619427011,
+   "median_abs_rel_err_after10s": 0.07843614684752624,
+   "mean_rel_err_after10s": -0.020241265440722352,
+   "median_reported_rel_sigma_after10s": 0.05999662906509017,
+   "coverage_2sigma": 0.7153824953738336,
+   "anees_range": 3.541224592927991,
+   "anees_pos": 5.25851206792325,
+   "mean_nis": 2.863010277922,
+   "nis_dof": 3,
+   "detection_rate": 0.7914463840399002,
+   "final_rms_rel_err": 0.11730566208067401,
+   "frac_final_outside_3sigma": 0.215,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.3538936094806104,
+   "S_final_mean": 0.37394058282017667,
+   "S_final_rms_err": 0.04032228578381154,
+   "S_final_reported_sigma": 0.01752122548949648,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.10009848021839822,
+     "median_reported_rel_sigma": 0.05673572463428686,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.10257697226718855,
+     "median_reported_rel_sigma": 0.05728442813904237,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.11146546607591844,
+     "median_reported_rel_sigma": 0.058121535700076624,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.12826067470510416,
+     "median_reported_rel_sigma": 0.07403455906448833,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.14720170878187921,
+     "median_reported_rel_sigma": 0.0947643100023681,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.14281903081110342,
+     "median_reported_rel_sigma": 0.10826714939987417,
+     "n": 7397
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "tight_prior"
+   }
+  },
+  "A_approach_lateral_wrong_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.29784865399267024,
+   "median_abs_rel_err_after10s": 0.2759452045468026,
+   "mean_rel_err_after10s": -0.28029895607146804,
+   "median_reported_rel_sigma_after10s": 0.05886626645476824,
+   "coverage_2sigma": 0.02204724409448819,
+   "anees_range": 61.05237160272166,
+   "anees_pos": 39.70024573731951,
+   "mean_nis": 2.883654769274215,
+   "nis_dof": 3,
+   "detection_rate": 0.9385785536159601,
+   "final_rms_rel_err": 0.23605141280900932,
+   "frac_final_outside_3sigma": 0.775,
+   "frac_final_err_over_50pct": 0.015,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.47439598928108084,
+   "S_final_rms_err": 0.1379112388811489,
+   "S_final_reported_sigma": 0.022672896281256065,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.28093230757859344,
+     "median_reported_rel_sigma": 0.05679027188343924,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.2811109432883755,
+     "median_reported_rel_sigma": 0.05628536702468275,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.2865826812288413,
+     "median_reported_rel_sigma": 0.0571392224527283,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.329173010250044,
+     "median_reported_rel_sigma": 0.06981571567428028,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.36889110221322785,
+     "median_reported_rel_sigma": 0.0842323688581863,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.38365587070898055,
+     "median_reported_rel_sigma": 0.10884416216867844,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "wrong_prior"
+   }
+  },
+  "A_approach_lateral_wrong_tight": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.35271666681081437,
+   "median_abs_rel_err_after10s": 0.34978375877080425,
+   "mean_rel_err_after10s": -0.3501577617964358,
+   "median_reported_rel_sigma_after10s": 0.053401105817650785,
+   "coverage_2sigma": 0.0,
+   "anees_range": 96.79160477375915,
+   "anees_pos": 62.58487090675598,
+   "mean_nis": 2.8853402771759393,
+   "nis_dof": 3,
+   "detection_rate": 0.9385785536159601,
+   "final_rms_rel_err": 0.30604915571788355,
+   "frac_final_outside_3sigma": 1.0,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.4209991051200056,
+   "S_final_rms_err": 0.17984115349501956,
+   "S_final_reported_sigma": 0.018330413399150057,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.34050540495384435,
+     "median_reported_rel_sigma": 0.051877809068247606,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.3405287707934841,
+     "median_reported_rel_sigma": 0.051399604126501075,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.3449688232789752,
+     "median_reported_rel_sigma": 0.05237105676561633,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.3756909657950173,
+     "median_reported_rel_sigma": 0.0610788642955442,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.4033498462610402,
+     "median_reported_rel_sigma": 0.06897598318881518,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.4081616956728705,
+     "median_reported_rel_sigma": 0.08242248752208152,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "wrong_tight"
+   }
+  },
+  "A_approach_weaving_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 2.970893280163659,
+   "median_abs_rel_err_after10s": 0.06370695710696828,
+   "mean_rel_err_after10s": 0.2795300262050879,
+   "median_reported_rel_sigma_after10s": 0.06305853441768389,
+   "coverage_2sigma": 0.8991273674927939,
+   "anees_range": 35.74737194488769,
+   "anees_pos": 47.238089142963766,
+   "mean_nis": 3.586654927426975,
+   "nis_dof": 2,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.08920432014628675,
+   "frac_final_outside_3sigma": 0.02,
+   "frac_final_err_over_50pct": 0.005,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3933078753907697,
+   "S_final_rms_err": 0.16051992930231065,
+   "S_final_reported_sigma": 0.07186703107142979,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.5782494328743955,
+     "median_reported_rel_sigma": 0.09744960362069453,
+     "n": 6200
+    },
+    "20-40m": {
+     "rms_rel_err": 0.8011114379729204,
+     "median_reported_rel_sigma": 0.09162619881548001,
+     "n": 8400
+    },
+    "40-80m": {
+     "rms_rel_err": 1.9113150493480684,
+     "median_reported_rel_sigma": 0.05396358607652263,
+     "n": 28400
+    },
+    "80-120m": {
+     "rms_rel_err": 5.2449117010427315,
+     "median_reported_rel_sigma": 0.07292945187530037,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 3.2287955755950795,
+     "median_reported_rel_sigma": 0.07832261017309647,
+     "n": 11345
+    },
+    "160-200m": {
+     "rms_rel_err": 1.3068069289862314,
+     "median_reported_rel_sigma": 0.11217288585017761,
+     "n": 7232
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "bearing_only"
+   }
+  },
+  "A_approach_weaving_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.13097011458455599,
+   "median_abs_rel_err_after10s": 0.03755391506847884,
+   "mean_rel_err_after10s": -0.012226541310821556,
+   "median_reported_rel_sigma_after10s": 0.0370937049673078,
+   "coverage_2sigma": 0.7714253527473456,
+   "anees_range": 22.529850634295553,
+   "anees_pos": 7.297604990964415,
+   "mean_nis": 2.9453435628282287,
+   "nis_dof": 3,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.04414011538265041,
+   "frac_final_outside_3sigma": 0.045,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.38590255360862535,
+   "S_final_rms_err": 0.016441012900095534,
+   "S_final_reported_sigma": 0.007959614446521757,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.06187960559455739,
+     "median_reported_rel_sigma": 0.03127496091613895,
+     "n": 5766
+    },
+    "20-40m": {
+     "rms_rel_err": 0.0677431990744613,
+     "median_reported_rel_sigma": 0.03305006237629263,
+     "n": 7812
+    },
+    "40-80m": {
+     "rms_rel_err": 0.0755298428201562,
+     "median_reported_rel_sigma": 0.035586339308038464,
+     "n": 26412
+    },
+    "80-120m": {
+     "rms_rel_err": 0.1400374545058678,
+     "median_reported_rel_sigma": 0.048143057771421666,
+     "n": 12116
+    },
+    "120-160m": {
+     "rms_rel_err": 0.31303264228679817,
+     "median_reported_rel_sigma": 0.0643367246432762,
+     "n": 10669
+    },
+    "160-200m": {
+     "rms_rel_err": 0.6538251877194109,
+     "median_reported_rel_sigma": 0.10574432565355854,
+     "n": 6937
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8071290615403155,
+    1.2132240107707106
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "size_prior"
+   }
+  },
+  "A_approach_weaving_tight_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.03912596008506762,
+   "median_abs_rel_err_after10s": 0.0246745014544352,
+   "mean_rel_err_after10s": 0.0013494094220225258,
+   "median_reported_rel_sigma_after10s": 0.03707622733069107,
+   "coverage_2sigma": 0.9494337047390318,
+   "anees_range": 1.064721799540998,
+   "anees_pos": 3.4433846314908143,
+   "mean_nis": 2.8840684372391485,
+   "nis_dof": 3,
+   "detection_rate": 0.7875187032418952,
+   "final_rms_rel_err": 0.024497772195776125,
+   "frac_final_outside_3sigma": 0.0,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.3538936094806104,
+   "S_final_mean": 0.35905851599542726,
+   "S_final_rms_err": 0.008364654163020006,
+   "S_final_reported_sigma": 0.00731768076641802,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.03128190824248492,
+     "median_reported_rel_sigma": 0.03130226919996694,
+     "n": 6200
+    },
+    "20-40m": {
+     "rms_rel_err": 0.03350015714853573,
+     "median_reported_rel_sigma": 0.03521466260826664,
+     "n": 8400
+    },
+    "40-80m": {
+     "rms_rel_err": 0.03373967120946725,
+     "median_reported_rel_sigma": 0.03221475413030194,
+     "n": 28400
+    },
+    "80-120m": {
+     "rms_rel_err": 0.048997358098884065,
+     "median_reported_rel_sigma": 0.04935219830127277,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.06470890777255367,
+     "median_reported_rel_sigma": 0.06159822767761018,
+     "n": 11400
+    },
+    "160-200m": {
+     "rms_rel_err": 0.11504670102314148,
+     "median_reported_rel_sigma": 0.09056330083081224,
+     "n": 7397
+    }
+   },
+   "range_nees_verdict": "consistent",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.6587926509186351,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "tight_prior"
+   }
+  },
+  "A_approach_weaving_wrong_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.09794170579998539,
+   "median_abs_rel_err_after10s": 0.06818125261719528,
+   "mean_rel_err_after10s": -0.07898561963723903,
+   "median_reported_rel_sigma_after10s": 0.031757069409690086,
+   "coverage_2sigma": 0.3866929133858268,
+   "anees_range": 13.294827188400829,
+   "anees_pos": 11.396580175518677,
+   "mean_nis": 3.035775548983148,
+   "nis_dof": 3,
+   "detection_rate": 0.9379052369077306,
+   "final_rms_rel_err": 0.06193331162890305,
+   "frac_final_outside_3sigma": 0.115,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.5773207909409802,
+   "S_final_rms_err": 0.031586098082445134,
+   "S_final_reported_sigma": 0.01140063244801012,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.07572820934435495,
+     "median_reported_rel_sigma": 0.029588327409683965,
+     "n": 6200
+    },
+    "20-40m": {
+     "rms_rel_err": 0.08155383836263423,
+     "median_reported_rel_sigma": 0.030911780821729025,
+     "n": 8400
+    },
+    "40-80m": {
+     "rms_rel_err": 0.08986666046873715,
+     "median_reported_rel_sigma": 0.02905811438230215,
+     "n": 28400
+    },
+    "80-120m": {
+     "rms_rel_err": 0.12103138330645752,
+     "median_reported_rel_sigma": 0.04228850374342882,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.16162482400860603,
+     "median_reported_rel_sigma": 0.05310527878278101,
+     "n": 11400
+    },
+    "160-200m": {
+     "rms_rel_err": 0.2546968816714891,
+     "median_reported_rel_sigma": 0.07768796853722074,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "wrong_prior"
+   }
+  },
+  "A_approach_weaving_wrong_tight": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.14501950754515341,
+   "median_abs_rel_err_after10s": 0.13114908343474524,
+   "mean_rel_err_after10s": -0.1380350378727028,
+   "median_reported_rel_sigma_after10s": 0.030787820217413168,
+   "coverage_2sigma": 0.0027690288713910763,
+   "anees_range": 30.031128975873926,
+   "anees_pos": 23.19898394007882,
+   "mean_nis": 3.148107695408932,
+   "nis_dof": 3,
+   "detection_rate": 0.9379052369077306,
+   "final_rms_rel_err": 0.09171445879834407,
+   "frac_final_outside_3sigma": 0.675,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.5518606150297497,
+   "S_final_rms_err": 0.04885967297496055,
+   "S_final_reported_sigma": 0.01049166283631916,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.11434162088894158,
+     "median_reported_rel_sigma": 0.02897027163799916,
+     "n": 6200
+    },
+    "20-40m": {
+     "rms_rel_err": 0.12233038956643125,
+     "median_reported_rel_sigma": 0.029981763369804237,
+     "n": 8400
+    },
+    "40-80m": {
+     "rms_rel_err": 0.13268571870195503,
+     "median_reported_rel_sigma": 0.02869125434344303,
+     "n": 28400
+    },
+    "80-120m": {
+     "rms_rel_err": 0.1784072682839673,
+     "median_reported_rel_sigma": 0.040261007947327204,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.2374331448430879,
+     "median_reported_rel_sigma": 0.049072518606738835,
+     "n": 11400
+    },
+    "160-200m": {
+     "rms_rel_err": 0.3313277137256157,
+     "median_reported_rel_sigma": 0.06584062947254507,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "wrong_tight"
+   }
+  },
+  "B_constant_velocity_straight_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.9040882640075214,
+   "median_abs_rel_err_after10s": 0.12988459729951723,
+   "mean_rel_err_after10s": 0.2352091862839209,
+   "median_reported_rel_sigma_after10s": 0.07860364841276954,
+   "coverage_2sigma": 0.696627591005159,
+   "anees_range": 35.01622451838064,
+   "anees_pos": 43.85889300356493,
+   "mean_nis": 2.7918059123170305,
+   "nis_dof": 2,
+   "detection_rate": 0.5595760598503741,
+   "final_rms_rel_err": 0.7294912540316726,
+   "frac_final_outside_3sigma": 0.05,
+   "frac_final_err_over_50pct": 0.02,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.40061982108480537,
+   "S_final_rms_err": 0.10905246473564875,
+   "S_final_reported_sigma": 0.05757394224366612,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 4.6173204373228165,
+     "median_reported_rel_sigma": 0.08866900532498007,
+     "n": 38985
+    },
+    "120-160m": {
+     "rms_rel_err": 1.295749525494861,
+     "median_reported_rel_sigma": 0.07377964984456231,
+     "n": 12992
+    },
+    "160-200m": {
+     "rms_rel_err": 0.7210384857241929,
+     "median_reported_rel_sigma": 0.07591479600765633,
+     "n": 10600
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "constant_velocity",
+    "camera": "straight",
+    "variant": "bearing_only"
+   }
+  },
+  "B_constant_velocity_straight_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.1901380069923522,
+   "median_abs_rel_err_after10s": 0.12989641077904895,
+   "mean_rel_err_after10s": -0.05972594908614578,
+   "median_reported_rel_sigma_after10s": 0.06897937213783348,
+   "coverage_2sigma": 0.5483270885007124,
+   "anees_range": 10.315409801282328,
+   "anees_pos": 12.502634176721228,
+   "mean_nis": 2.848991369561194,
+   "nis_dof": 3,
+   "detection_rate": 0.5595760598503741,
+   "final_rms_rel_err": 0.22866773409343918,
+   "frac_final_outside_3sigma": 0.405,
+   "frac_final_err_over_50pct": 0.02,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.33813884609951617,
+   "S_final_rms_err": 0.07845927430560679,
+   "S_final_reported_sigma": 0.02022875585745322,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 0.22202269975122788,
+     "median_reported_rel_sigma": 0.08295769782502237,
+     "n": 38790
+    },
+    "120-160m": {
+     "rms_rel_err": 0.21694087237472964,
+     "median_reported_rel_sigma": 0.06362114105840985,
+     "n": 12927
+    },
+    "160-200m": {
+     "rms_rel_err": 0.1814311701893675,
+     "median_reported_rel_sigma": 0.06377663682431144,
+     "n": 10547
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8131968964504868,
+    1.2058275468725839
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "constant_velocity",
+    "camera": "straight",
+    "variant": "size_prior"
+   }
+  },
+  "B_constant_velocity_lateral_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.9847135037227385,
+   "median_abs_rel_err_after10s": 0.8831765779492142,
+   "mean_rel_err_after10s": 0.8834089389989656,
+   "median_reported_rel_sigma_after10s": 0.08848345637755493,
+   "coverage_2sigma": 0.1844913819131759,
+   "anees_range": 23.76421540878794,
+   "anees_pos": 26.723396392524386,
+   "mean_nis": 1.9405542323903853,
+   "nis_dof": 2,
+   "detection_rate": 0.7459226932668329,
+   "final_rms_rel_err": 1.1851522537227415,
+   "frac_final_outside_3sigma": 1.0,
+   "frac_final_err_over_50pct": 1.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.4219798901185793,
+   "S_final_rms_err": 0.11259387968137667,
+   "S_final_reported_sigma": 0.05919758261220259,
+   "by_range": {
+    "40-80m": {
+     "rms_rel_err": 1.084807127387195,
+     "median_reported_rel_sigma": 0.08284602883637748,
+     "n": 32400
+    },
+    "80-120m": {
+     "rms_rel_err": 0.8203197386682974,
+     "median_reported_rel_sigma": 0.10279797933589163,
+     "n": 35600
+    },
+    "120-160m": {
+     "rms_rel_err": 0.8726993568461877,
+     "median_reported_rel_sigma": 0.12995111503366819,
+     "n": 8177
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "constant_velocity",
+    "camera": "lateral",
+    "variant": "bearing_only"
+   }
+  },
+  "B_constant_velocity_lateral_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.33992798165441435,
+   "median_abs_rel_err_after10s": 0.14545609425072759,
+   "mean_rel_err_after10s": 0.0689106401921112,
+   "median_reported_rel_sigma_after10s": 0.06427691968492512,
+   "coverage_2sigma": 0.4874477263432846,
+   "anees_range": 10.065040715383958,
+   "anees_pos": 11.624698601219798,
+   "mean_nis": 2.8667002813657803,
+   "nis_dof": 3,
+   "detection_rate": 0.7459226932668329,
+   "final_rms_rel_err": 0.35761651803055516,
+   "frac_final_outside_3sigma": 0.405,
+   "frac_final_err_over_50pct": 0.1,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3876612472889585,
+   "S_final_rms_err": 0.07763274494856631,
+   "S_final_reported_sigma": 0.019156378676180932,
+   "by_range": {
+    "40-80m": {
+     "rms_rel_err": 0.32556107476022994,
+     "median_reported_rel_sigma": 0.05749476661916962,
+     "n": 32238
+    },
+    "80-120m": {
+     "rms_rel_err": 0.3686823146906852,
+     "median_reported_rel_sigma": 0.0781161858527934,
+     "n": 35422
+    },
+    "120-160m": {
+     "rms_rel_err": 0.5505959434939481,
+     "median_reported_rel_sigma": 0.1227063495139009,
+     "n": 8143
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8131968964504868,
+    1.2058275468725839
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "constant_velocity",
+    "camera": "lateral",
+    "variant": "size_prior"
+   }
+  },
+  "B_constant_velocity_weaving_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.5930958343353445,
+   "median_abs_rel_err_after10s": 0.03860107116463925,
+   "mean_rel_err_after10s": 0.09019677691161875,
+   "median_reported_rel_sigma_after10s": 0.07189491704723008,
+   "coverage_2sigma": 0.9277866022552739,
+   "anees_range": 29.631564430423573,
+   "anees_pos": 71.68459693632245,
+   "mean_nis": 2.7242267973774705,
+   "nis_dof": 2,
+   "detection_rate": 0.5517581047381546,
+   "final_rms_rel_err": 0.5589622692893437,
+   "frac_final_outside_3sigma": 0.03,
+   "frac_final_err_over_50pct": 0.025,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3865513305469561,
+   "S_final_rms_err": 0.12796989853461907,
+   "S_final_reported_sigma": 0.054739218517949745,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 2.1459997151409755,
+     "median_reported_rel_sigma": 0.060584246978460106,
+     "n": 31194
+    },
+    "120-160m": {
+     "rms_rel_err": 0.6776427854030435,
+     "median_reported_rel_sigma": 0.07090909766688253,
+     "n": 24583
+    },
+    "160-200m": {
+     "rms_rel_err": 0.536287621279696,
+     "median_reported_rel_sigma": 0.07698472925794145,
+     "n": 17800
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "constant_velocity",
+    "camera": "weaving",
+    "variant": "bearing_only"
+   }
+  },
+  "B_constant_velocity_weaving_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.1062850030268764,
+   "median_abs_rel_err_after10s": 0.07772137980395145,
+   "mean_rel_err_after10s": -0.0790738839758965,
+   "median_reported_rel_sigma_after10s": 0.04772393835980653,
+   "coverage_2sigma": 0.6132684997380687,
+   "anees_range": 6.491368150866411,
+   "anees_pos": 8.983318146115813,
+   "mean_nis": 2.923885992678744,
+   "nis_dof": 3,
+   "detection_rate": 0.5517581047381546,
+   "final_rms_rel_err": 0.16587973218405738,
+   "frac_final_outside_3sigma": 0.37,
+   "frac_final_err_over_50pct": 0.005,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3523803313975354,
+   "S_final_rms_err": 0.044849485429946497,
+   "S_final_reported_sigma": 0.011814351924807256,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 0.16930741136023564,
+     "median_reported_rel_sigma": 0.050553383907454154,
+     "n": 30519
+    },
+    "120-160m": {
+     "rms_rel_err": 0.24659706816129795,
+     "median_reported_rel_sigma": 0.04652380226535544,
+     "n": 24038
+    },
+    "160-200m": {
+     "rms_rel_err": 0.1258486479242377,
+     "median_reported_rel_sigma": 0.04866194125605841,
+     "n": 17355
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8113921800280284,
+    1.2080222182007396
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "constant_velocity",
+    "camera": "weaving",
+    "variant": "size_prior"
+   }
+  },
+  "B_gentle_turn_straight_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.1773344916621589,
+   "median_abs_rel_err_after10s": 0.14272363225474355,
+   "mean_rel_err_after10s": 0.18276414109974418,
+   "median_reported_rel_sigma_after10s": 0.08533164828272795,
+   "coverage_2sigma": 0.6915210627879806,
+   "anees_range": 18.464791437578402,
+   "anees_pos": 31.733313546849754,
+   "mean_nis": 2.636601684774493,
+   "nis_dof": 2,
+   "detection_rate": 0.5428927680798005,
+   "final_rms_rel_err": 0.678095873880781,
+   "frac_final_outside_3sigma": 0.1,
+   "frac_final_err_over_50pct": 0.025,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.35076963956835144,
+   "S_final_rms_err": 0.10012969666430552,
+   "S_final_reported_sigma": 0.05750076703494862,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 4.8329302992315215,
+     "median_reported_rel_sigma": 0.09609381783082042,
+     "n": 28987
+    },
+    "120-160m": {
+     "rms_rel_err": 1.6297328663566513,
+     "median_reported_rel_sigma": 0.08277805618159775,
+     "n": 21990
+    },
+    "160-200m": {
+     "rms_rel_err": 0.6674637190391511,
+     "median_reported_rel_sigma": 0.08967049427690939,
+     "n": 25200
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "gentle_turn",
+    "camera": "straight",
+    "variant": "bearing_only"
+   }
+  },
+  "B_gentle_turn_straight_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.22709554613945826,
+   "median_abs_rel_err_after10s": 0.16883813014880536,
+   "mean_rel_err_after10s": -0.15598442016174835,
+   "median_reported_rel_sigma_after10s": 0.0721843170962861,
+   "coverage_2sigma": 0.45165971819093353,
+   "anees_range": 22.78663989764761,
+   "anees_pos": 20.069313766793876,
+   "mean_nis": 2.930568735614634,
+   "nis_dof": 3,
+   "detection_rate": 0.5428927680798005,
+   "final_rms_rel_err": 0.2748408024651812,
+   "frac_final_outside_3sigma": 0.475,
+   "frac_final_err_over_50pct": 0.05,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.30047767223027655,
+   "S_final_rms_err": 0.0951903157923799,
+   "S_final_reported_sigma": 0.018220291472950793,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 0.23495498069228202,
+     "median_reported_rel_sigma": 0.09132426150250753,
+     "n": 28842
+    },
+    "120-160m": {
+     "rms_rel_err": 0.2342672866319666,
+     "median_reported_rel_sigma": 0.07038329383573055,
+     "n": 21880
+    },
+    "160-200m": {
+     "rms_rel_err": 0.2531332795640197,
+     "median_reported_rel_sigma": 0.07073436880559324,
+     "n": 25074
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8131968964504868,
+    1.2058275468725839
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "gentle_turn",
+    "camera": "straight",
+    "variant": "size_prior"
+   }
+  },
+  "B_gentle_turn_lateral_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.36292669978315534,
+   "median_abs_rel_err_after10s": 0.22670549238627535,
+   "mean_rel_err_after10s": -0.00969021257249169,
+   "median_reported_rel_sigma_after10s": 0.11080893419330165,
+   "coverage_2sigma": 0.5529096708980401,
+   "anees_range": 7.940208068962111,
+   "anees_pos": 12.119115542110492,
+   "mean_nis": 2.0121484398011154,
+   "nis_dof": 2,
+   "detection_rate": 0.4645635910224439,
+   "final_rms_rel_err": 0.44252942557942226,
+   "frac_final_outside_3sigma": 0.37,
+   "frac_final_err_over_50pct": 0.29,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.387086247975146,
+   "S_final_rms_err": 0.1013183440396131,
+   "S_final_reported_sigma": 0.05964824641913321,
+   "by_range": {
+    "120-160m": {
+     "rms_rel_err": 0.6300647806689021,
+     "median_reported_rel_sigma": 0.11478593770433107,
+     "n": 43177
+    },
+    "160-200m": {
+     "rms_rel_err": 0.2422155015606498,
+     "median_reported_rel_sigma": 0.1080334063035556,
+     "n": 17000
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "gentle_turn",
+    "camera": "lateral",
+    "variant": "bearing_only"
+   }
+  },
+  "B_gentle_turn_lateral_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.2977304809003686,
+   "median_abs_rel_err_after10s": 0.2555282657804778,
+   "mean_rel_err_after10s": -0.20659992017527806,
+   "median_reported_rel_sigma_after10s": 0.07531766998237309,
+   "coverage_2sigma": 0.3062125470647505,
+   "anees_range": 25.04939643861566,
+   "anees_pos": 27.399243485175802,
+   "mean_nis": 2.935618431457877,
+   "nis_dof": 3,
+   "detection_rate": 0.4645635910224439,
+   "final_rms_rel_err": 0.38376958151385837,
+   "frac_final_outside_3sigma": 0.755,
+   "frac_final_err_over_50pct": 0.09,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.29878391483849126,
+   "S_final_rms_err": 0.11108730785978317,
+   "S_final_reported_sigma": 0.01972810477770331,
+   "by_range": {
+    "120-160m": {
+     "rms_rel_err": 0.3515559191849454,
+     "median_reported_rel_sigma": 0.09056747258528093,
+     "n": 42758
+    },
+    "160-200m": {
+     "rms_rel_err": 0.2850657591220742,
+     "median_reported_rel_sigma": 0.07084730433961156,
+     "n": 16830
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8127506550928827,
+    1.2063698009407604
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "gentle_turn",
+    "camera": "lateral",
+    "variant": "size_prior"
+   }
+  },
+  "B_gentle_turn_weaving_bearing_only": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.3601564253752882,
+   "median_abs_rel_err_after10s": 0.07424411105824032,
+   "mean_rel_err_after10s": 0.05105235352122702,
+   "median_reported_rel_sigma_after10s": 0.06662132930691603,
+   "coverage_2sigma": 0.7889914278588025,
+   "anees_range": 183.11561765301676,
+   "anees_pos": 111.9814261500402,
+   "mean_nis": 3.014873598428684,
+   "nis_dof": 2,
+   "detection_rate": 0.4603117206982544,
+   "final_rms_rel_err": 1.2748307948128288,
+   "frac_final_outside_3sigma": 0.05,
+   "frac_final_err_over_50pct": 0.02,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.35276362752515394,
+   "S_final_rms_err": 0.10647911655924502,
+   "S_final_reported_sigma": 0.05474677763532901,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 1.812445179300356,
+     "median_reported_rel_sigma": 0.05283613378930847,
+     "n": 6000
+    },
+    "120-160m": {
+     "rms_rel_err": 2.061277881606679,
+     "median_reported_rel_sigma": 0.06431299511198504,
+     "n": 29177
+    },
+    "160-200m": {
+     "rms_rel_err": 0.9539589843851876,
+     "median_reported_rel_sigma": 0.06486505267066991,
+     "n": 21000
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "gentle_turn",
+    "camera": "weaving",
+    "variant": "bearing_only"
+   }
+  },
+  "B_gentle_turn_weaving_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.13367184868688375,
+   "median_abs_rel_err_after10s": 0.11553964226904304,
+   "mean_rel_err_after10s": -0.11132523655057862,
+   "median_reported_rel_sigma_after10s": 0.04867604289213771,
+   "coverage_2sigma": 0.41960926582822744,
+   "anees_range": 10.767645024749013,
+   "anees_pos": 13.25072127824421,
+   "mean_nis": 3.119938488490448,
+   "nis_dof": 3,
+   "detection_rate": 0.4603117206982544,
+   "final_rms_rel_err": 0.1527968155401501,
+   "frac_final_outside_3sigma": 0.315,
+   "frac_final_err_over_50pct": 0.005,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.35434503916135507,
+   "S_final_rms_err": 0.04580873585226173,
+   "S_final_reported_sigma": 0.011066576907212368,
+   "by_range": {
+    "80-120m": {
+     "rms_rel_err": 0.24634423379842682,
+     "median_reported_rel_sigma": 0.052123558631147926,
+     "n": 5896
+    },
+    "120-160m": {
+     "rms_rel_err": 0.25902008699192225,
+     "median_reported_rel_sigma": 0.05098834256404312,
+     "n": 28553
+    },
+    "160-200m": {
+     "rms_rel_err": 0.1343873584715749,
+     "median_reported_rel_sigma": 0.04677493373707635,
+     "n": 20475
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8113921800280284,
+    1.2080222182007396
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "gentle_turn",
+    "camera": "weaving",
+    "variant": "size_prior"
+   }
+  },
+  "C_plainEKF_approach_straight_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.451781077408295,
+   "median_abs_rel_err_after10s": 0.8676962974338822,
+   "mean_rel_err_after10s": 1.116746817205305,
+   "median_reported_rel_sigma_after10s": 0.03848144210165761,
+   "coverage_2sigma": 0.1358563803978651,
+   "anees_range": 132.33099434506818,
+   "anees_pos": 100.68155300060847,
+   "mean_nis": 2.9867715918982576,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 1.7178155381514275,
+   "frac_final_outside_3sigma": 0.975,
+   "frac_final_err_over_50pct": 0.845,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.8010235237616405,
+   "S_final_rms_err": 0.44367683753817094,
+   "S_final_reported_sigma": 0.01980115969551115,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 1.493434086805195,
+     "median_reported_rel_sigma": 0.0332100170798914,
+     "n": 9555
+    },
+    "20-40m": {
+     "rms_rel_err": 1.5380697127660885,
+     "median_reported_rel_sigma": 0.034002897052557796,
+     "n": 11700
+    },
+    "40-80m": {
+     "rms_rel_err": 1.5547382486002017,
+     "median_reported_rel_sigma": 0.03664670972620445,
+     "n": 22230
+    },
+    "80-120m": {
+     "rms_rel_err": 1.2079788160527691,
+     "median_reported_rel_sigma": 0.058108784253309315,
+     "n": 12675
+    },
+    "120-160m": {
+     "rms_rel_err": 0.8420573711465228,
+     "median_reported_rel_sigma": 0.08694768887866411,
+     "n": 10875
+    },
+    "160-200m": {
+     "rms_rel_err": 1.144514633004591,
+     "median_reported_rel_sigma": 0.12265590720945428,
+     "n": 7161
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8113921800280284,
+    1.2080222182007396
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "size_prior",
+    "n_iter": 1
+   }
+  },
+  "C_plainEKF_approach_lateral_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 1.4637972524887106,
+   "median_abs_rel_err_after10s": 0.7091908293941053,
+   "mean_rel_err_after10s": 1.0127996069175187,
+   "median_reported_rel_sigma_after10s": 0.037379870949007576,
+   "coverage_2sigma": 0.1448942906203048,
+   "anees_range": 127.07159533048001,
+   "anees_pos": 95.50244984044737,
+   "mean_nis": 3.1529476457249332,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 1.5714688541580972,
+   "frac_final_outside_3sigma": 0.975,
+   "frac_final_err_over_50pct": 0.8,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.7346642051717932,
+   "S_final_rms_err": 0.38319838544785084,
+   "S_final_reported_sigma": 0.017745348748327172,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 1.3786242912131397,
+     "median_reported_rel_sigma": 0.03254527220270893,
+     "n": 9604
+    },
+    "20-40m": {
+     "rms_rel_err": 1.468484983512591,
+     "median_reported_rel_sigma": 0.03323930704905967,
+     "n": 11760
+    },
+    "40-80m": {
+     "rms_rel_err": 1.6005633360545826,
+     "median_reported_rel_sigma": 0.03555470120228377,
+     "n": 22344
+    },
+    "80-120m": {
+     "rms_rel_err": 1.333214343163965,
+     "median_reported_rel_sigma": 0.05622431285333605,
+     "n": 12740
+    },
+    "120-160m": {
+     "rms_rel_err": 0.9067256441510007,
+     "median_reported_rel_sigma": 0.08276825880343609,
+     "n": 10927
+    },
+    "160-200m": {
+     "rms_rel_err": 1.0595428254615915,
+     "median_reported_rel_sigma": 0.1047635232411039,
+     "n": 7169
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8118483374933433,
+    1.2074670809429984
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "size_prior",
+    "n_iter": 1
+   }
+  },
+  "C_plainEKF_approach_weaving_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.5991433696164282,
+   "median_abs_rel_err_after10s": 0.17191595534171777,
+   "mean_rel_err_after10s": 0.23400844588021433,
+   "median_reported_rel_sigma_after10s": 0.031099590865176427,
+   "coverage_2sigma": 0.2482420117011701,
+   "anees_range": 53.55619429818456,
+   "anees_pos": 44.34978912894184,
+   "mean_nis": 3.8504614937237145,
+   "nis_dof": 3,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.21822923502608974,
+   "frac_final_outside_3sigma": 0.91,
+   "frac_final_err_over_50pct": 0.015,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.4580040707801721,
+   "S_final_rms_err": 0.07482834268706186,
+   "S_final_reported_sigma": 0.007436281416509543,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.32543545259386364,
+     "median_reported_rel_sigma": 0.026380760580344755,
+     "n": 5766
+    },
+    "20-40m": {
+     "rms_rel_err": 0.4924960077904613,
+     "median_reported_rel_sigma": 0.027988825896478886,
+     "n": 7812
+    },
+    "40-80m": {
+     "rms_rel_err": 0.6282069452559322,
+     "median_reported_rel_sigma": 0.02942616147849491,
+     "n": 26412
+    },
+    "80-120m": {
+     "rms_rel_err": 0.7214222047250093,
+     "median_reported_rel_sigma": 0.041182500623471396,
+     "n": 12098
+    },
+    "120-160m": {
+     "rms_rel_err": 0.42794854930287085,
+     "median_reported_rel_sigma": 0.055768639118638094,
+     "n": 10671
+    },
+    "160-200m": {
+     "rms_rel_err": 1.6270857761227913,
+     "median_reported_rel_sigma": 0.09078982070682777,
+     "n": 7043
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8071290615403155,
+    1.2132240107707106
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "size_prior",
+    "n_iter": 1
+   }
+  },
+  "D_whitepose_straight": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.7441805841674365,
+   "median_abs_rel_err_after10s": 0.7654731805234427,
+   "mean_rel_err_after10s": -0.6754287580875118,
+   "median_reported_rel_sigma_after10s": 0.20160315240549845,
+   "coverage_2sigma": 0.15061018323931719,
+   "anees_range": 507.3792737724047,
+   "anees_pos": 471.07561437868736,
+   "mean_nis": 2.6139612217107904,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.6119500689932114,
+   "frac_final_outside_3sigma": 0.21,
+   "frac_final_err_over_50pct": 0.215,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.1183739418419847,
+   "S_final_rms_err": 0.20813035006525432,
+   "S_final_reported_sigma": 0.01108538038297376,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.6764028313960959,
+     "median_reported_rel_sigma": 0.15882614940026102,
+     "n": 4163
+    },
+    "20-40m": {
+     "rms_rel_err": 0.7311653454959437,
+     "median_reported_rel_sigma": 0.17178358136184146,
+     "n": 7039
+    },
+    "40-80m": {
+     "rms_rel_err": 0.7402446455710654,
+     "median_reported_rel_sigma": 0.19180774836703443,
+     "n": 14019
+    },
+    "80-120m": {
+     "rms_rel_err": 0.7612727181121741,
+     "median_reported_rel_sigma": 0.2541049353326007,
+     "n": 11238
+    },
+    "120-160m": {
+     "rms_rel_err": 0.750718309595082,
+     "median_reported_rel_sigma": 0.3734783262171796,
+     "n": 10740
+    },
+    "160-200m": {
+     "rms_rel_err": 0.8656049652135911,
+     "median_reported_rel_sigma": 0.48799557574734614,
+     "n": 7047
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8090597164561067,
+    1.2108651971456026
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "size_prior",
+    "pose_noise": "PoseNoise(sigma_pos=1.5, tau_pos=0.0, sigma_pos_white=0.0, sigma_att=np.float64(0.008726646259971648), tau_att=0.0, sigma_att_white=0.0)"
+   }
+  },
+  "D_drift_filter_assumes_white_straight": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.8476485010991953,
+   "median_abs_rel_err_after10s": 0.8656431525533462,
+   "mean_rel_err_after10s": -0.7976611366869465,
+   "median_reported_rel_sigma_after10s": 0.18832814468244868,
+   "coverage_2sigma": 0.11696374924894853,
+   "anees_range": 1415.5280475616476,
+   "anees_pos": 1096.34790270207,
+   "mean_nis": 0.5154567667856411,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.8462296750290014,
+   "frac_final_outside_3sigma": 0.9,
+   "frac_final_err_over_50pct": 0.91,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.050015022380308034,
+   "S_final_rms_err": 0.3621096075680684,
+   "S_final_reported_sigma": 0.007343789987316654,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.8424889565266104,
+     "median_reported_rel_sigma": 0.16921284385342486,
+     "n": 8918
+    },
+    "20-40m": {
+     "rms_rel_err": 0.8420148771980116,
+     "median_reported_rel_sigma": 0.17673526567767794,
+     "n": 10920
+    },
+    "40-80m": {
+     "rms_rel_err": 0.8438611254518138,
+     "median_reported_rel_sigma": 0.18666730249624855,
+     "n": 20801
+    },
+    "80-120m": {
+     "rms_rel_err": 0.8496204770403593,
+     "median_reported_rel_sigma": 0.2227824179691233,
+     "n": 11914
+    },
+    "120-160m": {
+     "rms_rel_err": 0.8359358392676286,
+     "median_reported_rel_sigma": 0.4200740747649177,
+     "n": 10361
+    },
+    "160-200m": {
+     "rms_rel_err": 0.9136794454043703,
+     "median_reported_rel_sigma": 0.537670872262549,
+     "n": 6988
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8056413549235343,
+    1.2150451098824395
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "size_prior",
+    "filter_pose_noise": "PoseNoise(sigma_pos=1.5, tau_pos=0.0, sigma_pos_white=0.0, sigma_att=np.float64(0.008726646259971648), tau_att=0.0, sigma_att_white=0.0)"
+   }
+  },
+  "D_precise_pose_straight": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.7811797123655299,
+   "median_abs_rel_err_after10s": 0.793162966247306,
+   "mean_rel_err_after10s": -0.7483983485693693,
+   "median_reported_rel_sigma_after10s": 0.09255307825433279,
+   "coverage_2sigma": 0.057830013539732834,
+   "anees_range": 2034.765619504759,
+   "anees_pos": 2133.7965443795993,
+   "mean_nis": 2.2813186516702504,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.7364459738346366,
+   "frac_final_outside_3sigma": 0.93,
+   "frac_final_err_over_50pct": 0.91,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.09239439171701877,
+   "S_final_rms_err": 0.3193504864780656,
+   "S_final_reported_sigma": 0.006075725365756401,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.7590498476075261,
+     "median_reported_rel_sigma": 0.0835410349197653,
+     "n": 9212
+    },
+    "20-40m": {
+     "rms_rel_err": 0.7585797587097791,
+     "median_reported_rel_sigma": 0.0850509143367702,
+     "n": 11280
+    },
+    "40-80m": {
+     "rms_rel_err": 0.7646009110626213,
+     "median_reported_rel_sigma": 0.08861010070680726,
+     "n": 21432
+    },
+    "80-120m": {
+     "rms_rel_err": 0.8167873394154372,
+     "median_reported_rel_sigma": 0.1376412868210703,
+     "n": 12220
+    },
+    "120-160m": {
+     "rms_rel_err": 0.8639555257068953,
+     "median_reported_rel_sigma": 0.2450660306558777,
+     "n": 10513
+    },
+    "160-200m": {
+     "rms_rel_err": 0.9759358484481924,
+     "median_reported_rel_sigma": 0.49310422319393066,
+     "n": 6984
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8081017914796831,
+    1.212034925801411
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "size_prior",
+    "pose_noise": "PoseNoise(sigma_pos=0.01, tau_pos=60.0, sigma_pos_white=0.01, sigma_att=np.float64(0.00017453292519943296), tau_att=30.0, sigma_att_white=np.float64(0.00017453292519943296))"
+   }
+  },
+  "D_whitepose_weaving": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.15767475516321394,
+   "median_abs_rel_err_after10s": 0.044197716755802946,
+   "mean_rel_err_after10s": -0.024900194239487125,
+   "median_reported_rel_sigma_after10s": 0.04911222298532566,
+   "coverage_2sigma": 0.7783752561440183,
+   "anees_range": 16.934518089479752,
+   "anees_pos": 21.91097890745398,
+   "mean_nis": 3.032676695451838,
+   "nis_dof": 3,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.08089616025470994,
+   "frac_final_outside_3sigma": 0.055,
+   "frac_final_err_over_50pct": 0.005,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.36909138757127186,
+   "S_final_rms_err": 0.03844932033925754,
+   "S_final_reported_sigma": 0.00830159585383476,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.10102641149084438,
+     "median_reported_rel_sigma": 0.04577546760491209,
+     "n": 5921
+    },
+    "20-40m": {
+     "rms_rel_err": 0.10332708406440215,
+     "median_reported_rel_sigma": 0.05037079100964896,
+     "n": 8022
+    },
+    "40-80m": {
+     "rms_rel_err": 0.107515685358936,
+     "median_reported_rel_sigma": 0.045682907624705914,
+     "n": 27122
+    },
+    "80-120m": {
+     "rms_rel_err": 0.18315190667219447,
+     "median_reported_rel_sigma": 0.05758616473237285,
+     "n": 12415
+    },
+    "120-160m": {
+     "rms_rel_err": 0.35318384640942485,
+     "median_reported_rel_sigma": 0.0941588018134368,
+     "n": 10874
+    },
+    "160-200m": {
+     "rms_rel_err": 0.7515783767624105,
+     "median_reported_rel_sigma": 0.31844279878208664,
+     "n": 7022
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8095332445111235,
+    1.2102874293620902
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "size_prior",
+    "pose_noise": "PoseNoise(sigma_pos=1.5, tau_pos=0.0, sigma_pos_white=0.0, sigma_att=np.float64(0.008726646259971648), tau_att=0.0, sigma_att_white=0.0)"
+   }
+  },
+  "D_drift_filter_assumes_white_weaving": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.16089504005389413,
+   "median_abs_rel_err_after10s": 0.031745500324027245,
+   "mean_rel_err_after10s": -0.01357901486536597,
+   "median_reported_rel_sigma_after10s": 0.049542776545846004,
+   "coverage_2sigma": 0.8962501546965884,
+   "anees_range": 22.447543838983883,
+   "anees_pos": 43.83835411959615,
+   "mean_nis": 0.9808315176399497,
+   "nis_dof": 3,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.08879624330794901,
+   "frac_final_outside_3sigma": 0.03,
+   "frac_final_err_over_50pct": 0.01,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3706300504224804,
+   "S_final_rms_err": 0.041973265565042585,
+   "S_final_reported_sigma": 0.008457675427009792,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.10556365698110592,
+     "median_reported_rel_sigma": 0.04633257799283061,
+     "n": 5921
+    },
+    "20-40m": {
+     "rms_rel_err": 0.10550795319463861,
+     "median_reported_rel_sigma": 0.05083861528681145,
+     "n": 8022
+    },
+    "40-80m": {
+     "rms_rel_err": 0.10997285345799127,
+     "median_reported_rel_sigma": 0.046021271322788396,
+     "n": 27122
+    },
+    "80-120m": {
+     "rms_rel_err": 0.1881240752654342,
+     "median_reported_rel_sigma": 0.057913961556123814,
+     "n": 12415
+    },
+    "120-160m": {
+     "rms_rel_err": 0.3514287463215343,
+     "median_reported_rel_sigma": 0.09443416267846144,
+     "n": 10874
+    },
+    "160-200m": {
+     "rms_rel_err": 0.730290828512728,
+     "median_reported_rel_sigma": 0.3696559381799345,
+     "n": 7032
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8095332445111235,
+    1.2102874293620902
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "size_prior",
+    "filter_pose_noise": "PoseNoise(sigma_pos=1.5, tau_pos=0.0, sigma_pos_white=0.0, sigma_att=np.float64(0.008726646259971648), tau_att=0.0, sigma_att_white=0.0)"
+   }
+  },
+  "D_precise_pose_weaving": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.13350547304320529,
+   "median_abs_rel_err_after10s": 0.04731460832750372,
+   "mean_rel_err_after10s": -0.055302704202314,
+   "median_reported_rel_sigma_after10s": 0.03505811689908695,
+   "coverage_2sigma": 0.6502386327912892,
+   "anees_range": 14.925144673303931,
+   "anees_pos": 133.89017070026802,
+   "mean_nis": 2.613013759811847,
+   "nis_dof": 3,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.07170626461850567,
+   "frac_final_outside_3sigma": 0.175,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.371232480097406,
+   "S_final_rms_err": 0.03291050838546471,
+   "S_final_reported_sigma": 0.007116151428557672,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.0729243767537429,
+     "median_reported_rel_sigma": 0.028372651025799,
+     "n": 5673
+    },
+    "20-40m": {
+     "rms_rel_err": 0.08185703304401337,
+     "median_reported_rel_sigma": 0.03167615833484559,
+     "n": 7686
+    },
+    "40-80m": {
+     "rms_rel_err": 0.08658951276362249,
+     "median_reported_rel_sigma": 0.03393567892000327,
+     "n": 25986
+    },
+    "80-120m": {
+     "rms_rel_err": 0.12836381616339607,
+     "median_reported_rel_sigma": 0.044432299657059963,
+     "n": 11896
+    },
+    "120-160m": {
+     "rms_rel_err": 0.3162225962044138,
+     "median_reported_rel_sigma": 0.055468552398443595,
+     "n": 10552
+    },
+    "160-200m": {
+     "rms_rel_err": 0.6561118023641282,
+     "median_reported_rel_sigma": 0.0862539381469547,
+     "n": 6908
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8056413549235343,
+    1.2150451098824395
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "size_prior",
+    "pose_noise": "PoseNoise(sigma_pos=0.01, tau_pos=60.0, sigma_pos_white=0.01, sigma_att=np.float64(0.00017453292519943296), tau_att=30.0, sigma_att_white=np.float64(0.00017453292519943296))"
+   }
+  },
+  "E_model_truth_weaving_40m": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.05623059756911533,
+   "median_abs_rel_err_after10s": 0.03480605460751444,
+   "mean_rel_err_after10s": -0.009521179177209321,
+   "median_reported_rel_sigma_after10s": 0.038879022531651514,
+   "coverage_2sigma": 0.8699368729769845,
+   "anees_range": 1.8033121343720762,
+   "anees_pos": 3.8648113542995186,
+   "mean_nis": 3.021219020121604,
+   "nis_dof": 3,
+   "detection_rate": 0.7895182724252492,
+   "final_rms_rel_err": 0.06912220406667706,
+   "frac_final_outside_3sigma": 0.055,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.37334517655148675,
+   "S_final_rms_err": 0.015335589512996227,
+   "S_final_reported_sigma": 0.009512730718345005,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.08124766297687995,
+     "median_reported_rel_sigma": 0.048199190205542766,
+     "n": 1173
+    },
+    "20-40m": {
+     "rms_rel_err": 0.1276778143754459,
+     "median_reported_rel_sigma": 0.04984979738457936,
+     "n": 10085
+    },
+    "40-80m": {
+     "rms_rel_err": 0.07708887471662426,
+     "median_reported_rel_sigma": 0.04487923940318331,
+     "n": 21002
+    },
+    "80-120m": {
+     "rms_rel_err": 0.0493126326328523,
+     "median_reported_rel_sigma": 0.03899599403726858,
+     "n": 12064
+    },
+    "120-160m": {
+     "rms_rel_err": 0.05567562597843541,
+     "median_reported_rel_sigma": 0.038456720799896885,
+     "n": 6747
+    },
+    "160-200m": {
+     "rms_rel_err": 0.07432234551743248,
+     "median_reported_rel_sigma": 0.0406671739128664,
+     "n": 2886
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8131968964504868,
+    1.2058275468725839
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "model_truth": true,
+    "camera": "weaving",
+    "start_range": 40.0,
+    "variant": "size_prior"
+   }
+  },
+  "E_model_truth_lateral_40m": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.39006945278634114,
+   "median_abs_rel_err_after10s": 0.25573458669605836,
+   "mean_rel_err_after10s": 0.2705494065567841,
+   "median_reported_rel_sigma_after10s": 0.06587377089309135,
+   "coverage_2sigma": 0.3358185053380783,
+   "anees_range": 13.589260146808048,
+   "anees_pos": 15.009748801707847,
+   "mean_nis": 3.081572944792588,
+   "nis_dof": 3,
+   "detection_rate": 0.7382392026578073,
+   "final_rms_rel_err": 0.28799565673535055,
+   "frac_final_outside_3sigma": 0.425,
+   "frac_final_err_over_50pct": 0.1,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.4402393262723099,
+   "S_final_rms_err": 0.09873875313561178,
+   "S_final_reported_sigma": 0.025479063487064288,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.49447875065104624,
+     "median_reported_rel_sigma": 0.08892893281845875,
+     "n": 1064
+    },
+    "20-40m": {
+     "rms_rel_err": 0.5176799916224526,
+     "median_reported_rel_sigma": 0.09155987590181415,
+     "n": 6893
+    },
+    "40-80m": {
+     "rms_rel_err": 0.51554820635791,
+     "median_reported_rel_sigma": 0.0765138256969578,
+     "n": 18910
+    },
+    "80-120m": {
+     "rms_rel_err": 0.3904668413537213,
+     "median_reported_rel_sigma": 0.06572706894407755,
+     "n": 12297
+    },
+    "120-160m": {
+     "rms_rel_err": 0.2980178558164839,
+     "median_reported_rel_sigma": 0.06289684369939653,
+     "n": 8454
+    },
+    "160-200m": {
+     "rms_rel_err": 0.24980022941429925,
+     "median_reported_rel_sigma": 0.06344687504522212,
+     "n": 4422
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "model_truth": true,
+    "camera": "lateral",
+    "start_range": 40.0,
+    "variant": "size_prior"
+   }
+  },
+  "E_model_truth_weaving_80m": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.06711992322822352,
+   "median_abs_rel_err_after10s": 0.04481072172201972,
+   "mean_rel_err_after10s": -0.032346212583983146,
+   "median_reported_rel_sigma_after10s": 0.04115941588932785,
+   "coverage_2sigma": 0.8041672685252058,
+   "anees_range": 2.5814484562626174,
+   "anees_pos": 4.801663496450572,
+   "mean_nis": 3.0219907171804534,
+   "nis_dof": 3,
+   "detection_rate": 0.727375415282392,
+   "final_rms_rel_err": 0.07908846365330624,
+   "frac_final_outside_3sigma": 0.08,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.3709186878382278,
+   "S_final_rms_err": 0.0210895877709138,
+   "S_final_reported_sigma": 0.010163877913948976,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.06317566998519995,
+     "median_reported_rel_sigma": 0.03705882409991558,
+     "n": 150
+    },
+    "20-40m": {
+     "rms_rel_err": 0.061412431462979665,
+     "median_reported_rel_sigma": 0.03788100063456787,
+     "n": 2309
+    },
+    "40-80m": {
+     "rms_rel_err": 0.10722947344343248,
+     "median_reported_rel_sigma": 0.04893648394531626,
+     "n": 21578
+    },
+    "80-120m": {
+     "rms_rel_err": 0.0915051516831687,
+     "median_reported_rel_sigma": 0.04614054442499809,
+     "n": 17874
+    },
+    "120-160m": {
+     "rms_rel_err": 0.07744814636245882,
+     "median_reported_rel_sigma": 0.04275439304993878,
+     "n": 7650
+    },
+    "160-200m": {
+     "rms_rel_err": 0.08534594533576273,
+     "median_reported_rel_sigma": 0.043155271413492007,
+     "n": 3416
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8123011488608927,
+    1.2069162939113505
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "model_truth": true,
+    "camera": "weaving",
+    "start_range": 80.0,
+    "variant": "size_prior"
+   }
+  },
+  "E_model_truth_lateral_80m": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.23521751503979124,
+   "median_abs_rel_err_after10s": 0.13762931796871056,
+   "mean_rel_err_after10s": 0.04148128394992267,
+   "median_reported_rel_sigma_after10s": 0.06816845922644943,
+   "coverage_2sigma": 0.5372597864768683,
+   "anees_range": 7.656618947982669,
+   "anees_pos": 9.990074101817621,
+   "mean_nis": 2.99663903627403,
+   "nis_dof": 3,
+   "detection_rate": 0.6803820598006645,
+   "final_rms_rel_err": 0.23071966273991565,
+   "frac_final_outside_3sigma": 0.315,
+   "frac_final_err_over_50pct": 0.035,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.37083145300867043,
+   "S_final_rms_err": 0.07154991803916096,
+   "S_final_reported_sigma": 0.02202634947437976,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.3569132798654423,
+     "median_reported_rel_sigma": 0.06465443374053526,
+     "n": 130
+    },
+    "20-40m": {
+     "rms_rel_err": 0.3651300096243842,
+     "median_reported_rel_sigma": 0.07182385745648194,
+     "n": 1626
+    },
+    "40-80m": {
+     "rms_rel_err": 0.3074929026781571,
+     "median_reported_rel_sigma": 0.08082340766609286,
+     "n": 15626
+    },
+    "80-120m": {
+     "rms_rel_err": 0.2669654047752279,
+     "median_reported_rel_sigma": 0.07397577061888977,
+     "n": 18802
+    },
+    "120-160m": {
+     "rms_rel_err": 0.18289538946562875,
+     "median_reported_rel_sigma": 0.06824560178701619,
+     "n": 9949
+    },
+    "160-200m": {
+     "rms_rel_err": 0.19547565558721658,
+     "median_reported_rel_sigma": 0.06847247534314353,
+     "n": 5355
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "model_truth": true,
+    "camera": "lateral",
+    "start_range": 80.0,
+    "variant": "size_prior"
+   }
+  },
+  "E_model_truth_weaving_150m": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.11297745721974871,
+   "median_abs_rel_err_after10s": 0.0783965837931532,
+   "mean_rel_err_after10s": -0.07442431077508302,
+   "median_reported_rel_sigma_after10s": 0.04823674907264555,
+   "coverage_2sigma": 0.5947279287239525,
+   "anees_range": 9.706559455173133,
+   "anees_pos": 11.046020087187248,
+   "mean_nis": 3.09885336651609,
+   "nis_dof": 3,
+   "detection_rate": 0.5296511627906977,
+   "final_rms_rel_err": 0.10650394909570993,
+   "frac_final_outside_3sigma": 0.2,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.36572360945249704,
+   "S_final_rms_err": 0.038764434210975356,
+   "S_final_reported_sigma": 0.012277628628986218,
+   "by_range": {
+    "20-40m": {
+     "rms_rel_err": 0.10325580051422385,
+     "median_reported_rel_sigma": 0.03442629670093762,
+     "n": 245
+    },
+    "40-80m": {
+     "rms_rel_err": 0.07960278533371948,
+     "median_reported_rel_sigma": 0.039326205173654274,
+     "n": 3386
+    },
+    "80-120m": {
+     "rms_rel_err": 0.1113139139974718,
+     "median_reported_rel_sigma": 0.04805818814234332,
+     "n": 10823
+    },
+    "120-160m": {
+     "rms_rel_err": 0.23543885320383004,
+     "median_reported_rel_sigma": 0.05906320533577374,
+     "n": 23679
+    },
+    "160-200m": {
+     "rms_rel_err": 0.16347711804503182,
+     "median_reported_rel_sigma": 0.05519710635644026,
+     "n": 9581
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8104696593548205,
+    1.2091457732293271
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "model_truth": true,
+    "camera": "weaving",
+    "start_range": 150.0,
+    "variant": "size_prior"
+   }
+  },
+  "E_model_truth_lateral_150m": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.3091746705125836,
+   "median_abs_rel_err_after10s": 0.25111948986638144,
+   "mean_rel_err_after10s": -0.23450858550267772,
+   "median_reported_rel_sigma_after10s": 0.08181402102554479,
+   "coverage_2sigma": 0.3432111775286615,
+   "anees_range": 28.126864698493037,
+   "anees_pos": 30.44404119254215,
+   "mean_nis": 2.9371075853334703,
+   "nis_dof": 3,
+   "detection_rate": 0.4902990033222591,
+   "final_rms_rel_err": 0.35062120008636055,
+   "frac_final_outside_3sigma": 0.55,
+   "frac_final_err_over_50pct": 0.105,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.29078083571582325,
+   "S_final_rms_err": 0.11561433794559822,
+   "S_final_reported_sigma": 0.02069969099312747,
+   "by_range": {
+    "20-40m": {
+     "rms_rel_err": 0.058235868168327265,
+     "median_reported_rel_sigma": 0.0642857619971101,
+     "n": 204
+    },
+    "40-80m": {
+     "rms_rel_err": 0.257275124394679,
+     "median_reported_rel_sigma": 0.07150189800735379,
+     "n": 2497
+    },
+    "80-120m": {
+     "rms_rel_err": 0.23127845470968744,
+     "median_reported_rel_sigma": 0.0778552851241216,
+     "n": 8044
+    },
+    "120-160m": {
+     "rms_rel_err": 0.3301643586959017,
+     "median_reported_rel_sigma": 0.09949327259701235,
+     "n": 22069
+    },
+    "160-200m": {
+     "rms_rel_err": 0.3557133813294404,
+     "median_reported_rel_sigma": 0.09025898998279974,
+     "n": 12317
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8118483374933433,
+    1.2074670809429984
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "model_truth": true,
+    "camera": "lateral",
+    "start_range": 150.0,
+    "variant": "size_prior"
+   }
+  },
+  "F_widthx2_approach_straight_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.5196504152370006,
+   "median_abs_rel_err_after10s": 0.2135983405813947,
+   "mean_rel_err_after10s": 0.22650180888244084,
+   "median_reported_rel_sigma_after10s": 0.07069162583076524,
+   "coverage_2sigma": 0.44157234835648934,
+   "anees_range": 14.30223703041489,
+   "anees_pos": 13.707167296677694,
+   "mean_nis": 2.1313405480378513,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.5541995084110827,
+   "frac_final_outside_3sigma": 0.63,
+   "frac_final_err_over_50pct": 0.285,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.45054601618695267,
+   "S_final_rms_err": 0.12415945040545912,
+   "S_final_reported_sigma": 0.021816834425621472,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.4851779988779138,
+     "median_reported_rel_sigma": 0.06192775641007328,
+     "n": 9506
+    },
+    "20-40m": {
+     "rms_rel_err": 0.5228537463529831,
+     "median_reported_rel_sigma": 0.06412726954149642,
+     "n": 11640
+    },
+    "40-80m": {
+     "rms_rel_err": 0.5364489679958537,
+     "median_reported_rel_sigma": 0.06819591510792085,
+     "n": 22116
+    },
+    "80-120m": {
+     "rms_rel_err": 0.4944667956053061,
+     "median_reported_rel_sigma": 0.09127513342710505,
+     "n": 12610
+    },
+    "120-160m": {
+     "rms_rel_err": 0.493978907015671,
+     "median_reported_rel_sigma": 0.12768182403100528,
+     "n": 10819
+    },
+    "160-200m": {
+     "rms_rel_err": 0.7218194319759366,
+     "median_reported_rel_sigma": 0.15923713226716762,
+     "n": 7084
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8109326347859002,
+    1.2085817628796751
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "size_prior",
+    "width_sigma_scale": 2.0
+   }
+  },
+  "F_widthx2_approach_straight_wrong_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.1901998057717422,
+   "median_abs_rel_err_after10s": 0.16153055287255436,
+   "mean_rel_err_after10s": -0.16045591591685487,
+   "median_reported_rel_sigma_after10s": 0.06086941156726343,
+   "coverage_2sigma": 0.2728740157480315,
+   "anees_range": 15.343674029649206,
+   "anees_pos": 13.784335754022027,
+   "mean_nis": 2.150551391519773,
+   "nis_dof": 3,
+   "detection_rate": 0.9385785536159601,
+   "final_rms_rel_err": 0.11862546669452784,
+   "frac_final_outside_3sigma": 0.17,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.555150072411419,
+   "S_final_rms_err": 0.06982822844995484,
+   "S_final_reported_sigma": 0.024764718155360563,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.16856127639572094,
+     "median_reported_rel_sigma": 0.05739169619330837,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.17122622785717545,
+     "median_reported_rel_sigma": 0.057278673245043016,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.177378441716838,
+     "median_reported_rel_sigma": 0.05996856962649825,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.22453347064236198,
+     "median_reported_rel_sigma": 0.07755776752530705,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.27377633153466263,
+     "median_reported_rel_sigma": 0.09418382317561017,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.3290594384637039,
+     "median_reported_rel_sigma": 0.12034454934143929,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "straight",
+    "variant": "wrong_prior",
+    "width_sigma_scale": 2.0
+   }
+  },
+  "F_widthx2_approach_lateral_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.570204858938492,
+   "median_abs_rel_err_after10s": 0.217443071236924,
+   "mean_rel_err_after10s": 0.27086065689606503,
+   "median_reported_rel_sigma_after10s": 0.07049233066803913,
+   "coverage_2sigma": 0.431435316714017,
+   "anees_range": 21.551180121678126,
+   "anees_pos": 15.630681505028637,
+   "mean_nis": 2.142213111881994,
+   "nis_dof": 3,
+   "detection_rate": 0.7578428927680798,
+   "final_rms_rel_err": 0.5879389796439036,
+   "frac_final_outside_3sigma": 0.65,
+   "frac_final_err_over_50pct": 0.29,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.45551373592796285,
+   "S_final_rms_err": 0.1292468279736609,
+   "S_final_reported_sigma": 0.022273503710343746,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.514905205006258,
+     "median_reported_rel_sigma": 0.06216741082545579,
+     "n": 9653
+    },
+    "20-40m": {
+     "rms_rel_err": 0.5583551710359491,
+     "median_reported_rel_sigma": 0.06400468128994366,
+     "n": 11820
+    },
+    "40-80m": {
+     "rms_rel_err": 0.5911413418599452,
+     "median_reported_rel_sigma": 0.06746126471082844,
+     "n": 22458
+    },
+    "80-120m": {
+     "rms_rel_err": 0.5607577422541467,
+     "median_reported_rel_sigma": 0.09139660149988346,
+     "n": 12805
+    },
+    "120-160m": {
+     "rms_rel_err": 0.5697769411264046,
+     "median_reported_rel_sigma": 0.12922893722893145,
+     "n": 11042
+    },
+    "160-200m": {
+     "rms_rel_err": 0.804176792105265,
+     "median_reported_rel_sigma": 0.15678003444661337,
+     "n": 7195
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8123011488608927,
+    1.2069162939113505
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "size_prior",
+    "width_sigma_scale": 2.0
+   }
+  },
+  "F_widthx2_approach_lateral_wrong_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.18780258485478238,
+   "median_abs_rel_err_after10s": 0.15513016594711906,
+   "mean_rel_err_after10s": -0.1588192971776257,
+   "median_reported_rel_sigma_after10s": 0.060726189243834876,
+   "coverage_2sigma": 0.27808398950131236,
+   "anees_range": 14.909899055280531,
+   "anees_pos": 13.136807987703273,
+   "mean_nis": 2.155794799767835,
+   "nis_dof": 3,
+   "detection_rate": 0.9385785536159601,
+   "final_rms_rel_err": 0.1162748817924533,
+   "frac_final_outside_3sigma": 0.145,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.555553781974365,
+   "S_final_rms_err": 0.06880796796757245,
+   "S_final_reported_sigma": 0.024753380073632744,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.16676457464488526,
+     "median_reported_rel_sigma": 0.05723734857596228,
+     "n": 9800
+    },
+    "20-40m": {
+     "rms_rel_err": 0.16945242922332499,
+     "median_reported_rel_sigma": 0.0569553773234665,
+     "n": 12000
+    },
+    "40-80m": {
+     "rms_rel_err": 0.1755613283955459,
+     "median_reported_rel_sigma": 0.059377111360558815,
+     "n": 22800
+    },
+    "80-120m": {
+     "rms_rel_err": 0.22140315867427351,
+     "median_reported_rel_sigma": 0.0772899605506258,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.2632701291691431,
+     "median_reported_rel_sigma": 0.09391111212687453,
+     "n": 11200
+    },
+    "160-200m": {
+     "rms_rel_err": 0.300410820629401,
+     "median_reported_rel_sigma": 0.11784133225747011,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.0,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "lateral",
+    "variant": "wrong_prior",
+    "width_sigma_scale": 2.0
+   }
+  },
+  "F_widthx2_approach_weaving_size_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.1139918456486336,
+   "median_abs_rel_err_after10s": 0.03439409333886476,
+   "mean_rel_err_after10s": 0.011933462405784042,
+   "median_reported_rel_sigma_after10s": 0.04715473558553236,
+   "coverage_2sigma": 0.9173767585496969,
+   "anees_range": 1.538722787652824,
+   "anees_pos": 3.850557199315524,
+   "mean_nis": 2.1677465377735614,
+   "nis_dof": 3,
+   "detection_rate": 0.7496882793017456,
+   "final_rms_rel_err": 0.03505360045500388,
+   "frac_final_outside_3sigma": 0.005,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.37093876509845924,
+   "S_final_mean": 0.39768852689002987,
+   "S_final_rms_err": 0.014644434485280904,
+   "S_final_reported_sigma": 0.009138867864866633,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.054696122103556594,
+     "median_reported_rel_sigma": 0.040774285234812094,
+     "n": 5673
+    },
+    "20-40m": {
+     "rms_rel_err": 0.06196919277509262,
+     "median_reported_rel_sigma": 0.04395113770288145,
+     "n": 7686
+    },
+    "40-80m": {
+     "rms_rel_err": 0.049686178564866644,
+     "median_reported_rel_sigma": 0.0430642880567011,
+     "n": 25986
+    },
+    "80-120m": {
+     "rms_rel_err": 0.10420917057590666,
+     "median_reported_rel_sigma": 0.0602924774399937,
+     "n": 11921
+    },
+    "120-160m": {
+     "rms_rel_err": 0.3013230669837633,
+     "median_reported_rel_sigma": 0.07096113680119687,
+     "n": 10530
+    },
+    "160-200m": {
+     "rms_rel_err": 0.6434949633753602,
+     "median_reported_rel_sigma": 0.10874136148175507,
+     "n": 6867
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8056413549235343,
+    1.2150451098824395
+   ],
+   "range_nees_frac_steps_inside": 0.3123359580052493,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "size_prior",
+    "width_sigma_scale": 2.0
+   }
+  },
+  "F_widthx2_approach_weaving_wrong_prior": {
+   "n_runs": 200,
+   "rms_rel_err_after10s": 0.0579682099231882,
+   "median_abs_rel_err_after10s": 0.0334343704706037,
+   "mean_rel_err_after10s": -0.04014479674985279,
+   "median_reported_rel_sigma_after10s": 0.04246373570057414,
+   "coverage_2sigma": 0.8108267716535433,
+   "anees_range": 2.9445356856943783,
+   "anees_pos": 5.152537431365508,
+   "mean_nis": 2.2348203332425167,
+   "nis_dof": 3,
+   "detection_rate": 0.9379052369077306,
+   "final_rms_rel_err": 0.03273441159585148,
+   "frac_final_outside_3sigma": 0.01,
+   "frac_final_err_over_50pct": 0.0,
+   "S_true_mean": 0.5999999999999999,
+   "S_final_mean": 0.5929420320023658,
+   "S_final_rms_err": 0.016757639296643714,
+   "S_final_reported_sigma": 0.012435246084515848,
+   "by_range": {
+    "10-20m": {
+     "rms_rel_err": 0.04671559156292515,
+     "median_reported_rel_sigma": 0.03809445813184262,
+     "n": 6200
+    },
+    "20-40m": {
+     "rms_rel_err": 0.05374174375327217,
+     "median_reported_rel_sigma": 0.041640707744549296,
+     "n": 8400
+    },
+    "40-80m": {
+     "rms_rel_err": 0.052499265007607425,
+     "median_reported_rel_sigma": 0.03607386077292951,
+     "n": 28400
+    },
+    "80-120m": {
+     "rms_rel_err": 0.06955635449826748,
+     "median_reported_rel_sigma": 0.05305125479174365,
+     "n": 13000
+    },
+    "120-160m": {
+     "rms_rel_err": 0.10074475536122143,
+     "median_reported_rel_sigma": 0.061768132879301635,
+     "n": 11400
+    },
+    "160-200m": {
+     "rms_rel_err": 0.21014278198244057,
+     "median_reported_rel_sigma": 0.08753246122837718,
+     "n": 7400
+    }
+   },
+   "range_nees_verdict": "overconfident",
+   "range_nees_bounds": [
+    0.8136399125092315,
+    1.2052894775315546
+   ],
+   "range_nees_frac_steps_inside": 0.11811023622047244,
+   "config": {
+    "drone": "approach_recede",
+    "camera": "weaving",
+    "variant": "wrong_prior",
+    "width_sigma_scale": 2.0
+   }
+  }
+ }
+}

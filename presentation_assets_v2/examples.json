@@ -1,0 +1,63 @@
+{
+ "new_weights": "/home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt",
+ "old_weights": "/home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt",
+ "dut": {
+  "small": {
+   "image": "02151.jpg",
+   "gt_width_px": 27.999360000000024,
+   "new": {
+    "conf": 0.777488648891449,
+    "iou": 0.9172230958938599,
+    "n_drone_boxes": 1
+   },
+   "old": {
+    "conf": 0.7401336431503296,
+    "iou": 0.8899683356285095
+   }
+  },
+  "medium": {
+   "image": "01727.jpg",
+   "gt_width_px": 56.00063999999975,
+   "new": {
+    "conf": 0.8329001665115356,
+    "iou": 0.8999265432357788,
+    "n_drone_boxes": 1
+   },
+   "old": {
+    "conf": 0.8410571217536926,
+    "iou": 0.9130949974060059
+   }
+  },
+  "large": {
+   "image": "01049.jpg",
+   "gt_width_px": 288.9996800000001,
+   "new": {
+    "conf": 0.9179112315177917,
+    "iou": 0.9536071419715881,
+    "n_drone_boxes": 1
+   },
+   "old": {
+    "conf": 0.8953248262405396,
+    "iou": 0.9513821601867676
+   }
+  }
+ },
+ "detfly": {
+  "sampled_frames": 300,
+  "new_missed_in_sample": 67,
+  "missed_1": {
+   "image": "020_0201730.jpg",
+   "gt_width_px": 23.999999999999773,
+   "new_false_drone_boxes": 0,
+   "old_detected": false,
+   "old_conf": null
+  },
+  "missed_2": {
+   "image": "020_0207689.jpg",
+   "gt_width_px": 86.99904000000004,
+   "new_false_drone_boxes": 0,
+   "old_detected": false,
+   "old_conf": null
+  }
+ }
+}
