@@ -2,7 +2,7 @@
 
 Updated: Sat 2026-11-21 02:45 CST. Deadline: Sun 2026-11-22 22:00 CST.
 
-**Stage: old_eval (old n/s/m on full Det-Fly + DUT)** — old_m: false drones
+**Stage: train_s**
 
 
 ## Finished stages
