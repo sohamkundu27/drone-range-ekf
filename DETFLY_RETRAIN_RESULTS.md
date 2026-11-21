@@ -21,8 +21,8 @@
 
 | model | Det-Fly set | frames | P @0.25 [95% CI] | R @0.25 [95% CI] | F1 @0.25 [95% CI] | mAP50 [95% CI] | mAP50-95 [95% CI] |
 |---|---|---|---|---|---|---|---|
-| old n | 020 (all frames) | | pending | pending | pending | pending | pending |
-| old n | 010 test block | | pending | pending | pending | pending | pending |
+| old n | 020 (all frames) | 6912 | 0.688 [0.606, 0.762] | 0.460 [0.392, 0.521] | 0.551 [0.486, 0.612] | 0.498 [0.416, 0.575] | 0.255 [0.211, 0.303] |
+| old n | 010 test block | 1590 | 0.797 [0.708, 0.871] | 0.650 [0.514, 0.782] | 0.716 [0.601, 0.820] | 0.666 [0.519, 0.803] | 0.273 [0.208, 0.344] |
 | **new n** | 020 (all frames) | | pending | pending | pending | pending | pending |
 | **new n** | 010 test block | | pending | pending | pending | pending | pending |
 | old s | 020 (all frames) | 6912 | 0.741 [0.682, 0.798] | 0.444 [0.375, 0.506] | 0.555 [0.489, 0.613] | 0.497 [0.417, 0.572] | 0.271 [0.224, 0.322] |
@@ -40,7 +40,11 @@ P/R are Ultralytics' values at the max-F1 confidence (as in all earlier eval_*.j
 
 | model | class | P | R | mAP50 | mAP50-95 |
 |---|---|---|---|---|---|
-| old n | all | pending | | | |
+| old n | **overall** | 0.912 | 0.806 | 0.860 | 0.646 |
+| old n | drone | 0.979 | 0.956 | 0.975 | 0.732 |
+| old n | bird | 0.832 | 0.591 | 0.670 | 0.450 |
+| old n | airplane | 0.892 | 0.774 | 0.850 | 0.667 |
+| old n | helicopter | 0.944 | 0.905 | 0.945 | 0.734 |
 | new n | all | pending | | | |
 | old s | **overall** | 0.916 | 0.807 | 0.861 | 0.660 |
 | old s | drone | 0.987 | 0.967 | 0.979 | 0.749 |
@@ -55,7 +59,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 
 | model | P | R | mAP50 | mAP50-95 |
 |---|---|---|---|---|
-| old n | pending | | | |
+| old n | 0.978 | 0.962 | 0.976 | 0.732 |
 | new n | pending | | | |
 | old s | 0.987 | 0.967 | 0.979 | 0.749 |
 | new s | pending | | | |
@@ -66,7 +70,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 
 | model | images with a false drone | of | false drones total |
 |---|---|---|---|
-| old n | pending | | |
+| old n | 9 | 1534 | 10 |
 | new n | pending | | |
 | old s | 5 | 1534 | 5 |
 | new s | pending | | |

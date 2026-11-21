@@ -1,0 +1,26 @@
+{
+ "tag": "old_n_dut_test",
+ "weights": "/home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt",
+ "data": "data/yolo/dut_anti_uav.yaml",
+ "split": "test",
+ "imgsz": 1280,
+ "mAP50": 0.9759078638382447,
+ "mAP50-95": 0.7317421427348211,
+ "P": 0.9778221178958594,
+ "R": 0.9623200684934009,
+ "per_class": {
+  "drone": {
+   "P": 0.9778221178958594,
+   "R": 0.9623200684934009,
+   "mAP50": 0.9759078638382447,
+   "mAP50-95": 0.7317421427348211,
+   "n_instances": 2245
+  }
+ },
+ "speed_ms_per_image": {
+  "preprocess": 0.49755491866645485,
+  "inference": 2.2297517824071376,
+  "loss": 0.00035684936764565384,
+  "postprocess": 0.26135552928529004
+ }
+}
