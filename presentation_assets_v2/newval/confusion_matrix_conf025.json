@@ -1,0 +1,60 @@
+{
+ "index": "matrix[predicted][true]",
+ "names": [
+  "drone",
+  "bird",
+  "airplane",
+  "helicopter",
+  "background"
+ ],
+ "matrix": [
+  [
+   2764,
+   0,
+   0,
+   0,
+   113
+  ],
+  [
+   0,
+   1007,
+   3,
+   0,
+   252
+  ],
+  [
+   0,
+   3,
+   898,
+   3,
+   158
+  ],
+  [
+   1,
+   0,
+   28,
+   115,
+   13
+  ],
+  [
+   232,
+   484,
+   187,
+   16,
+   0
+  ]
+ ],
+ "weights": "runs/s_detfly_new/weights/best.pt",
+ "data": "new_drone4_detfly.yaml",
+ "split": "val",
+ "conf": 0.25,
+ "nms_iou": 0.5,
+ "match_iou": 0.5,
+ "true_instances_per_class": {
+  "drone": 2997,
+  "bird": 1494,
+  "airplane": 1116,
+  "helicopter": 134
+ },
+ "note": "Separate validation call for the confusion matrix only. Do not quote mAP from it."
+}
