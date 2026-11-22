@@ -1,0 +1,15 @@
+WARNING ⚠️ 'half' is deprecated and will be removed in the future. Use 'quantize' instead.
+Ultralytics 8.4.215 🚀 Python-3.12.3 torch-2.14.1+cu130 CUDA:0 (NVIDIA GeForce RTX 3080, 11911MiB)
+YOLO26m summary (fused): 130 layers, 20,352,536 parameters, 0 gradients, 275.3 GFLOPs
+
+[34m[1mPyTorch:[0m starting from '/home/soham/github/drone-range-ekf/model_size_benchmark/m/artifacts/fp16/best.pt' with input shape (1, 3, 1280, 1280) BCHW and output shape(s) (1, 8, 33600) (42.1 MB)
+
+[34m[1mONNX:[0m starting export with onnx 1.23.2 opset 18...
+[34m[1mONNX:[0m slimming with onnxslim 0.1.99...
+[34m[1mONNX:[0m export success ✅ 1.2s, saved as '/home/soham/github/drone-range-ekf/model_size_benchmark/m/artifacts/fp16/best.onnx' (39.3 MB)
+
+Export complete (2.0s)
+Results saved to [1m/home/soham/github/drone-range-ekf/model_size_benchmark/m/artifacts/fp16/best.onnx[0m
+Predict:         yolo predict task=detect model=/home/soham/github/drone-range-ekf/model_size_benchmark/m/artifacts/fp16/best.onnx imgsz=1280 quantize=16
+Validate:        yolo val task=detect model=/home/soham/github/drone-range-ekf/model_size_benchmark/m/artifacts/fp16/best.onnx imgsz=1280 data=data/yolo/drone4_bal.yaml quantize=16
+Visualize:       https://netron.app

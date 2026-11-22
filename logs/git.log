@@ -1,0 +1,384 @@
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py detector/new_eval_detfly.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/weights_sha256.json
+
+$ git commit -q -m Det-Fly retrain: split definition (detfly_split.json)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: f7af044
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   ad9dd39..9cbfe15  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_s_test020.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m Det-Fly retrain: old s evaluated on full Det-Fly / DUT
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 28892ce
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   9cbfe15..e475fc9  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m Det-Fly retrain: old n evaluated on full Det-Fly / DUT
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 809d4a8
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   e475fc9..b596036  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m Det-Fly retrain: old m evaluated on full Det-Fly / DUT
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 31a8708
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   b596036..d3060ed  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m Det-Fly retrain: old n/s/m on full Det-Fly (DETFLY_FULL_RESULTS.md)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 3fa1f5c
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   d3060ed..91274eb  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m STATUS: start training new s (time cap 7.0 h)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 0da1718
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   91274eb..c895843  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 7ea754a
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   c895843..3f7c646  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 1f44056
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   3f7c646..b248828  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: f83aef0
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   b248828..46e2717  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/model_size_table.json presentation_assets_v2/dataset_stats.json presentation_assets_v2/detector_results.md presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/NUMBERS.md
+
+$ git commit -q -m Det-Fly retrain: new s trained and evaluated (DETFLY_RETRAIN_RESULTS.md)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: dd6cd83
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   46e2717..c541080  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/results_sim.md experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m Det-Fly retrain: slide assets v2 + sim rerun from new s (presentation_assets_v2/NUMBERS.md)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 598ec7b
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   c541080..56268cb  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/results_sim.md experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: start training new n (time cap 7.0 h)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: f0c5440
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   56268cb..dfa6aa5  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 985a702
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   8a5361f..701b590  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: aece210
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   701b590..61112b3  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: e4c6f40
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   61112b3..9e3ff0a  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m Det-Fly retrain: new n trained and evaluated (DETFLY_RETRAIN_RESULTS.md)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 42ef333
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   9e3ff0a..a752b7d  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: start training new m (time cap 7.0 h)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: ba535d6
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   a752b7d..224dd2f  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 233f096
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   224dd2f..3458cd2  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: da5babc
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   3458cd2..5afb662  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m STATUS: periodic progress update
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: 93db4eb
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   5afb662..c0dfcc1  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/train_m.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/new_m_false_positives.json detfly_retrain/eval/new_m_test020.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/new_m_dut_test.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_m_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/new_m_all4_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m Det-Fly retrain: new m trained and evaluated (DETFLY_RETRAIN_RESULTS.md)
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: edbcdf1
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   c0dfcc1..4d70b1f  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/train_m.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/new_m_false_positives.json detfly_retrain/eval/new_m_test020.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/new_m_dut_test.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_m_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/new_m_all4_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git commit -q -m Det-Fly retrain: slide assets v2, sim with new noise, final report
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+$ git pull --rebase --autostash origin main
+Created autostash: bde2be3
+Current branch main is up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+Applied autostash.
+
+$ git push origin main
+To https://github.com/sohamkundu27/drone-range-ekf.git
+   4d70b1f..0dbf107  main -> main
+
+$ git add -- STATUS.md DETFLY_FULL_RESULTS.md DETFLY_RETRAIN_RESULTS.md detfly_split.json scripts/convert_detfly.py scripts/build_detfly_split.py scripts/run_retrain_queue.py detector/eval.py scripts/new_retrain_report.py scripts/new_slide_assets.py scripts/new_sim_shadow.sh scripts/new_final_assets.sh scripts/new_dataset_stats.py scripts/new_sim_compare.py detector/new_eval_detfly.py detector/new_presentation_examples.py detector/new_train_detfly.py detfly_retrain/summary.json detfly_retrain/old_training_facts.json detfly_retrain/caveats.md detfly_retrain/train_n.json detfly_retrain/sim_shadow_check.md detfly_retrain/weights_sha256.json detfly_retrain/train_s.json detfly_retrain/train_m.json detfly_retrain/eval/old_n_all4_test.json detfly_retrain/eval/new_m_false_positives.json detfly_retrain/eval/new_m_test020.json detfly_retrain/eval/old_s_dut_test.json detfly_retrain/eval/new_n_all4_test.json detfly_retrain/eval/old_s_prelim.json detfly_retrain/eval/new_m_dut_test.json detfly_retrain/eval/old_s_all4_test.json detfly_retrain/eval/new_n_dut_test.json detfly_retrain/eval/new_s_all4_test.json detfly_retrain/eval/old_n_test010.json detfly_retrain/eval/old_m_false_positives.json detfly_retrain/eval/old_s_false_positives.json detfly_retrain/eval/old_s_test010.json detfly_retrain/eval/new_m_test010.json detfly_retrain/eval/new_s_false_positives.json detfly_retrain/eval/old_m_test020.json detfly_retrain/eval/new_s_dut_test.json detfly_retrain/eval/old_n_dut_test.json detfly_retrain/eval/new_n_test020.json detfly_retrain/eval/new_s_test020.json detfly_retrain/eval/new_n_false_positives.json detfly_retrain/eval/new_m_all4_test.json detfly_retrain/eval/old_m_test010.json detfly_retrain/eval/new_n_test010.json detfly_retrain/eval/old_m_dut_test.json detfly_retrain/eval/old_n_false_positives.json detfly_retrain/eval/old_n_test020.json detfly_retrain/eval/new_s_test010.json detfly_retrain/eval/old_s_test020.json detfly_retrain/eval/old_m_all4_test.json presentation_assets_v2/nan_runs.md presentation_assets_v2/model_size_table.json presentation_assets_v2/dut_good_small.jpg presentation_assets_v2/range_error_envelopes.png presentation_assets_v2/dataset_stats.json presentation_assets_v2/confusion_matrix_conf025.json presentation_assets_v2/dut_good_medium.jpg presentation_assets_v2/examples.json presentation_assets_v2/consistency_model_truth.png presentation_assets_v2/PR_curve_newval.png presentation_assets_v2/results_sim.md presentation_assets_v2/detector_results.md presentation_assets_v2/confusion_matrix_newval.png presentation_assets_v2/results.png presentation_assets_v2/detector_noise.png presentation_assets_v2/confusion_matrix_conf025_counts.png presentation_assets_v2/detector_noise.json presentation_assets_v2/PR_curve.png presentation_assets_v2/dataset_stats.md presentation_assets_v2/model_size_table.md presentation_assets_v2/dut_good_large.jpg presentation_assets_v2/rmse_vs_range.png presentation_assets_v2/nees_time.png presentation_assets_v2/uncertainty_vs_motion.png presentation_assets_v2/confusion_matrix_conf025.png presentation_assets_v2/confusion_matrix.png presentation_assets_v2/detfly_missed_1.jpg presentation_assets_v2/detfly_missed_2.jpg presentation_assets_v2/NUMBERS.md experiments/new_results/nan_runs.md experiments/new_results/nan_runs.json experiments/new_results/range_error_envelopes.png experiments/new_results/consistency_model_truth.png experiments/new_results/COMPARISON.md experiments/new_results/results_sim.md experiments/new_results/COMPARISON.json experiments/new_results/detector_noise_used.json experiments/new_results/results_sim.json experiments/new_results/rmse_vs_range.png experiments/new_results/nees_time.png experiments/new_results/uncertainty_vs_motion.png
+
+$ git pull --rebase --autostash origin main
+Already up to date.
+From https://github.com/sohamkundu27/drone-range-ekf
+ * branch            main       -> FETCH_HEAD
+
+$ git push origin main
+Everything up-to-date
+

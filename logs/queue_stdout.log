@@ -1,0 +1,115 @@
+[Sat 02:22:57] queue start, pid 3106283
+[Sat 02:22:57] RUN split: /home/soham/github/drone-range-ekf/.venv/bin/python scripts/build_detfly_split.py
+[Sat 02:23:57] EXIT split: 0
+[Sat 02:23:59] PUSHED: Det-Fly retrain: split definition (detfly_split.json)
+[Sat 02:23:59] RUN eval_old_s_test020: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt --model-tag old_s --set test020
+[Sat 02:24:59] EXIT eval_old_s_test020: 0
+[Sat 02:24:59] RUN eval_old_s_test010: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt --model-tag old_s --set test010
+[Sat 02:25:59] EXIT eval_old_s_test010: 0
+[Sat 02:25:59] RUN eval_old_s_prelim: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt --model-tag old_s --set prelim
+[Sat 02:26:59] EXIT eval_old_s_prelim: 0
+[Sat 02:26:59] RUN eval_old_s_all4_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt --data data/yolo/drone4_bal.yaml --tag old_s_all4_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_s_all4_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 02:27:59] EXIT eval_old_s_all4_test: 0
+[Sat 02:27:59] RUN eval_old_s_dut_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt --data data/yolo/dut_anti_uav.yaml --tag old_s_dut_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_s_dut_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 02:29:04] queue start, pid 3108674
+[Sat 02:29:04] RUN eval_old_s_fp: /home/soham/github/drone-range-ekf/.venv/bin/python detector/false_positives.py --weights /home/soham/github/drone-range-ekf/runs/drone4_bal_backup.aVl2ZP/best.pt --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_s_false_positives.json
+[Sat 02:30:04] EXIT eval_old_s_fp: 0
+[Sat 02:30:04] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sat 02:31:04] EXIT report: 0
+[Sat 02:31:06] PUSHED: Det-Fly retrain: old s evaluated on full Det-Fly / DUT
+[Sat 02:31:06] RUN eval_old_n_test020: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt --model-tag old_n --set test020
+[Sat 02:32:06] EXIT eval_old_n_test020: 0
+[Sat 02:32:06] RUN eval_old_n_test010: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt --model-tag old_n --set test010
+[Sat 02:33:06] EXIT eval_old_n_test010: 0
+[Sat 02:33:06] RUN eval_old_n_all4_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt --data data/yolo/drone4_bal.yaml --tag old_n_all4_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_n_all4_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 02:34:06] EXIT eval_old_n_all4_test: 0
+[Sat 02:34:06] RUN eval_old_n_dut_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt --data data/yolo/dut_anti_uav.yaml --tag old_n_dut_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_n_dut_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 02:35:06] EXIT eval_old_n_dut_test: 0
+[Sat 02:35:06] RUN eval_old_n_fp: /home/soham/github/drone-range-ekf/.venv/bin/python detector/false_positives.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/n_batch8/weights/best.pt --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_n_false_positives.json
+[Sat 02:36:06] EXIT eval_old_n_fp: 0
+[Sat 02:36:06] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sat 02:37:06] EXIT report: 0
+[Sat 02:37:08] PUSHED: Det-Fly retrain: old n evaluated on full Det-Fly / DUT
+[Sat 02:37:08] RUN eval_old_m_test020: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4/weights/best.pt --model-tag old_m --set test020
+[Sat 02:39:08] EXIT eval_old_m_test020: 0
+[Sat 02:39:08] RUN eval_old_m_test010: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4/weights/best.pt --model-tag old_m --set test010
+[Sat 02:40:08] EXIT eval_old_m_test010: 0
+[Sat 02:40:08] RUN eval_old_m_all4_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4/weights/best.pt --data data/yolo/drone4_bal.yaml --tag old_m_all4_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_m_all4_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 02:41:08] EXIT eval_old_m_all4_test: 0
+[Sat 02:41:08] RUN eval_old_m_dut_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4/weights/best.pt --data data/yolo/dut_anti_uav.yaml --tag old_m_dut_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_m_dut_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 02:42:08] EXIT eval_old_m_dut_test: 0
+[Sat 02:42:08] RUN eval_old_m_fp: /home/soham/github/drone-range-ekf/.venv/bin/python detector/false_positives.py --weights /home/soham/github/drone-range-ekf/model_size_benchmark/train/m_batch4/weights/best.pt --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/old_m_false_positives.json
+[Sat 02:43:08] EXIT eval_old_m_fp: 0
+[Sat 02:43:08] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sat 02:44:08] EXIT report: 0
+[Sat 02:44:10] PUSHED: Det-Fly retrain: old m evaluated on full Det-Fly / DUT
+[Sat 02:44:10] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sat 02:45:10] EXIT report: 0
+[Sat 02:45:12] PUSHED: Det-Fly retrain: old n/s/m on full Det-Fly (DETFLY_FULL_RESULTS.md)
+[Sat 02:45:14] PUSHED: STATUS: start training new s (time cap 7.0 h)
+[Sat 02:45:14] RUN train_s: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_train_detfly.py --size s --batch 8 --time 7.0 --log /home/soham/github/drone-range-ekf/logs/train_s.log
+[Sat 04:45:17] PUSHED: STATUS: periodic progress update
+[Sat 06:45:19] PUSHED: STATUS: periodic progress update
+[Sat 08:45:21] PUSHED: STATUS: periodic progress update
+[Sat 09:47:21] EXIT train_s: 0
+[Sat 09:47:21] RUN eval_new_s_test020: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt --model-tag new_s --set test020
+[Sat 09:48:21] EXIT eval_new_s_test020: 0
+[Sat 09:48:21] RUN eval_new_s_test010: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt --model-tag new_s --set test010
+[Sat 09:49:21] EXIT eval_new_s_test010: 0
+[Sat 09:49:21] RUN eval_new_s_all4_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt --data data/yolo/drone4_bal.yaml --tag new_s_all4_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_s_all4_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 09:50:21] EXIT eval_new_s_all4_test: 0
+[Sat 09:50:21] RUN eval_new_s_dut_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt --data data/yolo/dut_anti_uav.yaml --tag new_s_dut_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_s_dut_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 09:51:21] EXIT eval_new_s_dut_test: 0
+[Sat 09:51:21] RUN eval_new_s_fp: /home/soham/github/drone-range-ekf/.venv/bin/python detector/false_positives.py --weights /home/soham/github/drone-range-ekf/runs/s_detfly_new/weights/best.pt --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_s_false_positives.json
+[Sat 09:52:21] EXIT eval_new_s_fp: 0
+[Sat 09:52:21] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sat 09:53:21] EXIT report: 0
+[Sat 09:53:23] PUSHED: Det-Fly retrain: new s trained and evaluated (DETFLY_RETRAIN_RESULTS.md)
+[Sat 09:53:23] RUN assets_s: bash /home/soham/github/drone-range-ekf/scripts/new_final_assets.sh
+[Sat 09:57:23] EXIT assets_s: 0
+[Sat 09:57:26] PUSHED: Det-Fly retrain: slide assets v2 + sim rerun from new s (presentation_assets_v2/NUMBERS.md)
+[Sat 09:57:28] PUSHED: STATUS: start training new n (time cap 7.0 h)
+[Sat 09:57:28] RUN train_n: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_train_detfly.py --size n --batch 8 --time 7.0 --log /home/soham/github/drone-range-ekf/logs/train_n.log
+[Sat 11:57:30] PUSHED: STATUS: periodic progress update
+[Sat 13:57:32] PUSHED: STATUS: periodic progress update
+[Sat 15:57:35] PUSHED: STATUS: periodic progress update
+[Sat 16:58:36] EXIT train_n: 0
+[Sat 16:58:36] RUN eval_new_n_test020: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/n_detfly_new/weights/best.pt --model-tag new_n --set test020
+[Sat 16:59:36] EXIT eval_new_n_test020: 0
+[Sat 16:59:36] RUN eval_new_n_test010: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/n_detfly_new/weights/best.pt --model-tag new_n --set test010
+[Sat 17:00:36] EXIT eval_new_n_test010: 0
+[Sat 17:00:36] RUN eval_new_n_all4_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/n_detfly_new/weights/best.pt --data data/yolo/drone4_bal.yaml --tag new_n_all4_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_n_all4_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 17:01:36] EXIT eval_new_n_all4_test: 0
+[Sat 17:01:36] RUN eval_new_n_dut_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/n_detfly_new/weights/best.pt --data data/yolo/dut_anti_uav.yaml --tag new_n_dut_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_n_dut_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sat 17:02:36] EXIT eval_new_n_dut_test: 0
+[Sat 17:02:36] RUN eval_new_n_fp: /home/soham/github/drone-range-ekf/.venv/bin/python detector/false_positives.py --weights /home/soham/github/drone-range-ekf/runs/n_detfly_new/weights/best.pt --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_n_false_positives.json
+[Sat 17:03:36] EXIT eval_new_n_fp: 0
+[Sat 17:03:36] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sat 17:04:36] EXIT report: 0
+[Sat 17:04:38] PUSHED: Det-Fly retrain: new n trained and evaluated (DETFLY_RETRAIN_RESULTS.md)
+[Sat 17:04:40] PUSHED: STATUS: start training new m (time cap 7.0 h)
+[Sat 17:04:40] RUN train_m: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_train_detfly.py --size m --batch 4 --time 7.0 --log /home/soham/github/drone-range-ekf/logs/train_m.log
+[Sat 19:04:42] PUSHED: STATUS: periodic progress update
+[Sat 21:04:45] PUSHED: STATUS: periodic progress update
+[Sat 23:04:47] PUSHED: STATUS: periodic progress update
+[Sun 00:06:47] EXIT train_m: 0
+[Sun 00:06:47] RUN eval_new_m_test020: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/m_detfly_new/weights/best.pt --model-tag new_m --set test020
+[Sun 00:08:47] EXIT eval_new_m_test020: 0
+[Sun 00:08:47] RUN eval_new_m_test010: /home/soham/github/drone-range-ekf/.venv/bin/python detector/new_eval_detfly.py --weights /home/soham/github/drone-range-ekf/runs/m_detfly_new/weights/best.pt --model-tag new_m --set test010
+[Sun 00:09:47] EXIT eval_new_m_test010: 0
+[Sun 00:09:47] RUN eval_new_m_all4_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/m_detfly_new/weights/best.pt --data data/yolo/drone4_bal.yaml --tag new_m_all4_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_m_all4_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sun 00:10:47] EXIT eval_new_m_all4_test: 0
+[Sun 00:10:47] RUN eval_new_m_dut_test: /home/soham/github/drone-range-ekf/.venv/bin/python detector/eval.py --weights /home/soham/github/drone-range-ekf/runs/m_detfly_new/weights/best.pt --data data/yolo/dut_anti_uav.yaml --tag new_m_dut_test --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_m_dut_test.json --project /home/soham/github/drone-range-ekf/runs/new_val
+[Sun 00:11:47] EXIT eval_new_m_dut_test: 0
+[Sun 00:11:47] RUN eval_new_m_fp: /home/soham/github/drone-range-ekf/.venv/bin/python detector/false_positives.py --weights /home/soham/github/drone-range-ekf/runs/m_detfly_new/weights/best.pt --out /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_m_false_positives.json
+[Sun 00:12:47] EXIT eval_new_m_fp: 0
+[Sun 00:12:47] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sun 00:13:47] EXIT report: 0
+[Sun 00:13:49] PUSHED: Det-Fly retrain: new m trained and evaluated (DETFLY_RETRAIN_RESULTS.md)
+[Sun 00:13:49] RUN final_assets: bash /home/soham/github/drone-range-ekf/scripts/new_final_assets.sh
+[Sun 00:17:49] EXIT final_assets: 0
+[Sun 00:17:49] RUN report: /home/soham/github/drone-range-ekf/.venv/bin/python /home/soham/github/drone-range-ekf/scripts/new_retrain_report.py
+[Sun 00:18:49] EXIT report: 0
+[Sun 00:18:51] PUSHED: Det-Fly retrain: slide assets v2, sim with new noise, final report
+[Sun 00:18:52] PUSHED: STATUS: DONE
+[Sun 00:18:52] queue finished

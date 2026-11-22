@@ -1,0 +1,142 @@
+{
+  "dut_anti_uav": {
+    "output": "dut_anti_uav_example.jpg",
+    "source": "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/00887.jpg",
+    "labels": "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/labels/test/00887.txt",
+    "split": "test",
+    "seed": 20261120,
+    "reason": "Small drone above a treeline with campus context; visible in the inset, with a moderate annotated area rather than an extreme size.",
+    "original_size": [
+      1920,
+      1080
+    ],
+    "output_size": [
+      1600,
+      900
+    ],
+    "box_count": 1,
+    "candidate_index_zero_based": 4,
+    "candidates": [
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/01878.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/02161.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/01678.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/01365.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/00887.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/00611.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/01802.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/00512.jpg"
+    ],
+    "source_sha256": {
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/images/test/00887.jpg": "fe179ed49903d98fc66d0f3d3fac561559a69b5e36cfb3c5ea4e30393f066a5a",
+      "/home/soham/github/drone-range-ekf/data/yolo/dut_anti_uav/labels/test/00887.txt": "5e3b6889a8d3fcd6fc14d5c8a405acb5c2ca3ba13a463dc275588df4c35aaa4c"
+    }
+  },
+  "coco": {
+    "output": "coco_example.jpg",
+    "source": "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000284279.jpg",
+    "labels": "/home/soham/github/drone-range-ekf/data/yolo/coco/labels/test/000000284279.txt",
+    "split": "test",
+    "seed": 20261120,
+    "reason": "One recognizable bird beside a feeder, with ordinary background detail and a moderate annotated area.",
+    "original_size": [
+      640,
+      512
+    ],
+    "output_size": [
+      640,
+      512
+    ],
+    "box_count": 1,
+    "candidate_index_zero_based": 4,
+    "candidates": [
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000489046.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000561009.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000452122.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000381639.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000284279.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000196185.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000272049.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000090631.jpg"
+    ],
+    "source_sha256": {
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/images/test/000000284279.jpg": "d9d5564ffa23f0b01b14413fb4d84536fbfee84f1cec3c4b09a90b1f882431df",
+      "/home/soham/github/drone-range-ekf/data/yolo/coco/labels/test/000000284279.txt": "66627e38d2a9fe41e19f5d8cd2d47cd44df2bbd2d6d981f242476f14b81ac281"
+    }
+  },
+  "openimages": {
+    "output": "openimages_example.jpg",
+    "source": "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/4bc6d10752652309.jpg",
+    "labels": "/home/soham/github/drone-range-ekf/data/yolo/openimages/labels/test/4bc6d10752652309.txt",
+    "split": "test",
+    "seed": 20261120,
+    "reason": "One helicopter in side view with its rotor and skids visible; moderate annotated area within the helicopter subset.",
+    "original_size": [
+      1024,
+      683
+    ],
+    "output_size": [
+      1024,
+      683
+    ],
+    "box_count": 1,
+    "candidate_index_zero_based": 5,
+    "candidates": [
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/a1710b1c3898322f.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/e68adb2e66d4f63c.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/c72c474652a80318.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/898df960c591b1fa.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/656eea6d5a0a503c.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/4bc6d10752652309.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/2f0ebb3ca329c6e4.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/97a7caf1fbd2615b.jpg"
+    ],
+    "source_sha256": {
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/images/test/4bc6d10752652309.jpg": "73591aa7152b1728ca0310b57a7cf8b22e51b6d355f0bb573513960194bd844e",
+      "/home/soham/github/drone-range-ekf/data/yolo/openimages/labels/test/4bc6d10752652309.txt": "f9694c9264d35841cde3c4176a407ed8cf23129f712c7f3ceaa6af8b07ee0dbe"
+    }
+  },
+  "detfly": {
+    "output": "detfly_example.jpg",
+    "source": "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100612.jpg",
+    "labels": "/home/soham/github/drone-range-ekf/data/yolo/detfly/labels/test/010_0100612.txt",
+    "split": "test",
+    "seed": 20261120,
+    "reason": "Drone above textured agricultural ground, illustrating the requested ground-background scenario. Selected for scene content, not a measured model failure.",
+    "original_size": [
+      3840,
+      2160
+    ],
+    "output_size": [
+      1600,
+      900
+    ],
+    "box_count": 1,
+    "candidate_index_zero_based": 0,
+    "candidates": [
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100612.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100706.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100661.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100567.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100474.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100795.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100327.jpg",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100791.jpg"
+    ],
+    "source_sha256": {
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/images/test/010_0100612.jpg": "7d548222cef0209926b448082af3137f4ca28bad8312a7126b52d11629b20f83",
+      "/home/soham/github/drone-range-ekf/data/yolo/detfly/labels/test/010_0100612.txt": "3d3a324c7b2c3dc31c74cfbbe6c2e80b63e58b3283cdbb109e7d2e3ff66a9dde"
+    }
+  },
+  "mosaic": {
+    "source": "/home/soham/github/drone-range-ekf/runs/detect/drone4_bal/train_batch1.jpg",
+    "output": "mosaic_example.jpg",
+    "split": "train",
+    "run_seed": 0,
+    "rebuilt": false,
+    "sha256": "cf29613c7225fa06a30101a061377eb508896d40c92752f9dbf7b9ef2227da9a",
+    "size": [
+      1920,
+      1920
+    ]
+  }
+}

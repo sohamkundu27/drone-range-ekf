@@ -1,0 +1,10 @@
+all/airplane {'0.25': '0.3% imgs, 0.003/img', '0.5': '0.2% imgs, 0.002/img'}
+all/any {'0.25': '0.2% imgs, 0.002/img', '0.5': '0.1% imgs, 0.001/img'}
+all/bird {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+all/helicopter {'0.25': '0.3% imgs, 0.003/img', '0.5': '0.3% imgs, 0.003/img'}
+coco/airplane {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+coco/bird {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+openimages/airplane {'0.25': '0.4% imgs, 0.004/img', '0.5': '0.2% imgs, 0.002/img'}
+openimages/bird {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+openimages/helicopter {'0.25': '0.3% imgs, 0.003/img', '0.5': '0.3% imgs, 0.003/img'}
+wrote /home/soham/github/drone-range-ekf/model_size_benchmark/m/false_positives.json

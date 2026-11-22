@@ -1,0 +1,10 @@
+all/airplane {'0.25': '0.2% imgs, 0.002/img', '0.5': '0.0% imgs, 0.000/img'}
+all/any {'0.25': '0.1% imgs, 0.001/img', '0.5': '0.0% imgs, 0.000/img'}
+all/bird {'0.25': '0.2% imgs, 0.002/img', '0.5': '0.0% imgs, 0.000/img'}
+all/helicopter {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+coco/airplane {'0.25': '1.0% imgs, 0.010/img', '0.5': '0.0% imgs, 0.000/img'}
+coco/bird {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+openimages/airplane {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+openimages/bird {'0.25': '0.2% imgs, 0.002/img', '0.5': '0.0% imgs, 0.000/img'}
+openimages/helicopter {'0.25': '0.0% imgs, 0.000/img', '0.5': '0.0% imgs, 0.000/img'}
+wrote /home/soham/github/drone-range-ekf/detfly_retrain/eval/new_m_false_positives.json
