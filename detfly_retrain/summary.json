@@ -4,7 +4,8 @@
   "old_s": "cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900",
   "old_m": "f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53",
   "new_s": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10",
-  "new_n": "70594b6f3961b5edfb26b3135bfbc0732e9f97f3e9e9129d92ccd50738db28d4"
+  "new_n": "70594b6f3961b5edfb26b3135bfbc0732e9f97f3e9e9129d92ccd50738db28d4",
+  "new_m": "68b679a66185742257e2b6912b4d043b5daedb98a1219e3ce9f0ae31e81df47e"
  },
  "train_new": {
   "n": {
@@ -78,6 +79,42 @@
    "best_pt_sha256": "e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10",
    "time_cap_hours": 7.0,
    "shortened": false
+  },
+  "m": {
+   "epochs_completed": 49,
+   "best_epoch": 49,
+   "best_epoch_source": "max fitness (0.1 mAP50 + 0.9 mAP50-95) in results.csv",
+   "best_val_mAP50": 0.85877,
+   "best_val_mAP50-95": 0.63673,
+   "csv_elapsed_hours": 7.012527777777778,
+   "log_hours": 7.013,
+   "stop_reason": "time cap / epoch limit",
+   "requested": {
+    "epochs": 150,
+    "time": 7.0,
+    "patience": 30,
+    "batch": 4,
+    "imgsz": 1280,
+    "seed": 0,
+    "nbs": 64,
+    "model": "/home/soham/github/drone-range-ekf/model_size_benchmark/pretrained/yolo26m.pt",
+    "data": "/home/soham/github/drone-range-ekf/data/yolo/new_drone4_detfly.yaml"
+   },
+   "batch_reductions": [],
+   "sec_per_epoch_first5": [
+    533.08,
+    519.86,
+    517.71,
+    516.2999999999997,
+    516.5600000000004
+   ],
+   "size": "m",
+   "run": "runs/m_detfly_new",
+   "pretrained": "model_size_benchmark/pretrained/yolo26m.pt",
+   "pretrained_sha256": "401cea9ab23ad19246ff7744859816bc599f350e93c9dd30367b6f0a0745d0b7",
+   "best_pt_sha256": "68b679a66185742257e2b6912b4d043b5daedb98a1219e3ce9f0ae31e81df47e",
+   "time_cap_hours": 7.0,
+   "shortened": false
   }
  },
  "skipped": [],
@@ -122,13 +159,122 @@
    "false_drone_change": 3,
    "rule_met": true
   },
-  "m": null
+  "m": {
+   "recall020_old": 0.485168571841991,
+   "recall020_old_ci": [
+    0.40851036093398807,
+    0.5565110268105277
+   ],
+   "recall020_new": 0.7288380842135725,
+   "recall020_new_ci": [
+    0.6606713934307625,
+    0.7853299891759447
+   ],
+   "recall_up_beyond_ci": true,
+   "dut_mAP50_old": 0.9815578249342585,
+   "dut_mAP50_new": 0.9882836561078885,
+   "dut_mAP50_change": 0.006725831173630015,
+   "false_drone_imgs_old": 3,
+   "false_drone_imgs_new": 2,
+   "false_drone_change": -1,
+   "rule_met": true
+  }
  },
  "decision_tolerances": {
   "dut_mAP50_drop_lt": 0.01,
   "false_drone_increase_le": 5
  },
  "eval_points": {
+  "new_m_all4_test": {
+   "P": 0.9124492057440858,
+   "R": 0.8241774095211781,
+   "mAP50": 0.8648687230874647,
+   "mAP50-95": 0.6571072535819193
+  },
+  "new_m_dut_test": {
+   "P": 0.9906465514339173,
+   "R": 0.9750556792873051,
+   "mAP50": 0.9882836561078885,
+   "mAP50-95": 0.7553271957391426
+  },
+  "new_m_false_positives": {
+   "all_any_0.25": {
+    "images": 1534,
+    "images_with_fp": 2,
+    "false_drones": 2,
+    "on_labelled_object": 2,
+    "frac_images_with_fp": 0.001303780964797914,
+    "false_drones_per_image": 0.001303780964797914
+   }
+  },
+  "new_m_test010": {
+   "point": {
+    "P@0.25": 0.8003965631196299,
+    "R@0.25": 0.7616352201257862,
+    "F1@0.25": 0.7805349661617789,
+    "mAP50": 0.6865870585757703,
+    "mAP50-95": 0.3391472870399462,
+    "tp@0.25": 1211,
+    "pred@0.25": 1513,
+    "gt": 1590
+   },
+   "ci95": {
+    "P@0.25": [
+     0.6868637416489596,
+     0.9105904411363621
+    ],
+    "R@0.25": [
+     0.6370911949685534,
+     0.8849190948172916
+    ],
+    "F1@0.25": [
+     0.6621819361580928,
+     0.8931113996579155
+    ],
+    "mAP50": [
+     0.5422170093139093,
+     0.844965581736157
+    ],
+    "mAP50-95": [
+     0.20135223300613772,
+     0.5118910303232115
+    ]
+   }
+  },
+  "new_m_test020": {
+   "point": {
+    "P@0.25": 0.9386880357808424,
+    "R@0.25": 0.7288380842135725,
+    "F1@0.25": 0.8205587684287693,
+    "mAP50": 0.7753102972183562,
+    "mAP50-95": 0.39138359576517545,
+    "tp@0.25": 5037,
+    "pred@0.25": 5366,
+    "gt": 6911
+   },
+   "ci95": {
+    "P@0.25": [
+     0.9237286614361304,
+     0.953184173661893
+    ],
+    "R@0.25": [
+     0.6606713934307625,
+     0.7853299891759447
+    ],
+    "F1@0.25": [
+     0.7746495752782863,
+     0.8586359305816604
+    ],
+    "mAP50": [
+     0.7129690426291718,
+     0.8259381803777662
+    ],
+    "mAP50-95": [
+     0.36116211241261675,
+     0.4212964322870152
+    ]
+   }
+  },
   "new_n_all4_test": {
    "P": 0.9113786913056103,
    "R": 0.8098552402639143,

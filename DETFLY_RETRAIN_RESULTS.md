@@ -14,7 +14,7 @@
 
 * **s**: Det-Fly 020 recall@0.25 0.444 → 0.711; DUT drone mAP50 0.979 → 0.980; false-drone images 5 → 8 of 1,534. Decision rule MET.
 * **n**: Det-Fly 020 recall@0.25 0.460 → 0.684; DUT drone mAP50 0.976 → 0.976; false-drone images 9 → 7 of 1,534. Decision rule MET.
-* **m**: new model not finished yet.
+* **m**: Det-Fly 020 recall@0.25 0.485 → 0.729; DUT drone mAP50 0.982 → 0.988; false-drone images 3 → 2 of 1,534. Decision rule MET.
 
 ## (c) Det-Fly drone, conf 0.25 (020 = later part of the same site; 010 test = held-out block)
 
@@ -30,8 +30,8 @@
 | **new s** | 010 test block | 1590 | 0.790 [0.673, 0.905] | 0.762 [0.633, 0.889] | 0.776 [0.656, 0.891] | 0.677 [0.510, 0.842] | 0.343 [0.199, 0.519] |
 | old m | 020 (all frames) | 6912 | 0.798 [0.722, 0.857] | 0.485 [0.409, 0.557] | 0.603 [0.528, 0.673] | 0.541 [0.450, 0.625] | 0.312 [0.257, 0.370] |
 | old m | 010 test block | 1590 | 0.913 [0.875, 0.952] | 0.657 [0.520, 0.784] | 0.764 [0.658, 0.850] | 0.689 [0.550, 0.813] | 0.290 [0.222, 0.366] |
-| **new m** | 020 (all frames) | | pending | pending | pending | pending | pending |
-| **new m** | 010 test block | | pending | pending | pending | pending | pending |
+| **new m** | 020 (all frames) | 6912 | 0.939 [0.924, 0.953] | 0.729 [0.661, 0.785] | 0.821 [0.775, 0.859] | 0.775 [0.713, 0.826] | 0.391 [0.361, 0.421] |
+| **new m** | 010 test block | 1590 | 0.800 [0.687, 0.911] | 0.762 [0.637, 0.885] | 0.781 [0.662, 0.893] | 0.687 [0.542, 0.845] | 0.339 [0.201, 0.512] |
 
 ## (a) DUT test — all 4 classes (all4_test: DUT + COCO + Open Images test; eval.py protocol)
 
@@ -64,7 +64,11 @@ P/R are Ultralytics' values at the max-F1 confidence (as in all earlier eval_*.j
 | old m | bird | 0.827 | 0.605 | 0.671 | 0.448 |
 | old m | airplane | 0.916 | 0.786 | 0.854 | 0.675 |
 | old m | helicopter | 0.937 | 0.898 | 0.933 | 0.731 |
-| new m | all | pending | | | |
+| new m | **overall** | 0.912 | 0.824 | 0.865 | 0.657 |
+| new m | drone | 0.990 | 0.976 | 0.988 | 0.755 |
+| new m | bird | 0.809 | 0.630 | 0.682 | 0.463 |
+| new m | airplane | 0.892 | 0.796 | 0.858 | 0.678 |
+| new m | helicopter | 0.959 | 0.895 | 0.932 | 0.732 |
 
 DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 
@@ -75,7 +79,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | old s | 0.987 | 0.967 | 0.979 | 0.749 |
 | new s | 0.985 | 0.973 | 0.980 | 0.743 |
 | old m | 0.991 | 0.971 | 0.982 | 0.756 |
-| new m | pending | | | |
+| new m | 0.991 | 0.975 | 0.988 | 0.755 |
 
 ## (b) False drones (bird/airplane/helicopter-only test images with ≥ 1 drone detection at conf 0.25)
 
@@ -86,7 +90,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | old s | 5 | 1534 | 5 |
 | new s | 8 | 1534 | 9 |
 | old m | 3 | 1534 | 3 |
-| new m | pending | | |
+| new m | 2 | 1534 | 2 |
 
 ## (d) Training facts
 
@@ -97,7 +101,7 @@ DUT-only test (2,200 images, drones only; `dut_anti_uav.yaml`):
 | old s | 106 | 76 | 6.02 | 8 | 7.0 | early stopping (patience) | 5,200 / 5,000 / 0 |
 | **new s** | 106 | 92 | 7.01 | 8 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 1,808 |
 | old m | 57 | 56 | 7.01 | 4 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 0 |
-| new m | pending | | | | | | |
+| **new m** | 49 | 49 | 7.01 | 4 | 7.0 | time cap / epoch limit | 5,200 / 5,000 / 1,808 |
 
 Recipe differences, honestly: old n, s and new n, s: batch 8; old m and new m: batch 4 (old m ran out of memory at batch 8; nbs = 64 keeps the effective batch at 64 via gradient accumulation). All runs: epochs 150, time cap 7 h unless marked SHORTENED, patience 30, imgsz 1280, seed 0, optimizer auto, default augmentation, COCO-pretrained start. With `time` set, Ultralytics re-fits the epoch count and LR schedule to the wall-clock budget, so a larger training set means fewer epochs in the same time. Old m hit the 7 h time cap (it did not early-stop).
 
@@ -110,5 +114,6 @@ Recipe differences, honestly: old n, s and new n, s: batch 8; old m and new m: b
 | old s | `runs/drone4_bal_backup.aVl2ZP/best.pt` | `cf148f9782974d94c5c1e380b674af78de6d5aaa66f9e89b5f1139ac31639900` |
 | new s | `runs/s_detfly_new/weights/best.pt` | `e68385c89213bb8bddebd244a783d58faa69443e26a728b8ddbeaa08023d4d10` |
 | old m | `model_size_benchmark/train/m_batch4/weights/best.pt` | `f2c85e52e453d26c7ac5c2e9695e1366e3f347c86d67adba3c3e3f6d51dd3b53` |
+| new m | `runs/m_detfly_new/weights/best.pt` | `68b679a66185742257e2b6912b4d043b5daedb98a1219e3ce9f0ae31e81df47e` |
 
 All numbers: `detfly_retrain/summary.json`, per-run JSONs in `detfly_retrain/eval/` and `detfly_retrain/train_<size>.json`. Produced by `scripts/run_retrain_queue.py`.
