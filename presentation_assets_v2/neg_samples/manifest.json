@@ -1,0 +1,825 @@
+{
+  "seed": 20261122,
+  "split": "test",
+  "jpeg_quality": 85,
+  "longest_side_px": 800,
+  "criteria": "exactly one box in label file, box class matches, normalized w*h > 0.03",
+  "files": [
+    {
+      "file": "bird_00.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 0,
+      "source_image": "data/yolo/coco/images/test/000000508602.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000508602.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.121065,
+      "box_xywh_norm": [
+        0.44673,
+        0.394382,
+        0.29406,
+        0.411702
+      ]
+    },
+    {
+      "file": "bird_01.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 1,
+      "source_image": "data/yolo/coco/images/test/000000482477.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000482477.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.36258,
+      "box_xywh_norm": [
+        0.586067,
+        0.447312,
+        0.573476,
+        0.63225
+      ]
+    },
+    {
+      "file": "bird_02.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 2,
+      "source_image": "data/yolo/coco/images/test/000000270705.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000270705.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.411755,
+      "box_xywh_norm": [
+        0.525916,
+        0.459133,
+        0.489684,
+        0.840859
+      ]
+    },
+    {
+      "file": "bird_03.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 3,
+      "source_image": "data/yolo/coco/images/test/000000374551.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000374551.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.344996,
+      "box_xywh_norm": [
+        0.42398,
+        0.477817,
+        0.73232,
+        0.4711
+      ]
+    },
+    {
+      "file": "bird_04.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 4,
+      "source_image": "data/yolo/coco/images/test/000000082696.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000082696.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.092883,
+      "box_xywh_norm": [
+        0.402916,
+        0.634414,
+        0.322319,
+        0.288172
+      ]
+    },
+    {
+      "file": "bird_05.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 5,
+      "source_image": "data/yolo/coco/images/test/000000100489.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000100489.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.211912,
+      "box_xywh_norm": [
+        0.40714,
+        0.341203,
+        0.47023,
+        0.450656
+      ]
+    },
+    {
+      "file": "bird_06.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 6,
+      "source_image": "data/yolo/coco/images/test/000000523811.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000523811.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.041821,
+      "box_xywh_norm": [
+        0.243648,
+        0.505115,
+        0.154641,
+        0.270437
+      ]
+    },
+    {
+      "file": "bird_07.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 7,
+      "source_image": "data/yolo/coco/images/test/000000056545.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000056545.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.43579,
+      "box_xywh_norm": [
+        0.493901,
+        0.516266,
+        0.466772,
+        0.933625
+      ]
+    },
+    {
+      "file": "bird_08.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 8,
+      "source_image": "data/yolo/coco/images/test/000000186938.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000186938.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.441162,
+      "box_xywh_norm": [
+        0.644992,
+        0.481967,
+        0.594172,
+        0.742482
+      ]
+    },
+    {
+      "file": "bird_09.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 9,
+      "source_image": "data/yolo/coco/images/test/000000407518.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000407518.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.199846,
+      "box_xywh_norm": [
+        0.725891,
+        0.555679,
+        0.289219,
+        0.690984
+      ]
+    },
+    {
+      "file": "bird_10.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 10,
+      "source_image": "data/yolo/coco/images/test/000000542776.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000542776.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.07289,
+      "box_xywh_norm": [
+        0.483844,
+        0.495352,
+        0.256875,
+        0.283756
+      ]
+    },
+    {
+      "file": "bird_11.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 11,
+      "source_image": "data/yolo/coco/images/test/000000337987.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000337987.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.359189,
+      "box_xywh_norm": [
+        0.449445,
+        0.558854,
+        0.407109,
+        0.882292
+      ]
+    },
+    {
+      "file": "bird_12.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 12,
+      "source_image": "data/yolo/coco/images/test/000000438269.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000438269.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.241548,
+      "box_xywh_norm": [
+        0.367343,
+        0.68925,
+        0.503683,
+        0.479563
+      ]
+    },
+    {
+      "file": "bird_13.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 13,
+      "source_image": "data/yolo/coco/images/test/000000151516.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000151516.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.0889,
+      "box_xywh_norm": [
+        0.528008,
+        0.63226,
+        0.421828,
+        0.210749
+      ]
+    },
+    {
+      "file": "bird_14.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 14,
+      "source_image": "data/yolo/coco/images/test/000000315257.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000315257.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.417391,
+      "box_xywh_norm": [
+        0.482914,
+        0.49677,
+        0.768516,
+        0.543113
+      ]
+    },
+    {
+      "file": "bird_15.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 15,
+      "source_image": "data/yolo/coco/images/test/000000197870.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000197870.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.10997,
+      "box_xywh_norm": [
+        0.20168,
+        0.670765,
+        0.248141,
+        0.443176
+      ]
+    },
+    {
+      "file": "bird_16.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 16,
+      "source_image": "data/yolo/coco/images/test/000000176847.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000176847.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.12634,
+      "box_xywh_norm": [
+        0.597445,
+        0.600448,
+        0.423516,
+        0.298312
+      ]
+    },
+    {
+      "file": "bird_17.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 17,
+      "source_image": "data/yolo/coco/images/test/000000221017.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000221017.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.128697,
+      "box_xywh_norm": [
+        0.531875,
+        0.683302,
+        0.305406,
+        0.421396
+      ]
+    },
+    {
+      "file": "bird_18.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 18,
+      "source_image": "data/yolo/coco/images/test/000000284279.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000284279.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.172602,
+      "box_xywh_norm": [
+        0.727742,
+        0.548389,
+        0.368172,
+        0.468809
+      ]
+    },
+    {
+      "file": "bird_19.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 19,
+      "source_image": "data/yolo/coco/images/test/000000167902.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000167902.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.309275,
+      "box_xywh_norm": [
+        0.44647,
+        0.48424,
+        0.46894,
+        0.65952
+      ]
+    },
+    {
+      "file": "bird_20.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 20,
+      "source_image": "data/yolo/coco/images/test/000000421834.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000421834.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.14113,
+      "box_xywh_norm": [
+        0.372352,
+        0.477681,
+        0.566953,
+        0.248928
+      ]
+    },
+    {
+      "file": "bird_21.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 21,
+      "source_image": "data/yolo/coco/images/test/000000407825.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000407825.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.06399,
+      "box_xywh_norm": [
+        0.290922,
+        0.19032,
+        0.211383,
+        0.30272
+      ]
+    },
+    {
+      "file": "bird_22.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 22,
+      "source_image": "data/yolo/coco/images/test/000000492992.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000492992.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.045418,
+      "box_xywh_norm": [
+        0.625316,
+        0.408602,
+        0.251429,
+        0.180641
+      ]
+    },
+    {
+      "file": "bird_23.jpg",
+      "class_id": 1,
+      "class_name": "bird",
+      "sample_index": 23,
+      "source_image": "data/yolo/coco/images/test/000000561009.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000561009.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.154969,
+      "box_xywh_norm": [
+        0.50075,
+        0.675808,
+        0.246781,
+        0.627963
+      ]
+    },
+    {
+      "file": "airplane_00.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 0,
+      "source_image": "data/yolo/coco/images/test/000000404479.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000404479.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.217138,
+      "box_xywh_norm": [
+        0.631797,
+        0.69808,
+        0.68225,
+        0.318267
+      ]
+    },
+    {
+      "file": "airplane_01.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 1,
+      "source_image": "data/yolo/coco/images/test/000000383621.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000383621.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.137957,
+      "box_xywh_norm": [
+        0.37557,
+        0.592131,
+        0.646203,
+        0.213489
+      ]
+    },
+    {
+      "file": "airplane_02.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 2,
+      "source_image": "data/yolo/coco/images/test/000000144114.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000144114.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.359941,
+      "box_xywh_norm": [
+        0.504867,
+        0.666287,
+        0.925833,
+        0.388775
+      ]
+    },
+    {
+      "file": "airplane_03.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 3,
+      "source_image": "data/yolo/coco/images/test/000000452122.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000452122.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.234815,
+      "box_xywh_norm": [
+        0.485773,
+        0.472471,
+        0.725672,
+        0.323583
+      ]
+    },
+    {
+      "file": "airplane_04.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 4,
+      "source_image": "data/yolo/coco/images/test/000000208901.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000208901.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.096363,
+      "box_xywh_norm": [
+        0.514578,
+        0.506979,
+        0.302063,
+        0.319016
+      ]
+    },
+    {
+      "file": "airplane_05.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 5,
+      "source_image": "data/yolo/coco/images/test/000000459467.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000459467.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.067079,
+      "box_xywh_norm": [
+        0.457477,
+        0.521395,
+        0.558547,
+        0.120095
+      ]
+    },
+    {
+      "file": "airplane_06.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 6,
+      "source_image": "data/yolo/coco/images/test/000000442480.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000442480.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.184098,
+      "box_xywh_norm": [
+        0.532742,
+        0.505765,
+        0.871484,
+        0.211247
+      ]
+    },
+    {
+      "file": "airplane_07.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 7,
+      "source_image": "data/yolo/coco/images/test/000000044652.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000044652.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.057167,
+      "box_xywh_norm": [
+        0.272867,
+        0.489508,
+        0.302859,
+        0.188759
+      ]
+    },
+    {
+      "file": "airplane_08.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 8,
+      "source_image": "data/yolo/coco/images/test/000000052017.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000052017.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.319191,
+      "box_xywh_norm": [
+        0.417641,
+        0.437224,
+        0.6715,
+        0.475341
+      ]
+    },
+    {
+      "file": "airplane_09.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 9,
+      "source_image": "data/yolo/coco/images/test/000000553094.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000553094.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.355198,
+      "box_xywh_norm": [
+        0.494609,
+        0.51973,
+        0.432562,
+        0.82115
+      ]
+    },
+    {
+      "file": "airplane_10.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 10,
+      "source_image": "data/yolo/coco/images/test/000000545407.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000545407.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.136217,
+      "box_xywh_norm": [
+        0.509844,
+        0.558538,
+        0.468344,
+        0.290849
+      ]
+    },
+    {
+      "file": "airplane_11.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 11,
+      "source_image": "data/yolo/coco/images/test/000000033114.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000033114.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.115243,
+      "box_xywh_norm": [
+        0.521437,
+        0.467031,
+        0.531125,
+        0.216979
+      ]
+    },
+    {
+      "file": "airplane_12.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 12,
+      "source_image": "data/yolo/coco/images/test/000000110721.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000110721.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.817828,
+      "box_xywh_norm": [
+        0.510023,
+        0.423026,
+        0.973078,
+        0.840455
+      ]
+    },
+    {
+      "file": "airplane_13.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 13,
+      "source_image": "data/yolo/coco/images/test/000000272136.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000272136.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.861572,
+      "box_xywh_norm": [
+        0.50225,
+        0.553808,
+        0.9955,
+        0.865467
+      ]
+    },
+    {
+      "file": "airplane_14.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 14,
+      "source_image": "data/yolo/coco/images/test/000000381639.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000381639.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.133642,
+      "box_xywh_norm": [
+        0.435942,
+        0.125961,
+        0.728356,
+        0.183484
+      ]
+    },
+    {
+      "file": "airplane_15.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 15,
+      "source_image": "data/yolo/coco/images/test/000000469174.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000469174.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.051875,
+      "box_xywh_norm": [
+        0.572211,
+        0.228446,
+        0.350453,
+        0.148022
+      ]
+    },
+    {
+      "file": "airplane_16.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 16,
+      "source_image": "data/yolo/coco/images/test/000000139871.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000139871.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.489257,
+      "box_xywh_norm": [
+        0.501086,
+        0.483548,
+        0.955641,
+        0.511967
+      ]
+    },
+    {
+      "file": "airplane_17.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 17,
+      "source_image": "data/yolo/coco/images/test/000000497568.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000497568.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.738609,
+      "box_xywh_norm": [
+        0.500586,
+        0.541474,
+        0.995234,
+        0.742146
+      ]
+    },
+    {
+      "file": "airplane_18.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 18,
+      "source_image": "data/yolo/coco/images/test/000000208208.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000208208.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.291752,
+      "box_xywh_norm": [
+        0.708891,
+        0.252052,
+        0.582219,
+        0.501104
+      ]
+    },
+    {
+      "file": "airplane_19.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 19,
+      "source_image": "data/yolo/coco/images/test/000000190676.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000190676.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.094997,
+      "box_xywh_norm": [
+        0.179258,
+        0.414432,
+        0.338359,
+        0.280758
+      ]
+    },
+    {
+      "file": "airplane_20.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 20,
+      "source_image": "data/yolo/coco/images/test/000000229747.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000229747.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.110016,
+      "box_xywh_norm": [
+        0.463656,
+        0.496017,
+        0.38975,
+        0.282274
+      ]
+    },
+    {
+      "file": "airplane_21.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 21,
+      "source_image": "data/yolo/coco/images/test/000000392481.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000392481.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.044485,
+      "box_xywh_norm": [
+        0.625695,
+        0.588993,
+        0.191328,
+        0.232506
+      ]
+    },
+    {
+      "file": "airplane_22.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 22,
+      "source_image": "data/yolo/coco/images/test/000000167540.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000167540.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.30316,
+      "box_xywh_norm": [
+        0.508727,
+        0.475199,
+        0.505266,
+        0.6
+      ]
+    },
+    {
+      "file": "airplane_23.jpg",
+      "class_id": 2,
+      "class_name": "airplane",
+      "sample_index": 23,
+      "source_image": "data/yolo/coco/images/test/000000410221.jpg",
+      "label_path": "data/yolo/coco/labels/test/000000410221.txt",
+      "split": "test",
+      "seed": 20261122,
+      "box_area": 0.030128,
+      "box_xywh_norm": [
+        0.517154,
+        0.307531,
+        0.165338,
+        0.182219
+      ]
+    }
+  ]
+}
