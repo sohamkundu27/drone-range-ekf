@@ -18,3 +18,6 @@
   (`experiments/new_results/COMPARISON.md`). Don't quote 22.5 without that sentence.
 * **New s false drones went up 5 → 8 images** (of 1,534) at conf 0.25; within the stated "not clearly worse"
   tolerance (≤ +5), but it is an increase.
+* **New m was still improving at the 7 h cap** (49 epochs, best epoch 49; old m 57 epochs, best 56). All three new
+  runs ended on the time cap; old s and old n had early-stopped.
+* **010 test block: precision down, recall up** for new s (P 0.854 → 0.790) and new m (P 0.913 → 0.800); wide CIs.
