@@ -21,6 +21,7 @@ Writes (into presentation_assets/):
 """
 import argparse
 import json
+import yaml
 import tempfile
 from pathlib import Path
 
@@ -84,6 +85,7 @@ def main():
     ap.add_argument("--out", default=str(ROOT / "presentation_assets"))
     args = ap.parse_args()
     out = Path(args.out)
+    out.mkdir(parents=True, exist_ok=True)
     tag = f"conf{str(args.conf).replace('0.', '0')}"         # 0.25 -> conf025
 
     model = YOLO(args.weights)
@@ -95,7 +97,14 @@ def main():
     names = [cmx.names[i] for i in range(cmx.nc)] + ["background"]
     n_img = int(r.seen) if hasattr(r, "seen") else None
 
-    settings = (f"validation split (COCO + DUT + Open Images val), best.pt, conf {args.conf}, "
+    val_src = yaml.safe_load(Path(args.data).read_text())["val"]
+    val_src = val_src if isinstance(val_src, list) else [val_src]
+    src_names = {"coco": "COCO", "dut_anti_uav": "DUT", "openimages": "Open Images", "detfly": "Det-Fly"}
+    parts = []
+    for v in val_src:
+        key = next((k for k in src_names if k in Path(v).as_posix().replace("new_detfly", "detfly")), Path(v).stem)
+        parts.append(src_names.get(key, key))
+    settings = (f"val split: {' + '.join(parts)}\n{Path(args.weights).parent.parent.name}/best.pt, conf {args.conf}, "
                 f"NMS IoU {args.iou}, match IoU 0.5")
     plot(M, names, True, "Confusion matrix, normalised by TRUE class (columns sum to 1)\n" + settings,
          out / f"confusion_matrix_{tag}.png")
@@ -103,7 +112,7 @@ def main():
          out / f"confusion_matrix_{tag}_counts.png")
     (out / f"confusion_matrix_{tag}.json").write_text(json.dumps({
         "index": "matrix[predicted][true]", "names": names, "matrix": M.tolist(),
-        "weights": str(Path(args.weights).relative_to(ROOT)), "data": Path(args.data).name, "split": "val",
+        "weights": str(Path(args.weights).resolve().relative_to(ROOT)), "data": Path(args.data).name, "split": "val",
         "conf": args.conf, "nms_iou": args.iou, "match_iou": 0.5,
         "true_instances_per_class": dict(zip(names[:-1], M[:, :-1].sum(0).tolist())),
         "note": "Separate validation call for the confusion matrix only. Do not quote mAP from it."}, indent=1))
