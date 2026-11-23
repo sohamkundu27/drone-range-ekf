@@ -58,11 +58,11 @@ def perfect_data(camera):
     return row
 
 
-def run_mc(name, cfg, pool):
+def run_mc(name, cfg, pool, out_dir=OUT_NPZ):
     runs = pool.map(_job, [(cfg, i) for i in range(N_RUNS)])
     res = {k: np.array([r[k] for r in runs]) for k in runs[0] if k != "t"}
     res["t"] = runs[0]["t"]
-    path = OUT_NPZ / f"{name}.npz"
+    path = Path(out_dir) / f"{name}.npz"
     np.savez_compressed(path, **res)
     s = summarize(res)
     s["config"] = cfg

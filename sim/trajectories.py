@@ -23,6 +23,9 @@ Camera paths (defined relative to the initial line of sight, LOS, from camera to
              surge_15 (A = 15) has the weave's peak acceleration (A w^2 = 4.1 m/s^2) and flies
              backwards for part of each cycle (min speed 2 - A w = -5.9 m/s). surge_4 (A = 4)
              is gentler; its min speed is 2 - 4 w = -0.09 m/s, i.e. it just barely reverses.
+  lat_surge_15 / lat_surge_4 (also NOT in CAMERA_PATHS; experiments/accel_lateral.py): the same
+             2 t + A sin(w t) motion, but along the sideways axis (perpendicular to the initial
+             LOS) with no forward motion. Same speeds and accelerations as surge_15 / surge_4.
 
 The camera's optical axis follows the drone (an ideal gimbal) plus a slow +/-2 deg
 pointing wobble, so the drone wanders around the image instead of sitting at the centre.
@@ -40,6 +43,7 @@ CAM_START = np.array([0.0, 0.0, 30.0])
 DRONE_PATHS = ("approach_recede", "constant_velocity", "gentle_turn")
 CAMERA_PATHS = ("straight", "lateral", "weaving")
 SURGE_AMPLITUDES = {"surge_15": 15.0, "surge_4": 4.0}     # extra paths, outside the main grid
+LAT_SURGE_AMPLITUDES = {"lat_surge_15": 15.0, "lat_surge_4": 4.0}   # same, along the sideways axis
 
 
 # ---------------------------------------------------------------- camera paths
@@ -61,6 +65,10 @@ def camera_path(name, t, los, lat):
         A, w = SURGE_AMPLITUDES[name], 2 * np.pi / 12.0   # same period as the weave
         p = CAM_START + (2.0 * t + A * np.sin(w * t)) * los
         v = (2.0 + A * w * np.cos(w * t)) * los
+    elif name in LAT_SURGE_AMPLITUDES:
+        A, w = LAT_SURGE_AMPLITUDES[name], 2 * np.pi / 12.0
+        p = CAM_START + (2.0 * t + A * np.sin(w * t)) * lat
+        v = (2.0 + A * w * np.cos(w * t)) * lat
     else:
         raise ValueError(name)
     return p, v
