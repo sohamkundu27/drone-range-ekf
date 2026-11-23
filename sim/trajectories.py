@@ -17,6 +17,12 @@ Camera paths (defined relative to the initial line of sight, LOS, from camera to
   lateral  : flies perpendicular to the LOS at 4 m/s (constant velocity, sideways).
   weaving  : creeps forward at 2 m/s and weaves side to side (+/-15 m, 12 s period).
              The sideways ACCELERATION is what makes range observable from bearings alone.
+  surge_15 / surge_4 (NOT in CAMERA_PATHS, so not part of the main grid; used by
+             experiments/accel_line.py): stays on the LOS line but speeds up and slows down,
+             position 2 t + A sin(w t) along the LOS, w = 2 pi / 12, no sideways motion.
+             surge_15 (A = 15) has the weave's peak acceleration (A w^2 = 4.1 m/s^2) and flies
+             backwards for part of each cycle (min speed 2 - A w = -5.9 m/s). surge_4 (A = 4)
+             is gentler; its min speed is 2 - 4 w = -0.09 m/s, i.e. it just barely reverses.
 
 The camera's optical axis follows the drone (an ideal gimbal) plus a slow +/-2 deg
 pointing wobble, so the drone wanders around the image instead of sitting at the centre.
@@ -33,6 +39,7 @@ CAM_START = np.array([0.0, 0.0, 30.0])
 
 DRONE_PATHS = ("approach_recede", "constant_velocity", "gentle_turn")
 CAMERA_PATHS = ("straight", "lateral", "weaving")
+SURGE_AMPLITUDES = {"surge_15": 15.0, "surge_4": 4.0}     # extra paths, outside the main grid
 
 
 # ---------------------------------------------------------------- camera paths
@@ -50,6 +57,10 @@ def camera_path(name, t, los, lat):
         A, w = 15.0, 2 * np.pi / 12.0                     # amplitude [m], angular freq [rad/s]
         p = CAM_START + 2.0 * los * t + A * np.sin(w * t) * lat
         v = 2.0 * los + A * w * np.cos(w * t) * lat
+    elif name in SURGE_AMPLITUDES:
+        A, w = SURGE_AMPLITUDES[name], 2 * np.pi / 12.0   # same period as the weave
+        p = CAM_START + (2.0 * t + A * np.sin(w * t)) * los
+        v = (2.0 + A * w * np.cos(w * t)) * los
     else:
         raise ValueError(name)
     return p, v
