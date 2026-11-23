@@ -1,0 +1,129 @@
+{
+ "run": "runs/m_detfly_cont",
+ "start_weights": "runs/m_detfly_new/weights/best.pt",
+ "start_weights_sha256": "68b679a66185742257e2b6912b4d043b5daedb98a1219e3ce9f0ae31e81df47e",
+ "start_weights_val_mAP50-95": 0.63673,
+ "start_weights_val_mAP50": 0.85877,
+ "epochs_completed": 14,
+ "csv_elapsed_hours": 2.012575,
+ "log_hours": 2.013,
+ "best_epoch": 14,
+ "best_epoch_rule": "max val mAP50-95 (Ultralytics 8.4 fitness; selects best.pt)",
+ "best_val_mAP50-95": 0.64004,
+ "best_val_mAP50": 0.86222,
+ "val_per_epoch": [
+  {
+   "epoch": 1,
+   "mAP50": 0.85699,
+   "mAP50-95": 0.61748
+  },
+  {
+   "epoch": 2,
+   "mAP50": 0.85846,
+   "mAP50-95": 0.60765
+  },
+  {
+   "epoch": 3,
+   "mAP50": 0.86467,
+   "mAP50-95": 0.62216
+  },
+  {
+   "epoch": 4,
+   "mAP50": 0.85041,
+   "mAP50-95": 0.60892
+  },
+  {
+   "epoch": 5,
+   "mAP50": 0.84593,
+   "mAP50-95": 0.59984
+  },
+  {
+   "epoch": 6,
+   "mAP50": 0.85236,
+   "mAP50-95": 0.60915
+  },
+  {
+   "epoch": 7,
+   "mAP50": 0.85638,
+   "mAP50-95": 0.61857
+  },
+  {
+   "epoch": 8,
+   "mAP50": 0.85844,
+   "mAP50-95": 0.62636
+  },
+  {
+   "epoch": 9,
+   "mAP50": 0.86441,
+   "mAP50-95": 0.63032
+  },
+  {
+   "epoch": 10,
+   "mAP50": 0.85794,
+   "mAP50-95": 0.62924
+  },
+  {
+   "epoch": 11,
+   "mAP50": 0.85671,
+   "mAP50-95": 0.62888
+  },
+  {
+   "epoch": 12,
+   "mAP50": 0.86245,
+   "mAP50-95": 0.63208
+  },
+  {
+   "epoch": 13,
+   "mAP50": 0.86194,
+   "mAP50-95": 0.6385
+  },
+  {
+   "epoch": 14,
+   "mAP50": 0.86222,
+   "mAP50-95": 0.64004
+  }
+ ],
+ "final_lr": {
+  "lr/pg0": 0.000484286,
+  "lr/pg1": 0.000161429,
+  "lr/pg2": 0.000484286,
+  "lr/pg3": 0.000161429,
+  "lr/pg4": 0.000484286,
+  "lr/pg5": 0.000161429,
+  "lr/pg6": 0.000484286,
+  "lr/pg7": 0.000161429
+ },
+ "lr_floor": {
+  "base_groups": 2e-05,
+  "head_groups_3x": 6e-05
+ },
+ "applied_args": {
+  "model": "/home/soham/github/drone-range-ekf/runs/m_detfly_new/weights/best.pt",
+  "data": "/home/soham/github/drone-range-ekf/data/yolo/new_drone4_detfly.yaml",
+  "epochs": 150,
+  "time": 2.0,
+  "optimizer": "MuSGD",
+  "lr0": 0.002,
+  "lrf": 0.01,
+  "momentum": 0.937,
+  "warmup_epochs": 1.0,
+  "warmup_bias_lr": 0.0,
+  "warmup_momentum": 0.8,
+  "batch": 4,
+  "nbs": 64,
+  "imgsz": 1280,
+  "seed": 0,
+  "patience": 30,
+  "close_mosaic": 10,
+  "mosaic": 1.0,
+  "workers": 12
+ },
+ "log_optimizer_lines": [
+  "optimizer: MuSGD(lr=0.002, momentum=0.937) with parameter groups 124 weight(decay=0.0), 136 weight(decay=0.0005), 136 bias(decay=0.0)"
+ ],
+ "log_stop_lines": [
+  "14 epochs completed in 2.013 hours."
+ ],
+ "batch_reductions": [],
+ "best_pt_sha256": "e3bbe45671958ec7be379459d5d54f584d7bd2ed9376419e389aee5cb0234c04"
+}
