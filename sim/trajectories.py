@@ -44,6 +44,10 @@ DRONE_PATHS = ("approach_recede", "constant_velocity", "gentle_turn")
 CAMERA_PATHS = ("straight", "lateral", "weaving")
 SURGE_AMPLITUDES = {"surge_15": 15.0, "surge_4": 4.0}     # extra paths, outside the main grid
 LAT_SURGE_AMPLITUDES = {"lat_surge_15": 15.0, "lat_surge_4": 4.0}   # same, along the sideways axis
+# Accelerating grid (experiments/run_accel_grid.py): the main grid with each constant-speed camera
+# swapped for its accelerating counterpart. Separate from CAMERA_PATHS, which drives the main grid.
+ACCEL_SWAP = {"straight": "surge_15", "lateral": "lat_surge_15", "weaving": "weaving"}
+ACCEL_CAMERA_PATHS = tuple(ACCEL_SWAP[c] for c in CAMERA_PATHS)      # ("surge_15", "lat_surge_15", "weaving")
 
 
 # ---------------------------------------------------------------- camera paths
