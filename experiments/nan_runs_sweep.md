@@ -46,3 +46,15 @@ Total: 188 runs over 40 configurations of 200 runs.
 | L_orbit_sweep15_tight_prior | 0 | 0.0% | - | 0.5% | 0.5% | 89.5% | 89.5% |
 | L_orbit_sweep15_wrong_prior | 0 | 0.0% | - | 22.0% | 22.0% | 59.5% | 59.5% |
 | L_orbit_sweep15_wrong_tight | 0 | 0.0% | - | 73.0% | 73.0% | 0.9% | 0.9% |
+
+<!-- random_paths:start -->
+## Random target paths (sweep ±15 m observer; SIMULATION ONLY)
+
+Total: 11 runs over 3 configurations of 200 runs.
+
+| config | NaN runs / 200 | time steps excluded | median first NaN [s] | final outside 3σ: reported | NaN counted as diverged | 2σ coverage: reported | 2σ coverage, NaN = miss |
+|---|---|---|---|---|---|---|---|
+| R_random_path_sweep15_size_prior | 11 | 4.8% | 2.4 | 85.5% | 91.0% | 21.0% | 20.2% |
+| R_random_path_sweep15_tight_prior | 0 | 0.0% | - | 88.5% | 88.5% | 25.5% | 25.5% |
+| R_random_path_sweep15_wrong_prior | 0 | 0.0% | - | 98.0% | 98.0% | 11.0% | 11.0% |
+<!-- random_paths:end -->

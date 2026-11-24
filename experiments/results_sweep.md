@@ -53,3 +53,19 @@ rel err = (estimated range - true range) / true range, over t >= 10 s. coverage 
 
 | config | 10-20 m | 20-40 m | 40-80 m | 80-120 m | 120-160 m | 160-200 m |
 |---|---|---|---|---|---|---|
+
+<!-- random_paths:start -->
+## Random target paths (sweep ±15 m observer; SIMULATION ONLY)
+
+Same columns as above; 200 random paths (sim/random_path.py), the same in each row. Details and breakdown: experiments/sweep_tables.md, experiments/random_paths_summary.csv, experiments/random_paths_runs.csv.
+
+Detector noise model: `detector_noise.json`.
+
+rel err = (estimated range - true range) / true range, over t >= 10 s. coverage = fraction of time steps (t >= 2 s) with |range error| <= 2 sigma (ideal 95%). ANEES range: mean of the 1-dof range NEES (ideal 1.0). diverged = final error outside +/-3 sigma.
+
+| config | RMS rel err | bias | reported sigma/r | 2-sigma coverage | ANEES range | ANEES pos (3) | mean NIS | final outside 3sigma | final err > 50% | S final (true) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| R_random_path_sweep15_size_prior | 26.6% | -22.4% | 4.5% | 21.0% | 63.57 | 58.20 | 5.00 | 11.0% | 0.0% | 0.298 (0.371) |
+| R_random_path_sweep15_tight_prior | 23.4% | -19.8% | 4.3% | 25.5% | 45.44 | 42.87 | 5.00 | 11.5% | 0.0% | 0.290 (0.354) |
+| R_random_path_sweep15_wrong_prior | 27.9% | -25.3% | 3.9% | 11.0% | 175.02 | 107.04 | 4.49 | 15.0% | 0.5% | 0.426 (0.600) |
+<!-- random_paths:end -->
