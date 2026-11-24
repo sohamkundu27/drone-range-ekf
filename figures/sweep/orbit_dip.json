@@ -1,0 +1,9 @@
+{
+ "t_on_sweep_axis_s": 15.71,
+ "rms_pct_5_12s": 12.34,
+ "rms_pct_14_20s": 10.08,
+ "rms_pct_25_40s": 8.38,
+ "peak_rms_after_10s_pct": 12.98,
+ "peak_rms_time_s": 20.3,
+ "median_2sigma_pct_at_peak": 9.48
+}
