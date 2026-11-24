@@ -1,21 +1,41 @@
-config,group,target,camera,width_m,variant,q,rms_pct_10-20m,rms_pct_20-40m,rms_pct_40-80m,rms_pct_80-120m,rms_pct_120-160m,rms_pct_160-200m,rms_pct_after10s,p68_pct_after10s,bias_pct_after10s,reported_sigma_pct,coverage_2sigma_pct,coverage_2sigma_nan_as_miss_pct,anees_range,nan_runs,min_true_range_m,max_bearing_rate_deg_s,frac_samples_beyond_200m
-G_approach_sweep15_bearing_only,G,inbound,sweep,15.0,bearing_only,0.1,23.33,27.36,183.04,537.68,409.43,140.7,307.2,8.98,27.11,6.28,89.4,89.4,41.9,0,9.6,47.9,0.0
-G_approach_sweep15_size_prior,G,inbound,sweep,15.0,size_prior,0.1,5.55,6.21,6.12,13.32,32.14,67.13,12.71,5.97,-0.75,3.73,77.8,72.4,4.28,15,9.6,47.9,0.0
-G_approach_sweep15_tight_prior,G,inbound,sweep,15.0,tight_prior,0.1,3.33,3.43,3.43,4.92,6.43,11.56,3.97,3.72,0.28,3.71,95.1,95.1,1.06,0,9.6,47.9,0.0
-G_approach_sweep15_wrong_prior,G,inbound,sweep,15.0,wrong_prior,0.1,7.6,8.05,9.01,12.07,16.01,24.75,9.78,9.03,-7.81,3.29,40.5,40.5,13.01,0,9.6,47.9,0.0
-G_approach_sweep15_wrong_tight,G,inbound,sweep,15.0,wrong_tight,0.1,11.46,12.1,13.31,17.84,23.66,32.72,14.5,15.79,-13.8,3.19,0.3,0.3,29.31,0,9.6,47.9,0.0
-H_approach_hover_size_prior,H,inbound,hover,0.0,size_prior,0.1,37.07,39.25,43.53,48.07,53.38,75.87,43.77,32.43,2.41,6.73,33.8,32.6,24.36,7,10.0,40.9,0.0
-H_approach_hover_tight_prior,H,inbound,hover,0.0,tight_prior,0.1,10.11,10.33,11.19,12.89,14.88,14.57,11.41,11.7,-1.86,6.03,71.3,71.3,3.53,0,10.0,40.9,0.0
-I_approach_sweep5_size_prior,I,inbound,sweep,5.0,size_prior,0.1,6.86,7.05,10.2,19.35,33.8,67.31,15.39,7.32,-0.34,4.05,75.1,71.9,11.83,9,9.5,48.1,0.0
-I_approach_sweep10_size_prior,I,inbound,sweep,10.0,size_prior,0.1,5.54,5.9,7.56,14.8,33.36,67.3,13.09,6.34,-0.65,3.79,76.6,71.9,4.82,13,9.4,54.9,0.0
-I_approach_sweep30_size_prior,I,inbound,sweep,30.0,size_prior,0.1,5.54,5.42,6.37,15.87,37.04,66.19,14.58,5.17,-1.3,3.7,78.8,72.1,4.69,18,9.2,63.5,0.0
-J_constant_velocity_sweep15_size_prior,J,crossing,sweep,15.0,size_prior,0.1,,,,11.09,22.47,13.21,11.27,11.65,-8.58,4.84,57.9,56.3,7.16,6,116.1,6.2,0.06
-J_gentle_turn_sweep15_size_prior,J,gentle turn,sweep,15.0,size_prior,0.1,,,,,27.81,10.53,13.42,15.83,-11.15,4.88,50.2,48.9,8.92,6,127.5,6.0,0.466
-J_dash_sweep15_size_prior,J,dash,sweep,15.0,size_prior,0.1,,11.36,11.51,18.25,31.35,46.17,18.68,9.79,-3.54,3.86,57.3,54.1,16.66,12,21.4,41.3,0.127
-J_jink_sweep15_size_prior,J,jink,sweep,15.0,size_prior,0.1,43.11,44.62,47.02,46.1,54.24,79.92,46.94,48.09,-44.06,4.42,4.6,4.1,343.9,24,8.0,71.9,0.001
-J_orbit_sweep15_size_prior,J,orbit,sweep,15.0,size_prior,0.1,,,10.79,11.48,,,8.96,6.79,-4.4,4.12,76.1,68.5,9.25,20,70.3,11.0,0.0
-K_constant_velocity_sweep15_size_prior,K,crossing,sweep,15.0,size_prior,1.0,,,,16.97,26.53,22.43,19.1,20.21,-14.07,7.64,52.0,50.8,10.85,5,116.1,6.2,0.06
-K_gentle_turn_sweep15_size_prior,K,gentle turn,sweep,15.0,size_prior,1.0,,,,,30.91,18.36,19.18,25.21,-15.15,7.97,56.2,55.0,10.42,5,127.5,6.0,0.466
-K_dash_sweep15_size_prior,K,dash,sweep,15.0,size_prior,1.0,,18.25,18.77,23.33,35.81,48.9,24.04,19.85,-9.21,6.86,56.8,53.6,14.57,12,21.4,41.3,0.127
-K_jink_sweep15_size_prior,K,jink,sweep,15.0,size_prior,1.0,44.75,45.13,46.19,45.36,52.91,75.94,46.54,48.2,-44.31,7.17,5.0,4.6,138.25,16,8.0,71.9,0.001
-K_orbit_sweep15_size_prior,K,orbit,sweep,15.0,size_prior,1.0,,,14.85,15.92,,,13.87,9.63,-5.1,6.32,77.0,69.3,12.01,20,70.3,11.0,0.0
+config,group,target,camera,width_m,variant,q,rms_pct_10-20m,rms_pct_20-40m,rms_pct_40-80m,rms_pct_80-120m,rms_pct_120-160m,rms_pct_160-200m,rms_pct_after10s,p68_pct_after10s,bias_pct_after10s,reported_sigma_pct,coverage_2sigma_pct,coverage_2sigma_nan_as_miss_pct,anees_range,nan_runs,min_true_range_m,max_bearing_rate_deg_s,frac_samples_beyond_200m,anees_pos,mean_nis,nis_dof
+G_approach_sweep15_bearing_only,G,inbound,sweep,15.0,bearing_only,0.1,23.33,27.36,183.04,537.68,409.43,140.7,307.2,8.98,27.11,6.28,89.4,89.4,41.9,0,9.6,47.9,0.0,34.34,2.91,2
+G_approach_sweep15_size_prior,G,inbound,sweep,15.0,size_prior,0.1,5.55,6.21,6.12,13.32,32.14,67.13,12.71,5.97,-0.75,3.73,77.8,72.4,4.28,15,9.6,47.9,0.0,6.07,2.94,3
+G_approach_sweep15_tight_prior,G,inbound,sweep,15.0,tight_prior,0.1,3.33,3.43,3.43,4.92,6.43,11.56,3.97,3.72,0.28,3.71,95.1,95.1,1.06,0,9.6,47.9,0.0,3.44,2.89,3
+G_approach_sweep15_wrong_prior,G,inbound,sweep,15.0,wrong_prior,0.1,7.6,8.05,9.01,12.07,16.01,24.75,9.78,9.03,-7.81,3.29,40.5,40.5,13.01,0,9.6,47.9,0.0,11.2,3.04,3
+G_approach_sweep15_wrong_tight,G,inbound,sweep,15.0,wrong_tight,0.1,11.46,12.1,13.31,17.84,23.66,32.72,14.5,15.79,-13.8,3.19,0.3,0.3,29.31,0,9.6,47.9,0.0,22.79,3.15,3
+H_approach_hover_size_prior,H,inbound,hover,0.0,size_prior,0.1,37.07,39.25,43.53,48.07,53.38,75.87,43.77,32.43,2.41,6.73,33.8,32.6,24.36,7,10.0,40.9,0.0,19.81,2.85,3
+H_approach_hover_tight_prior,H,inbound,hover,0.0,tight_prior,0.1,10.11,10.33,11.19,12.89,14.88,14.57,11.41,11.7,-1.86,6.03,71.3,71.3,3.53,0,10.0,40.9,0.0,5.26,2.86,3
+I_approach_sweep5_size_prior,I,inbound,sweep,5.0,size_prior,0.1,6.86,7.05,10.2,19.35,33.8,67.31,15.39,7.32,-0.34,4.05,75.1,71.9,11.83,9,9.5,48.1,0.0,7.6,2.94,3
+I_approach_sweep10_size_prior,I,inbound,sweep,10.0,size_prior,0.1,5.54,5.9,7.56,14.8,33.36,67.3,13.09,6.34,-0.65,3.79,76.6,71.9,4.82,13,9.4,54.9,0.0,5.98,2.93,3
+I_approach_sweep30_size_prior,I,inbound,sweep,30.0,size_prior,0.1,5.54,5.42,6.37,15.87,37.04,66.19,14.58,5.17,-1.3,3.7,78.8,72.1,4.69,18,9.2,63.5,0.0,6.42,2.97,3
+J_constant_velocity_sweep15_size_prior,J,crossing,sweep,15.0,size_prior,0.1,,,,11.09,22.47,13.21,11.27,11.65,-8.58,4.84,57.9,56.3,7.16,6,116.1,6.2,0.06,9.68,2.96,3
+J_gentle_turn_sweep15_size_prior,J,gentle turn,sweep,15.0,size_prior,0.1,,,,,27.81,10.53,13.42,15.83,-11.15,4.88,50.2,48.9,8.92,6,127.5,6.0,0.466,11.6,3.11,3
+J_dash_sweep15_size_prior,J,dash,sweep,15.0,size_prior,0.1,,11.36,11.51,18.25,31.35,46.17,18.68,9.79,-3.54,3.86,57.3,54.1,16.66,12,21.4,41.3,0.127,10.73,3.31,3
+J_jink_sweep15_size_prior,J,jink,sweep,15.0,size_prior,0.1,43.11,44.62,47.02,46.1,54.24,79.92,46.94,48.09,-44.06,4.42,4.6,4.1,343.9,24,8.0,71.9,0.001,145.03,7.11,3
+J_orbit_sweep15_size_prior,J,orbit,sweep,15.0,size_prior,0.1,,,10.79,11.48,,,8.96,6.79,-4.4,4.12,76.1,68.5,9.25,20,70.3,11.0,0.0,8.88,3.46,3
+K_constant_velocity_sweep15_size_prior,K,crossing,sweep,15.0,size_prior,1.0,,,,16.97,26.53,22.43,19.1,20.21,-14.07,7.64,52.0,50.8,10.85,5,116.1,6.2,0.06,13.33,2.67,3
+K_gentle_turn_sweep15_size_prior,K,gentle turn,sweep,15.0,size_prior,1.0,,,,,30.91,18.36,19.18,25.21,-15.15,7.97,56.2,55.0,10.42,5,127.5,6.0,0.466,13.06,2.7,3
+K_dash_sweep15_size_prior,K,dash,sweep,15.0,size_prior,1.0,,18.25,18.77,23.33,35.81,48.9,24.04,19.85,-9.21,6.86,56.8,53.6,14.57,12,21.4,41.3,0.127,14.2,2.74,3
+K_jink_sweep15_size_prior,K,jink,sweep,15.0,size_prior,1.0,44.75,45.13,46.19,45.36,52.91,75.94,46.54,48.2,-44.31,7.17,5.0,4.6,138.25,16,8.0,71.9,0.001,80.79,3.34,3
+K_orbit_sweep15_size_prior,K,orbit,sweep,15.0,size_prior,1.0,,,14.85,15.92,,,13.87,9.63,-5.1,6.32,77.0,69.3,12.01,20,70.3,11.0,0.0,11.57,2.74,3
+L_constant_velocity_sweep15_bearing_only,L,crossing,sweep,15.0,bearing_only,0.1,,,,1025.64,747.29,188.2,708.7,7.36,52.69,6.91,90.6,90.6,50.7,0,116.1,6.2,0.06,113.74,3.6,2
+L_constant_velocity_sweep15_tight_prior,L,crossing,sweep,15.0,tight_prior,0.1,,,,6.5,6.9,11.79,8.85,9.77,-7.26,4.79,69.8,69.8,3.42,0,116.1,6.2,0.06,6.27,2.86,3
+L_constant_velocity_sweep15_wrong_prior,L,crossing,sweep,15.0,wrong_prior,0.1,,,,13.32,14.24,16.05,14.13,14.6,-12.82,3.91,17.4,17.4,19.5,0,116.1,6.2,0.06,20.54,2.99,3
+L_constant_velocity_sweep15_wrong_tight,L,crossing,sweep,15.0,wrong_tight,0.1,,,,19.53,20.31,20.07,19.05,20.41,-18.74,3.77,0.0,0.0,38.76,0,116.1,6.2,0.06,38.18,3.08,3
+L_gentle_turn_sweep15_bearing_only,L,gentle turn,sweep,15.0,bearing_only,0.1,,,,,319.84,267.62,343.1,12.48,38.36,6.1,82.1,82.1,77.47,0,127.5,6.0,0.466,98.32,3.68,2
+L_gentle_turn_sweep15_tight_prior,L,gentle turn,sweep,15.0,tight_prior,0.1,,,,,9.6,8.55,10.58,14.58,-9.72,4.78,57.7,57.7,4.59,0,127.5,6.0,0.466,7.42,3.01,3
+L_gentle_turn_sweep15_wrong_prior,L,gentle turn,sweep,15.0,wrong_prior,0.1,,,,,17.52,14.16,16.27,18.01,-15.29,4.02,8.3,8.3,22.78,0,127.5,6.0,0.466,24.0,3.11,3
+L_gentle_turn_sweep15_wrong_tight,L,gentle turn,sweep,15.0,wrong_tight,0.1,,,,,24.05,18.77,21.58,22.87,-21.33,3.81,0.0,0.0,47.65,0,127.5,6.0,0.466,46.81,3.25,3
+L_dash_sweep15_bearing_only,L,dash,sweep,15.0,bearing_only,0.1,,233.06,563.71,445.54,277.33,136.21,387.27,8.06,35.8,5.29,79.6,79.6,135.42,0,21.4,41.3,0.127,120.3,5.27,2
+L_dash_sweep15_tight_prior,L,dash,sweep,15.0,tight_prior,0.1,,7.46,6.8,8.23,6.53,9.27,7.14,7.46,-2.45,3.58,72.1,72.1,3.08,0,21.4,41.3,0.127,4.91,3.18,3
+L_dash_sweep15_wrong_prior,L,dash,sweep,15.0,wrong_prior,0.1,,15.12,11.78,10.14,13.11,19.66,12.2,12.59,-10.5,3.37,22.2,22.2,19.52,0,21.4,41.3,0.127,15.65,3.32,3
+L_dash_sweep15_wrong_tight,L,dash,sweep,15.0,wrong_tight,0.1,,19.74,15.95,14.52,19.33,26.67,16.75,17.67,-16.32,3.24,1.5,1.5,40.91,0,21.4,41.3,0.127,30.85,3.45,3
+L_jink_sweep15_bearing_only,L,jink,sweep,15.0,bearing_only,0.1,158.61,315.3,247.61,465.42,623.46,216.98,338.13,52.61,-4.25,8.21,10.2,10.2,299.23,0,8.0,71.9,0.001,275.81,10.68,2
+L_jink_sweep15_tight_prior,L,jink,sweep,15.0,tight_prior,0.1,38.89,40.76,42.53,39.36,34.46,30.88,40.86,43.86,-40.32,4.27,4.5,4.5,233.43,0,8.0,71.9,0.001,103.49,7.08,3
+L_jink_sweep15_wrong_prior,L,jink,sweep,15.0,wrong_prior,0.1,44.98,45.91,48.22,46.73,44.93,44.56,47.09,48.9,-46.92,3.83,0.4,0.4,470.14,0,8.0,71.9,0.001,185.84,6.58,3
+L_jink_sweep15_wrong_tight,L,jink,sweep,15.0,wrong_tight,0.1,44.38,45.38,47.66,46.02,44.51,44.11,46.5,48.16,-46.36,3.68,0.0,0.0,488.5,0,8.0,71.9,0.001,193.18,6.57,3
+L_orbit_sweep15_bearing_only,L,orbit,sweep,15.0,bearing_only,0.1,,,259.17,184.2,,,110.65,19.29,20.32,5.81,55.8,55.8,230.92,0,70.3,11.0,0.0,166.85,4.98,2
+L_orbit_sweep15_tight_prior,L,orbit,sweep,15.0,tight_prior,0.1,,,5.77,5.92,,,4.84,5.05,-1.3,3.92,89.5,89.5,1.53,0,70.3,11.0,0.0,3.5,3.4,3
+L_orbit_sweep15_wrong_prior,L,orbit,sweep,15.0,wrong_prior,0.1,,,8.72,8.73,,,7.35,7.95,-6.12,3.64,59.5,59.5,4.41,0,70.3,11.0,0.0,5.92,3.43,3
+L_orbit_sweep15_wrong_tight,L,orbit,sweep,15.0,wrong_tight,0.1,,,16.49,17.63,,,13.37,14.11,-12.94,3.53,0.9,0.9,21.81,0,70.3,11.0,0.0,19.62,3.49,3

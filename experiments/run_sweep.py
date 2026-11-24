@@ -10,6 +10,8 @@ Configs (<group>_<target>_<camera>_<variant>; 200 runs each, seeds 1000..1199 as
   I  sweep +/-5, +/-10, +/-30 x inbound x size_prior
   J  sweep +/-15 x constant_velocity ("crossing"), gentle_turn, dash, jink, orbit x size_prior
   K  the J configs with filter q = 1.0 instead of 0.1 (per-config q; Q_FILTER is not edited)
+  L  sweep +/-15 x the 5 J targets x the 4 other variants (bearing_only, tight_prior, wrong_prior, wrong_tight),
+     q = 0.1; with G and J this completes the 6 targets x 5 variants grid (see grid_name)
 Everything else as run_experiments.py: run_one (experiments/mc.py) with its default GPS/INS model,
 the measured detector noise, 3 iterations, 10 Hz, 40 s. The jink phase comes from a SEPARATE generator,
 default_rng([seed, 1]), so detector noise, pose drift and true-size draws are identical to the other configs.
@@ -67,9 +69,20 @@ def sweep_configs():
     targets = ("constant_velocity", "gentle_turn", "dash", "jink", "orbit")
     c += [cfg("J", t, "sweep", "size_prior") for t in targets]
     c += [cfg("K", t, "sweep", "size_prior", q=1.0) for t in targets]
+    c += [cfg("L", t, "sweep", v) for t in targets for v in VARIANTS if v != "size_prior"]
     out = dict(c)
-    assert len(out) == len(c) == 20
+    assert len(out) == len(c) == 40
     return out
+
+
+GRID_TARGETS = ("approach_recede", "constant_velocity", "gentle_turn", "dash", "jink", "orbit")
+
+
+def grid_name(target, variant):
+    """Config of the 6 targets x 5 variants grid on the sweep +/-15 m camera, q = 0.1 (groups G, J and L)."""
+    if target == "approach_recede":
+        return f"G_approach_sweep15_{variant}"
+    return f"{'J' if variant == 'size_prior' else 'L'}_{target}_sweep15_{variant}"
 
 
 # ------------------------------------------------------------------ one run
@@ -225,7 +238,9 @@ def write_reports(summ, cut_check, timing):
                     "anees_range": round(s["anees_range"], 2), "nan_runs": s["nan"]["nan_runs"],
                     "min_true_range_m": round(e["min_true_range_m"], 1),
                     "max_bearing_rate_deg_s": round(e["max_bearing_rate_deg_s"], 1),
-                    "frac_samples_beyond_200m": round(e["frac_samples_beyond_200m"], 3)})
+                    "frac_samples_beyond_200m": round(e["frac_samples_beyond_200m"], 3),
+                    "anees_pos": round(s["anees_pos"], 2), "mean_nis": round(s["mean_nis"], 2),
+                    "nis_dof": s["nis_dof"]})
         rows.append(row)
     with open(EXP / "sweep_summary.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
@@ -274,6 +289,23 @@ def write_reports(summ, cut_check, timing):
         T.append(f"| {v} | {fmt_pct(s['rms_rel_err_after10s'])} | {100 * s['mean_rel_err_after10s']:+.1f}% | "
                  f"{fmt_pct(s['extra']['p68_abs_rel_err_after10s'])} vs {fmt_pct(s['median_reported_rel_sigma_after10s'])} | "
                  f"{fmt_pct(s['coverage_2sigma'])} | {s['anees_range']:.2f} | {s['nan']['nan_runs']} |")
+    if all(grid_name(t, v) in summ for t in GRID_TARGETS for v in VARIANTS):
+        T += ["", "## Full grid: target behaviour x size variant (sweep ±15 m, q = 0.1; groups G, J, L)", "",
+              "Each cell is one config of 200 runs, seeds 1000..1199 (paired across cells; jink phases identical in "
+              "every jink cell). Variants: bearing_only = no size; size_prior = 0.35 ± 0.15 m; tight_prior = "
+              "0.35 ± 0.03 m; wrong_prior = true size 0.60 m, prior 0.35 ± 0.15 m; wrong_tight = true 0.60 m, prior "
+              "0.35 ± 0.03 m."]
+        grids = [("RMS range error / true range, t ≥ 10 s", lambda s: fmt_pct(s["rms_rel_err_after10s"])),
+                 ("2σ coverage, t ≥ 2 s (ideal 95%)", lambda s: fmt_pct(s["coverage_2sigma"])),
+                 ("2σ coverage with NaN steps counted as misses", lambda s: fmt_pct(s["extra"]["coverage_2sigma_nan_as_miss"])),
+                 ("Range ANEES (1 dof; ideal 1)", lambda s: f"{s['anees_range']:.2f}"),
+                 ("Bias (mean signed relative error), t ≥ 10 s", lambda s: f"{100 * s['mean_rel_err_after10s']:+.1f}%"),
+                 ("NaN runs / 200", lambda s: str(s["nan"]["nan_runs"]))]
+        for title, f in grids:
+            T += ["", f"### {title}", "", "| behaviour | " + " | ".join(VARIANTS) + " |",
+                  "|---|" + "---|" * len(VARIANTS)]
+            T += [f"| {TARGET_LABEL[t]} | " + " | ".join(f(summ[grid_name(t, v)]) for v in VARIANTS) + " |"
+                  for t in GRID_TARGETS]
     k_rows = [n for n in summ if n.startswith("K_")]
     if k_rows:
         T += ["", "## Filter process noise q = 1.0 vs 0.1 (sweep ±15 m, size_prior)", "",

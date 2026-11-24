@@ -33,6 +33,76 @@
 | wrong_prior | 9.8% | -7.8% | 9.0% vs 3.3% | 40.5% | 13.01 | 0 |
 | wrong_tight | 14.5% | -13.8% | 15.8% vs 3.2% | 0.3% | 29.31 | 0 |
 
+## Full grid: target behaviour x size variant (sweep ±15 m, q = 0.1; groups G, J, L)
+
+Each cell is one config of 200 runs, seeds 1000..1199 (paired across cells; jink phases identical in every jink cell). Variants: bearing_only = no size; size_prior = 0.35 ± 0.15 m; tight_prior = 0.35 ± 0.03 m; wrong_prior = true size 0.60 m, prior 0.35 ± 0.15 m; wrong_tight = true 0.60 m, prior 0.35 ± 0.03 m.
+
+### RMS range error / true range, t ≥ 10 s
+
+| behaviour | bearing_only | size_prior | tight_prior | wrong_prior | wrong_tight |
+|---|---|---|---|---|---|
+| inbound | 307.2% | 12.7% | 4.0% | 9.8% | 14.5% |
+| crossing | 708.7% | 11.3% | 8.8% | 14.1% | 19.1% |
+| gentle turn | 343.1% | 13.4% | 10.6% | 16.3% | 21.6% |
+| dash | 387.3% | 18.7% | 7.1% | 12.2% | 16.8% |
+| jink | 338.1% | 46.9% | 40.9% | 47.1% | 46.5% |
+| orbit | 110.6% | 9.0% | 4.8% | 7.4% | 13.4% |
+
+### 2σ coverage, t ≥ 2 s (ideal 95%)
+
+| behaviour | bearing_only | size_prior | tight_prior | wrong_prior | wrong_tight |
+|---|---|---|---|---|---|
+| inbound | 89.4% | 77.8% | 95.1% | 40.5% | 0.3% |
+| crossing | 90.6% | 57.9% | 69.8% | 17.4% | 0.0% |
+| gentle turn | 82.1% | 50.2% | 57.7% | 8.3% | 0.0% |
+| dash | 79.6% | 57.3% | 72.1% | 22.2% | 1.5% |
+| jink | 10.2% | 4.6% | 4.5% | 0.4% | 0.0% |
+| orbit | 55.8% | 76.1% | 89.5% | 59.5% | 0.9% |
+
+### 2σ coverage with NaN steps counted as misses
+
+| behaviour | bearing_only | size_prior | tight_prior | wrong_prior | wrong_tight |
+|---|---|---|---|---|---|
+| inbound | 89.4% | 72.4% | 95.1% | 40.5% | 0.3% |
+| crossing | 90.6% | 56.3% | 69.8% | 17.4% | 0.0% |
+| gentle turn | 82.1% | 48.9% | 57.7% | 8.3% | 0.0% |
+| dash | 79.6% | 54.1% | 72.1% | 22.2% | 1.5% |
+| jink | 10.2% | 4.1% | 4.5% | 0.4% | 0.0% |
+| orbit | 55.8% | 68.5% | 89.5% | 59.5% | 0.9% |
+
+### Range ANEES (1 dof; ideal 1)
+
+| behaviour | bearing_only | size_prior | tight_prior | wrong_prior | wrong_tight |
+|---|---|---|---|---|---|
+| inbound | 41.90 | 4.28 | 1.06 | 13.01 | 29.31 |
+| crossing | 50.70 | 7.16 | 3.42 | 19.50 | 38.76 |
+| gentle turn | 77.47 | 8.92 | 4.59 | 22.78 | 47.65 |
+| dash | 135.42 | 16.66 | 3.08 | 19.52 | 40.91 |
+| jink | 299.23 | 343.90 | 233.43 | 470.14 | 488.50 |
+| orbit | 230.92 | 9.25 | 1.53 | 4.41 | 21.81 |
+
+### Bias (mean signed relative error), t ≥ 10 s
+
+| behaviour | bearing_only | size_prior | tight_prior | wrong_prior | wrong_tight |
+|---|---|---|---|---|---|
+| inbound | +27.1% | -0.7% | +0.3% | -7.8% | -13.8% |
+| crossing | +52.7% | -8.6% | -7.3% | -12.8% | -18.7% |
+| gentle turn | +38.4% | -11.1% | -9.7% | -15.3% | -21.3% |
+| dash | +35.8% | -3.5% | -2.5% | -10.5% | -16.3% |
+| jink | -4.2% | -44.1% | -40.3% | -46.9% | -46.4% |
+| orbit | +20.3% | -4.4% | -1.3% | -6.1% | -12.9% |
+
+### NaN runs / 200
+
+| behaviour | bearing_only | size_prior | tight_prior | wrong_prior | wrong_tight |
+|---|---|---|---|---|---|
+| inbound | 0 | 15 | 0 | 0 | 0 |
+| crossing | 0 | 6 | 0 | 0 | 0 |
+| gentle turn | 0 | 6 | 0 | 0 | 0 |
+| dash | 0 | 12 | 0 | 0 | 0 |
+| jink | 0 | 24 | 0 | 0 | 0 |
+| orbit | 0 | 20 | 0 | 0 | 0 |
+
 ## Filter process noise q = 1.0 vs 0.1 (sweep ±15 m, size_prior)
 
 | behaviour | RMS err q=0.1 | RMS err q=1.0 | 2σ coverage q=0.1 | 2σ coverage q=1.0 | NaN runs q=0.1 / 1.0 |

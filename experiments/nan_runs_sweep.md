@@ -2,7 +2,7 @@
 
 Cause: an iterated-update step put the drone estimate behind the camera (Z < 0), so log(Z) = NaN, and the NaN persists. The metrics in results_sweep.md leave those time steps out (nanmean), and its 'final outside 3sigma' column counts a NaN run as not diverged. Not fixed; reported here. The last two columns are added for this study: 2-sigma coverage as reported (NaN steps skipped) and with every NaN step after initialisation counted as a miss (t >= 2 s, true range <= 200 m).
 
-Total: 188 runs over 20 configurations of 200 runs.
+Total: 188 runs over 40 configurations of 200 runs.
 
 | config | NaN runs / 200 | time steps excluded | median first NaN [s] | final outside 3σ: reported | NaN counted as diverged | 2σ coverage: reported | 2σ coverage, NaN = miss |
 |---|---|---|---|---|---|---|---|
@@ -26,3 +26,23 @@ Total: 188 runs over 20 configurations of 200 runs.
 | K_dash_sweep15_size_prior | 12 | 5.4% | 3.1 | 36.5% | 42.5% | 56.8% | 53.6% |
 | K_jink_sweep15_size_prior | 16 | 7.3% | 3.3 | 91.0% | 99.0% | 5.0% | 4.6% |
 | K_orbit_sweep15_size_prior | 20 | 9.9% | 0.4 | 7.5% | 17.5% | 77.0% | 69.3% |
+| L_constant_velocity_sweep15_bearing_only | 0 | 0.0% | - | 4.5% | 4.5% | 90.6% | 90.6% |
+| L_constant_velocity_sweep15_tight_prior | 0 | 0.0% | - | 24.0% | 24.0% | 69.8% | 69.8% |
+| L_constant_velocity_sweep15_wrong_prior | 0 | 0.0% | - | 93.5% | 93.5% | 17.4% | 17.4% |
+| L_constant_velocity_sweep15_wrong_tight | 0 | 0.0% | - | 100.0% | 100.0% | 0.0% | 0.0% |
+| L_gentle_turn_sweep15_bearing_only | 0 | 0.0% | - | 9.0% | 9.0% | 82.1% | 82.1% |
+| L_gentle_turn_sweep15_tight_prior | 0 | 0.0% | - | 40.0% | 40.0% | 57.7% | 57.7% |
+| L_gentle_turn_sweep15_wrong_prior | 0 | 0.0% | - | 96.0% | 96.0% | 8.3% | 8.3% |
+| L_gentle_turn_sweep15_wrong_tight | 0 | 0.0% | - | 100.0% | 100.0% | 0.0% | 0.0% |
+| L_dash_sweep15_bearing_only | 0 | 0.0% | - | 5.5% | 5.5% | 79.6% | 79.6% |
+| L_dash_sweep15_tight_prior | 0 | 0.0% | - | 9.0% | 9.0% | 72.1% | 72.1% |
+| L_dash_sweep15_wrong_prior | 0 | 0.0% | - | 91.5% | 91.5% | 22.2% | 22.2% |
+| L_dash_sweep15_wrong_tight | 0 | 0.0% | - | 100.0% | 100.0% | 1.5% | 1.5% |
+| L_jink_sweep15_bearing_only | 0 | 0.0% | - | 99.0% | 99.0% | 10.2% | 10.2% |
+| L_jink_sweep15_tight_prior | 0 | 0.0% | - | 100.0% | 100.0% | 4.5% | 4.5% |
+| L_jink_sweep15_wrong_prior | 0 | 0.0% | - | 100.0% | 100.0% | 0.4% | 0.4% |
+| L_jink_sweep15_wrong_tight | 0 | 0.0% | - | 100.0% | 100.0% | 0.0% | 0.0% |
+| L_orbit_sweep15_bearing_only | 0 | 0.0% | - | 24.0% | 24.0% | 55.8% | 55.8% |
+| L_orbit_sweep15_tight_prior | 0 | 0.0% | - | 0.5% | 0.5% | 89.5% | 89.5% |
+| L_orbit_sweep15_wrong_prior | 0 | 0.0% | - | 22.0% | 22.0% | 59.5% | 59.5% |
+| L_orbit_sweep15_wrong_tight | 0 | 0.0% | - | 73.0% | 73.0% | 0.9% | 0.9% |

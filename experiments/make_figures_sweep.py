@@ -10,6 +10,8 @@ are masked exactly as in the scoring (run_sweep.range_masked).
   width_curves.png        : RMS vs true range for hover, sweep +/-5, 10, 15, 30 (H + I + G, size_prior)
   behaviour_table.png     : the behaviour table of experiments/sweep_tables.md
   orbit_error_time.png    : orbit target, range error over time, the dip around t = 16 s
+  grid_behaviour_by_variant.png : 6 targets x 5 size variants (groups G, J, L), RMS error and 2-sigma coverage
+      (.venv/bin/python -I experiments/make_figures_sweep.py --only grid  makes only this one)
 """
 import json
 import sys
@@ -23,7 +25,7 @@ sys.path.insert(0, str(ROOT))
 import experiments.make_figures as mf  # noqa: E402  (sets the shared rcParams on import)
 from experiments.make_figures import (COLOR, GRID, INK, INK2, LABEL, MARKER, MUTED, SURFACE, VARIANTS,  # noqa: E402
                                       binned_rms, plt, rel_err)
-from experiments.run_sweep import BUCKETS, OUT_NPZ, range_masked  # noqa: E402
+from experiments.run_sweep import BUCKETS, GRID_TARGETS, OUT_NPZ, TARGET_LABEL, grid_name, range_masked  # noqa: E402
 from ekf.nees import anees_bounds  # noqa: E402
 from sim.trajectories import CAM_START, ORBIT_R, ORBIT_SPEED, make_scenario  # noqa: E402
 
@@ -288,8 +290,51 @@ def fig_orbit_error_time():
             "median_2sigma_pct_at_peak": round(float(env[k]), 2)}
 
 
+def fig_grid_behaviour_by_variant():
+    """Two 6 x 5 heatmaps in the behaviour_table.png style: RMS error (log colour) and 2-sigma coverage.
+    In both, darker = worse: RMS by its size, coverage by how far it falls below the ideal 95%."""
+    cols = ["bearing only", "broad prior\n0.35 ± 0.15 m", "tight prior\n0.35 ± 0.03 m", "wrong prior\n(true 0.60 m)",
+            "wrong and tight\n(true 0.60 m,\nprior ± 0.03 m)"]
+    S = {(t, v): json.loads((OUT_NPZ / f"{grid_name(t, v)}.json").read_text()) for t in GRID_TARGETS for v in VARIANTS}
+    rms = np.array([[100 * S[t, v]["rms_rel_err_after10s"] for v in VARIANTS] for t in GRID_TARGETS])
+    cov = np.array([[100 * S[t, v]["coverage_2sigma"] for v in VARIANTS] for t in GRID_TARGETS])
+    cmap = plt.get_cmap("Blues")
+    fig, axes = plt.subplots(1, 2, figsize=(13.5, 4.9))
+    panels = [(axes[0], rms, lambda x: np.clip(np.log10(x / 3) / np.log10(100 / 3), 0, 1),
+               lambda x: f"{x:.0f}%" if x >= 100 else f"{x:.1f}%",
+               "RMS range error / true range, t ≥ 10 s\n(darker = larger; colour saturates at 100%)"),
+              (axes[1], cov, lambda x: np.clip((95 - x) / 95, 0, 1), lambda x: f"{x:.1f}%",
+               "2σ coverage, t ≥ 2 s (ideal 95%)\n(darker = further below 95%)")]
+    for ax, V, shade, fmt, title in panels:
+        ax.grid(False)
+        ax.set_xlim(-0.5, V.shape[1] - 0.5)
+        ax.set_ylim(V.shape[0] - 0.5, -0.5)
+        for i in range(V.shape[0]):
+            for j in range(V.shape[1]):
+                f = shade(V[i, j])
+                ax.add_patch(plt.Rectangle((j - 0.48, i - 0.46), 0.96, 0.92, color=cmap(0.08 + 0.8 * f), lw=0))
+                ax.text(j, i, fmt(V[i, j]), ha="center", va="center", fontsize=9.5, color=SURFACE if f > 0.55 else INK)
+        ax.set_xticks(range(V.shape[1]), cols, fontsize=8.5)
+        ax.xaxis.tick_top()
+        ax.set_yticks(range(V.shape[0]), [TARGET_LABEL[t] for t in GRID_TARGETS], fontsize=10)
+        ax.tick_params(length=0)
+        for sp in ax.spines.values():
+            sp.set_visible(False)
+        ax.set_xlabel(title, fontsize=9.5, color=INK, labelpad=8)
+    fig.suptitle("Target behaviour x size prior, sweep-in-place observer ±15 m, filter q = 0.1, 200 runs per cell "
+                 "(seeds 1000-1199, paired). SIMULATION ONLY.", fontsize=10.5, y=0.04)
+    fig.tight_layout(rect=(0, 0.06, 1, 1))
+    fig.savefig(FIG / "grid_behaviour_by_variant.png")
+    plt.close(fig)
+
+
 def main():
     FIG.mkdir(parents=True, exist_ok=True)
+    if sys.argv[1:] == ["--only", "grid"]:
+        fig_grid_behaviour_by_variant()
+        print("wrote", FIG / "grid_behaviour_by_variant.png")
+        return
+    fig_grid_behaviour_by_variant()
     fig_envelopes()
     fig_rmse_vs_range()
     fig_nees_time()
