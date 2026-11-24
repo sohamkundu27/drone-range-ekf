@@ -1,41 +1,63 @@
 {
- "index": "pooled[predicted][true]; raw_5x5[predicted][true]",
+ "index": "pooled[predicted][true]; raw_5x5_per_source[source][predicted][true]",
  "pooled_rows_predicted": [
   "drone",
   "no drone"
  ],
  "pooled_cols_true": [
-  "drone",
+  "drone (DUT)",
+  "drone (Det-Fly, same site)",
   "negatives (bird, airplane, helicopter)",
   "background (nothing there)"
  ],
  "pooled": [
   [
    2189,
+   6125,
    3,
-   50
+   758
   ],
   [
    56,
+   2376,
    2134,
    null
   ]
  ],
  "pooled_named": {
-  "drones_found": 2189,
-  "drones_missed": 56,
+  "dut_drones_found": 2189,
+  "dut_drones_missed": 56,
+  "detfly_drones_found": 6125,
+  "detfly_drones_missed": 2376,
   "negatives_called_drone": 3,
   "negatives_not_called_drone": 2134,
-  "false_drone_boxes_on_background": 50,
+  "false_drone_boxes_on_background": 758,
   "no_drone_on_background": null
  },
+ "pooled_drones_dut_plus_detfly": {
+  "found": 8314,
+  "missed": 2432,
+  "total": 10746,
+  "recall": 0.7736832309696632
+ },
+ "recall": {
+  "dut": 0.9750556792873051,
+  "detfly": 0.7205034701799788
+ },
  "pooled_from_5x5": {
-  "drones_found": "M[drone][drone]",
-  "drones_missed": "M[bird][drone] + M[airplane][drone] + M[helicopter][drone] + M[background][drone]",
-  "negatives_called_drone": "M[drone][bird] + M[drone][airplane] + M[drone][helicopter]",
-  "negatives_not_called_drone": "sum of M[bird|airplane|helicopter|background][bird|airplane|helicopter]",
-  "false_drone_boxes_on_background": "M[drone][background]",
+  "drone (DUT) / drone (Det-Fly) found": "M_s[drone][drone] summed over the column's sources",
+  "missed": "M_s[bird|airplane|helicopter|background][drone] summed",
+  "negatives_called_drone": "M_s[drone][bird|airplane|helicopter] summed over all sources",
+  "negatives_not_called_drone": "M_s[bird|airplane|helicopter|background][bird|airplane|helicopter]",
+  "false_drone_boxes_on_background": "M_s[drone][background] summed over all sources",
   "no_drone_on_background": "not defined"
+ },
+ "false_drone_boxes_on_background_per_source": {
+  "dut": 46,
+  "coco": 0,
+  "openimages": 4,
+  "detfly010": 320,
+  "detfly020": 388
  },
  "raw_5x5_names": [
   "drone",
@@ -44,74 +66,227 @@
   "helicopter",
   "background"
  ],
- "raw_5x5": [
-  [
-   2189,
-   0,
-   2,
-   1,
-   50
+ "raw_5x5_per_source": {
+  "dut": [
+   [
+    2189,
+    0,
+    0,
+    0,
+    46
+   ],
+   [
+    1,
+    0,
+    0,
+    0,
+    6
+   ],
+   [
+    1,
+    0,
+    0,
+    0,
+    2
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   [
+    54,
+    0,
+    0,
+    0,
+    0
+   ]
   ],
-  [
-   1,
-   654,
-   0,
-   0,
-   194
+  "coco": [
+   [
+    0,
+    0,
+    1,
+    0,
+    0
+   ],
+   [
+    0,
+    129,
+    0,
+    0,
+    44
+   ],
+   [
+    0,
+    0,
+    110,
+    0,
+    15
+   ],
+   [
+    0,
+    0,
+    2,
+    0,
+    2
+   ],
+   [
+    0,
+    104,
+    30,
+    0,
+    0
+   ]
   ],
-  [
-   1,
-   1,
-   590,
-   3,
-   77
+  "openimages": [
+   [
+    0,
+    0,
+    1,
+    1,
+    4
+   ],
+   [
+    0,
+    525,
+    0,
+    0,
+    144
+   ],
+   [
+    0,
+    1,
+    479,
+    3,
+    57
+   ],
+   [
+    0,
+    0,
+    30,
+    345,
+    18
+   ],
+   [
+    0,
+    252,
+    82,
+    42,
+    0
+   ]
   ],
-  [
-   0,
-   0,
-   33,
-   345,
-   22
+  "detfly010": [
+   [
+    1211,
+    0,
+    0,
+    0,
+    320
+   ],
+   [
+    1,
+    0,
+    0,
+    0,
+    11
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   [
+    378,
+    0,
+    0,
+    0,
+    0
+   ]
   ],
-  [
-   54,
-   356,
-   110,
-   42,
-   0
+  "detfly020": [
+   [
+    4914,
+    0,
+    0,
+    0,
+    388
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   [
+    1997,
+    0,
+    0,
+    0,
+    0
+   ]
   ]
- ],
- "non_drone_boxes_on_background": 293,
+ },
+ "non_drone_boxes_on_background": 302,
  "weights": "runs/s_detfly_new/weights/best.pt",
- "data": "drone4_bal.yaml",
  "split": "test",
+ "source_data": {
+  "dut": "data/yolo/dut_anti_uav/images/test",
+  "coco": "data/yolo/coco/images/test",
+  "openimages": "data/yolo/openimages/images/test",
+  "detfly010": "data/yolo/new_detfly_test010.txt",
+  "detfly020": "data/yolo/new_detfly_test020.txt"
+ },
+ "detfly_definition": "detfly_split.json sets detfly_test010 (last 25 % of sequence 010) and detfly_test020 (all of 020); same lists as the Det-Fly accuracy-table rows",
  "imgsz": 1280,
  "conf": 0.25,
  "nms_iou": 0.5,
  "match_iou": 0.5,
- "images": 3734,
  "images_per_source": {
+  "dut": 2200,
   "coco": 209,
-  "dut_anti_uav": 2200,
-  "openimages": 1325
+  "openimages": 1325,
+  "detfly010": 1590,
+  "detfly020": 6912
  },
- "gt_per_class": {
-  "drone": 2245,
-  "bird": 1011,
-  "airplane": 735,
-  "helicopter": 391
- },
+ "images": 12236,
  "gt_per_class_per_source": {
+  "dut": {
+   "drone": 2245,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
+  },
   "coco": {
    "drone": 0,
    "bird": 233,
    "airplane": 143,
-   "helicopter": 0
-  },
-  "dut_anti_uav": {
-   "drone": 2245,
-   "bird": 0,
-   "airplane": 0,
    "helicopter": 0
   },
   "openimages": {
@@ -119,19 +294,31 @@
    "bird": 778,
    "airplane": 592,
    "helicopter": 391
+  },
+  "detfly010": {
+   "drone": 1590,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
+  },
+  "detfly020": {
+   "drone": 6911,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
   }
  },
  "gt_label_lines_incl_duplicates_per_source": {
+  "dut": {
+   "drone": 2245,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
+  },
   "coco": {
    "drone": 0,
    "bird": 233,
    "airplane": 143,
-   "helicopter": 0
-  },
-  "dut_anti_uav": {
-   "drone": 2245,
-   "bird": 0,
-   "airplane": 0,
    "helicopter": 0
   },
   "openimages": {
@@ -139,6 +326,18 @@
    "bird": 783,
    "airplane": 592,
    "helicopter": 391
+  },
+  "detfly010": {
+   "drone": 1590,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
+  },
+  "detfly020": {
+   "drone": 6911,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
   }
  },
  "duplicate_label_lines": {
@@ -150,7 +349,7 @@
    "ec3d9fa9250fcdf8.txt": 1
   }
  },
- "gt_note": "GT counts are after removing exact duplicate label lines, as Ultralytics does on load (5 Open Images test files each contain one bird box twice: 2,142 negative label lines, 2,137 evaluated).",
+ "gt_note": "GT counts are after removing exact duplicate label lines, as Ultralytics does on load.",
  "checks": [
   {
    "check": "match IoU used by the confusion matrix is 0.5",
@@ -158,34 +357,75 @@
    "detail": "process_batch iou_thres = 0.5"
   },
   {
-   "check": "5x5 column totals = GT boxes per class in the label files",
+   "check": "every listed image exists on disk",
    "ok": true,
-   "detail": "matrix [2245, 1011, 735, 391] vs labels [2245, 1011, 735, 391]"
+   "detail": {
+    "dut": 0,
+    "coco": 0,
+    "openimages": 0,
+    "detfly010": 0,
+    "detfly020": 0
+   }
   },
   {
-   "check": "drone column total = GT drones",
+   "check": "dut: 5x5 column totals = GT boxes per class in its label files",
    "ok": true,
-   "detail": "2245 vs 2245 GT drones"
+   "detail": "matrix [2245, 0, 0, 0] vs labels [2245, 0, 0, 0]"
   },
   {
-   "check": "negatives column total = GT birds + airplanes + helicopters",
+   "check": "coco: 5x5 column totals = GT boxes per class in its label files",
    "ok": true,
-   "detail": "2137 vs 1011 + 735 + 391"
+   "detail": "matrix [0, 233, 143, 0] vs labels [0, 233, 143, 0]"
   },
   {
-   "check": "drone total = expected (DUT test 2,245)",
+   "check": "openimages: 5x5 column totals = GT boxes per class in its label files",
+   "ok": true,
+   "detail": "matrix [0, 778, 592, 391] vs labels [0, 778, 592, 391]"
+  },
+  {
+   "check": "detfly010: 5x5 column totals = GT boxes per class in its label files",
+   "ok": true,
+   "detail": "matrix [1590, 0, 0, 0] vs labels [1590, 0, 0, 0]"
+  },
+  {
+   "check": "detfly020: 5x5 column totals = GT boxes per class in its label files",
+   "ok": true,
+   "detail": "matrix [6911, 0, 0, 0] vs labels [6911, 0, 0, 0]"
+  },
+  {
+   "check": "negatives sources contain no drones",
+   "ok": true,
+   "detail": "0 GT drones in COCO / Open Images"
+  },
+  {
+   "check": "DUT drone column total = GT drones in DUT",
    "ok": true,
    "detail": "2245 vs 2245"
   },
   {
-   "check": "negatives total = expected (2,137 = 2,142 label lines - 5 exact duplicates)",
+   "check": "Det-Fly drone column total = GT drones in the Det-Fly label files",
+   "ok": true,
+   "detail": "8501 vs 8501"
+  },
+  {
+   "check": "negatives column total = GT birds + airplanes + helicopters",
    "ok": true,
    "detail": "2137 vs 2137"
   },
   {
+   "check": "DUT drone column total = 2,245",
+   "ok": true,
+   "detail": "2245"
+  },
+  {
+   "check": "negatives column total = 2,137 (2,142 label lines - 5 exact duplicates)",
+   "ok": true,
+   "detail": "2137"
+  },
+  {
    "check": "negatives label lines incl. duplicates = 2,142",
    "ok": true,
-   "detail": "2142 lines, 5 exact duplicates, 2137 evaluated"
+   "detail": "2142 lines, 5 exact duplicates"
   },
   {
    "check": "pooled cells = sums of the 5x5 cells (two independent computations)",
@@ -193,11 +433,13 @@
    "detail": [
     [
      2189.0,
+     6125.0,
      3.0,
-     50.0
+     758.0
     ],
     [
      56.0,
+     2376.0,
      2134.0,
      NaN
     ]
@@ -206,8 +448,14 @@
   {
    "check": "pooled cells + non-drone boxes on background = all 5x5 entries",
    "ok": true,
-   "detail": "4432 + 293 vs 4725"
+   "detail": "13641 + 302 vs 13943"
   }
  ],
- "note": "Separate validation call for the confusion matrix only, at conf 0.25. Do not quote mAP from it (mAP must be computed at low conf). Det-Fly is not in this split; it has its own row in the accuracy table."
+ "comparison_with_earlier_combined_run": {
+  "same_as_earlier_combined_run": false,
+  "cells_that_differ": 4,
+  "max_abs_cell_difference": 3,
+  "note": "The DUT-only figure validated DUT + COCO + Open Images in one call; here each source is validated separately. Ultralytics letterboxes each batch to a shared rectangular shape, so which images share a batch can change the padding and, rarely, a detection."
+ },
+ "note": "Separate validation calls for the confusion matrix only, at conf 0.25. Do not quote mAP from them (mAP must be computed at low conf). Det-Fly 020 is a later part of the same site as the Det-Fly training frames (010), not an independent site."
 }

@@ -1,25 +1,32 @@
-"""'Drone vs no drone' confusion matrix for the slides, pooled from the usual 4-class + background matrix.
+"""'Drone vs no drone' confusion matrix for the slides, incl. Det-Fly, pooled from per-source 4-class + background
+matrices.
 
     python -I detector/confusion_matrix_drone_vs_none.py                 # TEST split (default)
     python -I detector/confusion_matrix_drone_vs_none.py --split val     # rerun on val (files get a _val suffix)
 
-Same validation call and settings as detector/confusion_matrix_conf.py: Ultralytics val, imgsz 1280,
-conf 0.25 (boxes with conf > 0.25 enter the matrix), NMS IoU 0.5, match IoU 0.5 (ConfusionMatrix.process_batch,
-class-agnostic, highest confidence first). Default weights: the retrained YOLO26s (Det-Fly added,
-runs/s_detfly_new, 106 epochs, best epoch 92). runs/detect/drone4_bal is the pre-Det-Fly s run.
-Default data: data/yolo/drone4_bal.yaml, whose test split is DUT test + COCO test + Open Images test
-(2,200 + 209 + 1,325 = 3,734 images) and whose val split also has no Det-Fly frames.
+Same settings as detector/confusion_matrix_conf.py: Ultralytics val, imgsz 1280, conf 0.25 (boxes with
+conf > 0.25 enter the matrix), NMS IoU 0.5, match IoU 0.5 (ConfusionMatrix.process_batch, class-agnostic,
+highest confidence first). Weights: the retrained YOLO26s (Det-Fly added, runs/s_detfly_new, best epoch 92;
+runs/detect/drone4_bal is the pre-Det-Fly s run).
 
-1. 5x5 raw matrix M[predicted][true], classes (drone, bird, airplane, helicopter, background):
+Sources (TEST split), each validated separately through a one-source data yaml:
+  dut         DUT Anti-UAV test           2,200 images  (drones)
+  coco        COCO test                     209 images  (birds, airplanes)
+  openimages  Open Images test            1,325 images  (birds, airplanes, helicopters)
+  detfly010   Det-Fly 010 test block      1,590 frames  (detfly_split.json: last 25 % of 010)
+  detfly020   Det-Fly 020, all frames     6,912 frames  (same site as 010, later part of the recording)
+The Det-Fly sets are the same lists the Det-Fly accuracy-table rows use (data/yolo/new_detfly_test0*0.txt).
+For --split val: dut / coco / openimages val and Det-Fly val (data/yolo/new_detfly_val.txt).
+
+1. Per source, a 5x5 raw matrix M[predicted][true] over (drone, bird, airplane, helicopter, background):
      M[d, background] = predicted d where no object is (false positive box)
      M[background, t] = object of class t that no box matched (missed)
-2. Pooled 2x3 matrix (rows predicted, columns true), every cell a sum of 5x5 cells:
-     rows    drone     = a drone-class box;   no drone = a bird/airplane/helicopter box or no box
-     columns drone, negatives (true bird + airplane + helicopter), background (box where nothing is)
-     no drone / background is not defined ("-").
-Writes figures/confusion_matrix_drone_vs_none{,_val}.json, .png (drone and negatives columns normalised by
-column, background column as counts) and _counts.png (raw counts). Do not quote mAP from this run.
-Exits with status 1 if a check fails (column totals vs label files, pooled vs 5x5).
+2. Pooled 2x4 matrix (rows predicted: drone / no drone = a bird/airplane/helicopter box or no box;
+   columns true: drone (DUT), drone (Det-Fly, same site), negatives (bird + airplane + helicopter),
+   background (box where nothing is)). Every cell is a sum of per-source 5x5 cells; no drone / background is
+   not defined ("-").
+Writes figures/confusion_matrix_drone_vs_none{,_val}.json, .png (object columns normalised by column, background
+as counts) and _counts.png. Exits with status 1 if a check fails. Do not quote mAP from this run.
 """
 import argparse
 import inspect
@@ -37,74 +44,99 @@ import yaml  # noqa: E402
 from matplotlib.colors import LogNorm  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data" / "yolo"
 NAMES = ["drone", "bird", "airplane", "helicopter"]
 ROWS = ["drone", "no drone"]
-COLS = ["drone", "negatives\n(bird, airplane,\nhelicopter)", "background\n(nothing there)"]
-COLS_JSON = ["drone", "negatives (bird, airplane, helicopter)", "background (nothing there)"]
-# Expected test totals. Negatives: 2,142 boxes in the label files, of which 5 are exact duplicates (one bird box
-# written twice in 5 Open Images test files); Ultralytics drops exact duplicate labels on load, so it evaluates 2,137.
-EXPECTED = {"test": {"drone": 2245, "negatives": 2137, "negatives_raw_label_lines": 2142}}
+COLS = ["drone\n(DUT)", "drone\n(Det-Fly,\nsame site)", "negatives\n(bird, airplane,\nhelicopter)",
+        "background\n(nothing there)"]
+COLS_JSON = ["drone (DUT)", "drone (Det-Fly, same site)", "negatives (bird, airplane, helicopter)",
+             "background (nothing there)"]
+SOURCES = {   # source -> (group, data entry relative to data/yolo) per split
+    "test": {"dut": ("dut", "dut_anti_uav/images/test"), "coco": ("neg", "coco/images/test"),
+             "openimages": ("neg", "openimages/images/test"),
+             "detfly010": ("detfly", "new_detfly_test010.txt"), "detfly020": ("detfly", "new_detfly_test020.txt")},
+    "val": {"dut": ("dut", "dut_anti_uav/images/val"), "coco": ("neg", "coco/images/val"),
+            "openimages": ("neg", "openimages/images/val"), "detfly_val": ("detfly", "new_detfly_val.txt")},
+}
+LABEL = {"dut": "DUT", "coco": "COCO", "openimages": "Open Images", "detfly010": "Det-Fly 010 test",
+         "detfly020": "Det-Fly 020", "detfly_val": "Det-Fly val"}
+# Expected test totals. Negatives: 2,142 label lines, 5 of them exact duplicates (one bird box written twice in
+# 5 Open Images test files), which Ultralytics drops on load, so 2,137 are evaluated.
+EXPECTED = {"test": {"dut_drone": 2245, "negatives": 2137, "negatives_raw_label_lines": 2142}}
 
 
-def pool(M):
-    """Pooled 2x3 matrix (float, NaN = undefined) from the 5x5 [predicted, true] matrix, by explicit sums."""
+def pool(Ms, groups):
+    """Pooled 2x4 matrix (float, NaN = undefined) by explicit sums of per-source 5x5 cells."""
     D, NEG, BG = 0, [1, 2, 3], 4
-    P = np.full((2, 3), np.nan)
-    P[0, 0] = M[D, D]                                   # drones found
-    P[1, 0] = M[1:, D].sum()                            # drones missed (called bird/airplane/heli, or no box)
-    P[0, 1] = M[D, NEG].sum()                           # negatives called drone
-    P[1, 1] = M[1:, :][:, NEG].sum()                    # negatives not called drone (other class or no box)
-    P[0, 2] = M[D, BG]                                  # false drone boxes on empty background
+    P = np.full((2, 4), np.nan)
+    for j, g in ((0, "dut"), (1, "detfly")):
+        src = [s for s in Ms if groups[s] == g]
+        P[0, j] = sum(Ms[s][D, D] for s in src)                     # drones found
+        P[1, j] = sum(Ms[s][1:, D].sum() for s in src)              # missed (other class or no box)
+    P[0, 2] = sum(Ms[s][D, NEG].sum() for s in Ms)                  # negatives called drone
+    P[1, 2] = sum(Ms[s][1:, :][:, NEG].sum() for s in Ms)           # negatives not called drone
+    P[0, 3] = sum(Ms[s][D, BG] for s in Ms)                         # false drone boxes on empty background
     return P
 
 
-def pool_by_matrices(M):
-    """Same pooling by aggregation matrices R (2x5) @ M @ C (5x3), as an independent check."""
+def pool_by_matrices(Ms, groups):
+    """Same pooling as aggregation matrices R (2x5) @ M @ C_s (5x4) summed over sources, where C_s routes the
+    drone column to the source's own drone column. Independent of pool()."""
     R = np.array([[1, 0, 0, 0, 0], [0, 1, 1, 1, 1]])
-    C = np.array([[1, 0, 0], [0, 1, 0], [0, 1, 0], [0, 1, 0], [0, 0, 1]])
-    P = (R @ M @ C).astype(float)
-    P[1, 2] = np.nan                                    # contains bird/airplane/heli boxes on background: undefined
+    P = np.zeros((2, 4))
+    for s, M in Ms.items():
+        C = np.zeros((5, 4))
+        C[0, {"dut": 0, "detfly": 1}.get(groups[s], 0)] = 1     # a negatives source has an all-zero drone column
+        C[1:4, 2] = 1
+        C[4, 3] = 1
+        P += R @ M @ C
+    P[1, 3] = np.nan
     return P
 
 
-def label_counts(data_yaml, split):
-    """Images and ground-truth boxes per class, per source folder, read from the YOLO label files.
-    gt_boxes counts unique lines per file (Ultralytics removes exact duplicate labels when loading);
-    raw_label_lines counts every line; duplicates lists the files that had exact duplicate lines."""
-    d = yaml.safe_load(Path(data_yaml).read_text())
-    base = Path(d.get("path", ROOT / "data" / "yolo"))
-    entries = d[split] if isinstance(d[split], list) else [d[split]]
-    out = {}
-    for e in entries:
-        p = Path(e) if Path(e).is_absolute() else base / e
-        if p.suffix == ".txt":                          # list file of image paths
-            imgs = [Path(x.strip()) for x in p.read_text().splitlines() if x.strip()]
-            src = p.stem
-        else:
-            imgs = sorted(q for q in p.iterdir() if q.suffix.lower() in {".jpg", ".jpeg", ".png"})
-            src = p.parts[-3]                           # <source>/images/<split>
-        cnt, raw, dups = {n: 0 for n in NAMES}, {n: 0 for n in NAMES}, {}
-        for im in imgs:
-            lab = Path(str(im).replace("/images/", "/labels/")).with_suffix(".txt")
-            if lab.exists():
-                lines = [ln.strip() for ln in lab.read_text().splitlines() if ln.strip()]
-                rows = [tuple(float(x) for x in ln.split()) for ln in lines]
-                for r in rows:
-                    raw[NAMES[int(r[0])]] += 1
-                for r in set(rows):
-                    cnt[NAMES[int(r[0])]] += 1
-                if len(set(rows)) < len(rows):
-                    dups[lab.name] = len(rows) - len(set(rows))
-        out[src] = {"images": len(imgs), "gt_boxes": cnt, "raw_label_lines": raw, "duplicates": dups}
-    return out
+def label_counts(entry):
+    """Images and GT boxes per class for one data entry (folder or list file). gt_boxes counts unique lines per
+    label file (Ultralytics drops exact duplicate labels on load); raw_label_lines counts every line."""
+    p = DATA / entry
+    if p.suffix == ".txt":
+        imgs = [Path(x.strip()) for x in p.read_text().splitlines() if x.strip()]
+    else:
+        imgs = sorted(q for q in p.iterdir() if q.suffix.lower() in {".jpg", ".jpeg", ".png"})
+    cnt, raw, dups, missing_img = {n: 0 for n in NAMES}, {n: 0 for n in NAMES}, {}, 0
+    for im in imgs:
+        missing_img += not im.exists()
+        lab = Path(str(im).replace("/images/", "/labels/")).with_suffix(".txt")
+        if lab.exists():
+            rows = [tuple(float(x) for x in ln.split()) for ln in lab.read_text().splitlines() if ln.strip()]
+            for r in rows:
+                raw[NAMES[int(r[0])]] += 1
+            for r in set(rows):
+                cnt[NAMES[int(r[0])]] += 1
+            if len(set(rows)) < len(rows):
+                dups[lab.name] = len(rows) - len(set(rows))
+    return {"images": len(imgs), "images_missing_on_disk": missing_img, "gt_boxes": cnt, "raw_label_lines": raw,
+            "duplicates": dups}
+
+
+def validate(model, name, entry, args, tmp):
+    """One Ultralytics val call on a single source; returns the 5x5 matrix [predicted, true]."""
+    y = Path(tmp) / f"{name}.yaml"
+    y.write_text(yaml.safe_dump({"path": str(DATA), "train": entry, "val": entry,
+                                 "names": dict(enumerate(NAMES))}))
+    r = model.val(data=str(y), split="val", imgsz=args.imgsz, batch=8, conf=args.conf, iou=args.iou,
+                  plots=True, project=tmp, name=f"cm_{name}", exist_ok=True, verbose=False)
+    cm = r.confusion_matrix
+    assert [cm.names[i] for i in range(cm.nc)] == NAMES, cm.names
+    return cm.matrix.astype(int)
 
 
 def plot(P, normalise, title, path):
-    """Same figure size, colour map and text layout as confusion_matrix_conf.py (P is [predicted, true])."""
+    """Same figure size, colour map and text layout as the earlier drone-vs-none figure (P is [predicted, true])."""
+    nc = P.shape[1]
     fig, ax = plt.subplots(figsize=(7.6, 6.4))
     if normalise:
         A = np.full_like(P, np.nan)
-        for j in (0, 1):
+        for j in range(nc - 1):
             A[:, j] = P[:, j] / P[:, j].sum()
         im = ax.imshow(A, cmap="Blues", vmin=0, vmax=1)
         cb = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
@@ -115,23 +147,23 @@ def plot(P, normalise, title, path):
         cb = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
         cb.set_label("count (log colour scale)")
     for i in range(2):
-        for j in range(3):
+        for j in range(nc):
             if np.isnan(P[i, j]):
                 txt, dark = "-", False
-            elif normalise and j < 2:
+            elif normalise and j < nc - 1:
                 c = int(P[i, j])
                 txt = f"{A[i, j]:.2f}\n({c})" if c else "0"
                 dark = A[i, j] > 0.5
             elif normalise:
                 c = int(P[i, j])
-                txt = f"{c}\n(count)" if c else "0\n(count)"
+                txt = f"{c}\n(count)"
                 dark = False
             else:
                 c = int(P[i, j])
                 txt = str(c)
                 dark = np.log10(c + 1) > 0.6 * np.log10(np.nanmax(P) + 1)
             ax.text(j, i, txt, ha="center", va="center", fontsize=9, color="white" if dark else "black")
-    ax.set_xticks(range(3), COLS)
+    ax.set_xticks(range(nc), COLS)
     ax.set_yticks(range(2), ROWS)
     ax.set_xlabel("TRUE (ground truth)", fontsize=11, fontweight="bold")
     ax.set_ylabel("PREDICTED (detector output)", fontsize=11, fontweight="bold")
@@ -144,8 +176,7 @@ def plot(P, normalise, title, path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--weights", default=str(ROOT / "runs/s_detfly_new/weights/best.pt"))
-    ap.add_argument("--data", default=str(ROOT / "data/yolo/drone4_bal.yaml"))
-    ap.add_argument("--split", default="test", choices=["test", "val"])
+    ap.add_argument("--split", default="test", choices=list(SOURCES))
     ap.add_argument("--conf", type=float, default=0.25)
     ap.add_argument("--iou", type=float, default=0.5, help="NMS IoU")
     ap.add_argument("--imgsz", type=int, default=1280)
@@ -158,87 +189,118 @@ def main():
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     stem = "confusion_matrix_drone_vs_none" + ("" if args.split == "test" else f"_{args.split}")
+    src = SOURCES[args.split]
+    groups = {s: g for s, (g, _) in src.items()}
 
     model = YOLO(args.weights)
-    with tempfile.TemporaryDirectory() as tmp:             # Ultralytics' own plots go nowhere
-        r = model.val(data=args.data, split=args.split, imgsz=args.imgsz, batch=8, conf=args.conf, iou=args.iou,
-                      plots=True, project=tmp, name="cm", verbose=False)
-    cm = r.confusion_matrix
-    M = cm.matrix.astype(int)
-    assert [cm.names[i] for i in range(cm.nc)] == NAMES, cm.names
-    P = pool(M)
+    Ms, labels = {}, {}
+    with tempfile.TemporaryDirectory() as tmp:             # Ultralytics' own plots and the source yamls go nowhere
+        for s, (_, entry) in src.items():
+            Ms[s] = validate(model, s, entry, args, tmp)
+            labels[s] = label_counts(entry)
+            print(f"{s}: {labels[s]['images']} images, matrix column totals {Ms[s][:, :4].sum(0).tolist()}", flush=True)
+    P = pool(Ms, groups)
 
     # ---- checks
-    labels = label_counts(args.data, args.split)
-    gt = {n: sum(s["gt_boxes"][n] for s in labels.values()) for n in NAMES}
-    n_img = sum(s["images"] for s in labels.values())
     checks = []
 
     def check(name, ok, detail):
         checks.append({"check": name, "ok": bool(ok), "detail": detail})
-        print(f"[{'PASS' if ok else 'FAIL'}] {name}: {detail}")
+        print(f"[{'PASS' if ok else 'FAIL'}] {name}: {detail}", flush=True)
 
+    gt = {s: labels[s]["gt_boxes"] for s in src}
+    gt_drone = {g: sum(gt[s]["drone"] for s in src if groups[s] == g) for g in ("dut", "detfly", "neg")}
+    gt_neg = sum(gt[s][n] for s in src for n in NAMES[1:])
     check("match IoU used by the confusion matrix is 0.5", match_iou == 0.5, f"process_batch iou_thres = {match_iou}")
-    check("5x5 column totals = GT boxes per class in the label files",
-          M[:, :4].sum(0).tolist() == [gt[n] for n in NAMES], f"matrix {M[:, :4].sum(0).tolist()} vs labels {[gt[n] for n in NAMES]}")
-    drone_tot, neg_tot = int(np.nansum(P[:, 0])), int(np.nansum(P[:, 1]))
-    check("drone column total = GT drones", drone_tot == gt["drone"], f"{drone_tot} vs {gt['drone']} GT drones")
-    check("negatives column total = GT birds + airplanes + helicopters",
-          neg_tot == gt["bird"] + gt["airplane"] + gt["helicopter"],
-          f"{neg_tot} vs {gt['bird']} + {gt['airplane']} + {gt['helicopter']}")
+    check("every listed image exists on disk", all(labels[s]["images_missing_on_disk"] == 0 for s in src),
+          {s: labels[s]["images_missing_on_disk"] for s in src})
+    for s in src:
+        check(f"{s}: 5x5 column totals = GT boxes per class in its label files",
+              Ms[s][:, :4].sum(0).tolist() == [gt[s][n] for n in NAMES],
+              f"matrix {Ms[s][:, :4].sum(0).tolist()} vs labels {[gt[s][n] for n in NAMES]}")
+    check("negatives sources contain no drones", gt_drone["neg"] == 0, f"{gt_drone['neg']} GT drones in COCO / Open Images")
+    dut_tot, df_tot, neg_tot = (int(np.nansum(P[:, j])) for j in range(3))
+    check("DUT drone column total = GT drones in DUT", dut_tot == gt_drone["dut"], f"{dut_tot} vs {gt_drone['dut']}")
+    check("Det-Fly drone column total = GT drones in the Det-Fly label files", df_tot == gt_drone["detfly"],
+          f"{df_tot} vs {gt_drone['detfly']}")
+    check("negatives column total = GT birds + airplanes + helicopters", neg_tot == gt_neg, f"{neg_tot} vs {gt_neg}")
     if args.split in EXPECTED:
         e = EXPECTED[args.split]
-        check("drone total = expected (DUT test 2,245)", drone_tot == e["drone"], f"{drone_tot} vs {e['drone']}")
-        check("negatives total = expected (2,137 = 2,142 label lines - 5 exact duplicates)", neg_tot == e["negatives"],
-              f"{neg_tot} vs {e['negatives']}")
-        raw_neg = sum(s["raw_label_lines"][n] for s in labels.values() for n in NAMES[1:])
-        n_dup = sum(sum(s["duplicates"].values()) for s in labels.values())
-        check("negatives label lines incl. duplicates = 2,142", raw_neg == e["negatives_raw_label_lines"] and
-              raw_neg - n_dup == neg_tot, f"{raw_neg} lines, {n_dup} exact duplicates, {raw_neg - n_dup} evaluated")
-    P2 = pool_by_matrices(M)
+        check("DUT drone column total = 2,245", dut_tot == e["dut_drone"], f"{dut_tot}")
+        check("negatives column total = 2,137 (2,142 label lines - 5 exact duplicates)", neg_tot == e["negatives"],
+              f"{neg_tot}")
+        raw_neg = sum(labels[s]["raw_label_lines"][n] for s in src for n in NAMES[1:])
+        n_dup_neg = sum(v for s in src if groups[s] == "neg" for v in labels[s]["duplicates"].values())
+        check("negatives label lines incl. duplicates = 2,142", raw_neg == e["negatives_raw_label_lines"],
+              f"{raw_neg} lines, {n_dup_neg} exact duplicates")
+    P2 = pool_by_matrices(Ms, groups)
     check("pooled cells = sums of the 5x5 cells (two independent computations)",
           np.array_equal(np.nan_to_num(P, nan=-1), np.nan_to_num(P2, nan=-1)), P.tolist())
-    other_bg = int(M[1:4, 4].sum())
-    check("pooled cells + non-drone boxes on background = all 5x5 entries",
-          int(np.nansum(P)) + other_bg == int(M.sum()), f"{int(np.nansum(P))} + {other_bg} vs {int(M.sum())}")
+    other_bg = int(sum(M[1:4, 4].sum() for M in Ms.values()))
+    total = int(sum(M.sum() for M in Ms.values()))
+    check("pooled cells + non-drone boxes on background = all 5x5 entries", int(np.nansum(P)) + other_bg == total,
+          f"{int(np.nansum(P))} + {other_bg} vs {total}")
+
+    # informational: per-source sum vs the earlier combined DUT + COCO + Open Images run (batching can differ)
+    info = {}
+    old = out / "confusion_matrix_drone_vs_none_dutonly.json"
+    if args.split == "test" and old.exists():
+        o = np.array(json.loads(old.read_text())["raw_5x5"])
+        s3 = Ms["dut"] + Ms["coco"] + Ms["openimages"]
+        info = {"same_as_earlier_combined_run": bool(np.array_equal(o, s3)),
+                "cells_that_differ": int((o != s3).sum()), "max_abs_cell_difference": int(np.abs(o - s3).max()),
+                "note": "The DUT-only figure validated DUT + COCO + Open Images in one call; here each source is "
+                        "validated separately. Ultralytics letterboxes each batch to a shared rectangular shape, so "
+                        "which images share a batch can change the padding and, rarely, a detection."}
+        print("per-source sum vs earlier combined run:", info, flush=True)
 
     cell = lambda i, j: None if np.isnan(P[i, j]) else int(P[i, j])               # noqa: E731
+    found, missed = cell(0, 0) + cell(0, 1), cell(1, 0) + cell(1, 1)
     res = {
-        "index": "pooled[predicted][true]; raw_5x5[predicted][true]",
+        "index": "pooled[predicted][true]; raw_5x5_per_source[source][predicted][true]",
         "pooled_rows_predicted": ROWS, "pooled_cols_true": COLS_JSON,
-        "pooled": [[cell(i, j) for j in range(3)] for i in range(2)],
-        "pooled_named": {"drones_found": cell(0, 0), "drones_missed": cell(1, 0),
-                         "negatives_called_drone": cell(0, 1), "negatives_not_called_drone": cell(1, 1),
-                         "false_drone_boxes_on_background": cell(0, 2), "no_drone_on_background": None},
-        "pooled_from_5x5": {"drones_found": "M[drone][drone]",
-                            "drones_missed": "M[bird][drone] + M[airplane][drone] + M[helicopter][drone] + M[background][drone]",
-                            "negatives_called_drone": "M[drone][bird] + M[drone][airplane] + M[drone][helicopter]",
-                            "negatives_not_called_drone": "sum of M[bird|airplane|helicopter|background][bird|airplane|helicopter]",
-                            "false_drone_boxes_on_background": "M[drone][background]",
+        "pooled": [[cell(i, j) for j in range(4)] for i in range(2)],
+        "pooled_named": {"dut_drones_found": cell(0, 0), "dut_drones_missed": cell(1, 0),
+                         "detfly_drones_found": cell(0, 1), "detfly_drones_missed": cell(1, 1),
+                         "negatives_called_drone": cell(0, 2), "negatives_not_called_drone": cell(1, 2),
+                         "false_drone_boxes_on_background": cell(0, 3), "no_drone_on_background": None},
+        "pooled_drones_dut_plus_detfly": {"found": found, "missed": missed, "total": found + missed,
+                                          "recall": found / (found + missed)},
+        "recall": {"dut": cell(0, 0) / dut_tot, "detfly": cell(0, 1) / df_tot},
+        "pooled_from_5x5": {"drone (DUT) / drone (Det-Fly) found": "M_s[drone][drone] summed over the column's sources",
+                            "missed": "M_s[bird|airplane|helicopter|background][drone] summed",
+                            "negatives_called_drone": "M_s[drone][bird|airplane|helicopter] summed over all sources",
+                            "negatives_not_called_drone": "M_s[bird|airplane|helicopter|background][bird|airplane|helicopter]",
+                            "false_drone_boxes_on_background": "M_s[drone][background] summed over all sources",
                             "no_drone_on_background": "not defined"},
-        "raw_5x5_names": NAMES + ["background"], "raw_5x5": M.tolist(),
+        "false_drone_boxes_on_background_per_source": {s: int(Ms[s][0, 4]) for s in src},
+        "raw_5x5_names": NAMES + ["background"], "raw_5x5_per_source": {s: Ms[s].tolist() for s in src},
         "non_drone_boxes_on_background": other_bg,
-        "weights": str(Path(args.weights).resolve().relative_to(ROOT)), "data": Path(args.data).name, "split": args.split,
+        "weights": str(Path(args.weights).resolve().relative_to(ROOT)), "split": args.split,
+        "source_data": {s: f"data/yolo/{e}" for s, (_, e) in src.items()},
+        "detfly_definition": "detfly_split.json sets detfly_test010 (last 25 % of sequence 010) and detfly_test020 "
+                             "(all of 020); same lists as the Det-Fly accuracy-table rows",
         "imgsz": args.imgsz, "conf": args.conf, "nms_iou": args.iou, "match_iou": match_iou,
-        "images": n_img, "images_per_source": {k: v["images"] for k, v in labels.items()},
-        "gt_per_class": gt, "gt_per_class_per_source": {k: v["gt_boxes"] for k, v in labels.items()},
-        "gt_label_lines_incl_duplicates_per_source": {k: v["raw_label_lines"] for k, v in labels.items()},
-        "duplicate_label_lines": {k: v["duplicates"] for k, v in labels.items() if v["duplicates"]},
-        "gt_note": "GT counts are after removing exact duplicate label lines, as Ultralytics does on load (5 Open Images "
-                   "test files each contain one bird box twice: 2,142 negative label lines, 2,137 evaluated).",
-        "checks": checks,
-        "note": "Separate validation call for the confusion matrix only, at conf 0.25. Do not quote mAP from it "
-                "(mAP must be computed at low conf). Det-Fly is not in this split; it has its own row in the "
-                "accuracy table.",
+        "images_per_source": {s: labels[s]["images"] for s in src},
+        "images": sum(labels[s]["images"] for s in src),
+        "gt_per_class_per_source": gt,
+        "gt_label_lines_incl_duplicates_per_source": {s: labels[s]["raw_label_lines"] for s in src},
+        "duplicate_label_lines": {s: labels[s]["duplicates"] for s in src if labels[s]["duplicates"]},
+        "gt_note": "GT counts are after removing exact duplicate label lines, as Ultralytics does on load.",
+        "checks": checks, "comparison_with_earlier_combined_run": info,
+        "note": "Separate validation calls for the confusion matrix only, at conf 0.25. Do not quote mAP from them "
+                "(mAP must be computed at low conf). Det-Fly 020 is a later part of the same site as the Det-Fly "
+                "training frames (010), not an independent site.",
     }
     (out / f"{stem}.json").write_text(json.dumps(res, indent=1) + "\n")
-    srcs = " + ".join(f"{k.replace('dut_anti_uav', 'DUT').replace('coco', 'COCO').replace('openimages', 'Open Images')}"
-                      f" {v['images']:,}" for k, v in labels.items())
-    settings = (f"{args.split.upper()} split: {srcs} images\n"
-                f"{Path(args.weights).parent.parent.name}/best.pt, conf {args.conf}, NMS IoU {args.iou}, match IoU {match_iou}")
+    other = " + ".join(f"{LABEL[s]} {labels[s]['images']:,}" for s in src if groups[s] != "detfly")
+    detfly = " + ".join(f"{LABEL[s]} {labels[s]['images']:,}" for s in src if groups[s] == "detfly")
+    settings = (f"{args.split.upper()} split: {other}\n+ {detfly} images\n"
+                f"{Path(args.weights).parent.parent.name}/best.pt, conf {args.conf}, NMS IoU {args.iou}, "
+                f"match IoU {match_iou}")
     plot(P, True, "Drone vs no drone, normalised by TRUE column (background: counts)\n" + settings, out / f"{stem}.png")
     plot(P, False, "Drone vs no drone, raw counts\n" + settings, out / f"{stem}_counts.png")
-    print(json.dumps({k: res[k] for k in ("pooled_named", "pooled", "raw_5x5", "gt_per_class", "images_per_source")}, indent=1))
+    print(json.dumps({k: res[k] for k in ("pooled_named", "pooled", "pooled_drones_dut_plus_detfly", "recall")}, indent=1))
     if not all(c["ok"] for c in checks):
         sys.exit("CHECK FAILED (see above)")
 
