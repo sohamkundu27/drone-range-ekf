@@ -1,0 +1,213 @@
+{
+ "index": "pooled[predicted][true]; raw_5x5[predicted][true]",
+ "pooled_rows_predicted": [
+  "drone",
+  "no drone"
+ ],
+ "pooled_cols_true": [
+  "drone",
+  "negatives (bird, airplane, helicopter)",
+  "background (nothing there)"
+ ],
+ "pooled": [
+  [
+   2189,
+   3,
+   50
+  ],
+  [
+   56,
+   2134,
+   null
+  ]
+ ],
+ "pooled_named": {
+  "drones_found": 2189,
+  "drones_missed": 56,
+  "negatives_called_drone": 3,
+  "negatives_not_called_drone": 2134,
+  "false_drone_boxes_on_background": 50,
+  "no_drone_on_background": null
+ },
+ "pooled_from_5x5": {
+  "drones_found": "M[drone][drone]",
+  "drones_missed": "M[bird][drone] + M[airplane][drone] + M[helicopter][drone] + M[background][drone]",
+  "negatives_called_drone": "M[drone][bird] + M[drone][airplane] + M[drone][helicopter]",
+  "negatives_not_called_drone": "sum of M[bird|airplane|helicopter|background][bird|airplane|helicopter]",
+  "false_drone_boxes_on_background": "M[drone][background]",
+  "no_drone_on_background": "not defined"
+ },
+ "raw_5x5_names": [
+  "drone",
+  "bird",
+  "airplane",
+  "helicopter",
+  "background"
+ ],
+ "raw_5x5": [
+  [
+   2189,
+   0,
+   2,
+   1,
+   50
+  ],
+  [
+   1,
+   654,
+   0,
+   0,
+   194
+  ],
+  [
+   1,
+   1,
+   590,
+   3,
+   77
+  ],
+  [
+   0,
+   0,
+   33,
+   345,
+   22
+  ],
+  [
+   54,
+   356,
+   110,
+   42,
+   0
+  ]
+ ],
+ "non_drone_boxes_on_background": 293,
+ "weights": "runs/s_detfly_new/weights/best.pt",
+ "data": "drone4_bal.yaml",
+ "split": "test",
+ "imgsz": 1280,
+ "conf": 0.25,
+ "nms_iou": 0.5,
+ "match_iou": 0.5,
+ "images": 3734,
+ "images_per_source": {
+  "coco": 209,
+  "dut_anti_uav": 2200,
+  "openimages": 1325
+ },
+ "gt_per_class": {
+  "drone": 2245,
+  "bird": 1011,
+  "airplane": 735,
+  "helicopter": 391
+ },
+ "gt_per_class_per_source": {
+  "coco": {
+   "drone": 0,
+   "bird": 233,
+   "airplane": 143,
+   "helicopter": 0
+  },
+  "dut_anti_uav": {
+   "drone": 2245,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
+  },
+  "openimages": {
+   "drone": 0,
+   "bird": 778,
+   "airplane": 592,
+   "helicopter": 391
+  }
+ },
+ "gt_label_lines_incl_duplicates_per_source": {
+  "coco": {
+   "drone": 0,
+   "bird": 233,
+   "airplane": 143,
+   "helicopter": 0
+  },
+  "dut_anti_uav": {
+   "drone": 2245,
+   "bird": 0,
+   "airplane": 0,
+   "helicopter": 0
+  },
+  "openimages": {
+   "drone": 0,
+   "bird": 783,
+   "airplane": 592,
+   "helicopter": 391
+  }
+ },
+ "duplicate_label_lines": {
+  "openimages": {
+   "26fe4763d054a29c.txt": 1,
+   "88b37f42153f6502.txt": 1,
+   "8ad26d6a2052e138.txt": 1,
+   "d7e9d5b435bcd3a6.txt": 1,
+   "ec3d9fa9250fcdf8.txt": 1
+  }
+ },
+ "gt_note": "GT counts are after removing exact duplicate label lines, as Ultralytics does on load (5 Open Images test files each contain one bird box twice: 2,142 negative label lines, 2,137 evaluated).",
+ "checks": [
+  {
+   "check": "match IoU used by the confusion matrix is 0.5",
+   "ok": true,
+   "detail": "process_batch iou_thres = 0.5"
+  },
+  {
+   "check": "5x5 column totals = GT boxes per class in the label files",
+   "ok": true,
+   "detail": "matrix [2245, 1011, 735, 391] vs labels [2245, 1011, 735, 391]"
+  },
+  {
+   "check": "drone column total = GT drones",
+   "ok": true,
+   "detail": "2245 vs 2245 GT drones"
+  },
+  {
+   "check": "negatives column total = GT birds + airplanes + helicopters",
+   "ok": true,
+   "detail": "2137 vs 1011 + 735 + 391"
+  },
+  {
+   "check": "drone total = expected (DUT test 2,245)",
+   "ok": true,
+   "detail": "2245 vs 2245"
+  },
+  {
+   "check": "negatives total = expected (2,137 = 2,142 label lines - 5 exact duplicates)",
+   "ok": true,
+   "detail": "2137 vs 2137"
+  },
+  {
+   "check": "negatives label lines incl. duplicates = 2,142",
+   "ok": true,
+   "detail": "2142 lines, 5 exact duplicates, 2137 evaluated"
+  },
+  {
+   "check": "pooled cells = sums of the 5x5 cells (two independent computations)",
+   "ok": true,
+   "detail": [
+    [
+     2189.0,
+     3.0,
+     50.0
+    ],
+    [
+     56.0,
+     2134.0,
+     NaN
+    ]
+   ]
+  },
+  {
+   "check": "pooled cells + non-drone boxes on background = all 5x5 entries",
+   "ok": true,
+   "detail": "4432 + 293 vs 4725"
+  }
+ ],
+ "note": "Separate validation call for the confusion matrix only, at conf 0.25. Do not quote mAP from it (mAP must be computed at low conf). Det-Fly is not in this split; it has its own row in the accuracy table."
+}
