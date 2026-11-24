@@ -1,0 +1,85 @@
+20 configs, 20 to run, 24 processes
+G_approach_sweep15_bearing_only             1.8 s  RMS  307.2%  cov  89.4%  NaN runs   0  ETA rest   0.6 min
+G_approach_sweep15_size_prior               1.8 s  RMS   12.7%  cov  77.8%  NaN runs  15  ETA rest   0.5 min
+G_approach_sweep15_tight_prior              1.9 s  RMS    4.0%  cov  95.1%  NaN runs   0  ETA rest   0.5 min
+G_approach_sweep15_wrong_prior              2.1 s  RMS    9.8%  cov  40.5%  NaN runs   0  ETA rest   0.5 min
+G_approach_sweep15_wrong_tight              2.1 s  RMS   14.5%  cov   0.3%  NaN runs   0  ETA rest   0.5 min
+H_approach_hover_size_prior                 1.8 s  RMS   43.8%  cov  33.8%  NaN runs   7  ETA rest   0.4 min
+H_approach_hover_tight_prior                1.9 s  RMS   11.4%  cov  71.3%  NaN runs   0  ETA rest   0.4 min
+I_approach_sweep5_size_prior                1.9 s  RMS   15.4%  cov  75.1%  NaN runs   9  ETA rest   0.4 min
+I_approach_sweep10_size_prior               1.8 s  RMS   13.1%  cov  76.6%  NaN runs  13  ETA rest   0.3 min
+I_approach_sweep30_size_prior               1.8 s  RMS   14.6%  cov  78.8%  NaN runs  18  ETA rest   0.3 min
+J_constant_velocity_sweep15_size_prior      1.4 s  RMS   11.3%  cov  57.9%  NaN runs   6  ETA rest   0.2 min
+J_gentle_turn_sweep15_size_prior            1.3 s  RMS   13.4%  cov  50.2%  NaN runs   6  ETA rest   0.2 min
+J_dash_sweep15_size_prior                   1.6 s  RMS   18.7%  cov  57.3%  NaN runs  12  ETA rest   0.2 min
+J_jink_sweep15_size_prior                   1.8 s  RMS   46.9%  cov   4.6%  NaN runs  24  ETA rest   0.2 min
+J_orbit_sweep15_size_prior                  1.8 s  RMS    9.0%  cov  76.1%  NaN runs  20  ETA rest   0.2 min
+K_constant_velocity_sweep15_size_prior      1.5 s  RMS   19.1%  cov  52.0%  NaN runs   5  ETA rest   0.1 min
+K_gentle_turn_sweep15_size_prior            1.4 s  RMS   19.2%  cov  56.2%  NaN runs   5  ETA rest   0.1 min
+K_dash_sweep15_size_prior                   1.6 s  RMS   24.0%  cov  56.8%  NaN runs  12  ETA rest   0.1 min
+K_jink_sweep15_size_prior                   1.9 s  RMS   46.5%  cov   5.0%  NaN runs  16  ETA rest   0.0 min
+K_orbit_sweep15_size_prior                  1.8 s  RMS   13.9%  cov  77.0%  NaN runs  20  ETA rest   0.0 min
+# Sweep-in-place study: slide tables (SIMULATION ONLY)
+
+200 runs per row, seeds 1000..1199, size_prior (0.35 ± 0.15 m), samples with true range <= 200 m. RMS / 68th pct / reported σ over t >= 10 s; coverage over t >= 2 s (ideal 95%). '-' = the target never enters that range bucket.
+
+## Behaviour table (sweep ±15 m)
+
+| behaviour | RMS err | 10-20 m | 20-40 m | 40-80 m | 80-120 m | 120-160 m | 160-200 m | 2σ coverage | actual (68th pct) vs reported σ | NaN runs | min range | max bearing rate |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| inbound | 12.7% | 5.6% | 6.2% | 6.1% | 13.3% | 32.1% | 67.1% | 77.8% | 6.0% vs 3.7% | 15 | 9.6 m | 47.9°/s |
+| crossing | 11.3% | - | - | - | 11.1% | 22.5% | 13.2% | 57.9% | 11.7% vs 4.8% | 6 | 116.1 m | 6.2°/s |
+| gentle turn | 13.4% | - | - | - | - | 27.8% | 10.5% | 50.2% | 15.8% vs 4.9% | 6 | 127.5 m | 6.0°/s |
+| dash | 18.7% | - | 11.4% | 11.5% | 18.2% | 31.3% | 46.2% | 57.3% | 9.8% vs 3.9% | 12 | 21.4 m | 41.3°/s |
+| jink | 46.9% | 43.1% | 44.6% | 47.0% | 46.1% | 54.2% | 79.9% | 4.6% | 48.1% vs 4.4% | 24 | 8.0 m | 71.9°/s |
+| orbit | 9.0% | - | - | 10.8% | 11.5% | - | - | 76.1% | 6.8% vs 4.1% | 20 | 70.3 m | 11.0°/s |
+
+## Width table (inbound, size_prior)
+
+| camera | RMS err | 10-20 m | 20-40 m | 40-80 m | 80-120 m | 120-160 m | 160-200 m | 2σ coverage | NaN runs |
+|---|---|---|---|---|---|---|---|---|---|
+| hover | 43.8% | 37.1% | 39.3% | 43.5% | 48.1% | 53.4% | 75.9% | 33.8% | 7 |
+| sweep ±5 | 15.4% | 6.9% | 7.0% | 10.2% | 19.4% | 33.8% | 67.3% | 75.1% | 9 |
+| sweep ±10 | 13.1% | 5.5% | 5.9% | 7.6% | 14.8% | 33.4% | 67.3% | 76.6% | 13 |
+| sweep ±15 | 12.7% | 5.6% | 6.2% | 6.1% | 13.3% | 32.1% | 67.1% | 77.8% | 15 |
+| sweep ±30 | 14.6% | 5.5% | 5.4% | 6.4% | 15.9% | 37.0% | 66.2% | 78.8% | 18 |
+
+## G headline (sweep ±15 m, inbound, all variants)
+
+| variant | RMS err | bias | actual (68th pct) vs reported σ | 2σ coverage | ANEES range | NaN runs |
+|---|---|---|---|---|---|---|
+| bearing_only | 307.2% | +27.1% | 9.0% vs 6.3% | 89.4% | 41.90 | 0 |
+| size_prior | 12.7% | -0.7% | 6.0% vs 3.7% | 77.8% | 4.28 | 15 |
+| tight_prior | 4.0% | +0.3% | 3.7% vs 3.7% | 95.1% | 1.06 | 0 |
+| wrong_prior | 9.8% | -7.8% | 9.0% vs 3.3% | 40.5% | 13.01 | 0 |
+| wrong_tight | 14.5% | -13.8% | 15.8% vs 3.2% | 0.3% | 29.31 | 0 |
+
+## Filter process noise q = 1.0 vs 0.1 (sweep ±15 m, size_prior)
+
+| behaviour | RMS err q=0.1 | RMS err q=1.0 | 2σ coverage q=0.1 | 2σ coverage q=1.0 | NaN runs q=0.1 / 1.0 |
+|---|---|---|---|---|---|
+| crossing | 11.3% | 19.1% | 57.9% | 52.0% | 6 / 5 |
+| gentle turn | 13.4% | 19.2% | 50.2% | 56.2% | 6 / 5 |
+| dash | 18.7% | 24.0% | 57.3% | 56.8% | 12 / 12 |
+| jink | 46.9% | 46.5% | 4.6% | 5.0% | 24 / 16 |
+| orbit | 9.0% | 13.9% | 76.1% | 77.0% | 20 / 20 |
+
+## 200 m scoring cut applied to the existing main-grid runs
+
+Unchanged: 34 of 48 configs (groups fully unchanged: A, C, D, F). Changed (these targets fly beyond 200 m; results_sim.md is NOT modified, the cut is applied only to the sweep study):
+
+* B_constant_velocity_straight_bearing_only: 17.0% of samples beyond 200 m; RMS 72.1% -> 78.1%
+* B_constant_velocity_straight_size_prior: 17.0% of samples beyond 200 m; RMS 19.3% -> 18.8%
+* B_constant_velocity_weaving_bearing_only: 3.2% of samples beyond 200 m; RMS 688.5% -> 703.8%
+* B_constant_velocity_weaving_size_prior: 3.2% of samples beyond 200 m; RMS 10.8% -> 10.4%
+* B_gentle_turn_lateral_bearing_only: 20.0% of samples beyond 200 m; RMS 35.9% -> 35.3%
+* B_gentle_turn_lateral_size_prior: 20.0% of samples beyond 200 m; RMS 29.7% -> 27.5%
+* B_gentle_turn_weaving_bearing_only: 24.9% of samples beyond 200 m; RMS 150.8% -> 161.7%
+* B_gentle_turn_weaving_size_prior: 24.9% of samples beyond 200 m; RMS 13.3% -> 13.2%
+* E_model_truth_weaving_40m: 3.0% of samples beyond 200 m; RMS 5.7% -> 5.3%
+* E_model_truth_lateral_40m: 6.9% of samples beyond 200 m; RMS 39.2% -> 40.8%
+* E_model_truth_weaving_80m: 4.0% of samples beyond 200 m; RMS 6.8% -> 6.3%
+* E_model_truth_lateral_80m: 7.8% of samples beyond 200 m; RMS 23.3% -> 23.2%
+* E_model_truth_weaving_150m: 11.6% of samples beyond 200 m; RMS 12.1% -> 11.8%
+* E_model_truth_lateral_150m: 16.8% of samples beyond 200 m; RMS 31.0% -> 27.0%
+DONE
